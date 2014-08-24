@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.63.150.103;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.User_Role" Member="User_Role">
+    <Type Name="User_Role">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Roles">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_User_Role" Member="v_User_Role">
+    <Type Name="v_User_Role">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="XMPY" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="rolename" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Role_Users" Member="v_Role_Users">
+    <Type Name="v_Role_Users">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="rolename" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="rolekey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Department">
+    <Type Name="Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HeadmasterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department_leader" Member="Department_leader">
+    <Type Name="Department_leader">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="department_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="leader_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Deparment_Leader" Member="v_Deparment_Leader">
+    <Type Name="v_Deparment_Leader">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LeaderName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Deparment_Headmaster" Member="v_Deparment_Headmaster">
+    <Type Name="v_Deparment_Headmaster">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="headmaster" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="headmasterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_KQ_punchcard_record" Member="v_KQ_punchcard_record">
+    <Type Name="v_KQ_punchcard_record">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="PunchCardType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_Set_time" Member="KQ_Set_time">
+    <Type Name="KQ_Set_time">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CheckOnTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CheckOffTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_Actor" Member="t_GZL_Actor">
+    <Type Name="t_GZL_Actor">
+      <Column Name="actorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="actorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="routId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_Rout" Member="t_GZL_Rout">
+    <Type Name="t_GZL_Rout">
+      <Column Name="routId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="routName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="departmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_TaskList" Member="t_GZL_TaskList">
+    <Type Name="t_GZL_TaskList">
+      <Column Name="taskId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="actorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_actorUser" Member="t_GZL_actorUser">
+    <Type Name="t_GZL_actorUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="actorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="operateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="taskId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="opinion" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="action" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_GZL_MyTaskList" Member="v_GZL_MyTaskList">
+    <Type Name="v_GZL_MyTaskList">
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApplyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="actorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="taskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="operateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_GZL_MyApplyItem" Member="v_GZL_MyApplyItem">
+    <Type Name="v_GZL_MyApplyItem">
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="deptId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApplyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ApplyUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="applyUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="actorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="actorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_TaskHistory" Member="t_GZL_TaskHistory">
+    <Type Name="t_GZL_TaskHistory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="actorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="memo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="operatorUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="createDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="operatorName" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="action" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_GZL_History" Member="v_GZL_History">
+    <Type Name="v_GZL_History">
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="createDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sortNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="actorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="operatorName" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="action" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="memo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_User_Task" Member="t_User_Task">
+    <Type Name="t_User_Task">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="isClick" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="createtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Weather" Member="t_Weather">
+    <Type Name="t_Weather">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="description1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description3" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description4" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description5" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description6" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="wind1" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="wind2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="wind3" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="wind4" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="wind5" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="wind6" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="date2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="date3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="date4" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="date5" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="date6" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="img1" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="img2" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="img3" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="img4" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="img5" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="img6" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="week" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_GZL_Item" Member="t_GZL_Item">
+    <Type Name="t_GZL_Item">
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RoutId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplyUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ItemType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="deptId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Form_Purchase" Member="t_Form_Purchase">
+    <Type Name="t_Form_Purchase">
+      <Column Name="formId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="applyDept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="applyUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FenGuanYiJian" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FenGuanTongYi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="XiaoZhangYiJian" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="XiaoZhangTongYi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="itemGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="totalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Form_Purchase_Items" Member="t_Form_Purchase_Items">
+    <Type Name="t_Form_Purchase_Items">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="formId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sortId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="memo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="totalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="needNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_PunchCardRecords" Member="KQ_PunchCardRecords">
+    <Type Name="KQ_PunchCardRecords">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PunchCardUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PunchCardType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ip1" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="ip2" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="ip3" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="ip4" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="openUserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="XMPY" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="EMail" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="InviteCode" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpperName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MsgFileLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MsgImageLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AcceptStrangerIM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsTemp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiskSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RegisterTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HomePage" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="HeadIMG" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ChangePwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JobNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="disabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="openUserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_WorkPlan" Member="v_WorkPlan">
+    <Type Name="v_WorkPlan">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="createTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isRelease" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="detpId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isComplete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="deptName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="releaseTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isEvaluation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="evalutionContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sortNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="planPeriod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Work_Plan" Member="t_Work_Plan">
+    <Type Name="t_Work_Plan">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="createTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isRelease" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="detpId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="releaseTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isEvaluation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="evalutionContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sortNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="planPeriod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isComplete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DeleteUser" Method="DeleteUser">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserRoles" Method="GetUserRoles">
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="GetUserRolesResult">
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CreateUser" Method="CreateUser">
+    <Parameter Name="XMPY" Parameter="xMPY" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="TrueName" Parameter="trueName" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="password" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="inviteCode" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="CreateUserResult">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteRoles" Method="DeleteRoles">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
