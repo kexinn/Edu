@@ -36,7 +36,7 @@ namespace BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=60.12.214.181;Initial Catalog=Edu;User ID=sa;Password=nbyzzjdb5020!")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=60.12.214.182;Initial Catalog=Edu;User ID=sa;Password=nbyzzjdb5020!")]
         public string EduConnectionString1 {
             get {
                 return ((string)(this["EduConnectionString1"]));

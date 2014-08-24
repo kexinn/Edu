@@ -16,7 +16,7 @@ namespace BLL
                 if (user.Count() == 1)
                     return user.Single();
                 else
-                    return null;
+                    return null; 
             }
         }
     }
