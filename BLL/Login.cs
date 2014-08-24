@@ -13,10 +13,10 @@ namespace BLL
             using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
                 var user = dc.Users.Where(u => u.XMPY == xmpy);
-                if (user.Count() == 1)
+                if (user.Count() == 1) 
                     return user.Single();
                 else
-                    return null; 
+                    return null;  
             }
         }
     }
