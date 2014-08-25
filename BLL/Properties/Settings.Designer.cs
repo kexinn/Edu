@@ -32,15 +32,5 @@ namespace BLL.Properties {
                 return ((string)(this["EduConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=;Initial Catalog=Edu;User ID=sa;Password=")]
-        public string EduConnectionString1 {
-            get {
-                return ((string)(this["EduConnectionString1"]));
-            }
-        }
     }
 }

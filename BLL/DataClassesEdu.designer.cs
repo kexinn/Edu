@@ -87,7 +87,7 @@ namespace BLL
     #endregion
 		
 		public DataClassesEduDataContext() : 
-				base(global::BLL.Properties.Settings.Default.EduConnectionString1, mappingSource)
+				base(global::BLL.Properties.Settings.Default.EduConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
