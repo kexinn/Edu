@@ -193,7 +193,7 @@ h2{font-weight:normal;}
 .newlist{padding-left:14px; padding-top:15px;}
 .newlist li{line-height:25px; background:url(/media/images/list2.png) no-repeat 0px 8px; text-indent:11px;border-bottom:dashed 1px #d3dbde;}
 .newlist i{width:180px; display:block; float:left; font-style:normal;}
-.newlist b{font-weight:normal; color:#7b7b7b; padding-left:10px;}
+.newlist b{font-weight:normal; color:#7b7b7b; padding-left:10px; line-height:40px;}
 .leftinfos{height:238px;}
 .infoleft{border:#d3dbde solid 1px; float:left;height:238px;}
 .inforight{border:#d3dbde solid 1px; float:right;height:238px; }
@@ -201,6 +201,7 @@ h2{font-weight:normal;}
 .tooli li{float:left;padding-left:15px; padding-right:15px;margin-bottom:20px;}
 .tooli li span{text-align:center;}
 .tooli li p{line-height:35px; text-align:center;}
+.tooli li b{font-weight:normal; color:#7b7b7b; padding-left:10px; line-height:40px;padding-top:10px; }
 
 
 /*form*/
