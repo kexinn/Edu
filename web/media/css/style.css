@@ -192,7 +192,7 @@ h2{font-weight:normal;}
 .maintj{text-align:center;}
 .newlist{padding-left:14px; padding-top:15px;}
 .newlist li{line-height:25px; background:url(/media/images/list2.png) no-repeat 0px 8px; text-indent:11px;border-bottom:dashed 1px #d3dbde;}
-.newlist i{width:200px; display:block; float:left; font-style:normal;}
+.newlist i{width:180px; display:block; float:left; font-style:normal;}
 .newlist b{font-weight:normal; color:#7b7b7b; padding-left:10px;}
 .leftinfos{height:238px;}
 .infoleft{border:#d3dbde solid 1px; float:left;height:238px;}
