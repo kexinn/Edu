@@ -18,8 +18,8 @@ namespace web
         {
             if (!IsPostBack)
             {
-              initData();
-                getWeather();
+                initData();
+                getweateher2();
                 getTask();
                 databind();
             }
@@ -41,14 +41,69 @@ namespace web
 
         protected String formatContentLen(String content)
         {
-            if(content.Length>14)
+            if(content.Length>12)
             {
-                return content.Substring(0, 13) + "...";
+                return content.Substring(0, 12) + "...";
             }
             return content;
               
         }
-        protected void getWeather()
+
+        protected void getweateher2()
+        {
+            try
+            {
+                String strWeather = "";
+                HttpWebRequest req;
+                HttpWebResponse res;
+                Stream s;
+                StreamReader r;
+                t_Weather w = new t_Weather();
+                String url = "http://api.map.baidu.com/telematics/v3/weather?location=宁波&output=json&ak=tyoIv9jx0Bhiz5T1Vu0kMXI3";
+                req = (HttpWebRequest)WebRequest.Create(url);
+                res = (HttpWebResponse)req.GetResponse();
+                s = res.GetResponseStream();
+                r = new StreamReader(s);
+
+                strWeather = r.ReadToEnd();
+                r.Close();
+                s.Close();
+                res.Close();
+
+                JObject jObj = JObject.Parse(strWeather);
+                JToken date = jObj["date"];
+
+                JToken weatherinfo = jObj["results"];
+
+                var city = (from c in weatherinfo.Children() select c).Single();
+
+                JObject jObj1 = JObject.Parse(city.ToString());
+
+                var data = from n in jObj1["weather_data"].Children() select n;
+                String html = "<ul class='tooli'>";
+
+                foreach (JToken t in data)
+                {
+                    JObject day = JObject.Parse(t.ToString());
+                    JToken date1 = day["date"];
+                    JToken dayPictureUrl = day["dayPictureUrl"];
+                    JToken nightPictureUrl = day["nightPictureUrl"];
+                    JToken weather = day["weather"];
+                    JToken wind = day["wind"];
+                    JToken temperature = day["temperature"];
+
+                    html += "<li><span>";
+                    html += "<img alt='weather' src='" + dayPictureUrl + "' />" + "</span><p><a href='#'>" + date1.ToString() + "</a></p><p><a href='#'>" + weather.ToString()
+                        + "</a></p><p><a href='#'>" + wind.ToString() + "</a></p><p><a href='#'>" + temperature.ToString() + "</a></p>";
+
+                }
+                weatherDiv.InnerHtml = html;
+            }catch(Exception e)
+            {
+                lbWeatherMessage.Text = "获得天气接口失败：" + e.Message;
+            }
+        }
+     /*   protected void getWeather()
         {
             String strWeather = "";
             HttpWebRequest req;
@@ -95,7 +150,13 @@ namespace web
                 else
                 {
                     t_Weather w = new t_Weather();
-                    req = (HttpWebRequest)WebRequest.Create("http://m.weather.com.cn/atad/101210401.html");
+                    //String sk = "GfeibTkbdyfQxviaoxcgwe3WSHviqc2c";
+                    //String basicString = "/telematics/v3/weather?location=宁波&output=json&ak=tyoIv9jx0Bhiz5T1Vu0kMXI3";
+                    //String uri = HttpUtility.HtmlEncode(basicString + sk);
+                    //String sn = BLL.pub.PubClass.MD5(uri);
+                    req = (HttpWebRequest)WebRequest.Create("http://m.weather.com.cn/data/101210401.html");
+                    //String url = "http://api.map.baidu.com/telematics/v3/weather?location=宁波&output=json&ak=tyoIv9jx0Bhiz5T1Vu0kMXI3" + "&sn=" + sn;
+                    //req = (HttpWebRequest)WebRequest.Create("http://api.map.baidu.com/telematics/v3/weather?location=宁波&output=json&ak=tyoIv9jx0Bhiz5T1Vu0kMXI3");
                     res = (HttpWebResponse)req.GetResponse();
                     s = res.GetResponseStream();
                     r = new StreamReader(s);
@@ -186,7 +247,7 @@ namespace web
             }
 
 
-        }
+        }*/
         protected void initData()
         {
             List<KQ_PunchCardRecords> recordList;

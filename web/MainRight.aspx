@@ -148,68 +148,10 @@
                     <div>
                         <asp:Label ID="lbWeatherMessage" runat="server"></asp:Label>
                     </div>
-                    <ul class="tooli">
-                        <li><span>
-                            <asp:Image ID="img1" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate1" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather1" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes1" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind1" runat="server"></asp:Label></a></p>
-                        </li>
-                        <li><span>
-                            <asp:Image ID="img2" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate2" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather2" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes2" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind2" runat="server"></asp:Label></a></p>
-                        </li>
-                        <li><span>
-                            <asp:Image ID="img3" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate3" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather3" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes3" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind3" runat="server"></asp:Label></a></p>
-                        </li>
-                        <li><span>
-                            <asp:Image ID="img4" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate4" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather4" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes4" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind4" runat="server"></asp:Label></a></p>
-                        </li>
-                        <li><span>
-                            <asp:Image ID="img5" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate5" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather5" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes5" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind5" runat="server"></asp:Label></a></p>
-                        </li>
-                        <li><span>
-                            <asp:Image ID="img6" runat="server" Height="45px" Width="45px" /></span><p><a href="#">
-                                <asp:Label ID="lbDate6" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWeather6" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbDes6" runat="server"></asp:Label></a></p>
-                            <p><a href="#">
-                                <asp:Label ID="lbWind6" runat="server"></asp:Label></a></p>
-                        </li>
-                    </ul>
+                    <div id="weatherDiv" runat="server">
+
+                    </div>
+                    
                 </div>
                 <!--leftinfo end-->
 

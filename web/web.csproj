@@ -50,9 +50,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AjaxControlToolkit.Binary.NET45\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetCasClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DotNetCasClient.dll</HintPath>
+    <Reference Include="DotNetCasClient">
+      <HintPath>..\DotNetCasClient\DotNetCasClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
