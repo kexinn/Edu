@@ -21,7 +21,7 @@ namespace web
                 initData();
                 getweateher2();
                 getTask();
-                databind();
+                databind(); 
             }
         }
 
