@@ -92,11 +92,12 @@ namespace web
                     JToken wind = day["wind"];
                     JToken temperature = day["temperature"];
 
-                    html += "<li><span>";
-                    html += "<img alt='weather' src='" + dayPictureUrl + "' />" + "</span><p><a href='#'>" + date1.ToString() + "</a></p><p><a href='#'>" + weather.ToString()
-                        + "</a></p><p><a href='#'>" + wind.ToString() + "</a></p><p><a href='#'>" + temperature.ToString() + "</a></p>";
+                    html += "<li><span class='inline'>";
+                    html += "<b>日</b><img alt='weather' src='" + dayPictureUrl + "' />" + "</span><span class='inline'><b>夜</b><img alt='weather' src='" + nightPictureUrl + "' /></span><p><a href='#'>" + date1.ToString() + "</a></p><p><a href='#'>" + weather.ToString()
+                        + "</a></p><p><a href='#'>" + wind.ToString() + "</a></p><p><a href='#'>" + temperature.ToString() + "</a></p></li>";
 
                 }
+                html += "</ul>";
                 weatherDiv.InnerHtml = html;
             }catch(Exception e)
             {
