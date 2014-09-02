@@ -175,7 +175,7 @@ namespace BLL.pub
             }
         }
 
-        public static void ToExcel(Control ctl, string FileName)
+        public static void ToExcel(Control ctl, string FileName,string charType = "UTF-8")
         {
             System.Web.UI.WebControls.GridView gv = (System.Web.UI.WebControls.GridView)ctl;
           //  GridView gv = (GridView)ctl;
@@ -189,8 +189,8 @@ namespace BLL.pub
             //}
             // }
 
-            HttpContext.Current.Response.Charset = "GB2312";
-            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            HttpContext.Current.Response.Charset = charType;
+            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding(charType);
             HttpContext.Current.Response.ContentType = "application/ms-excel";
             HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment;filename=" + "" + FileName);
             gv.Page.EnableViewState = false;

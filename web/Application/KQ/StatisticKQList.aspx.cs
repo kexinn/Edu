@@ -71,7 +71,7 @@ namespace web.Application.KQ
             GridView2.AllowPaging = false;
             GridView2.AllowSorting = false;
             //ToExcel(GridView2, "record2.xls");
-            BLL.pub.PubClass.ToExcel(GridView2, "record2.xls");
+            BLL.pub.PubClass.ToExcel(GridView2, "record2.xls", "GB2312");
             GridView2.AllowPaging = true;
             GridView2.AllowSorting = true;
 
@@ -84,7 +84,7 @@ namespace web.Application.KQ
             GridView1.DataBind();
             GridView1.AllowPaging = false;
             GridView1.AllowSorting = false;
-            BLL.pub.PubClass.ToExcel(GridView1, "record1.xls");
+            BLL.pub.PubClass.ToExcel(GridView1, "record1.xls","UTF-8");
             //ToExcel(GridView1, "record1.xls");
             GridView1.AllowPaging = true;
             GridView1.AllowSorting = true;
