@@ -61,12 +61,16 @@
                 DataKeyNames="jobnumber" Width="100%"
                 CssClass="tablelist" style="margin-bottom:10px;" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20">
                 <Columns>
+                    <asp:BoundField DataField="order" HeaderText="排序号">
+                    <HeaderStyle Width="60px" />
+                    </asp:BoundField>
                     <asp:TemplateField HeaderText="工号">
                         <ItemTemplate>
                             <asp:Label ID="lbJobnumber" runat="server"><%# Eval("jobnumber") %></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="80px" />
                     </asp:TemplateField>
+                    
                     <asp:TemplateField HeaderText="打卡人">
                         <ItemTemplate>
                             <asp:Label ID="lbUsername" runat="server"><%# Eval("username")%></asp:Label>
@@ -118,6 +122,10 @@
                 CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvRecordNull_PageIndexChanging" PageSize="20">
 
                 <Columns>
+                    
+                    <asp:BoundField DataField="order" HeaderText="排序号">
+                    <HeaderStyle Width="60px" />
+                    </asp:BoundField>
                     <asp:TemplateField HeaderText="工号">
                         <ItemTemplate>
                             <asp:Label ID="lbJobnumber" runat="server"><%# Eval("jobnumber") %></asp:Label>

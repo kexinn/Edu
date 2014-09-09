@@ -41,6 +41,7 @@ namespace BLL.Application.KQ
         {
             public String jobnumber{get;set;}
             public String username{get;set;}
+            public int order { get; set; }
             public int clockTotle{get;set;}
             public int clockOnNum{get;set;}
             public int clockOffNum{get;set;}
@@ -61,13 +62,14 @@ namespace BLL.Application.KQ
                            {
                                jobnumber = user.JobNumber,
                                username = user.TrueName,
+                               order= (user.orderNo == null)?0:(int)user.orderNo ,
                               clockTotle = group_kq.Count(),
                               clockOnNum = group_kq.Count(kq=>kq.PunchCardType == '1'),
                               clockOffNum = group_kq.Count(kq=>kq.PunchCardType == '2'),
                               lateTimes = group_kq.Count(kq=>kq.status == 1),
                               earlyTimes = group_kq.Count(kq=>kq.status == 2)
                            } ;
-                return aa.ToList<PunchCardStatiscs>();
+                return aa.OrderBy(a=>a.order).ToList<PunchCardStatiscs>();
 
             }
         }
@@ -76,6 +78,8 @@ namespace BLL.Application.KQ
         {
             public String jobnumber { get; set; }
             public String username { get; set; }
+
+            public int order { get; set; }
         }
         public static List<PunchCardUser> getStatiscNullByBetweenTime(DateTime start, DateTime end)
         {
@@ -85,7 +89,7 @@ namespace BLL.Application.KQ
                 var bb = from user in dc.Users
                          where user.UserType == '1' &&
                          !(from kq in dc.KQ_PunchCardRecords where kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
-                         select new PunchCardUser { jobnumber = user.JobNumber,username = user.TrueName};
+                         select new PunchCardUser { jobnumber = user.JobNumber,username = user.TrueName,order = (user.orderNo == null)?0:(int)user.orderNo};
                 return bb.ToList<PunchCardUser>();
 
             }
