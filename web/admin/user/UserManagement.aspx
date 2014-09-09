@@ -141,6 +141,16 @@
                         </ItemTemplate>
                         <ItemStyle Width="120px" />
                     </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="排序号">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="tbOrderNo" runat="server" Text='<%# Eval("orderNo") %>' Width="120px"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lbOrderNo" runat="server"><%# Eval("orderNo")%></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="90px" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="用户名">
                         <EditItemTemplate>
                             <asp:TextBox ID="tbUserName" runat="server" Text='<%# Eval("TrueName") %>' Width="100px"></asp:TextBox>

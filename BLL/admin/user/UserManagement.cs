@@ -25,7 +25,7 @@ namespace BLL.admin.user
                 }
                 else
                 {
-                    u = dc.Users;
+                    u = dc.Users.OrderBy(a=>a.orderNo);
                 }
 
                 u = pageT.ShowPage(u, indexPg, pgSize);
@@ -105,7 +105,7 @@ namespace BLL.admin.user
             return true;
         }
 
-        public static bool UpdateUser(int userid,String XMPY,String TrueName,String Pwd,String JobNumber,int DepartmentId)
+        public static bool UpdateUser(int userid,String XMPY,String TrueName,String Pwd,String JobNumber,int DepartmentId,int orderNo = 0)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
@@ -116,6 +116,8 @@ namespace BLL.admin.user
                 user.TrueName = TrueName;
                 user.JobNumber = JobNumber;
                 user.DepartmentId = DepartmentId;
+                if (orderNo != 0)
+                    user.orderNo = orderNo;
 
 
                 if (!String.IsNullOrEmpty(Pwd))

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=10.63.150.103;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=60.12.214.181;Initial Catalog=Edu;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.User_Role" Member="User_Role">
     <Type Name="User_Role">
       <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -281,33 +281,6 @@
       <Column Name="openUserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="Users">
-      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="XMPY" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="EMail" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="InviteCode" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
-      <Column Name="UpperName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="MsgFileLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MsgImageLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AcceptStrangerIM" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsTemp" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DiskSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RegisterTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="HomePage" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
-      <Column Name="HeadIMG" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Column Name="Remark" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="ChangePwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="JobNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="disabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="openUserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.v_WorkPlan" Member="v_WorkPlan">
     <Type Name="v_WorkPlan">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -345,6 +318,34 @@
       <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="month" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="isComplete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="XMPY" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="EMail" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="InviteCode" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpperName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MsgFileLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MsgImageLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AcceptStrangerIM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsTemp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiskSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RegisterTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HomePage" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="HeadIMG" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ChangePwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JobNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="disabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="openUserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="orderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">

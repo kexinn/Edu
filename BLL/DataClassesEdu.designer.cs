@@ -78,12 +78,12 @@ namespace BLL
     partial void InsertKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void UpdateKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void DeleteKQ_PunchCardRecords(KQ_PunchCardRecords instance);
-    partial void InsertUsers(Users instance);
-    partial void UpdateUsers(Users instance);
-    partial void DeleteUsers(Users instance);
     partial void Insertt_Work_Plan(t_Work_Plan instance);
     partial void Updatet_Work_Plan(t_Work_Plan instance);
     partial void Deletet_Work_Plan(t_Work_Plan instance);
+    partial void InsertUsers(Users instance);
+    partial void UpdateUsers(Users instance);
+    partial void DeleteUsers(Users instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -308,14 +308,6 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<Users> Users
-		{
-			get
-			{
-				return this.GetTable<Users>();
-			}
-		}
-		
 		public System.Data.Linq.Table<v_WorkPlan> v_WorkPlan
 		{
 			get
@@ -329,6 +321,14 @@ namespace BLL
 			get
 			{
 				return this.GetTable<t_Work_Plan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Users> Users
+		{
+			get
+			{
+				return this.GetTable<Users>();
 			}
 		}
 		
@@ -5157,596 +5157,6 @@ namespace BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Key;
-		
-		private string _XMPY;
-		
-		private string _TrueName;
-		
-		private int _Type;
-		
-		private string _Password;
-		
-		private string _EMail;
-		
-		private string _InviteCode;
-		
-		private string _UpperName;
-		
-		private System.Nullable<int> _MsgFileLimit;
-		
-		private System.Nullable<int> _MsgImageLimit;
-		
-		private System.Nullable<int> _AcceptStrangerIM;
-		
-		private System.Nullable<int> _IsTemp;
-		
-		private System.Nullable<int> _DiskSize;
-		
-		private System.DateTime _RegisterTime;
-		
-		private string _HomePage;
-		
-		private string _HeadIMG;
-		
-		private string _Remark;
-		
-		private System.Nullable<bool> _ChangePwd;
-		
-		private System.Nullable<int> _DepartmentId;
-		
-		private System.Nullable<char> _UserType;
-		
-		private string _JobNumber;
-		
-		private System.Nullable<bool> _disabled;
-		
-		private string _openUserId;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnKeyChanging(int value);
-    partial void OnKeyChanged();
-    partial void OnXMPYChanging(string value);
-    partial void OnXMPYChanged();
-    partial void OnTrueNameChanging(string value);
-    partial void OnTrueNameChanged();
-    partial void OnTypeChanging(int value);
-    partial void OnTypeChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnEMailChanging(string value);
-    partial void OnEMailChanged();
-    partial void OnInviteCodeChanging(string value);
-    partial void OnInviteCodeChanged();
-    partial void OnUpperNameChanging(string value);
-    partial void OnUpperNameChanged();
-    partial void OnMsgFileLimitChanging(System.Nullable<int> value);
-    partial void OnMsgFileLimitChanged();
-    partial void OnMsgImageLimitChanging(System.Nullable<int> value);
-    partial void OnMsgImageLimitChanged();
-    partial void OnAcceptStrangerIMChanging(System.Nullable<int> value);
-    partial void OnAcceptStrangerIMChanged();
-    partial void OnIsTempChanging(System.Nullable<int> value);
-    partial void OnIsTempChanged();
-    partial void OnDiskSizeChanging(System.Nullable<int> value);
-    partial void OnDiskSizeChanged();
-    partial void OnRegisterTimeChanging(System.DateTime value);
-    partial void OnRegisterTimeChanged();
-    partial void OnHomePageChanging(string value);
-    partial void OnHomePageChanged();
-    partial void OnHeadIMGChanging(string value);
-    partial void OnHeadIMGChanged();
-    partial void OnRemarkChanging(string value);
-    partial void OnRemarkChanged();
-    partial void OnChangePwdChanging(System.Nullable<bool> value);
-    partial void OnChangePwdChanged();
-    partial void OnDepartmentIdChanging(System.Nullable<int> value);
-    partial void OnDepartmentIdChanged();
-    partial void OnUserTypeChanging(System.Nullable<char> value);
-    partial void OnUserTypeChanged();
-    partial void OnJobNumberChanging(string value);
-    partial void OnJobNumberChanged();
-    partial void OndisabledChanging(System.Nullable<bool> value);
-    partial void OndisabledChanged();
-    partial void OnopenUserIdChanging(string value);
-    partial void OnopenUserIdChanged();
-    #endregion
-		
-		public Users()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Key
-		{
-			get
-			{
-				return this._Key;
-			}
-			set
-			{
-				if ((this._Key != value))
-				{
-					this.OnKeyChanging(value);
-					this.SendPropertyChanging();
-					this._Key = value;
-					this.SendPropertyChanged("Key");
-					this.OnKeyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XMPY", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string XMPY
-		{
-			get
-			{
-				return this._XMPY;
-			}
-			set
-			{
-				if ((this._XMPY != value))
-				{
-					this.OnXMPYChanging(value);
-					this.SendPropertyChanging();
-					this._XMPY = value;
-					this.SendPropertyChanged("XMPY");
-					this.OnXMPYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string TrueName
-		{
-			get
-			{
-				return this._TrueName;
-			}
-			set
-			{
-				if ((this._TrueName != value))
-				{
-					this.OnTrueNameChanging(value);
-					this.SendPropertyChanging();
-					this._TrueName = value;
-					this.SendPropertyChanged("TrueName");
-					this.OnTrueNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
-		public int Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMail", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string EMail
-		{
-			get
-			{
-				return this._EMail;
-			}
-			set
-			{
-				if ((this._EMail != value))
-				{
-					this.OnEMailChanging(value);
-					this.SendPropertyChanging();
-					this._EMail = value;
-					this.SendPropertyChanged("EMail");
-					this.OnEMailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InviteCode", DbType="NVarChar(256)")]
-		public string InviteCode
-		{
-			get
-			{
-				return this._InviteCode;
-			}
-			set
-			{
-				if ((this._InviteCode != value))
-				{
-					this.OnInviteCodeChanging(value);
-					this.SendPropertyChanging();
-					this._InviteCode = value;
-					this.SendPropertyChanged("InviteCode");
-					this.OnInviteCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpperName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string UpperName
-		{
-			get
-			{
-				return this._UpperName;
-			}
-			set
-			{
-				if ((this._UpperName != value))
-				{
-					this.OnUpperNameChanging(value);
-					this.SendPropertyChanging();
-					this._UpperName = value;
-					this.SendPropertyChanged("UpperName");
-					this.OnUpperNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgFileLimit", DbType="Int")]
-		public System.Nullable<int> MsgFileLimit
-		{
-			get
-			{
-				return this._MsgFileLimit;
-			}
-			set
-			{
-				if ((this._MsgFileLimit != value))
-				{
-					this.OnMsgFileLimitChanging(value);
-					this.SendPropertyChanging();
-					this._MsgFileLimit = value;
-					this.SendPropertyChanged("MsgFileLimit");
-					this.OnMsgFileLimitChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgImageLimit", DbType="Int")]
-		public System.Nullable<int> MsgImageLimit
-		{
-			get
-			{
-				return this._MsgImageLimit;
-			}
-			set
-			{
-				if ((this._MsgImageLimit != value))
-				{
-					this.OnMsgImageLimitChanging(value);
-					this.SendPropertyChanging();
-					this._MsgImageLimit = value;
-					this.SendPropertyChanged("MsgImageLimit");
-					this.OnMsgImageLimitChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptStrangerIM", DbType="Int")]
-		public System.Nullable<int> AcceptStrangerIM
-		{
-			get
-			{
-				return this._AcceptStrangerIM;
-			}
-			set
-			{
-				if ((this._AcceptStrangerIM != value))
-				{
-					this.OnAcceptStrangerIMChanging(value);
-					this.SendPropertyChanging();
-					this._AcceptStrangerIM = value;
-					this.SendPropertyChanged("AcceptStrangerIM");
-					this.OnAcceptStrangerIMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTemp", DbType="Int")]
-		public System.Nullable<int> IsTemp
-		{
-			get
-			{
-				return this._IsTemp;
-			}
-			set
-			{
-				if ((this._IsTemp != value))
-				{
-					this.OnIsTempChanging(value);
-					this.SendPropertyChanging();
-					this._IsTemp = value;
-					this.SendPropertyChanged("IsTemp");
-					this.OnIsTempChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiskSize", DbType="Int")]
-		public System.Nullable<int> DiskSize
-		{
-			get
-			{
-				return this._DiskSize;
-			}
-			set
-			{
-				if ((this._DiskSize != value))
-				{
-					this.OnDiskSizeChanging(value);
-					this.SendPropertyChanging();
-					this._DiskSize = value;
-					this.SendPropertyChanged("DiskSize");
-					this.OnDiskSizeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegisterTime", DbType="DateTime NOT NULL")]
-		public System.DateTime RegisterTime
-		{
-			get
-			{
-				return this._RegisterTime;
-			}
-			set
-			{
-				if ((this._RegisterTime != value))
-				{
-					this.OnRegisterTimeChanging(value);
-					this.SendPropertyChanging();
-					this._RegisterTime = value;
-					this.SendPropertyChanged("RegisterTime");
-					this.OnRegisterTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePage", DbType="NVarChar(256)")]
-		public string HomePage
-		{
-			get
-			{
-				return this._HomePage;
-			}
-			set
-			{
-				if ((this._HomePage != value))
-				{
-					this.OnHomePageChanging(value);
-					this.SendPropertyChanging();
-					this._HomePage = value;
-					this.SendPropertyChanged("HomePage");
-					this.OnHomePageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadIMG", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
-		public string HeadIMG
-		{
-			get
-			{
-				return this._HeadIMG;
-			}
-			set
-			{
-				if ((this._HeadIMG != value))
-				{
-					this.OnHeadIMGChanging(value);
-					this.SendPropertyChanging();
-					this._HeadIMG = value;
-					this.SendPropertyChanged("HeadIMG");
-					this.OnHeadIMGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string Remark
-		{
-			get
-			{
-				return this._Remark;
-			}
-			set
-			{
-				if ((this._Remark != value))
-				{
-					this.OnRemarkChanging(value);
-					this.SendPropertyChanging();
-					this._Remark = value;
-					this.SendPropertyChanged("Remark");
-					this.OnRemarkChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangePwd", DbType="Bit")]
-		public System.Nullable<bool> ChangePwd
-		{
-			get
-			{
-				return this._ChangePwd;
-			}
-			set
-			{
-				if ((this._ChangePwd != value))
-				{
-					this.OnChangePwdChanging(value);
-					this.SendPropertyChanging();
-					this._ChangePwd = value;
-					this.SendPropertyChanged("ChangePwd");
-					this.OnChangePwdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int")]
-		public System.Nullable<int> DepartmentId
-		{
-			get
-			{
-				return this._DepartmentId;
-			}
-			set
-			{
-				if ((this._DepartmentId != value))
-				{
-					this.OnDepartmentIdChanging(value);
-					this.SendPropertyChanging();
-					this._DepartmentId = value;
-					this.SendPropertyChanged("DepartmentId");
-					this.OnDepartmentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Char(1)")]
-		public System.Nullable<char> UserType
-		{
-			get
-			{
-				return this._UserType;
-			}
-			set
-			{
-				if ((this._UserType != value))
-				{
-					this.OnUserTypeChanging(value);
-					this.SendPropertyChanging();
-					this._UserType = value;
-					this.SendPropertyChanged("UserType");
-					this.OnUserTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
-		public string JobNumber
-		{
-			get
-			{
-				return this._JobNumber;
-			}
-			set
-			{
-				if ((this._JobNumber != value))
-				{
-					this.OnJobNumberChanging(value);
-					this.SendPropertyChanging();
-					this._JobNumber = value;
-					this.SendPropertyChanged("JobNumber");
-					this.OnJobNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_disabled", DbType="Bit")]
-		public System.Nullable<bool> disabled
-		{
-			get
-			{
-				return this._disabled;
-			}
-			set
-			{
-				if ((this._disabled != value))
-				{
-					this.OndisabledChanging(value);
-					this.SendPropertyChanging();
-					this._disabled = value;
-					this.SendPropertyChanged("disabled");
-					this.OndisabledChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_openUserId", DbType="NVarChar(50)")]
-		public string openUserId
-		{
-			get
-			{
-				return this._openUserId;
-			}
-			set
-			{
-				if ((this._openUserId != value))
-				{
-					this.OnopenUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._openUserId = value;
-					this.SendPropertyChanged("openUserId");
-					this.OnopenUserIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_WorkPlan")]
 	public partial class v_WorkPlan
 	{
@@ -6417,6 +5827,620 @@ namespace BLL
 					this._isComplete = value;
 					this.SendPropertyChanged("isComplete");
 					this.OnisCompleteChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Key;
+		
+		private string _XMPY;
+		
+		private string _TrueName;
+		
+		private int _Type;
+		
+		private string _Password;
+		
+		private string _EMail;
+		
+		private string _InviteCode;
+		
+		private string _UpperName;
+		
+		private System.Nullable<int> _MsgFileLimit;
+		
+		private System.Nullable<int> _MsgImageLimit;
+		
+		private System.Nullable<int> _AcceptStrangerIM;
+		
+		private System.Nullable<int> _IsTemp;
+		
+		private System.Nullable<int> _DiskSize;
+		
+		private System.DateTime _RegisterTime;
+		
+		private string _HomePage;
+		
+		private string _HeadIMG;
+		
+		private string _Remark;
+		
+		private System.Nullable<bool> _ChangePwd;
+		
+		private System.Nullable<int> _DepartmentId;
+		
+		private System.Nullable<char> _UserType;
+		
+		private string _JobNumber;
+		
+		private System.Nullable<bool> _disabled;
+		
+		private string _openUserId;
+		
+		private System.Nullable<int> _orderNo;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnKeyChanging(int value);
+    partial void OnKeyChanged();
+    partial void OnXMPYChanging(string value);
+    partial void OnXMPYChanged();
+    partial void OnTrueNameChanging(string value);
+    partial void OnTrueNameChanged();
+    partial void OnTypeChanging(int value);
+    partial void OnTypeChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnEMailChanging(string value);
+    partial void OnEMailChanged();
+    partial void OnInviteCodeChanging(string value);
+    partial void OnInviteCodeChanged();
+    partial void OnUpperNameChanging(string value);
+    partial void OnUpperNameChanged();
+    partial void OnMsgFileLimitChanging(System.Nullable<int> value);
+    partial void OnMsgFileLimitChanged();
+    partial void OnMsgImageLimitChanging(System.Nullable<int> value);
+    partial void OnMsgImageLimitChanged();
+    partial void OnAcceptStrangerIMChanging(System.Nullable<int> value);
+    partial void OnAcceptStrangerIMChanged();
+    partial void OnIsTempChanging(System.Nullable<int> value);
+    partial void OnIsTempChanged();
+    partial void OnDiskSizeChanging(System.Nullable<int> value);
+    partial void OnDiskSizeChanged();
+    partial void OnRegisterTimeChanging(System.DateTime value);
+    partial void OnRegisterTimeChanged();
+    partial void OnHomePageChanging(string value);
+    partial void OnHomePageChanged();
+    partial void OnHeadIMGChanging(string value);
+    partial void OnHeadIMGChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
+    partial void OnChangePwdChanging(System.Nullable<bool> value);
+    partial void OnChangePwdChanged();
+    partial void OnDepartmentIdChanging(System.Nullable<int> value);
+    partial void OnDepartmentIdChanged();
+    partial void OnUserTypeChanging(System.Nullable<char> value);
+    partial void OnUserTypeChanged();
+    partial void OnJobNumberChanging(string value);
+    partial void OnJobNumberChanged();
+    partial void OndisabledChanging(System.Nullable<bool> value);
+    partial void OndisabledChanged();
+    partial void OnopenUserIdChanging(string value);
+    partial void OnopenUserIdChanged();
+    partial void OnorderNoChanging(System.Nullable<int> value);
+    partial void OnorderNoChanged();
+    #endregion
+		
+		public Users()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Key
+		{
+			get
+			{
+				return this._Key;
+			}
+			set
+			{
+				if ((this._Key != value))
+				{
+					this.OnKeyChanging(value);
+					this.SendPropertyChanging();
+					this._Key = value;
+					this.SendPropertyChanged("Key");
+					this.OnKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XMPY", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string XMPY
+		{
+			get
+			{
+				return this._XMPY;
+			}
+			set
+			{
+				if ((this._XMPY != value))
+				{
+					this.OnXMPYChanging(value);
+					this.SendPropertyChanging();
+					this._XMPY = value;
+					this.SendPropertyChanged("XMPY");
+					this.OnXMPYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string TrueName
+		{
+			get
+			{
+				return this._TrueName;
+			}
+			set
+			{
+				if ((this._TrueName != value))
+				{
+					this.OnTrueNameChanging(value);
+					this.SendPropertyChanging();
+					this._TrueName = value;
+					this.SendPropertyChanged("TrueName");
+					this.OnTrueNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		public int Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMail", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string EMail
+		{
+			get
+			{
+				return this._EMail;
+			}
+			set
+			{
+				if ((this._EMail != value))
+				{
+					this.OnEMailChanging(value);
+					this.SendPropertyChanging();
+					this._EMail = value;
+					this.SendPropertyChanged("EMail");
+					this.OnEMailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InviteCode", DbType="NVarChar(256)")]
+		public string InviteCode
+		{
+			get
+			{
+				return this._InviteCode;
+			}
+			set
+			{
+				if ((this._InviteCode != value))
+				{
+					this.OnInviteCodeChanging(value);
+					this.SendPropertyChanging();
+					this._InviteCode = value;
+					this.SendPropertyChanged("InviteCode");
+					this.OnInviteCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpperName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string UpperName
+		{
+			get
+			{
+				return this._UpperName;
+			}
+			set
+			{
+				if ((this._UpperName != value))
+				{
+					this.OnUpperNameChanging(value);
+					this.SendPropertyChanging();
+					this._UpperName = value;
+					this.SendPropertyChanged("UpperName");
+					this.OnUpperNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgFileLimit", DbType="Int")]
+		public System.Nullable<int> MsgFileLimit
+		{
+			get
+			{
+				return this._MsgFileLimit;
+			}
+			set
+			{
+				if ((this._MsgFileLimit != value))
+				{
+					this.OnMsgFileLimitChanging(value);
+					this.SendPropertyChanging();
+					this._MsgFileLimit = value;
+					this.SendPropertyChanged("MsgFileLimit");
+					this.OnMsgFileLimitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgImageLimit", DbType="Int")]
+		public System.Nullable<int> MsgImageLimit
+		{
+			get
+			{
+				return this._MsgImageLimit;
+			}
+			set
+			{
+				if ((this._MsgImageLimit != value))
+				{
+					this.OnMsgImageLimitChanging(value);
+					this.SendPropertyChanging();
+					this._MsgImageLimit = value;
+					this.SendPropertyChanged("MsgImageLimit");
+					this.OnMsgImageLimitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptStrangerIM", DbType="Int")]
+		public System.Nullable<int> AcceptStrangerIM
+		{
+			get
+			{
+				return this._AcceptStrangerIM;
+			}
+			set
+			{
+				if ((this._AcceptStrangerIM != value))
+				{
+					this.OnAcceptStrangerIMChanging(value);
+					this.SendPropertyChanging();
+					this._AcceptStrangerIM = value;
+					this.SendPropertyChanged("AcceptStrangerIM");
+					this.OnAcceptStrangerIMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTemp", DbType="Int")]
+		public System.Nullable<int> IsTemp
+		{
+			get
+			{
+				return this._IsTemp;
+			}
+			set
+			{
+				if ((this._IsTemp != value))
+				{
+					this.OnIsTempChanging(value);
+					this.SendPropertyChanging();
+					this._IsTemp = value;
+					this.SendPropertyChanged("IsTemp");
+					this.OnIsTempChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiskSize", DbType="Int")]
+		public System.Nullable<int> DiskSize
+		{
+			get
+			{
+				return this._DiskSize;
+			}
+			set
+			{
+				if ((this._DiskSize != value))
+				{
+					this.OnDiskSizeChanging(value);
+					this.SendPropertyChanging();
+					this._DiskSize = value;
+					this.SendPropertyChanged("DiskSize");
+					this.OnDiskSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegisterTime", DbType="DateTime NOT NULL")]
+		public System.DateTime RegisterTime
+		{
+			get
+			{
+				return this._RegisterTime;
+			}
+			set
+			{
+				if ((this._RegisterTime != value))
+				{
+					this.OnRegisterTimeChanging(value);
+					this.SendPropertyChanging();
+					this._RegisterTime = value;
+					this.SendPropertyChanged("RegisterTime");
+					this.OnRegisterTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePage", DbType="NVarChar(256)")]
+		public string HomePage
+		{
+			get
+			{
+				return this._HomePage;
+			}
+			set
+			{
+				if ((this._HomePage != value))
+				{
+					this.OnHomePageChanging(value);
+					this.SendPropertyChanging();
+					this._HomePage = value;
+					this.SendPropertyChanged("HomePage");
+					this.OnHomePageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadIMG", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
+		public string HeadIMG
+		{
+			get
+			{
+				return this._HeadIMG;
+			}
+			set
+			{
+				if ((this._HeadIMG != value))
+				{
+					this.OnHeadIMGChanging(value);
+					this.SendPropertyChanging();
+					this._HeadIMG = value;
+					this.SendPropertyChanged("HeadIMG");
+					this.OnHeadIMGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangePwd", DbType="Bit")]
+		public System.Nullable<bool> ChangePwd
+		{
+			get
+			{
+				return this._ChangePwd;
+			}
+			set
+			{
+				if ((this._ChangePwd != value))
+				{
+					this.OnChangePwdChanging(value);
+					this.SendPropertyChanging();
+					this._ChangePwd = value;
+					this.SendPropertyChanged("ChangePwd");
+					this.OnChangePwdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int")]
+		public System.Nullable<int> DepartmentId
+		{
+			get
+			{
+				return this._DepartmentId;
+			}
+			set
+			{
+				if ((this._DepartmentId != value))
+				{
+					this.OnDepartmentIdChanging(value);
+					this.SendPropertyChanging();
+					this._DepartmentId = value;
+					this.SendPropertyChanged("DepartmentId");
+					this.OnDepartmentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Char(1)")]
+		public System.Nullable<char> UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					this.OnUserTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UserType = value;
+					this.SendPropertyChanged("UserType");
+					this.OnUserTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
+		public string JobNumber
+		{
+			get
+			{
+				return this._JobNumber;
+			}
+			set
+			{
+				if ((this._JobNumber != value))
+				{
+					this.OnJobNumberChanging(value);
+					this.SendPropertyChanging();
+					this._JobNumber = value;
+					this.SendPropertyChanged("JobNumber");
+					this.OnJobNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_disabled", DbType="Bit")]
+		public System.Nullable<bool> disabled
+		{
+			get
+			{
+				return this._disabled;
+			}
+			set
+			{
+				if ((this._disabled != value))
+				{
+					this.OndisabledChanging(value);
+					this.SendPropertyChanging();
+					this._disabled = value;
+					this.SendPropertyChanged("disabled");
+					this.OndisabledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_openUserId", DbType="NVarChar(50)")]
+		public string openUserId
+		{
+			get
+			{
+				return this._openUserId;
+			}
+			set
+			{
+				if ((this._openUserId != value))
+				{
+					this.OnopenUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._openUserId = value;
+					this.SendPropertyChanged("openUserId");
+					this.OnopenUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderNo", DbType="Int")]
+		public System.Nullable<int> orderNo
+		{
+			get
+			{
+				return this._orderNo;
+			}
+			set
+			{
+				if ((this._orderNo != value))
+				{
+					this.OnorderNoChanging(value);
+					this.SendPropertyChanging();
+					this._orderNo = value;
+					this.SendPropertyChanged("orderNo");
+					this.OnorderNoChanged();
 				}
 			}
 		}

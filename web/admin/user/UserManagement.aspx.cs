@@ -90,14 +90,17 @@ namespace web.admin.user
         {
             String id = gvUsers.DataKeys[e.RowIndex].Value.ToString();
             String XMPY = ((TextBox)gvUsers.Rows[e.RowIndex].Cells[1].FindControl("tbNetid")).Text.ToString().Trim();
-            String TrueName = ((TextBox)gvUsers.Rows[e.RowIndex].Cells[2].FindControl("tbUserName")).Text.ToString().Trim();
-            TextBox tbPasswd = (TextBox)gvUsers.Rows[e.RowIndex].Cells[3].FindControl("tbPasswd");
+            String orderNo = ((TextBox)gvUsers.Rows[e.RowIndex].Cells[2].FindControl("tbOrderNo")).Text.ToString().Trim();
+            String TrueName = ((TextBox)gvUsers.Rows[e.RowIndex].Cells[3].FindControl("tbUserName")).Text.ToString().Trim();
+            TextBox tbPasswd = (TextBox)gvUsers.Rows[e.RowIndex].Cells[4].FindControl("tbPasswd");
 
-            TextBox tbJobNumber = (TextBox)gvUsers.Rows[e.RowIndex].Cells[4].FindControl("tbJobNumber");
-            DropDownList ddlDepartment = (DropDownList)gvUsers.Rows[e.RowIndex].Cells[5].FindControl("DropDownListDepartment");
+            TextBox tbJobNumber = (TextBox)gvUsers.Rows[e.RowIndex].Cells[5].FindControl("tbJobNumber");
+            DropDownList ddlDepartment = (DropDownList)gvUsers.Rows[e.RowIndex].Cells[6].FindControl("DropDownListDepartment");
             int departmentId = Convert.ToInt32(ddlDepartment.SelectedValue);
 
-            BLL.admin.user.UserManagement.UpdateUser(Convert.ToInt32(id), XMPY, TrueName, tbPasswd.Text, tbJobNumber.Text, departmentId);
+            if (String.IsNullOrEmpty(orderNo))
+                orderNo = "0";
+            BLL.admin.user.UserManagement.UpdateUser(Convert.ToInt32(id), XMPY, TrueName, tbPasswd.Text, tbJobNumber.Text, departmentId,Convert.ToInt32(orderNo));
             gvUsers.EditIndex = -1; //将GridView控件恢复为编辑前的状态。即更新完了就得回到非编辑状态
             databind((String)ViewState["search_id"], (int)ViewState["index_page"]); //更新完了之后，就得重新绑定，即重新从数据库中读取刚才更新的数据。
 
