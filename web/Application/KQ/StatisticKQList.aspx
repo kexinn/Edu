@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="StatisticKQList.aspx.cs" Inherits="web.Application.KQ.StatisticKQList" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +8,7 @@
     <title>无标题文档</title>
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
 
 </head>
 
@@ -28,16 +28,13 @@
 
 
             <div class="toolsearch">
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ToolkitScriptManager>
                 <div class="pullleft">
-                    开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server"></asp:TextBox>
-                    <asp:CalendarExtender ID="CalendarExtender1" Format="yyyy-MM-dd" runat="server" TargetControlID="tbStartTime"></asp:CalendarExtender>
+                    开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="inline" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                    结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"></asp:TextBox>
-                    <asp:CalendarExtender ID="CalendarExtender2" Format="yyyy-MM-dd" runat="server" TargetControlID="tbEndTime"></asp:CalendarExtender>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                </div>
+                    结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                   <%-- <asp:TextBox ID="TextBox1" CssClass="dfinput" runat="server" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"></asp:TextBox>
+               --%> </div>
 
                 <div class="pullleft">
                     <asp:LinkButton ID="lbStatisc" runat="server"

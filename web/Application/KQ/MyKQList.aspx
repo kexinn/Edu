@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="MyKQList.aspx.cs" Inherits="web.Application.KQ.MyKQList" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -9,6 +7,7 @@
     <title>无标题文档</title>
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
 
 </head>
 
@@ -28,13 +27,10 @@
 
 
             <div class="toolsearch">
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ToolkitScriptManager>
                 <div class="pullleft">
-                                        开始时间：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" Width="200px"></asp:TextBox>
-                                        <asp:CalendarExtender ID="CalendarExtender1"  Format="yyyy-MM-dd" runat="server" TargetControlID="tbStartTime"></asp:CalendarExtender>
-                                        结束时间：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" Width="200px"></asp:TextBox>
-                                        <asp:CalendarExtender ID="CalendarExtender2"  Format="yyyy-MM-dd" runat="server" TargetControlID="tbEndTime"></asp:CalendarExtender>
-                  </div>                      
+                                        开始时间：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" Width="200px"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                                        结束时间：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" Width="200px"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                                          </div>                      
                  <div class="pullleft">
                         <asp:LinkButton ID="lbSearch" runat="server"
                             onclick="lbSearch_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />查询</i></asp:LinkButton>
