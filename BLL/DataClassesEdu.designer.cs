@@ -84,6 +84,12 @@ namespace BLL
     partial void InsertUsers(Users instance);
     partial void UpdateUsers(Users instance);
     partial void DeleteUsers(Users instance);
+    partial void InsertKQ_Attendance(KQ_Attendance instance);
+    partial void UpdateKQ_Attendance(KQ_Attendance instance);
+    partial void DeleteKQ_Attendance(KQ_Attendance instance);
+    partial void InsertKQ_AttendanceType(KQ_AttendanceType instance);
+    partial void UpdateKQ_AttendanceType(KQ_AttendanceType instance);
+    partial void DeleteKQ_AttendanceType(KQ_AttendanceType instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -332,6 +338,22 @@ namespace BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<KQ_Attendance> KQ_Attendance
+		{
+			get
+			{
+				return this.GetTable<KQ_Attendance>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_AttendanceType> KQ_AttendanceType
+		{
+			get
+			{
+				return this.GetTable<KQ_AttendanceType>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteUser")]
 		public int DeleteUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
 		{
@@ -357,6 +379,13 @@ namespace BLL
 		public int DeleteRoles([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CreateAttendanceRecord")]
+		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalId", DbType="Int")] System.Nullable<int> approvalId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalName", DbType="NVarChar(50)")] string approvalName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid, username, starttime, endtime, status, typeid, reason, dept, approvalId, approvalName);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -6537,6 +6566,394 @@ namespace BLL
 					this._duanhao = value;
 					this.SendPropertyChanged("duanhao");
 					this.OnduanhaoChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance")]
+	public partial class KQ_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _username;
+		
+		private System.Nullable<int> _userid;
+		
+		private System.Nullable<System.DateTime> _starttime;
+		
+		private System.Nullable<System.DateTime> _endtime;
+		
+		private string _status;
+		
+		private System.Nullable<int> _typeid;
+		
+		private string _reason;
+		
+		private string _dept;
+		
+		private System.Nullable<int> _ApprovalId;
+		
+		private string _ApprovalName;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnuseridChanging(System.Nullable<int> value);
+    partial void OnuseridChanged();
+    partial void OnstarttimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnstarttimeChanged();
+    partial void OnendtimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnendtimeChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void OntypeidChanging(System.Nullable<int> value);
+    partial void OntypeidChanged();
+    partial void OnreasonChanging(string value);
+    partial void OnreasonChanged();
+    partial void OndeptChanging(string value);
+    partial void OndeptChanged();
+    partial void OnApprovalIdChanging(System.Nullable<int> value);
+    partial void OnApprovalIdChanged();
+    partial void OnApprovalNameChanging(string value);
+    partial void OnApprovalNameChanged();
+    #endregion
+		
+		public KQ_Attendance()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this.OnstarttimeChanging(value);
+					this.SendPropertyChanging();
+					this._starttime = value;
+					this.SendPropertyChanged("starttime");
+					this.OnstarttimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this.OnendtimeChanging(value);
+					this.SendPropertyChanging();
+					this._endtime = value;
+					this.SendPropertyChanged("endtime");
+					this.OnendtimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		public System.Nullable<int> typeid
+		{
+			get
+			{
+				return this._typeid;
+			}
+			set
+			{
+				if ((this._typeid != value))
+				{
+					this.OntypeidChanging(value);
+					this.SendPropertyChanging();
+					this._typeid = value;
+					this.SendPropertyChanged("typeid");
+					this.OntypeidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		public string reason
+		{
+			get
+			{
+				return this._reason;
+			}
+			set
+			{
+				if ((this._reason != value))
+				{
+					this.OnreasonChanging(value);
+					this.SendPropertyChanging();
+					this._reason = value;
+					this.SendPropertyChanged("reason");
+					this.OnreasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		public string dept
+		{
+			get
+			{
+				return this._dept;
+			}
+			set
+			{
+				if ((this._dept != value))
+				{
+					this.OndeptChanging(value);
+					this.SendPropertyChanging();
+					this._dept = value;
+					this.SendPropertyChanged("dept");
+					this.OndeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		public System.Nullable<int> ApprovalId
+		{
+			get
+			{
+				return this._ApprovalId;
+			}
+			set
+			{
+				if ((this._ApprovalId != value))
+				{
+					this.OnApprovalIdChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovalId = value;
+					this.SendPropertyChanged("ApprovalId");
+					this.OnApprovalIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		public string ApprovalName
+		{
+			get
+			{
+				return this._ApprovalName;
+			}
+			set
+			{
+				if ((this._ApprovalName != value))
+				{
+					this.OnApprovalNameChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovalName = value;
+					this.SendPropertyChanged("ApprovalName");
+					this.OnApprovalNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
+	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public KQ_AttendanceType()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
 				}
 			}
 		}
