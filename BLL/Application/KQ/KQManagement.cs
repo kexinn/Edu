@@ -79,6 +79,9 @@ namespace BLL.Application.KQ
             public String jobnumber { get; set; }
             public String username { get; set; }
 
+            public String tel1 { get;set;}
+            public String tel2 { get; set; }
+
             public int order { get; set; }
         }
         public static List<PunchCardUser> getStatiscNullByBetweenTime(DateTime start, DateTime end)
@@ -89,8 +92,8 @@ namespace BLL.Application.KQ
                 var bb = from user in dc.Users
                          where user.UserType == '1' &&
                          !(from kq in dc.KQ_PunchCardRecords where kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
-                         select new PunchCardUser { jobnumber = user.JobNumber,username = user.TrueName,order = (user.orderNo == null)?0:(int)user.orderNo};
-                return bb.ToList<PunchCardUser>();
+                         select new PunchCardUser { jobnumber = user.JobNumber,username = user.TrueName,tel1=user.changhao,tel2=user.duanhao,order = (user.orderNo == null)?0:(int)user.orderNo};
+                return bb.OrderBy(a=>a.order).ToList<PunchCardUser>();
 
             }
         }

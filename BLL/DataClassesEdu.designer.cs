@@ -5906,6 +5906,14 @@ namespace BLL
 		
 		private System.Nullable<int> _orderNo;
 		
+		private string _bianhao;
+		
+		private string _xingming;
+		
+		private string _changhao;
+		
+		private string _duanhao;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5958,6 +5966,14 @@ namespace BLL
     partial void OnopenUserIdChanged();
     partial void OnorderNoChanging(System.Nullable<int> value);
     partial void OnorderNoChanged();
+    partial void OnbianhaoChanging(string value);
+    partial void OnbianhaoChanged();
+    partial void OnxingmingChanging(string value);
+    partial void OnxingmingChanged();
+    partial void OnchanghaoChanging(string value);
+    partial void OnchanghaoChanged();
+    partial void OnduanhaoChanging(string value);
+    partial void OnduanhaoChanged();
     #endregion
 		
 		public Users()
@@ -6441,6 +6457,86 @@ namespace BLL
 					this._orderNo = value;
 					this.SendPropertyChanged("orderNo");
 					this.OnorderNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bianhao", DbType="NVarChar(255)")]
+		public string bianhao
+		{
+			get
+			{
+				return this._bianhao;
+			}
+			set
+			{
+				if ((this._bianhao != value))
+				{
+					this.OnbianhaoChanging(value);
+					this.SendPropertyChanging();
+					this._bianhao = value;
+					this.SendPropertyChanged("bianhao");
+					this.OnbianhaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xingming", DbType="NVarChar(255)")]
+		public string xingming
+		{
+			get
+			{
+				return this._xingming;
+			}
+			set
+			{
+				if ((this._xingming != value))
+				{
+					this.OnxingmingChanging(value);
+					this.SendPropertyChanging();
+					this._xingming = value;
+					this.SendPropertyChanged("xingming");
+					this.OnxingmingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_changhao", DbType="NVarChar(30)")]
+		public string changhao
+		{
+			get
+			{
+				return this._changhao;
+			}
+			set
+			{
+				if ((this._changhao != value))
+				{
+					this.OnchanghaoChanging(value);
+					this.SendPropertyChanging();
+					this._changhao = value;
+					this.SendPropertyChanged("changhao");
+					this.OnchanghaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_duanhao", DbType="NVarChar(30)")]
+		public string duanhao
+		{
+			get
+			{
+				return this._duanhao;
+			}
+			set
+			{
+				if ((this._duanhao != value))
+				{
+					this.OnduanhaoChanging(value);
+					this.SendPropertyChanging();
+					this._duanhao = value;
+					this.SendPropertyChanged("duanhao");
+					this.OnduanhaoChanged();
 				}
 			}
 		}

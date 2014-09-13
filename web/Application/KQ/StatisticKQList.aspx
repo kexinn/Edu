@@ -135,6 +135,20 @@
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="电话长号">
+                        <ItemTemplate>
+                            <asp:Label ID="lbtel1" runat="server"><%# Eval("tel1")%></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="电话短号">
+                        <ItemTemplate>
+                            <asp:Label ID="lbtel2" runat="server"><%# Eval("tel2")%></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="总打卡次数">
                         <ItemTemplate>
                             <asp:Label ID="lbTime" runat="server">0</asp:Label>
