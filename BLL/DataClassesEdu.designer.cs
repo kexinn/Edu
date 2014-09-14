@@ -84,12 +84,12 @@ namespace BLL
     partial void InsertUsers(Users instance);
     partial void UpdateUsers(Users instance);
     partial void DeleteUsers(Users instance);
-    partial void InsertKQ_Attendance(KQ_Attendance instance);
-    partial void UpdateKQ_Attendance(KQ_Attendance instance);
-    partial void DeleteKQ_Attendance(KQ_Attendance instance);
     partial void InsertKQ_AttendanceType(KQ_AttendanceType instance);
     partial void UpdateKQ_AttendanceType(KQ_AttendanceType instance);
     partial void DeleteKQ_AttendanceType(KQ_AttendanceType instance);
+    partial void InsertKQ_Attendance(KQ_Attendance instance);
+    partial void UpdateKQ_Attendance(KQ_Attendance instance);
+    partial void DeleteKQ_Attendance(KQ_Attendance instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -338,19 +338,19 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<KQ_Attendance> KQ_Attendance
-		{
-			get
-			{
-				return this.GetTable<KQ_Attendance>();
-			}
-		}
-		
 		public System.Data.Linq.Table<KQ_AttendanceType> KQ_AttendanceType
 		{
 			get
 			{
 				return this.GetTable<KQ_AttendanceType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Attendance> KQ_Attendance
+		{
+			get
+			{
+				return this.GetTable<KQ_Attendance>();
 			}
 		}
 		
@@ -383,9 +383,9 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CreateAttendanceRecord")]
-		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalId", DbType="Int")] System.Nullable<int> approvalId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalName", DbType="NVarChar(50)")] string approvalName)
+		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid, username, starttime, endtime, status, typeid, reason, dept, approvalId, approvalName);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid, username, starttime, endtime, typeid, reason, dept);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -6591,6 +6591,92 @@ namespace BLL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
+	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public KQ_AttendanceType()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance")]
 	public partial class KQ_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6619,6 +6705,8 @@ namespace BLL
 		
 		private string _ApprovalName;
 		
+		private System.Nullable<System.DateTime> _applyTime;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -6645,6 +6733,8 @@ namespace BLL
     partial void OnApprovalIdChanged();
     partial void OnApprovalNameChanging(string value);
     partial void OnApprovalNameChanged();
+    partial void OnapplyTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnapplyTimeChanged();
     #endregion
 		
 		public KQ_Attendance()
@@ -6872,88 +6962,22 @@ namespace BLL
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
-	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _name;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    #endregion
-		
-		public KQ_AttendanceType()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> applyTime
 		{
 			get
 			{
-				return this._Id;
+				return this._applyTime;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._applyTime != value))
 				{
-					this.OnIdChanging(value);
+					this.OnapplyTimeChanging(value);
 					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
+					this._applyTime = value;
+					this.SendPropertyChanged("applyTime");
+					this.OnapplyTimeChanged();
 				}
 			}
 		}
