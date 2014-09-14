@@ -17,11 +17,11 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
-        public static bool createApply()
+        public static bool createApply(int userid,String username,DateTime starttime,DateTime endtime,int typeid,String reason,String dept)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                dc.CreateAttendanceRecord(userid,username,starttime,endtime,status,typeid,reason,dept)
+                dc.CreateAttendanceRecord(userid, username, starttime, endtime, typeid, reason, dept);
                 return true;
             }
         }
