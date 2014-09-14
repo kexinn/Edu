@@ -69,7 +69,7 @@
             <div class="formtitle"><span>打卡名单</span></div>
             <asp:GridView ID="gvKQList" runat="server" AutoGenerateColumns="False"
                  Width="100%"
-                CssClass="tablelist" style="margin-bottom:10px;" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20">
+                CssClass="tablelist" style="margin-bottom:10px;" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="500">
                 <Columns>
                     <asp:BoundField DataField="序号" HeaderText="序号">
                     <HeaderStyle Width="60px" />
@@ -87,7 +87,10 @@
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>
-
+                    
+                    <asp:BoundField DataField="电话" HeaderText="电话">
+                    <HeaderStyle Width="60px" />
+                    </asp:BoundField>
                     <asp:TemplateField HeaderText="打卡时间">
                         <ItemTemplate>
                             <asp:Label ID="lbTime" runat="server"><%# Eval("打卡时间")%></asp:Label>
@@ -122,7 +125,7 @@
 
             <asp:GridView ID="gvRecordNull" runat="server" AutoGenerateColumns="False"
                 Width="100%"
-                CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvRecordNull_PageIndexChanging" PageSize="20">
+                CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvRecordNull_PageIndexChanging" PageSize="500">
 
                 <Columns>
                     

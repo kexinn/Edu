@@ -17,6 +17,7 @@ namespace BLL.Application.KQ
             public DateTime 打卡时间 { get; set; }
             public byte 状态 { get; set; }
             public char 打卡类型 { get; set; }
+            public String 电话 { get; set; }
         }
         public static List<DayPunchCardStatiscs> getStatiscByBetweenTime(DateTime start, DateTime end,char type,byte status)
         {
@@ -30,6 +31,7 @@ namespace BLL.Application.KQ
                          {
                              工号 = user.JobNumber,
                              姓名 = user.TrueName,
+                             电话 = user.duanhao,
                              序号 = (user.orderNo == null) ? 0 : (int)user.orderNo,
                              打卡时间 = (DateTime)kq.Time,
                              打卡类型 = (char)kq.PunchCardType,
