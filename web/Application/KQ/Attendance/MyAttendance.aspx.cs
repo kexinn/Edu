@@ -102,7 +102,7 @@ namespace web.Application.KQ.Attendance
             LinkButton lb = (LinkButton)sender;
             v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
 
-            if (item.status == "审批通过")
+            if (item.status.Trim() == "审批通过")
                 lb.Visible = false;
         }
 
