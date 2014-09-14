@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace web {
+namespace web.Application.KQ.Attendance {
     
     
-    public partial class MainLeft {
+    public partial class MyApproval {
         
         /// <summary>
         /// form1 控件。
@@ -22,21 +22,30 @@ namespace web {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// PanelKQ 控件。
+        /// lbMessage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelKQ;
+        protected global::System.Web.UI.WebControls.Label lbMessage;
         
         /// <summary>
-        /// PanelAttendance 控件。
+        /// gvAttendance 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelAttendance;
+        protected global::System.Web.UI.WebControls.GridView gvAttendance;
+        
+        /// <summary>
+        /// AspNetPager1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Wuqi.Webdiyer.AspNetPager AspNetPager1;
     }
 }

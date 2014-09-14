@@ -102,6 +102,8 @@
     <Content Include="Application\GZL\Setting\ActorSetting.aspx" />
     <Content Include="Application\GZL\Setting\RoutSetting.aspx" />
     <Content Include="Application\KQ\Attendance\AttendanceDetailView.aspx" />
+    <Content Include="Application\KQ\Attendance\AttendanceStatistic.aspx" />
+    <Content Include="Application\KQ\Attendance\MyApproval.aspx" />
     <Content Include="Application\KQ\DayStatisticKQ.aspx" />
     <Content Include="Application\KQ\Attendance\MyAttendance.aspx" />
     <Content Include="Application\KQ\HandPunch.aspx" />
@@ -533,6 +535,20 @@
     </Compile>
     <Compile Include="Application\KQ\Attendance\AttendanceDetailView.aspx.designer.cs">
       <DependentUpon>AttendanceDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceStatistic.aspx.cs">
+      <DependentUpon>AttendanceStatistic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceStatistic.aspx.designer.cs">
+      <DependentUpon>AttendanceStatistic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyApproval.aspx.cs">
+      <DependentUpon>MyApproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyApproval.aspx.designer.cs">
+      <DependentUpon>MyApproval.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\Attendance\MyAttendance.aspx.cs">
       <DependentUpon>MyAttendance.aspx</DependentUpon>

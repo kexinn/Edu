@@ -11,7 +11,12 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
-
+    
+    <script type="text/javascript">
+        function check() {
+            return confirm("确定撤销？");
+        }
+    </script>
     <style type="text/css">
 
         span{display:inline;}
@@ -35,7 +40,6 @@
             <span>位置：</span>
             <ul class="placeul">
                 <li><a href="#">首页</a></li>
-                <li><a href="#">考勤管理</a></li>
                 <li><a href="#">请假管理</a></li>
                 <li><a href="#">我的请假</a></li>
             </ul>
@@ -113,7 +117,7 @@
         </asp:Panel>
             <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="Id" Width="100%" 
-                CssClass="tablelist">
+                CssClass="tablelist" OnRowDeleting="gvAttendance_RowDeleting">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" FooterStyle-CssClass="hidden" ControlStyle-CssClass="hidden">
                     <HeaderStyle Width="60px" />
@@ -139,7 +143,7 @@
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="状态">
                         <ItemTemplate>
-                            <asp:Label ID="lbStatus" runat="server" OnDataBinding="lbStatus_DataBinding"><%# Eval("status")%></asp:Label>
+                            <asp:Label ID="lbStatus" runat="server" OnDataBinding="lbStatus_DataBinding"></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="80px" />
                     </asp:TemplateField>
@@ -153,7 +157,7 @@
                         <ItemTemplate>
                              <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
 
-                             <asp:LinkButton ID="lbDel" runat="server" CommandName="Delete">撤销申请</asp:LinkButton>
+                             <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding" OnClientClick="javascript:return check();" CommandName="Delete">撤销申请</asp:LinkButton>
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>

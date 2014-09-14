@@ -25,22 +25,22 @@ namespace web.Application.KQ
 
         protected void lbStatisc_Click(object sender, EventArgs e)
         {
-            if (DropDownListPunch.SelectedValue == "1")
+            if (DropDownListPunch.SelectedValue == "1")//已打卡统计
             {
                 PanelDaka.Visible = true;
                 PanelWeiDaka.Visible = false;
-                if(DropDownListType.SelectedValue == "1")
+                if(DropDownListType.SelectedValue == "1")//上班
                     databind1('1');
-                if (DropDownListType.SelectedValue == "2")
+                if (DropDownListType.SelectedValue == "2")//下班
                     databind1('2');
 
-            }else
+            }else//未打卡统计
             {
                 PanelDaka.Visible = false;
                 PanelWeiDaka.Visible = true;
-                if (DropDownListType.SelectedValue == "1")
+                if (DropDownListType.SelectedValue == "1")//上班
                     databind2('1');
-                if (DropDownListType.SelectedValue == "2")
+                if (DropDownListType.SelectedValue == "2")//下班
                     databind2('2');
             }
         }

@@ -62,11 +62,12 @@ namespace web.Application.KQ.Attendance
         {
             Label lb = (Label)sender;
             v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
-            if (item.status == "审批中")
+            lb.Text = item.status;
+            if (item.status.Trim() == "审批中")
                 lb.ForeColor = System.Drawing.Color.Blue;
-            else if (item.status == "审批通过")
+            else if (item.status.Trim() == "审批通过")
                 lb.ForeColor = System.Drawing.Color.Green;
-            else if (item.status == "审批拒绝")
+            else if (item.status.Trim() == "审批拒绝")
                 lb.ForeColor = System.Drawing.Color.Red;
 
         }
@@ -93,6 +94,23 @@ namespace web.Application.KQ.Attendance
 
         protected void AspNetPager1_PageChanged(object sender, EventArgs e)
         {
+            databind();
+        }
+
+        protected void lbDel_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            if (item.status == "审批通过")
+                lb.Visible = false;
+        }
+
+        protected void gvAttendance_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();
+
+            BLL.Application.KQ.Attendance.MyAttendance.deleteAttendanceRecord(Convert.ToInt32(id));
             databind();
         }
     }

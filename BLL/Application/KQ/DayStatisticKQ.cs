@@ -60,7 +60,8 @@ namespace BLL.Application.KQ
 
                 var bb = from user in dc.Users
                          where user.UserType == '1' &&
-                         !(from kq in dc.KQ_PunchCardRecords where kq.PunchCardType == type && kq.status == status && kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
+                         !(from kq in dc.KQ_PunchCardRecords where kq.PunchCardType == type && kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
+                         && !(from at in dc.KQ_Attendance where at.starttime<= start.AddHours(7) && at.endtime>= start select at.userid).Contains(user.Key)
                          select new DayPunchCardUser { 工号 = user.JobNumber,  姓名 = user.TrueName,  电话长号 = user.changhao,  电话短号 = user.duanhao, 序号  = (user.orderNo == null) ? 0 : (int)user.orderNo };
                 return bb.OrderBy(a => a.序号).ToList<DayPunchCardUser>();
 

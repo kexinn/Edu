@@ -36,5 +36,16 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
+        public static bool deleteAttendanceRecord(int id)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                KQ_Attendance att = dc.KQ_Attendance.Where(i => i.Id == id).Single();
+                dc.KQ_Attendance.DeleteOnSubmit(att);
+                dc.SubmitChanges();
+                return true;
+            }
+        }
+
     }
 }
