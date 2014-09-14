@@ -56,9 +56,9 @@ $(function(){
     <span><img src="/media/images/leftico02.png" /></span>请假管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="/Application/KQ/Attendance/MyAttendance.aspx">我的请假</a><i></i></li>
-        <li><cite></cite><a href="/Application/KQ/Attendance/MyApproval.aspx">我的审批</a><i></i></li>
-        <li><cite></cite><a href="#">请假统计</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/MyAttendance.aspx" target="rightFrame">我的请假</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/MyApproval.aspx" target="rightFrame">我的审批</a><i></i></li>
+        <li><cite></cite><a href="#" target="rightFrame">请假统计</a><i></i></li>
         </ul>     
     </dd> 
     

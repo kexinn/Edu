@@ -9,6 +9,23 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
+
+    <style type="text/css">
+
+        span{display:inline;}
+        #TextArea1 {
+            height: 132px;
+            width: 478px;
+        }
+        #tbReason {
+            height: 115px;
+            width: 491px;
+        }
+        .auto-style2 {
+            width: 122px;
+        }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -40,119 +57,63 @@
 
 
             </div>
-            <asp:Panel ID="PanelAddUser" runat="server">
-
-                <div class="formtitle"><span>基本信息</span></div>
-               <div>
-
-
-               </div>
-            </asp:Panel>
-            <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
-                DataKeyNames="Id" 
-                PageSize="25" Width="100%"
-                CssClass="tablelist">
-                <Columns>
-                    <asp:TemplateField HeaderText="ID">
-                        <EditItemTemplate>
-                            <asp:Label ID="lbID" runat="server"><%# Eval("Key") %></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbID0" runat="server"><%# Eval("Key") %></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="NetID">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tbNetid" runat="server" Text='<%# Eval("XMPY") %>' Width="120px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbNetid" runat="server"><%# Eval("XMPY")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="120px" />
-                    </asp:TemplateField>
-                    
-                    <asp:TemplateField HeaderText="排序号">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tbOrderNo" runat="server" Text='<%# Eval("orderNo") %>' Width="120px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbOrderNo" runat="server"><%# Eval("orderNo")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="90px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="用户名">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tbUserName" runat="server" Text='<%# Eval("TrueName") %>' Width="100px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbUsername" runat="server"><%# Eval("TrueName")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="密码">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tbPasswd" runat="server" TextMode="Password" Width="80px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            ****
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="工号">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tbJobNumber" runat="server" Text='<%# Eval("JobNumber") %>' Width="80px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbJobNumber" runat="server"><%# Eval("JobNumber")%></asp:Label>
-
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="部门">
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownListDepartment" runat="server" OnDataBinding="ddlDepartment_DataBinding" Width="100">
+            <asp:Panel ID="PanelApply" runat="server">
+            <div style="margin:auto;width:700px;">
+                <h1 align="center">请假单</h1>
+                <table class="tableborder" style="width:100%;">
+                    <tr>
+                        <td class="auto-style2">姓名</td>
+                        <td><span >
+                            <asp:Label ID="lbUsername" runat="server"></asp:Label>
+                            </span></td>
+                        <td>部门</td>
+                        <td><span lang="EN-US">
+                            <asp:DropDownList ID="ddlDept" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100">
+                                <asp:ListItem></asp:ListItem>
+                                <asp:ListItem Value="1">经贸部</asp:ListItem>
+                                <asp:ListItem Value="2">机电部</asp:ListItem>
+                                <asp:ListItem Value="3">后勤</asp:ListItem>
                             </asp:DropDownList>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbDepartment" runat="server" OnDataBinding="lbDepartment_DataBinding"></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="角色">
-                        <EditItemTemplate>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlDept" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">申请时间</td>
+                        <td><span lang="EN-US">
+                            <asp:Label ID="lbApplyTime" runat="server"></asp:Label>
+                            </span></td>
+                        <td>请假类型</td>
+                        <td><span lang="EN-US">
+                            <asp:DropDownList ID="ddlType" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlType" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">请假时间</td>
+                        <td colspan="3"><span>自：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                            <span >至：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                            </span></span></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">请假事由</td>
+                        <td colspan="3">
+                            <textarea id="tbReason" runat="server" cols="20" name="S1" rows="1"></textarea></td>
+                    </tr>
+                </table>
+                <br />
+                <asp:Button ID="btApply" runat="server" Text="提交" CssClass="btn" ValidationGroup="apply" OnClick="btApply_Click" />
+      
+            </div>
 
-                            <asp:Label ID="lbJueSe" runat="server" OnDataBinding="juese_DataBinding"></asp:Label>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lbJueSe" runat="server" OnDataBinding="juese_DataBinding"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="操作">
-                        <EditItemTemplate>
-                            <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Update">更新</asp:LinkButton>
-                            &nbsp;&nbsp;
-                                                <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel">取消</asp:LinkButton>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbUpdate0" runat="server" CommandName="Edit">修改</asp:LinkButton>
-                            &nbsp;&nbsp;
-                                                <asp:LinkButton ID="lbDel" runat="server" CommandName="Delete">删除</asp:LinkButton>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-                </Columns>
-                <RowStyle HorizontalAlign="Center" />
-            </asp:GridView>
-
+        </asp:Panel>
 
             
                                
 
         </div>
-
         <script type="text/javascript">
             $('.tablelist tbody tr:odd').addClass('odd');
         </script>

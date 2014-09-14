@@ -11,6 +11,28 @@ namespace web.Application.KQ.Attendance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+               initdata();
+            }
+        }
+
+        protected void initdata()
+        {
+            PanelApply.Visible = false;
+            lbApplyTime.Text = System.DateTime.Now.ToString();
+            lbUsername.Text = Session["username"].ToString();
+            ddlType.DataSource = BLL.Application.KQ.Attendance.MyAttendance.getAttendanceType();
+            ddlType.DataBind();
+        }
+        protected void lbAdd_Click(object sender, EventArgs e)
+        {
+            PanelApply.Visible = true;
+        }
+
+
+        protected void btApply_Click(object sender, EventArgs e)
+        {
 
         }
     }
