@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AjaxControlToolkit.Binary.NET45\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="AspNetPager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AspNetPager.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetCasClient">
       <HintPath>..\DotNetCasClient\DotNetCasClient.dll</HintPath>
     </Reference>
@@ -97,6 +101,7 @@
     <Content Include="Application\GZL\GZLApplyRight.aspx" />
     <Content Include="Application\GZL\Setting\ActorSetting.aspx" />
     <Content Include="Application\GZL\Setting\RoutSetting.aspx" />
+    <Content Include="Application\KQ\Attendance\AttendanceDetailView.aspx" />
     <Content Include="Application\KQ\DayStatisticKQ.aspx" />
     <Content Include="Application\KQ\Attendance\MyAttendance.aspx" />
     <Content Include="Application\KQ\HandPunch.aspx" />
@@ -521,6 +526,27 @@
     </Compile>
     <Compile Include="Application\GZL\Setting\RoutSetting.aspx.designer.cs">
       <DependentUpon>RoutSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceDetailView.aspx.cs">
+      <DependentUpon>AttendanceDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceDetailView.aspx.designer.cs">
+      <DependentUpon>AttendanceDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyAttendance.aspx.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyAttendance.aspx.designer.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\DayStatisticKQ.aspx.cs">
+      <DependentUpon>DayStatisticKQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\DayStatisticKQ.aspx.designer.cs">
+      <DependentUpon>DayStatisticKQ.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\HandPunch.aspx.cs">
       <DependentUpon>HandPunch.aspx</DependentUpon>

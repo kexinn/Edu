@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyAttendance.aspx.cs" Inherits="web.Application.KQ.Attendance.MyAttendance" %>
 
+<%@ Register assembly="AspNetPager" namespace="Wuqi.Webdiyer" tagprefix="webdiyer" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -70,9 +72,9 @@
                         <td><span lang="EN-US">
                             <asp:DropDownList ID="ddlDept" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100">
                                 <asp:ListItem></asp:ListItem>
-                                <asp:ListItem Value="1">经贸部</asp:ListItem>
-                                <asp:ListItem Value="2">机电部</asp:ListItem>
-                                <asp:ListItem Value="3">后勤</asp:ListItem>
+                                <asp:ListItem Value="经贸部">经贸部</asp:ListItem>
+                                <asp:ListItem Value="机电部">机电部</asp:ListItem>
+                                <asp:ListItem Value="后勤">后勤</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlDept" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             </span></td>
@@ -109,6 +111,74 @@
             </div>
 
         </asp:Panel>
+            <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
+                DataKeyNames="Id" Width="100%" 
+                CssClass="tablelist">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" FooterStyle-CssClass="hidden" ControlStyle-CssClass="hidden">
+                    <HeaderStyle Width="60px" />
+                    </asp:BoundField>
+                   
+                    <asp:BoundField DataField="username" HeaderText="请假人">
+                    <HeaderStyle Width="80px" />
+                    </asp:BoundField>
+                    
+                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
+                    <HeaderStyle Width="130px" />
+                    </asp:BoundField>
+                    
+                    <asp:TemplateField HeaderText="请假类型">
+                        <ItemTemplate>
+                            <asp:Label ID="lbType" runat="server"><%# Eval("applytype")%></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="90px" />
+                    </asp:TemplateField>
+                   
+                    <asp:BoundField DataField="dept" HeaderText="部门">
+                    <HeaderStyle Width="80px" />
+                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="状态">
+                        <ItemTemplate>
+                            <asp:Label ID="lbStatus" runat="server" OnDataBinding="lbStatus_DataBinding"><%# Eval("status")%></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="80px" />
+                    </asp:TemplateField>
+
+                    <asp:BoundField DataField="ApprovalName" HeaderText="审批人">
+                    <HeaderStyle Width="80px" />
+                    </asp:BoundField>
+
+                   
+                    <asp:TemplateField HeaderText="操作">
+                        <ItemTemplate>
+                             <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
+
+                             <asp:LinkButton ID="lbDel" runat="server" CommandName="Delete">撤销申请</asp:LinkButton>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                </Columns>
+                <RowStyle HorizontalAlign="Center" />
+            </asp:GridView>
+
+             <webdiyer:AspNetPager ID="AspNetPager1" runat="server" 
+                      OnPageChanged="AspNetPager1_PageChanged"  
+                      ShowCustomInfoSection="left" 
+                      ShowInputBox="Auto" 
+                      AlwaysShow="false"
+                      CustomInfoHTML="<font color='#333333'>共 %RecordCount% 行/每页%PageSize%行 第%CurrentPageIndex%/%PageCount%页</font>" 
+                      NumericButtonCount="10" 
+                      FirstPageText="首页" 
+                      LastPageText="末页" 
+                      NextPageText="下页" 
+                      PrevPageText="上页" 
+                      CustomInfoSectionWidth="250px" 
+                      CssClass="page_text" 
+                      ShowBoxThreshold="11" 
+                      InputBoxClass="pagetext" 
+                      SubmitButtonClass="pagebtn" 
+                      SubmitButtonText="Go">
+                    </webdiyer:AspNetPager>
 
             
                                

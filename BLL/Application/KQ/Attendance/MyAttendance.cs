@@ -8,22 +8,33 @@ namespace BLL.Application.KQ.Attendance
 {
     public class MyAttendance
     {
-        public static List<String> getAttendanceType()
+        public static List<KQ_AttendanceType> getAttendanceType()
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                var t = dc.KQ_AttendanceType.Select(r => r.name);
+                var t = dc.KQ_AttendanceType;
                 return t.ToList();
             }
         }
 
-        public static bool createApply(int userid,String username,DateTime starttime,DateTime endtime,int typeid,String reason,String dept)
+        public static bool createApply(int userid,String username,DateTime starttime,DateTime endtime,int typeid,String reason,String dept,ref String tel)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                dc.CreateAttendanceRecord(userid, username, starttime, endtime, typeid, reason, dept);
+                dc.CreateAttendanceRecord(userid, username, starttime, endtime, typeid, reason, dept,ref tel);
                 return true;
             }
         }
+
+        public static List<v_KQ_Attendance> getMyAttendanceRecord(int userid,int index,int num,ref int tot)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                tot = dc.v_KQ_Attendance.Where(u => u.userid == userid).Count();
+                var r = dc.v_KQ_Attendance.Where(u => u.userid == userid).OrderByDescending(o => o.Id).Skip(index).Take(num);
+                return r.ToList();
+            }
+        }
+
     }
 }

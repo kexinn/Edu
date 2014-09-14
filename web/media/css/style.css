@@ -25,6 +25,7 @@ h2{font-weight:normal;}
 .textcenter{text-align:center;}
 .tableborder{border:solid 1px #000000;}
 .tableborder tr td{border:solid 1px #000000;}
+.hidden{display:none;}
 
 
 .tablenoborder{border:none;}
