@@ -50,19 +50,19 @@ $(function(){
         </ul>    
     </dd>
         
-   <%-- 
+
     <dd>
     <div class="title">
-    <span><img src="/media/images/leftico02.png" /></span>其他设置
+    <span><img src="/media/images/leftico02.png" /></span>请假管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="#">编辑内容</a><i></i></li>
-        <li><cite></cite><a href="#">发布信息</a><i></i></li>
-        <li><cite></cite><a href="#">档案列表显示</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/MyAttendance.aspx">我的请假</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/MyApproval.aspx">我的审批</a><i></i></li>
+        <li><cite></cite><a href="#">请假统计</a><i></i></li>
         </ul>     
     </dd> 
     
-    
+      <%--  
     <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>编辑器</div>
     <ul class="menuson">
         <li><cite></cite><a href="#">自定义</a><i></i></li>

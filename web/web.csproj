@@ -97,6 +97,7 @@
     <Content Include="Application\GZL\GZLApplyRight.aspx" />
     <Content Include="Application\GZL\Setting\ActorSetting.aspx" />
     <Content Include="Application\GZL\Setting\RoutSetting.aspx" />
+    <Content Include="Application\KQ\Attendance\MyAttendance.aspx" />
     <Content Include="Application\KQ\HandPunch.aspx" />
     <Content Include="Application\KQ\MyKQList.aspx" />
     <Content Include="Application\KQ\QueryKQList.aspx" />
@@ -519,6 +520,13 @@
     </Compile>
     <Compile Include="Application\GZL\Setting\RoutSetting.aspx.designer.cs">
       <DependentUpon>RoutSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyAttendance.aspx.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\MyAttendance.aspx.designer.cs">
+      <DependentUpon>MyAttendance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\HandPunch.aspx.cs">
       <DependentUpon>HandPunch.aspx</DependentUpon>
