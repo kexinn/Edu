@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=60.12.214.181;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.63.150.103;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.User_Role" Member="User_Role">
     <Type Name="User_Role">
       <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -31,15 +31,6 @@
       <Column Name="rolekey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Department" Member="Department">
-    <Type Name="Department">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HeadmasterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Department_leader" Member="Department_leader">
     <Type Name="Department_leader">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -55,15 +46,6 @@
       <Column Name="LeaderName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.v_Deparment_Headmaster" Member="v_Deparment_Headmaster">
-    <Type Name="v_Deparment_Headmaster">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="headmaster" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="headmasterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.v_KQ_punchcard_record" Member="v_KQ_punchcard_record">
@@ -358,22 +340,6 @@
       <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.KQ_Attendance" Member="KQ_Attendance">
-    <Type Name="KQ_Attendance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.v_KQ_Attendance" Member="v_KQ_Attendance">
     <Type Name="v_KQ_Attendance">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -388,7 +354,48 @@
       <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Department">
+    <Type Name="Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HeadmasterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManagerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Deparment_Headmaster" Member="v_Deparment_Headmaster">
+    <Type Name="v_Deparment_Headmaster">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="headmaster" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="headmasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManagerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ManagerName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_Attendance" Member="KQ_Attendance">
+    <Type Name="KQ_Attendance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="stepCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stepNow" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
@@ -423,6 +430,7 @@
     <Parameter Name="typeid" Type="System.Int32" DbType="Int" />
     <Parameter Name="reason" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="dept" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="tel" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>

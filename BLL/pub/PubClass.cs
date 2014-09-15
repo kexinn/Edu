@@ -8,6 +8,8 @@ using System.IO;
 using System.Data.OleDb;
 using System.Data;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Net;
 
 namespace BLL.pub
 {
@@ -31,6 +33,24 @@ namespace BLL.pub
             return sBuilder.ToString();
         }
 
+        public static void sendSMS(string tel,string message)
+        {
+            HttpWebRequest req;
+            HttpWebResponse res;
+            Stream s;
+            StreamReader r;
+            string smsUrl = System.Configuration.ConfigurationManager.AppSettings["SMSConnectionString"];
+            String url = smsUrl +"?to="+tel+"&content="+message;
+            req = (HttpWebRequest)WebRequest.Create(url);
+            res = (HttpWebResponse)req.GetResponse();
+            s = res.GetResponseStream();
+            r = new StreamReader(s);
+
+            String result = r.ReadToEnd();
+            r.Close();
+            s.Close();
+            res.Close();
+        }
 
         public static bool isOnline()
         {
@@ -231,5 +251,64 @@ namespace BLL.pub
             }
         }
 
+        public static string getFileDir()
+        {
+            string dir = System.Web.HttpContext.Current.Server.MapPath("/");
+            string date = System.DateTime.Now.Year.ToString() + System.DateTime.Now.Month.ToString();
+            dir += "file\\upload\\" + date;
+            if (!System.IO.Directory.Exists(dir))
+                System.IO.Directory.CreateDirectory(dir);
+            return dir;
+        }
+        public static bool UpFileFun(FileUpload Controlfile, string[] FileType, int FileSize, string SaveFileName, ref string fileurl)
+        {
+            string FileDir = Controlfile.PostedFile.FileName;
+            string FileName = FileDir.Substring(FileDir.LastIndexOf("\\") + 1);                  //获取上传文件名称
+            string FileNameType = FileDir.Substring(FileDir.LastIndexOf(".") + 1).ToString();    //获取上传文件类型
+            int FileNameSize = Controlfile.PostedFile.ContentLength;                             //获取上传文件大小
+            //  定义上传文件类型，并初始化
+            string Types = "";
+
+            //string strDate = DateTime.Now.ToString();//取当前时间用来修改上传文件名   
+            //string str = strDate.Replace("/", "").Replace(":", "").Replace("   ", "");   //过滤当前时间里的特殊字符，如: - / : ,
+            //HttpContext.Current.Response.Write("<hr><br>" + str + "<br><br><br><hr");
+            string EditFileName = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff").Replace(" ", "_").Replace(":", "-") + Guid.NewGuid().ToString();
+            //string strNewFileName = Guid.NewGuid().ToString();   
+
+            //HttpContext.Current.Response.Write("<hr><br>" + strNewFileName + "<br><br><br><hr");
+
+            try
+            {
+                if (FileNameSize < FileSize)
+                {
+                    for (int i = 0; i < FileType.Length; i++)
+                    {
+                        if (FileNameType == FileType[i])
+                        {
+                            Types = FileNameType;
+                        }
+                    }
+                    if (FileNameType == Types)
+                    {
+                        fileurl = SaveFileName + "\\" + EditFileName + FileName;
+                        Controlfile.PostedFile.SaveAs(fileurl);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;//上传失败！上传文件类型不符合
+                    }
+                }
+                else
+                {
+                    return false;//上传失败！上传文件尺寸超出限制
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

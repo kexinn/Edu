@@ -139,12 +139,19 @@ namespace web.admin.user
             String strRemark = ((TextBox)gvDepartment.Rows[e.RowIndex].Cells[3].FindControl("tbRemark")).Text.ToString().Trim();
 
             String headmasterId = ((DropDownList)gvDepartment.Rows[e.RowIndex].Cells[5].FindControl("DropDownListHeadmaster")).SelectedValue;
+            String managerName = ((TextBox)gvDepartment.Rows[e.RowIndex].Cells[6].FindControl("tbManagerName")).Text.ToString().Trim();
 
             Department dep = BLL.admin.department.DepartmentManagement.getDepartmentById(Convert.ToInt32(id));
+            int managerId=-1;
+            try
+            {
+                managerId = BLL.admin.user.UserManagement.getUsersByTruename(managerName).Single().Key;
+            }catch(Exception ex){};
 
             dep.Name = strName;
             dep.Description = strRemark;
             dep.HeadmasterId = Convert.ToInt32(headmasterId);
+            dep.ManagerId = managerId;
             BLL.admin.department.DepartmentManagement.updateDepartment(dep);
 
 

@@ -23,7 +23,32 @@ namespace BLL.Application.KQ.Attendance
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
                 KQ_Attendance kq = dc.KQ_Attendance.Where(o => o.Id == id).Single();
-                kq.status = status;
+
+                if (kq.stepNow == kq.stepCount)
+                {
+                    kq.status = status;
+                }else
+                {
+                    kq.stepNow += 1;
+                    kq.status = "审批中";
+
+                    int headmasterId = (int)dc.Department.Where(d => d.Name == kq.dept).Single().HeadmasterId;
+                    Users user = dc.Users.Where(u => u.Key == headmasterId).Single();
+                    String headmasterName = user.TrueName;
+                    kq.ApprovalId = headmasterId;
+                    kq.ApprovalName = headmasterName;
+
+                    t_User_Task task = new t_User_Task();
+                    task.createtime = kq.applyTime;
+                    task.url = "/Application/KQ/Attendance/MyApproval.aspx";
+                    task.description = "您有一条请假申请待审批";
+                    task.isClick = false;
+                    dc.t_User_Task.InsertOnSubmit(task);
+
+                   //  string message = "您有一条待审批的请假申请：" + kq.username + " " + kq.reason; 
+                   //  if(!String.IsNullOrEmpty(user.changhao))
+                  //     BLL.pub.PubClass.sendSMS(user.changhao, message);
+                }
                 dc.SubmitChanges();
                 return true;
             }

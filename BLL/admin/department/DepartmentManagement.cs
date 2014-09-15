@@ -94,6 +94,8 @@ namespace BLL.admin.department
                 d.Name = dep.Name;
                 d.Description = dep.Description;
                 d.HeadmasterId = dep.HeadmasterId;
+                if (dep.ManagerId != -1)
+                    d.ManagerId = dep.ManagerId;
                 dc.SubmitChanges();
             }
         }
@@ -107,6 +109,8 @@ namespace BLL.admin.department
                 return true;
             }
         }
+
+
 
 
         public static bool deleteDepartmentById(String id)

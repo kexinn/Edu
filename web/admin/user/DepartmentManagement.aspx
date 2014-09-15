@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="DepartmentManagement.aspx.cs" Inherits="web.admin.user.DepartmentManagement" %>
 
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,7 +32,8 @@
                 <li><a href="#">机构管理</a></li>
             </ul>
         </div>
-
+        
+         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ToolkitScriptManager>
         <div class="rightinfo">
 
             <div class="tools">
@@ -57,7 +59,7 @@
 
                             <th>组织机构名称</th>
                             <th>
-                            &nbsp; 描述</td>
+                            &nbsp; 描述</th>
                                             <th>操作</th>
                         </tr>
                         <tr>
@@ -133,6 +135,19 @@
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="lbHeadmaster" runat="server"><%# Eval("headmaster") %></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="部门负责人">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="tbManagerName" runat="server" CssClass="dfinput " Width="120px"></asp:TextBox>
+                                        
+                           <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="tbManagerName" ServicePath="/webservice/user/UserWebService.asmx"  ServiceMethod="GetUsers" CompletionSetCount="10" MinimumPrefixLength="1"></asp:AutoCompleteExtender>
+                                       
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lbManager" runat="server"><%# Eval("ManagerName") %></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>

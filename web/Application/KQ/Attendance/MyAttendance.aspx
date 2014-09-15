@@ -76,9 +76,6 @@
                         <td><span lang="EN-US">
                             <asp:DropDownList ID="ddlDept" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100">
                                 <asp:ListItem></asp:ListItem>
-                                <asp:ListItem Value="经贸部">经贸部</asp:ListItem>
-                                <asp:ListItem Value="机电部">机电部</asp:ListItem>
-                                <asp:ListItem Value="后勤">后勤</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlDept" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             </span></td>
@@ -106,7 +103,8 @@
                     <tr>
                         <td class="auto-style2">请假事由</td>
                         <td colspan="3">
-                            <textarea id="tbReason" runat="server" cols="20" name="S1" rows="1"></textarea></td>
+                            <textarea id="tbReason" runat="server" cols="20" name="S1" rows="1"></textarea><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbReason" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                 </table>
                 <br />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 using BLL;
 
 namespace web.Application.KQ.Attendance
@@ -34,6 +35,15 @@ namespace web.Application.KQ.Attendance
                 l.Value = li.Id.ToString();
                 ddlType.Items.Add(l);
             }
+            ddlDept.Items.Clear();
+            List<Department> deps = BLL.admin.department.DepartmentManagement.getDepartments();
+            foreach(Department dept in deps)
+            {
+                ListItem item = new ListItem();
+                item.Text = dept.Name;
+                item.Value = dept.Name;
+                ddlDept.Items.Add(item);
+            }
 
             AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
         }
@@ -45,13 +55,17 @@ namespace web.Application.KQ.Attendance
 
         protected void btApply_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 int userid = Convert.ToInt32(Session["userid"].ToString());
                 String tel = "";
-                BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text,ref tel);
+                BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text,"",ref tel);
                 lbMessage.Text = "添加申请成功！等待审批";
                 PanelApply.Visible = false;
+                databind();
+               // string message = "您有一条待审批的请假申请：" + Session["username"].ToString() + ddlType.Text + " " + tbReason.InnerText; ;
+              //  BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
             {
                 lbMessage.Text = "申请错误：" + ex.Message;
@@ -113,5 +127,6 @@ namespace web.Application.KQ.Attendance
             BLL.Application.KQ.Attendance.MyAttendance.deleteAttendanceRecord(Convert.ToInt32(id));
             databind();
         }
+
     }
 }
