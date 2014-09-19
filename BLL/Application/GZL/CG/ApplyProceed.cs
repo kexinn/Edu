@@ -116,7 +116,7 @@ namespace BLL.Application.GZL.CG
                         dc.t_GZL_TaskHistory.InsertOnSubmit(history);
 
                         var has_actuser = dc.t_GZL_actorUser.Where(u => u.actorId == task.actorId && u.itemGuid == item.itemGuid && u.operateUserId == operatorUserId && u.taskId == task.taskId);
-                         if (has_actuser.Count() != null && has_actuser.Count() > 0)
+                         if ( has_actuser.Count() > 0)
                          { }
                          else//第一次申请则插入执行人，否则用原有
                          {

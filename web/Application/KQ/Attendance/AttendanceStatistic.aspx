@@ -35,10 +35,6 @@
                     请假日期：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                     &nbsp;请假人：<asp:TextBox ID="tbApplyUser" CssClass="dfinput" Width="120px" runat="server"></asp:TextBox>
                     部门：<asp:DropDownList ID="DropDownListDept" runat="server" CssClass="dfinput" Width="120px" Height="34px">
-                        <asp:ListItem Value=""></asp:ListItem>
-                        <asp:ListItem Value="经贸部">经贸部</asp:ListItem>
-                        <asp:ListItem Value="机电部">机电部</asp:ListItem>
-                        <asp:ListItem Value="后勤">后勤</asp:ListItem>
                        
                     </asp:DropDownList>
 

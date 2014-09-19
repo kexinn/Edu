@@ -15,41 +15,50 @@ namespace web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie ticketCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (ticketCookie != null)
+            try
             {
-                if (!string.IsNullOrEmpty(ticketCookie.Value))
+                HttpCookie ticketCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (ticketCookie != null)
                 {
-                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(ticketCookie.Value);
-                    if (CasAuthentication.ServiceTicketManager != null)
+                    if (!string.IsNullOrEmpty(ticketCookie.Value))
                     {
-                        CasAuthenticationTicket casTicket = CasAuthentication.ServiceTicketManager.GetTicket(ticket.UserData);
-                        if (casTicket != null)
+                        FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(ticketCookie.Value);
+                        if (CasAuthentication.ServiceTicketManager != null)
                         {
+                            CasAuthenticationTicket casTicket = CasAuthentication.ServiceTicketManager.GetTicket(ticket.UserData);
+                            if (casTicket != null)
+                            {
 
-                            lbMessage.Text = casTicket.NetId;
-                            checkLogin(casTicket.NetId);
-                            //Label1.Text = casTicket.ServiceTicket;
-                            // CasOriginatingServiceName.Text = casTicket.OriginatingServiceName;
-                            // CasClientHostAddress.Text = casTicket.ClientHostAddress;
-                            // CasValidFromDate.Text = casTicket.ValidFromDate.ToString();
-                            // CasValidUntilDate.Text = casTicket.ValidUntilDate.ToString();
-                            // ProxyGrantingTicket.Text = casTicket.ProxyGrantingTicket;
-                            // ProxyGrantingTicketIou.Text = casTicket.ProxyGrantingTicketIou;
+                                lbMessage.Text = casTicket.NetId;
+                                checkLogin(casTicket.NetId);
+                                //Label1.Text = casTicket.ServiceTicket;
+                                // CasOriginatingServiceName.Text = casTicket.OriginatingServiceName;
+                                // CasClientHostAddress.Text = casTicket.ClientHostAddress;
+                                // CasValidFromDate.Text = casTicket.ValidFromDate.ToString();
+                                // CasValidUntilDate.Text = casTicket.ValidUntilDate.ToString();
+                                // ProxyGrantingTicket.Text = casTicket.ProxyGrantingTicket;
+                                // ProxyGrantingTicketIou.Text = casTicket.ProxyGrantingTicketIou;
 
 
+                            }else
+                            {
+                                Response.Redirect("https://sso.nbyzzj.cn:8443/cas/login");
+                            }
                         }
                     }
+
                 }
+                else
+                {
 
-            }
-            else
+                    lbMessage.Text = "cookie is null";
+                    Response.Redirect("https://sso.nbyzzj.cn:8443/cas/login");
+
+                }
+            }catch (Exception ex)
             {
-
-                lbMessage.Text = "cookie is null";
-                Response.Redirect("https://sso.nbyzzj.cn:8443/cas/login");
-
-            } 
+                lbMessage.Text = "系统错误：" + ex.Message;
+            }
         }
 
         protected void checkLogin(String name)

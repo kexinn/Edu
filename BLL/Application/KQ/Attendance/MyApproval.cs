@@ -27,6 +27,11 @@ namespace BLL.Application.KQ.Attendance
                 if (kq.stepNow == kq.stepCount)
                 {
                     kq.status = status;
+
+                    Users user = dc.Users.Where(u => u.Key == kq.userid).Single();
+                    string message = "您的请假申请已处理，审批人：" + kq.ApprovalName + " 审批结果：" + status;
+                    if (!String.IsNullOrEmpty(user.changhao))
+                        BLL.pub.PubClass.sendSMS(user.changhao, message);
                 }else
                 {
                     kq.stepNow += 1;
@@ -45,9 +50,9 @@ namespace BLL.Application.KQ.Attendance
                     task.isClick = false;
                     dc.t_User_Task.InsertOnSubmit(task);
 
-                   //  string message = "您有一条待审批的请假申请：" + kq.username + " " + kq.reason; 
-                   //  if(!String.IsNullOrEmpty(user.changhao))
-                  //     BLL.pub.PubClass.sendSMS(user.changhao, message);
+                     string message = "您有一条待审批的请假申请：" + kq.username + " " + kq.reason; 
+                     if(!String.IsNullOrEmpty(user.changhao))
+                       BLL.pub.PubClass.sendSMS(user.changhao, message);
                 }
                 dc.SubmitChanges();
                 return true;

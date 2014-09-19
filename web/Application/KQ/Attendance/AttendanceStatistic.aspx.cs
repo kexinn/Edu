@@ -14,9 +14,25 @@ namespace web.Application.KQ.Attendance
         {
             if (!IsPostBack)
             {
-                AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
+                initdata();
                 databind();
             }
+        }
+
+        protected void initdata()
+        {
+
+            DropDownListDept.Items.Clear();
+            List<Department> deps = BLL.admin.department.DepartmentManagement.getDepartments();
+            foreach (Department dept in deps)
+            {
+                ListItem item = new ListItem();
+                item.Text = dept.Name;
+                item.Value = dept.Name;
+                DropDownListDept.Items.Add(item);
+            }
+
+            AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
         }
         protected void databind()
         {

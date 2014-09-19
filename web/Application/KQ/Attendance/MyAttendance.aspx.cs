@@ -64,6 +64,7 @@ namespace web.Application.KQ.Attendance
                 lbMessage.Text = "添加申请成功！等待审批";
                 PanelApply.Visible = false;
                 databind();
+               // lbMessage.Text = tel;
                // string message = "您有一条待审批的请假申请：" + Session["username"].ToString() + ddlType.Text + " " + tbReason.InnerText; ;
               //  BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
