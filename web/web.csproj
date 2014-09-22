@@ -85,6 +85,10 @@
     <Content Include="admin\Configure.aspx" />
     <Content Include="admin\ConfigureLeft.aspx" />
     <Content Include="admin\ConfigureRight.aspx" />
+    <Content Include="admin\TeacherGroup\member_left.aspx" />
+    <Content Include="admin\TeacherGroup\member_right.aspx" />
+    <Content Include="admin\TeacherGroup\TeacherGroupManagement.aspx" />
+    <Content Include="admin\TeacherGroup\TeacherGroupMember.aspx" />
     <Content Include="admin\user\DepartmentLeaderManagement.aspx" />
     <Content Include="admin\user\DepartmentManagement.aspx" />
     <Content Include="admin\user\RoleManagement.aspx" />
@@ -405,6 +409,34 @@
     <Compile Include="admin\ConfigureRight.aspx.designer.cs">
       <DependentUpon>ConfigureRight.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\TeacherGroup\member_left.aspx.cs">
+      <DependentUpon>member_left.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\member_left.aspx.designer.cs">
+      <DependentUpon>member_left.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\member_right.aspx.cs">
+      <DependentUpon>member_right.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\member_right.aspx.designer.cs">
+      <DependentUpon>member_right.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\TeacherGroupManagement.aspx.cs">
+      <DependentUpon>TeacherGroupManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\TeacherGroupManagement.aspx.designer.cs">
+      <DependentUpon>TeacherGroupManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\TeacherGroupMember.aspx.cs">
+      <DependentUpon>TeacherGroupMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\TeacherGroup\TeacherGroupMember.aspx.designer.cs">
+      <DependentUpon>TeacherGroupMember.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\user\DepartmentLeaderManagement.aspx.cs">
       <DependentUpon>DepartmentLeaderManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,6 +753,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
+    <Content Include="Web.config.release" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

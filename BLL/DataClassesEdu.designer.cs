@@ -90,6 +90,9 @@ namespace BLL
     partial void InsertKQ_Attendance(KQ_Attendance instance);
     partial void UpdateKQ_Attendance(KQ_Attendance instance);
     partial void DeleteKQ_Attendance(KQ_Attendance instance);
+    partial void Insertt_Teacher_Group(t_Teacher_Group instance);
+    partial void Updatet_Teacher_Group(t_Teacher_Group instance);
+    partial void Deletet_Teacher_Group(t_Teacher_Group instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -359,6 +362,22 @@ namespace BLL
 			get
 			{
 				return this.GetTable<KQ_Attendance>();
+			}
+		}
+		
+		public System.Data.Linq.Table<t_Teacher_Group> t_Teacher_Group
+		{
+			get
+			{
+				return this.GetTable<t_Teacher_Group>();
+			}
+		}
+		
+		public System.Data.Linq.Table<v_TeacherGroup> v_TeacherGroup
+		{
+			get
+			{
+				return this.GetTable<v_TeacherGroup>();
 			}
 		}
 		
@@ -7401,6 +7420,197 @@ namespace BLL
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Teacher_Group")]
+	public partial class t_Teacher_Group : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _LeaderId;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnLeaderIdChanging(System.Nullable<int> value);
+    partial void OnLeaderIdChanged();
+    #endregion
+		
+		public t_Teacher_Group()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderId", DbType="Int")]
+		public System.Nullable<int> LeaderId
+		{
+			get
+			{
+				return this._LeaderId;
+			}
+			set
+			{
+				if ((this._LeaderId != value))
+				{
+					this.OnLeaderIdChanging(value);
+					this.SendPropertyChanging();
+					this._LeaderId = value;
+					this.SendPropertyChanged("LeaderId");
+					this.OnLeaderIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_TeacherGroup")]
+	public partial class v_TeacherGroup
+	{
+		
+		private int _Id;
+		
+		private string _TeacherGroupName;
+		
+		private string _LeaderName;
+		
+		private System.Nullable<int> _LeaderId;
+		
+		public v_TeacherGroup()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeacherGroupName", DbType="NVarChar(50)")]
+		public string TeacherGroupName
+		{
+			get
+			{
+				return this._TeacherGroupName;
+			}
+			set
+			{
+				if ((this._TeacherGroupName != value))
+				{
+					this._TeacherGroupName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderName", DbType="NVarChar(256)")]
+		public string LeaderName
+		{
+			get
+			{
+				return this._LeaderName;
+			}
+			set
+			{
+				if ((this._LeaderName != value))
+				{
+					this._LeaderName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderId", DbType="Int")]
+		public System.Nullable<int> LeaderId
+		{
+			get
+			{
+				return this._LeaderId;
+			}
+			set
+			{
+				if ((this._LeaderId != value))
+				{
+					this._LeaderId = value;
+				}
 			}
 		}
 	}

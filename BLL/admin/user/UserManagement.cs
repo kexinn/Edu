@@ -41,6 +41,19 @@ namespace BLL.admin.user
             }
         }
 
+        public static Users getUserByName(String name)
+        {
+
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                var user = dc.Users.Where(u => u.TrueName == name);
+                if (user.Count() == 1)
+                    return user.Single();
+                else
+                    return null;
+            }
+        }
+
         public static String[] getUsersName(string name,int count)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())

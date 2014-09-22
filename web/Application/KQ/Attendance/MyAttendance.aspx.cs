@@ -65,8 +65,8 @@ namespace web.Application.KQ.Attendance
                 PanelApply.Visible = false;
                 databind();
                // lbMessage.Text = tel;
-               // string message = "您有一条待审批的请假申请：" + Session["username"].ToString() + ddlType.Text + " " + tbReason.InnerText; ;
-              //  BLL.pub.PubClass.sendSMS(tel, message);
+                string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() +"类型："+ ddlType.Text + " 事由:" + tbReason.InnerText; ;
+                BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
             {
                 lbMessage.Text = "申请错误：" + ex.Message;

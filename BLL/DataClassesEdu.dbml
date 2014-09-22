@@ -398,6 +398,21 @@
       <Column Name="stepNow" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.t_Teacher_Group" Member="t_Teacher_Group">
+    <Type Name="t_Teacher_Group">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LeaderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TeacherGroup" Member="v_TeacherGroup">
+    <Type Name="v_TeacherGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeacherGroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LeaderName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LeaderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />

@@ -50,12 +50,11 @@ $(function(){
     
     <dd>
     <div class="title">
-    <span><img src="/media/images/leftico02.png" /></span>其他设置
+    <span><img src="/media/images/leftico02.png" /></span>教研组管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="#">编辑内容</a><i></i></li>
-        <li><cite></cite><a href="#">发布信息</a><i></i></li>
-        <li><cite></cite><a href="#">档案列表显示</a><i></i></li>
+        <li><cite></cite><a href="/admin/TeacherGroup/TeacherGroupManagement.aspx" target="rightFrame">教研组管理</a><i></i></li>
+        <li><cite></cite><a href="/admin/TeacherGroup/TeacherGroupMember.aspx"  target="rightFrame">教研组成员</a><i></i></li>
         </ul>     
     </dd> 
     
