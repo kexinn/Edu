@@ -18,6 +18,13 @@ namespace BLL.admin.TeacherGroup
             }
         }
 
+        public static t_Teacher_Group getTeacherGroupById(int id)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                return dc.t_Teacher_Group.Where(u => u.Id == id).Single();
+            }
+        }
         public static List<v_TeacherGroup> getDepartments()
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
@@ -26,6 +33,23 @@ namespace BLL.admin.TeacherGroup
             }
         }
 
+        public static List<v_TeacherGroupUsers> getTeacherGroupUsersByGroupId(int id)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                return dc.v_TeacherGroupUsers.Where(u => u.TeacherGroupId == id).ToList();
+            }
+        }
+
+        public static void setUserToTeacherGroup(int userid,int teacherGroupId)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                Users user = dc.Users.Where(u => u.Key == userid).Single();
+                user.TeacherGroupId = teacherGroupId;
+                dc.SubmitChanges();
+            }
+        }
 
         public static bool deleteTeacherGroupById(String id)
         {
@@ -50,5 +74,7 @@ namespace BLL.admin.TeacherGroup
 
             }
         }
+
+
     }
 }

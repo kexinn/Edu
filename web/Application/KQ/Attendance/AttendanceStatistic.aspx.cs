@@ -21,7 +21,7 @@ namespace web.Application.KQ.Attendance
 
         protected void initdata()
         {
-
+/*
             DropDownListDept.Items.Clear();
             List<Department> deps = BLL.admin.department.DepartmentManagement.getDepartments();
             foreach (Department dept in deps)
@@ -31,7 +31,7 @@ namespace web.Application.KQ.Attendance
                 item.Value = dept.Name;
                 DropDownListDept.Items.Add(item);
             }
-
+            */
             AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
         }
         protected void databind()

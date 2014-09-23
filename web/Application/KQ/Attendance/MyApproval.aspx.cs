@@ -64,12 +64,12 @@ namespace web.Application.KQ.Attendance
 
             if (e.CommandName == "yes")
             {
-                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id, "审批通过");
+                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id,1);
                 databind();
             }
             if (e.CommandName == "no")
             {
-                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id, "审批拒绝");
+                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id, 0);
                 databind();
             }
         }

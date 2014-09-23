@@ -34,7 +34,7 @@ namespace web.Application.KQ.Attendance
                 l.Text = li.name;
                 l.Value = li.Id.ToString();
                 ddlType.Items.Add(l);
-            }
+            }/*
             ddlDept.Items.Clear();
             List<Department> deps = BLL.admin.department.DepartmentManagement.getDepartments();
             foreach(Department dept in deps)
@@ -44,7 +44,7 @@ namespace web.Application.KQ.Attendance
                 item.Value = dept.Name;
                 ddlDept.Items.Add(item);
             }
-
+            */
             AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
         }
         protected void lbAdd_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace web.Application.KQ.Attendance
                 databind();
                // lbMessage.Text = tel;
                 string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() +"类型："+ ddlType.Text + " 事由:" + tbReason.InnerText; ;
-                BLL.pub.PubClass.sendSMS(tel, message);
+               // BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
             {
                 lbMessage.Text = "申请错误：" + ex.Message;

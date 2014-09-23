@@ -18,10 +18,22 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
-        public static bool setAttendanceApplyStatus(int id ,String status)
+        public static bool setAttendanceApplyStatus(int id ,int result) //result:1同意0拒绝
         {
+            String tel = "";
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
+                dc.AttendanceApprovalSubmit(id, result, ref tel);
+
+
+                if (!String.IsNullOrEmpty(tel))
+                {
+                    v_KQ_Attendance kq = dc.v_KQ_Attendance.Where(u => u.Id == id).Single();
+                    string message = "您有一条待审批的请假申请，请假人：" + kq.username + " 请假类型：" + kq.applytype + " 事由：" + kq.reason;
+                   // BLL.pub.PubClass.sendSMS(tel, message);
+                }
+                return true;
+                /*
                 KQ_Attendance kq = dc.KQ_Attendance.Where(o => o.Id == id).Single();
 
                 if (kq.stepNow == kq.stepCount)
@@ -56,6 +68,7 @@ namespace BLL.Application.KQ.Attendance
                 }
                 dc.SubmitChanges();
                 return true;
+                 * */
             }
         }
     }
