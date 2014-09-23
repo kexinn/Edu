@@ -23,8 +23,8 @@ namespace BLL.Application.KQ.Attendance
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                tot = dc.v_KQ_Attendance_History.Where(u => u.ApprovalId == approvalHistoryId).Count();
-                var r = dc.v_KQ_Attendance_History.Where(u => u.ApprovalId == approvalHistoryId).OrderByDescending(o => o.Id).Skip(index).Take(num);
+                tot = dc.v_KQ_Attendance_History.Where(u => u.approvalHistoryId == approvalHistoryId).Count();
+                var r = dc.v_KQ_Attendance_History.Where(u => u.approvalHistoryId == approvalHistoryId).OrderByDescending(o => o.Id).Skip(index).Take(num);
                 return r.ToList();
             }
         }
