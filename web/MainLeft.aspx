@@ -59,6 +59,7 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="/Application/KQ/Attendance/MyAttendance.aspx" target="rightFrame">我的请假</a><i></i></li>
         <li><cite></cite><a href="/Application/KQ/Attendance/MyApproval.aspx" target="rightFrame">我的审批</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/MyApprovalHistory.aspx" target="rightFrame">审批历史</a><i></i></li>
             <asp:Panel ID="PanelAttendance" runat="server">
         <li><cite></cite><a href="/Application/KQ/Attendance/AttendanceStatistic.aspx" target="rightFrame">请假查询</a><i></i></li>
                 </asp:Panel>

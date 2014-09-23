@@ -389,6 +389,14 @@ namespace BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<v_KQ_Attendance_History> v_KQ_Attendance_History
+		{
+			get
+			{
+				return this.GetTable<v_KQ_Attendance_History>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteUser")]
 		public int DeleteUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
 		{
@@ -7731,6 +7739,285 @@ namespace BLL
 				if ((this._TeacherGroupId != value))
 				{
 					this._TeacherGroupId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance_History")]
+	public partial class v_KQ_Attendance_History
+	{
+		
+		private int _Id;
+		
+		private string _username;
+		
+		private System.Nullable<int> _userid;
+		
+		private System.Nullable<System.DateTime> _starttime;
+		
+		private System.Nullable<System.DateTime> _endtime;
+		
+		private string _status;
+		
+		private System.Nullable<int> _typeid;
+		
+		private string _reason;
+		
+		private string _dept;
+		
+		private System.Nullable<int> _ApprovalId;
+		
+		private string _ApprovalName;
+		
+		private System.Nullable<System.DateTime> _applyTime;
+		
+		private string _fileurl;
+		
+		private string _applytype;
+		
+		private System.Nullable<int> _approvalHistoryId;
+		
+		public v_KQ_Attendance_History()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this._username = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this._userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this._starttime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this._endtime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this._status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		public System.Nullable<int> typeid
+		{
+			get
+			{
+				return this._typeid;
+			}
+			set
+			{
+				if ((this._typeid != value))
+				{
+					this._typeid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		public string reason
+		{
+			get
+			{
+				return this._reason;
+			}
+			set
+			{
+				if ((this._reason != value))
+				{
+					this._reason = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		public string dept
+		{
+			get
+			{
+				return this._dept;
+			}
+			set
+			{
+				if ((this._dept != value))
+				{
+					this._dept = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		public System.Nullable<int> ApprovalId
+		{
+			get
+			{
+				return this._ApprovalId;
+			}
+			set
+			{
+				if ((this._ApprovalId != value))
+				{
+					this._ApprovalId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		public string ApprovalName
+		{
+			get
+			{
+				return this._ApprovalName;
+			}
+			set
+			{
+				if ((this._ApprovalName != value))
+				{
+					this._ApprovalName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> applyTime
+		{
+			get
+			{
+				return this._applyTime;
+			}
+			set
+			{
+				if ((this._applyTime != value))
+				{
+					this._applyTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		public string fileurl
+		{
+			get
+			{
+				return this._fileurl;
+			}
+			set
+			{
+				if ((this._fileurl != value))
+				{
+					this._fileurl = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applytype", DbType="NVarChar(50)")]
+		public string applytype
+		{
+			get
+			{
+				return this._applytype;
+			}
+			set
+			{
+				if ((this._applytype != value))
+				{
+					this._applytype = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_approvalHistoryId", DbType="Int")]
+		public System.Nullable<int> approvalHistoryId
+		{
+			get
+			{
+				return this._approvalHistoryId;
+			}
+			set
+			{
+				if ((this._approvalHistoryId != value))
+				{
+					this._approvalHistoryId = value;
 				}
 			}
 		}

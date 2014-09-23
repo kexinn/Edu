@@ -200,5 +200,11 @@
         <elementListCompartment Id="7322671e-290b-4b22-9cf2-7555aef1f868" absoluteBounds="7.6400000000000006, 18.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="a1d6a9f0-46c7-4857-a0bf-36309c72716b" isExpanded="false" absoluteBounds="0.5, 3.75, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/v_KQ_Attendance_History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1990f5cc-d9b4-4add-bbbc-6a7443462851" absoluteBounds="0.51500000000000012, 4.21, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

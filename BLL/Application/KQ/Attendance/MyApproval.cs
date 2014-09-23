@@ -18,6 +18,17 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
+
+        public static List<v_KQ_Attendance_History> getMyApprovalHistoryRecord(int approvalHistoryId, int index, int num, ref int tot)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                tot = dc.v_KQ_Attendance_History.Where(u => u.ApprovalId == approvalHistoryId).Count();
+                var r = dc.v_KQ_Attendance_History.Where(u => u.ApprovalId == approvalHistoryId).OrderByDescending(o => o.Id).Skip(index).Take(num);
+                return r.ToList();
+            }
+        }
+
         public static bool setAttendanceApplyStatus(int id ,int result) //result:1同意0拒绝
         {
             String tel = "";
