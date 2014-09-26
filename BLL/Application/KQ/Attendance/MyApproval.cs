@@ -40,8 +40,12 @@ namespace BLL.Application.KQ.Attendance
                 if (!String.IsNullOrEmpty(tel))
                 {
                     v_KQ_Attendance kq = dc.v_KQ_Attendance.Where(u => u.Id == id).Single();
-                    string message = "您有一条待审批的请假申请，请假人：" + kq.username + " 请假类型：" + kq.applytype + " 事由：" + kq.reason;
-                   // BLL.pub.PubClass.sendSMS(tel, message);
+                    string approvalyes="http://wx.nbyzzj.cn/approval.php?attendId="+id+"%26result=1";
+                    string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + id + "%26&result=0";
+
+                    string message = "您有一条待审批的请假申请，请假人：" + kq.username + " ，请假类型：" + kq.applytype +"，请假时间从："+kq.starttime.ToString()+"到："+kq.endtime.ToString()+",事由：" + kq.reason + ",请您审批，同意点：" + approvalyes + "。不同意点：" + approvalno;
+                    //tel = "13486689106";
+                    BLL.pub.PubClass.sendSMS(tel, message);
                 }
                 return true;
                 /*

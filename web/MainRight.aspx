@@ -42,8 +42,8 @@
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 
                             <ContentTemplate>
-                                <asp:Timer runat="server" Interval="30000" OnTick="Unnamed_Tick">
-                                </asp:Timer>
+<%--                                <asp:Timer runat="server" Interval="30000" OnTick="Unnamed_Tick">
+                                </asp:Timer>--%>
                                 <ul class="newlist">
                                     <asp:Repeater ID="RepeaterTask" runat="server">
                                         <ItemTemplate>

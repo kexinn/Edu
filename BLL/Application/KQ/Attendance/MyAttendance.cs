@@ -26,6 +26,14 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
+        public static KQ_Attendance getTopAttendRecordByUserid(int userid)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+               return dc.KQ_Attendance.Where(k => k.userid == userid).OrderByDescending(o=>o.Id).Take(1).Single();
+            }
+        }
+
         public static List<v_KQ_Attendance> getMyAttendanceRecord(int userid,int index,int num,ref int tot)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())

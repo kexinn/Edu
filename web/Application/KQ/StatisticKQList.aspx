@@ -9,7 +9,13 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
+    
+    <script type="text/javascript">
 
+        function check() {
+            return confirm("确定提交？");
+        }
+    </script>
 </head>
 
 

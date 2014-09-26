@@ -318,9 +318,9 @@ namespace web
             }
         }
 
-        protected void Unnamed_Tick(object sender, EventArgs e)
-        {
-            getTask();
-        }
+        //protected void Unnamed_Tick(object sender, EventArgs e)
+        //{
+        //    getTask();
+        //}
     }
 }

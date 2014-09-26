@@ -15,6 +15,7 @@ namespace web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        
             try
             {
                 HttpCookie ticketCookie = Request.Cookies[FormsAuthentication.FormsCookieName];

@@ -372,6 +372,7 @@
     <Content Include="media\js\jquery.jqprint-0.3.js" />
     <Content Include="media\js\jquery.js" />
     <Content Include="media\js\jsapi.js" />
+    <Content Include="media\js\myjs.js" />
     <Content Include="media\js\PIE.htc" />
     <Content Include="media\js\select-ui.min.js" />
     <Content Include="media\src\jquery.gvChart-1.0.1.js" />

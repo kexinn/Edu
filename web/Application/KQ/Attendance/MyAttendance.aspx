@@ -11,6 +11,7 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
+    <script type="text/javascript" src="/media/js/myjs.js"></script>
     
     <script type="text/javascript">
         function check() {
@@ -30,6 +31,10 @@
         }
         .auto-style2 {
             width: 122px;
+        }
+        .auto-style3 {
+            width: 122px;
+            height: 42px;
         }
     </style>
 
@@ -55,7 +60,7 @@
                             OnClick="lbAdd_Click">添加申请 </asp:LinkButton></li>
                 </ul>
 
-            </div>
+                <b>请假规则：</b>半天以内【<font color="red">教研组长</font>】（大组长）审批，半天以上一天以内教研组长审批后还需【<font color="red">部主任</font>】审批，一天以上三天以内还需【<font color="red">主管校长</font>】审批，三天以上还需【<font color="red">大校长</font>】审批。</div>
             <!-- ****************** -->
             
             <div>
@@ -99,9 +104,16 @@
                         <td class="auto-style2">请假时间</td>
                         <td colspan="3"><span>自：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
-                            <span >至：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px"></asp:TextBox>
+                            <span >至：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px" AutoPostBack="True" OnTextChanged="tbEndTime_TextChanged"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             </span></span></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style3">请假时长</td>
+                        <td class="seachform" colspan="3">共请假:<asp:Label ID="lbDaySpan" runat="server" ForeColor="Red"></asp:Label>
+                            &nbsp;天 
+                            <asp:Label ID="lbTimeSpan" runat="server" ForeColor="Red"></asp:Label>
+                            &nbsp;小时</td>
                     </tr>
                     <tr>
                         <td class="auto-style2">请假事由</td>
@@ -111,8 +123,7 @@
                     </tr>
                 </table>
                 <br />
-                <asp:Button ID="btApply" runat="server" Text="提交" CssClass="btn" ValidationGroup="apply" OnClick="btApply_Click" />
-      
+                <asp:Button ID="btApply" runat="server" Text="提交" CssClass="btn" ValidationGroup="apply"  OnClientClick="javascript:showConfirm('确定提交?')"  OnClick="btApply_Click" />
             </div>
 
         </asp:Panel>
