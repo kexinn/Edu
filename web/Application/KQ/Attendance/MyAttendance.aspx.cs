@@ -158,9 +158,9 @@ namespace web.Application.KQ.Attendance
             {
                 lbDaySpan.Text = "1";
                 lbTimeSpan.Text = datespan.Hours.ToString();
-            }
+            } */
         }
-            */
+           
 
     }
 }
