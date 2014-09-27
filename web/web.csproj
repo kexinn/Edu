@@ -755,6 +755,9 @@
     <Compile Include="uc\PaginationWebControl.ascx.designer.cs">
       <DependentUpon>PaginationWebControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="webservice\LoginPageHandler.ashx.cs">
+      <DependentUpon>LoginPageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="webservice\user\UserWebService.asmx.cs">
       <DependentUpon>UserWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -763,6 +766,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
     <Content Include="Web.config.release" />
+    <Content Include="webservice\LoginPageHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
