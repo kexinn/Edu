@@ -387,6 +387,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="webservice\LoginPageHandler.aspx" />
     <Content Include="webservice\user\UserWebService.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -757,6 +758,13 @@
     </Compile>
     <Compile Include="webservice\LoginPageHandler.ashx.cs">
       <DependentUpon>LoginPageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="webservice\LoginPageHandler.aspx.cs">
+      <DependentUpon>LoginPageHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webservice\LoginPageHandler.aspx.designer.cs">
+      <DependentUpon>LoginPageHandler.aspx</DependentUpon>
     </Compile>
     <Compile Include="webservice\user\UserWebService.asmx.cs">
       <DependentUpon>UserWebService.asmx</DependentUpon>

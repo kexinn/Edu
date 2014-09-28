@@ -17,8 +17,8 @@ namespace web.webservice
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
 
-            String userid = context.Request.QueryString["userid"];
-            String pwd = context.Request.QueryString["password"];
+            String userid = HttpContext.Current.Request.QueryString["userid"];
+            String pwd = HttpContext.Current.Request.QueryString["password"];
             Users user = BLL.admin.user.UserManagement.getUserByNetid(userid, "000000");
             if (user != null)
             {

@@ -110,9 +110,9 @@
                     </tr>
                     <tr>
                         <td class="auto-style3">请假时长</td>
-                        <td class="seachform" colspan="3">共请假:<asp:Label ID="lbDaySpan" runat="server" ForeColor="Red"></asp:Label>
+                        <td class="seachform" colspan="3">共请假:<asp:Label ID="lbDaySpan" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="Larger"></asp:Label>
                             &nbsp;天 
-                            <asp:Label ID="lbTimeSpan" runat="server" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lbTimeSpan" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="Larger"></asp:Label>
                             &nbsp;小时</td>
                     </tr>
                     <tr>
@@ -135,13 +135,27 @@
                     <HeaderStyle Width="60px" />
                     </asp:BoundField>
                    
+                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
+                    <HeaderStyle Width="150px" />
+                    </asp:BoundField>
+
                     <asp:BoundField DataField="username" HeaderText="请假人">
                     <HeaderStyle Width="80px" />
                     </asp:BoundField>
                     
-                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
-                    <HeaderStyle Width="130px" />
-                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="起止时间">
+                        <ItemTemplate>
+                            <asp:Label ID="lbSpanDate" runat="server" OnDataBinding="lbSpanDate_DataBinding"></asp:Label>
+                        </ItemTemplate>
+                    <HeaderStyle Width="320px" />
+                    </asp:TemplateField>
+                    
+                    <asp:TemplateField HeaderText="请假时长">
+                        <ItemTemplate>
+                            <asp:Label ID="lbSpanDiscription" runat="server" OnDataBinding="lbSpanDiscription_DataBinding"></asp:Label>
+                        </ItemTemplate>
+                    <HeaderStyle Width="120px" />
+                    </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="请假类型">
                         <ItemTemplate>

@@ -51,14 +51,27 @@
                     <HeaderStyle Width="60px" />
                     </asp:BoundField>
                    
+                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
+                    <HeaderStyle Width="150px" />
+                    </asp:BoundField>
+
                     <asp:BoundField DataField="username" HeaderText="请假人">
                     <HeaderStyle Width="80px" />
                     </asp:BoundField>
                     
-                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
-                    <HeaderStyle Width="130px" />
-                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="起止时间">
+                        <ItemTemplate>
+                            <asp:Label ID="lbSpanDate" runat="server" OnDataBinding="lbSpanDate_DataBinding"></asp:Label>
+                        </ItemTemplate>
+                    <HeaderStyle Width="320px" />
+                    </asp:TemplateField>
                     
+                    <asp:TemplateField HeaderText="请假时长">
+                        <ItemTemplate>
+                            <asp:Label ID="lbSpanDiscription" runat="server" OnDataBinding="lbSpanDiscription_DataBinding"></asp:Label>
+                        </ItemTemplate>
+                    <HeaderStyle Width="120px" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="请假类型">
                         <ItemTemplate>
                             <asp:Label ID="lbType" runat="server"><%# Eval("applytype")%></asp:Label>
@@ -76,7 +89,7 @@
                         <ItemStyle Width="80px" />
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="ApprovalName" HeaderText="审批人">
+                    <asp:BoundField DataField="ApprovalName" HeaderText="当前审批人">
                     <HeaderStyle Width="80px" />
                     </asp:BoundField>
 

@@ -93,6 +93,21 @@ namespace web.Application.KQ.Attendance
             GridView1.AllowSorting = true;
         }
 
+        protected void lbSpanDate_DataBinding(object sender, EventArgs e)
+        {
+            Label lb = (Label)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            lb.Text = item.starttime.ToString() + " 到 " + item.endtime.ToString();
+        }
+
+        protected void lbSpanDiscription_DataBinding(object sender, EventArgs e)
+        {
+            Label lb = (Label)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            lb.Text = "共: " + item.daySpan.ToString() + " 天 " + item.hourSpan.ToString() + " 小时";
+        }
         #region 导出为Excel
         public override void VerifyRenderingInServerForm(Control control)
         {

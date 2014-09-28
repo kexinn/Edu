@@ -35,19 +35,19 @@ namespace web
             Session.Clear();
             Session.Abandon();
 
-            HttpCookie aCookie;
-            string cookieName;
-            int limit = Request.Cookies.Count;
-            for (int i = 0; i < limit; i++)
-            {
-                cookieName = Request.Cookies[i].Name;
-                aCookie = new HttpCookie(cookieName);
-                aCookie.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(aCookie);
-            }
+            //HttpCookie aCookie;
+            //string cookieName;
+            //int limit = Request.Cookies.Count;
+            //for (int i = 0; i < limit; i++)
+            //{
+            //    cookieName = Request.Cookies[i].Name;
+            //    aCookie = new HttpCookie(cookieName);
+            //    aCookie.Expires = DateTime.Now.AddDays(-1);
+            //    Response.Cookies.Add(aCookie);
+            //}
             Response.Redirect("https://sso.nbyzzj.cn:8443/cas/logout");
             //Response.Write("<script>window.top.close();</script>");
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/Default.aspx");
         }
     }
 }

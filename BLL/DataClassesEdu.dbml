@@ -308,24 +308,6 @@
       <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.v_KQ_Attendance" Member="v_KQ_Attendance">
-    <Type Name="v_KQ_Attendance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Department" Member="Department">
     <Type Name="Department">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -345,25 +327,6 @@
       <Column Name="headmasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ManagerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ManagerName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.KQ_Attendance" Member="KQ_Attendance">
-    <Type Name="KQ_Attendance">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="stepCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="stepNow" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.t_Teacher_Group" Member="t_Teacher_Group">
@@ -441,6 +404,47 @@
       <Column Name="approvalHistoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.KQ_Attendance" Member="KQ_Attendance">
+    <Type Name="KQ_Attendance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="stepCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stepNow" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="daySpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hourSpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_KQ_Attendance" Member="v_KQ_Attendance">
+    <Type Name="v_KQ_Attendance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="daySpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hourSpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
@@ -465,6 +469,12 @@
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.AttendanceApprovalSubmit" Method="AttendanceApprovalSubmit">
+    <Parameter Name="attendId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="result" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tel" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.CreateAttendanceRecord" Method="CreateAttendanceRecord">
     <Parameter Name="userid" Type="System.Int32" DbType="Int" />
     <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
@@ -474,12 +484,8 @@
     <Parameter Name="reason" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="dept" Type="System.String" DbType="NChar(10)" />
     <Parameter Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="tel" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.AttendanceApprovalSubmit" Method="AttendanceApprovalSubmit">
-    <Parameter Name="attendId" Type="System.Int32" DbType="Int" />
-    <Parameter Name="result" Type="System.Int32" DbType="Int" />
+    <Parameter Name="daySpan" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hourSpan" Type="System.Int32" DbType="Int" />
     <Parameter Name="tel" Type="System.String" DbType="NVarChar(30)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>

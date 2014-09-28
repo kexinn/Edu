@@ -13,7 +13,7 @@ namespace BLL.Application
          {
              using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
              {
-                 return dc.t_User_Task.Where(u => u.userid == userid && u.isClick == false).Take(6).ToList();
+                 return dc.t_User_Task.Where(u => u.userid == userid && u.isClick == false).Take(4).ToList();
              }
          }
 
