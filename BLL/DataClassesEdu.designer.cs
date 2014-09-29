@@ -434,7 +434,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CreateAttendanceRecord")]
-		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string fileurl, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> daySpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> hourSpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] ref string tel)
+		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string fileurl, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(4,1)")] System.Nullable<decimal> daySpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> hourSpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] ref string tel)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid, username, starttime, endtime, typeid, reason, dept, fileurl, daySpan, hourSpan, tel);
 			tel = ((string)(result.GetParameterValue(10)));
@@ -7400,7 +7400,7 @@ namespace BLL
 		
 		private System.Nullable<int> _stepNow;
 		
-		private System.Nullable<int> _daySpan;
+		private System.Nullable<decimal> _daySpan;
 		
 		private System.Nullable<int> _hourSpan;
 		
@@ -7438,7 +7438,7 @@ namespace BLL
     partial void OnstepCountChanged();
     partial void OnstepNowChanging(System.Nullable<int> value);
     partial void OnstepNowChanged();
-    partial void OndaySpanChanging(System.Nullable<int> value);
+    partial void OndaySpanChanging(System.Nullable<decimal> value);
     partial void OndaySpanChanged();
     partial void OnhourSpanChanging(System.Nullable<int> value);
     partial void OnhourSpanChanged();
@@ -7749,8 +7749,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Int")]
-		public System.Nullable<int> daySpan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		public System.Nullable<decimal> daySpan
 		{
 			get
 			{
@@ -7836,15 +7836,15 @@ namespace BLL
 		
 		private string _ApprovalName;
 		
-		private System.Nullable<System.DateTime> _applyTime;
-		
 		private string _fileurl;
 		
 		private string _applytype;
 		
-		private System.Nullable<int> _daySpan;
+		private System.Nullable<decimal> _daySpan;
 		
 		private System.Nullable<int> _hourSpan;
+		
+		private System.Nullable<System.DateTime> _applyTime;
 		
 		public v_KQ_Attendance()
 		{
@@ -8026,22 +8026,6 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> applyTime
-		{
-			get
-			{
-				return this._applyTime;
-			}
-			set
-			{
-				if ((this._applyTime != value))
-				{
-					this._applyTime = value;
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
 		public string fileurl
 		{
@@ -8074,8 +8058,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Int")]
-		public System.Nullable<int> daySpan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		public System.Nullable<decimal> daySpan
 		{
 			get
 			{
@@ -8102,6 +8086,22 @@ namespace BLL
 				if ((this._hourSpan != value))
 				{
 					this._hourSpan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> applyTime
+		{
+			get
+			{
+				return this._applyTime;
+			}
+			set
+			{
+				if ((this._applyTime != value))
+				{
+					this._applyTime = value;
 				}
 			}
 		}

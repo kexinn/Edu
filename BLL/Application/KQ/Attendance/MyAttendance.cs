@@ -17,7 +17,7 @@ namespace BLL.Application.KQ.Attendance
             }
         }
 
-        public static bool createApply(int userid,String username,DateTime starttime,DateTime endtime,int typeid,String reason,String dept,String fileurl,int daySpan,int hourSpan,ref String tel)
+        public static bool createApply(int userid,String username,DateTime starttime,DateTime endtime,int typeid,String reason,String dept,String fileurl,Decimal daySpan,int hourSpan,ref String tel)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {

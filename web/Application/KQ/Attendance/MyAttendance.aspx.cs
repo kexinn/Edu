@@ -67,7 +67,7 @@ namespace web.Application.KQ.Attendance
             {
                 int userid = Convert.ToInt32(Session["userid"].ToString());
                 String tel = "";
-                int daySpan = Convert.ToInt32(lbDaySpan.Text);
+                Decimal daySpan = Convert.ToDecimal(lbDaySpan.Text);
                 int hourSpan = Convert.ToInt32(lbTimeSpan.Text);
                 BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text,"",daySpan,hourSpan,ref tel);
                 lbMessage.Text = "添加申请成功！等待审批";
@@ -156,120 +156,18 @@ namespace web.Application.KQ.Attendance
 
             lb.Text = "共: " + item.daySpan.ToString() + " 天 " + item.hourSpan.ToString() + " 小时";
         }
+
+      
         protected void tbEndTime_TextChanged(object sender, EventArgs e)
         {
             
             DateTime datestart = Convert.ToDateTime(tbStartTime.Text);
             DateTime dateend = Convert.ToDateTime(tbEndTime.Text);
-
-            TimeSpan dayMorStartTime = new TimeSpan(7, 40, 0);
-            TimeSpan dayMorEndTime = new TimeSpan(11, 30, 0);
-            TimeSpan dayNoonStartTime = new TimeSpan(13, 0, 0);
-            TimeSpan dayNoonEndTime = new TimeSpan(16, 30, 0);
-
-            TimeSpan datespan = dateend -datestart;
-
-            if (datestart.DayOfYear == dateend.DayOfYear) //只请假一天以内的
-            {
-                lbDaySpan.Text = "0";
-
-                if (datestart.TimeOfDay < dayMorStartTime)
-                {
-                    if (dateend.TimeOfDay <= dayMorEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - dayMorStartTime).Hours.ToString();
-                    else if (dateend.TimeOfDay <= dayNoonStartTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - dayMorStartTime - (dateend.TimeOfDay - dayMorStartTime)).Hours.ToString();
-                    else if (dateend.TimeOfDay <= dayNoonEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - dayMorStartTime - (dayNoonStartTime - dayMorEndTime)).Hours.ToString();
-                    else
-                        lbTimeSpan.Text = (dateend.TimeOfDay - dayMorStartTime - (dayNoonStartTime - dayMorEndTime) - (dateend.TimeOfDay - dayNoonEndTime)).Hours.ToString();
-
-
-                }
-                else if (datestart.TimeOfDay >= dayMorStartTime && datestart.TimeOfDay < dayMorEndTime)
-                {
-                    if (dateend.TimeOfDay <= dayMorEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay).Hours.ToString();
-                    else if (dateend.TimeOfDay <= dayNoonStartTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dateend.TimeOfDay - dayMorStartTime)).Hours.ToString();
-                    else if (dateend.TimeOfDay <= dayNoonEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - dayMorEndTime)).Hours.ToString();
-                    else
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - dayMorEndTime) - (dateend.TimeOfDay - dayNoonEndTime)).Hours.ToString();
-
-                }
-                else if (datestart.TimeOfDay >= dayMorEndTime && datestart.TimeOfDay < dayNoonStartTime)
-                {
-
-                    if (dateend.TimeOfDay <= dayNoonStartTime)
-                        lbTimeSpan.Text = "0";
-                    else if (dateend.TimeOfDay <= dayNoonEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - datestart.TimeOfDay)).Hours.ToString();
-                    else
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - datestart.TimeOfDay) - (dateend.TimeOfDay - dayNoonEndTime)).Hours.ToString();
-
-                }
-                else if (datestart.TimeOfDay >= dayNoonStartTime && datestart.TimeOfDay < dayNoonEndTime)
-                {
-                    if (dateend.TimeOfDay <= dayNoonEndTime)
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay).Hours.ToString();
-                    else
-                        lbTimeSpan.Text = (dateend.TimeOfDay - datestart.TimeOfDay - (dateend.TimeOfDay - dayNoonEndTime)).Hours.ToString();
-
-                }
-                else
-                    lbTimeSpan.Text = "0";
-
-            }
-            else if ( dateend.DayOfYear - datestart.DayOfYear > 1) //请假一天以上的
-            {
-                lbDaySpan.Text = (dateend.DayOfYear - datestart.DayOfYear - 1).ToString(); //中间天数
-                TimeSpan ts1;
-                TimeSpan ts2;
-                if (datestart.TimeOfDay < dayMorStartTime) //第一天计算小时数
-                {
-                    ts1 = dayMorEndTime - dayMorStartTime + (dayNoonEndTime - dayNoonStartTime);
-
-                }
-                else if (datestart.TimeOfDay >= dayMorStartTime && datestart.TimeOfDay < dayMorEndTime)
-                {
-                    ts1 = dayNoonEndTime - datestart.TimeOfDay - (dayNoonStartTime - dayMorEndTime);
-                }
-                else if (datestart.TimeOfDay >= dayMorEndTime && datestart.TimeOfDay < dayNoonStartTime)
-                {
-
-                    ts1 = dayNoonEndTime - dayNoonStartTime;
-                }
-                else if (datestart.TimeOfDay >= dayNoonStartTime && datestart.TimeOfDay < dayNoonEndTime)
-                {
-                    ts1 = dayNoonEndTime - datestart.TimeOfDay;
-                }
-                else
-                    ts1 = new TimeSpan(0);
-
-                if (dateend.TimeOfDay < dayMorStartTime)//最后一天计算小时数
-                {
-                    ts2 = new TimeSpan(0);
-
-                }
-                else if (dateend.TimeOfDay >= dayMorStartTime && dateend.TimeOfDay < dayMorEndTime)
-                {
-                    ts2 = dateend.TimeOfDay - dayMorStartTime;
-                }
-                else if (dateend.TimeOfDay >= dayMorEndTime && dateend.TimeOfDay < dayNoonStartTime)
-                {
-
-                    ts2 = dayMorEndTime - dayMorStartTime ;
-                }
-                else if (dateend.TimeOfDay >= dayNoonStartTime && dateend.TimeOfDay < dayNoonEndTime)
-                {
-                    ts2 = dayMorEndTime - dayMorStartTime + dateend.TimeOfDay-dayNoonStartTime;
-                }
-                else
-                    ts2 = dayMorEndTime - dayMorStartTime + dayNoonEndTime - dayNoonStartTime;
-
-                lbTimeSpan.Text = (ts1 + ts2).Hours.ToString();
-            } 
+            Decimal daySpan =0;
+            int timeSpan =0;
+            BLL.Application.KQ.Attendance.AttendanceStatistic.getSpanDateTime(datestart, dateend, ref daySpan, ref timeSpan);
+            lbDaySpan.Text = daySpan.ToString();
+            lbTimeSpan.Text = timeSpan.ToString();
 
 
         }
