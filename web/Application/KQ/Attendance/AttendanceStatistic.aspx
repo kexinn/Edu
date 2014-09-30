@@ -36,9 +36,9 @@
                     &nbsp;请假人：<asp:TextBox ID="tbApplyUser" CssClass="dfinput" Width="120px" runat="server"></asp:TextBox>
                     部门：<asp:DropDownList ID="DropDownListDept" runat="server" CssClass="dfinput" Width="120px" Height="34px">
                         <asp:ListItem Value=""></asp:ListItem>
-                        <asp:ListItem>经贸部</asp:ListItem>
-                        <asp:ListItem>机电部</asp:ListItem>
-                        <asp:ListItem>后勤</asp:ListItem>
+                        <asp:ListItem Value="经贸部">经贸部</asp:ListItem>
+                        <asp:ListItem Value="机电部">机电部</asp:ListItem>
+                        <asp:ListItem Value="后勤">后勤</asp:ListItem>
                        
                     </asp:DropDownList>
 
@@ -49,7 +49,10 @@
                         <asp:ListItem Value="审批拒绝">审批拒绝</asp:ListItem>
                        
                     </asp:DropDownList>
-
+                    
+                    请假类型：<asp:DropDownList ID="DropDownListType" runat="server" CssClass="dfinput" Width="120px" Height="34px">
+                       
+                    </asp:DropDownList>
                    <%-- <asp:TextBox ID="TextBox1" CssClass="dfinput" runat="server" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"></asp:TextBox>
                --%> </div>
 

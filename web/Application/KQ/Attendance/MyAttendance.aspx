@@ -60,7 +60,8 @@
                             OnClick="lbAdd_Click">添加申请 </asp:LinkButton></li>
                 </ul>
 
-                <b>请假规则：</b>半天以内【<font color="red">教研组长</font>】（大组长）审批，半天以上一天以内教研组长审批后还需【<font color="red">部主任</font>】审批，一天以上三天以内还需【<font color="red">主管校长</font>】审批，三天以上还需【<font color="red">大校长</font>】审批。</div>
+                <b>请假规则：</b>半天以内【<font color="red">教研组长</font>】（大组长）审批，半天以上一天以内教研组长审批后还需【<font color="red">部主任</font>】审批，一天以上三天以内还需【<font color="red">主管校长</font>】审批，三天以上还需【<font color="red">大校长</font>】审批。<br />
+                <b>计算方法：</b>超过5个小时算一天，3到5个小时算半天，不到3个小时的进行累计。工作时间：上午7:40~11:30,下午1:00~16:30</div>
             <!-- ****************** -->
             
             <div>
@@ -102,7 +103,7 @@
                     </tr>
                     <tr>
                         <td class="auto-style2">请假时间</td>
-                        <td colspan="3"><span>自：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px"></asp:TextBox>
+                        <td colspan="3"><span>自：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px" AutoPostBack="True" OnTextChanged="tbStartTime_TextChanged"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             <span >至：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})" ValidationGroup="apply" Width="200px" AutoPostBack="True" OnTextChanged="tbEndTime_TextChanged"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>

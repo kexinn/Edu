@@ -93,6 +93,12 @@ namespace BLL
     partial void InsertKQ_Attendance(KQ_Attendance instance);
     partial void UpdateKQ_Attendance(KQ_Attendance instance);
     partial void DeleteKQ_Attendance(KQ_Attendance instance);
+    partial void InsertKQ_Attendance_Tmp(KQ_Attendance_Tmp instance);
+    partial void UpdateKQ_Attendance_Tmp(KQ_Attendance_Tmp instance);
+    partial void DeleteKQ_Attendance_Tmp(KQ_Attendance_Tmp instance);
+    partial void InsertKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
+    partial void UpdateKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
+    partial void DeleteKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -381,6 +387,14 @@ namespace BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<v_KQ_Attendance> v_KQ_Attendance
+		{
+			get
+			{
+				return this.GetTable<v_KQ_Attendance>();
+			}
+		}
+		
 		public System.Data.Linq.Table<KQ_Attendance> KQ_Attendance
 		{
 			get
@@ -389,11 +403,27 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<v_KQ_Attendance> v_KQ_Attendance
+		public System.Data.Linq.Table<KQ_Attendance_Tmp> KQ_Attendance_Tmp
 		{
 			get
 			{
-				return this.GetTable<v_KQ_Attendance>();
+				return this.GetTable<KQ_Attendance_Tmp>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Attendance_Statistic> KQ_Attendance_Statistic
+		{
+			get
+			{
+				return this.GetTable<KQ_Attendance_Statistic>();
+			}
+		}
+		
+		public System.Data.Linq.Table<v_KQ_Attendance_Statistic> v_KQ_Attendance_Statistic
+		{
+			get
+			{
+				return this.GetTable<v_KQ_Attendance_Statistic>();
 			}
 		}
 		
@@ -434,10 +464,17 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CreateAttendanceRecord")]
-		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string fileurl, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(4,1)")] System.Nullable<decimal> daySpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> hourSpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] ref string tel)
+		public int CreateAttendanceRecord([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string reason, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string fileurl, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(5,1)")] System.Nullable<decimal> daySpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> hourSpan, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] ref string tel)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userid, username, starttime, endtime, typeid, reason, dept, fileurl, daySpan, hourSpan, tel);
 			tel = ((string)(result.GetParameterValue(10)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_KQ_select_into_temp")]
+		public int sp_KQ_select_into_temp([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> starttime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> endtime, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string dept, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NChar(10)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> typeid)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), starttime, endtime, dept, status, typeid);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -7364,6 +7401,303 @@ namespace BLL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance")]
+	public partial class v_KQ_Attendance
+	{
+		
+		private int _Id;
+		
+		private string _username;
+		
+		private System.Nullable<int> _userid;
+		
+		private System.Nullable<System.DateTime> _starttime;
+		
+		private System.Nullable<System.DateTime> _endtime;
+		
+		private string _status;
+		
+		private System.Nullable<int> _typeid;
+		
+		private string _reason;
+		
+		private string _dept;
+		
+		private System.Nullable<int> _ApprovalId;
+		
+		private string _ApprovalName;
+		
+		private string _fileurl;
+		
+		private string _applytype;
+		
+		private System.Nullable<decimal> _daySpan;
+		
+		private System.Nullable<int> _hourSpan;
+		
+		private System.Nullable<System.DateTime> _applyTime;
+		
+		public v_KQ_Attendance()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this._username = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this._userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this._starttime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this._endtime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this._status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		public System.Nullable<int> typeid
+		{
+			get
+			{
+				return this._typeid;
+			}
+			set
+			{
+				if ((this._typeid != value))
+				{
+					this._typeid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		public string reason
+		{
+			get
+			{
+				return this._reason;
+			}
+			set
+			{
+				if ((this._reason != value))
+				{
+					this._reason = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		public string dept
+		{
+			get
+			{
+				return this._dept;
+			}
+			set
+			{
+				if ((this._dept != value))
+				{
+					this._dept = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		public System.Nullable<int> ApprovalId
+		{
+			get
+			{
+				return this._ApprovalId;
+			}
+			set
+			{
+				if ((this._ApprovalId != value))
+				{
+					this._ApprovalId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		public string ApprovalName
+		{
+			get
+			{
+				return this._ApprovalName;
+			}
+			set
+			{
+				if ((this._ApprovalName != value))
+				{
+					this._ApprovalName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		public string fileurl
+		{
+			get
+			{
+				return this._fileurl;
+			}
+			set
+			{
+				if ((this._fileurl != value))
+				{
+					this._fileurl = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applytype", DbType="NVarChar(50)")]
+		public string applytype
+		{
+			get
+			{
+				return this._applytype;
+			}
+			set
+			{
+				if ((this._applytype != value))
+				{
+					this._applytype = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		public System.Nullable<decimal> daySpan
+		{
+			get
+			{
+				return this._daySpan;
+			}
+			set
+			{
+				if ((this._daySpan != value))
+				{
+					this._daySpan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hourSpan", DbType="Int")]
+		public System.Nullable<int> hourSpan
+		{
+			get
+			{
+				return this._hourSpan;
+			}
+			set
+			{
+				if ((this._hourSpan != value))
+				{
+					this._hourSpan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> applyTime
+		{
+			get
+			{
+				return this._applyTime;
+			}
+			set
+			{
+				if ((this._applyTime != value))
+				{
+					this._applyTime = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance")]
 	public partial class KQ_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -7749,7 +8083,7 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(5,1)")]
 		public System.Nullable<decimal> daySpan
 		{
 			get
@@ -7810,9 +8144,11 @@ namespace BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance")]
-	public partial class v_KQ_Attendance
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance_Tmp")]
+	public partial class KQ_Attendance_Tmp : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
@@ -7836,21 +8172,72 @@ namespace BLL
 		
 		private string _ApprovalName;
 		
+		private System.Nullable<System.DateTime> _applyTime;
+		
 		private string _fileurl;
 		
-		private string _applytype;
+		private System.Nullable<int> _stepCount;
+		
+		private System.Nullable<int> _stepNow;
 		
 		private System.Nullable<decimal> _daySpan;
 		
 		private System.Nullable<int> _hourSpan;
 		
-		private System.Nullable<System.DateTime> _applyTime;
+		private System.Nullable<decimal> _realDaySpan;
 		
-		public v_KQ_Attendance()
+		private System.Nullable<int> _realHourSpan;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnuseridChanging(System.Nullable<int> value);
+    partial void OnuseridChanged();
+    partial void OnstarttimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnstarttimeChanged();
+    partial void OnendtimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnendtimeChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void OntypeidChanging(System.Nullable<int> value);
+    partial void OntypeidChanged();
+    partial void OnreasonChanging(string value);
+    partial void OnreasonChanged();
+    partial void OndeptChanging(string value);
+    partial void OndeptChanged();
+    partial void OnApprovalIdChanging(System.Nullable<int> value);
+    partial void OnApprovalIdChanged();
+    partial void OnApprovalNameChanging(string value);
+    partial void OnApprovalNameChanged();
+    partial void OnapplyTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnapplyTimeChanged();
+    partial void OnfileurlChanging(string value);
+    partial void OnfileurlChanged();
+    partial void OnstepCountChanging(System.Nullable<int> value);
+    partial void OnstepCountChanged();
+    partial void OnstepNowChanging(System.Nullable<int> value);
+    partial void OnstepNowChanged();
+    partial void OndaySpanChanging(System.Nullable<decimal> value);
+    partial void OndaySpanChanged();
+    partial void OnhourSpanChanging(System.Nullable<int> value);
+    partial void OnhourSpanChanged();
+    partial void OnrealDaySpanChanging(System.Nullable<decimal> value);
+    partial void OnrealDaySpanChanged();
+    partial void OnrealHourSpanChanging(System.Nullable<int> value);
+    partial void OnrealHourSpanChanged();
+    #endregion
+		
+		public KQ_Attendance_Tmp()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int Id
 		{
 			get
@@ -7861,7 +8248,11 @@ namespace BLL
 			{
 				if ((this._Id != value))
 				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
 					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -7877,9 +8268,670 @@ namespace BLL
 			{
 				if ((this._username != value))
 				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
 					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
 				}
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this.OnstarttimeChanging(value);
+					this.SendPropertyChanging();
+					this._starttime = value;
+					this.SendPropertyChanged("starttime");
+					this.OnstarttimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this.OnendtimeChanging(value);
+					this.SendPropertyChanging();
+					this._endtime = value;
+					this.SendPropertyChanged("endtime");
+					this.OnendtimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		public System.Nullable<int> typeid
+		{
+			get
+			{
+				return this._typeid;
+			}
+			set
+			{
+				if ((this._typeid != value))
+				{
+					this.OntypeidChanging(value);
+					this.SendPropertyChanging();
+					this._typeid = value;
+					this.SendPropertyChanged("typeid");
+					this.OntypeidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		public string reason
+		{
+			get
+			{
+				return this._reason;
+			}
+			set
+			{
+				if ((this._reason != value))
+				{
+					this.OnreasonChanging(value);
+					this.SendPropertyChanging();
+					this._reason = value;
+					this.SendPropertyChanged("reason");
+					this.OnreasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		public string dept
+		{
+			get
+			{
+				return this._dept;
+			}
+			set
+			{
+				if ((this._dept != value))
+				{
+					this.OndeptChanging(value);
+					this.SendPropertyChanging();
+					this._dept = value;
+					this.SendPropertyChanged("dept");
+					this.OndeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		public System.Nullable<int> ApprovalId
+		{
+			get
+			{
+				return this._ApprovalId;
+			}
+			set
+			{
+				if ((this._ApprovalId != value))
+				{
+					this.OnApprovalIdChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovalId = value;
+					this.SendPropertyChanged("ApprovalId");
+					this.OnApprovalIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		public string ApprovalName
+		{
+			get
+			{
+				return this._ApprovalName;
+			}
+			set
+			{
+				if ((this._ApprovalName != value))
+				{
+					this.OnApprovalNameChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovalName = value;
+					this.SendPropertyChanged("ApprovalName");
+					this.OnApprovalNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> applyTime
+		{
+			get
+			{
+				return this._applyTime;
+			}
+			set
+			{
+				if ((this._applyTime != value))
+				{
+					this.OnapplyTimeChanging(value);
+					this.SendPropertyChanging();
+					this._applyTime = value;
+					this.SendPropertyChanged("applyTime");
+					this.OnapplyTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		public string fileurl
+		{
+			get
+			{
+				return this._fileurl;
+			}
+			set
+			{
+				if ((this._fileurl != value))
+				{
+					this.OnfileurlChanging(value);
+					this.SendPropertyChanging();
+					this._fileurl = value;
+					this.SendPropertyChanged("fileurl");
+					this.OnfileurlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stepCount", DbType="Int")]
+		public System.Nullable<int> stepCount
+		{
+			get
+			{
+				return this._stepCount;
+			}
+			set
+			{
+				if ((this._stepCount != value))
+				{
+					this.OnstepCountChanging(value);
+					this.SendPropertyChanging();
+					this._stepCount = value;
+					this.SendPropertyChanged("stepCount");
+					this.OnstepCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stepNow", DbType="Int")]
+		public System.Nullable<int> stepNow
+		{
+			get
+			{
+				return this._stepNow;
+			}
+			set
+			{
+				if ((this._stepNow != value))
+				{
+					this.OnstepNowChanging(value);
+					this.SendPropertyChanging();
+					this._stepNow = value;
+					this.SendPropertyChanged("stepNow");
+					this.OnstepNowChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(5,1)")]
+		public System.Nullable<decimal> daySpan
+		{
+			get
+			{
+				return this._daySpan;
+			}
+			set
+			{
+				if ((this._daySpan != value))
+				{
+					this.OndaySpanChanging(value);
+					this.SendPropertyChanging();
+					this._daySpan = value;
+					this.SendPropertyChanged("daySpan");
+					this.OndaySpanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hourSpan", DbType="Int")]
+		public System.Nullable<int> hourSpan
+		{
+			get
+			{
+				return this._hourSpan;
+			}
+			set
+			{
+				if ((this._hourSpan != value))
+				{
+					this.OnhourSpanChanging(value);
+					this.SendPropertyChanging();
+					this._hourSpan = value;
+					this.SendPropertyChanged("hourSpan");
+					this.OnhourSpanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_realDaySpan", DbType="Decimal(5,1)")]
+		public System.Nullable<decimal> realDaySpan
+		{
+			get
+			{
+				return this._realDaySpan;
+			}
+			set
+			{
+				if ((this._realDaySpan != value))
+				{
+					this.OnrealDaySpanChanging(value);
+					this.SendPropertyChanging();
+					this._realDaySpan = value;
+					this.SendPropertyChanged("realDaySpan");
+					this.OnrealDaySpanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_realHourSpan", DbType="Int")]
+		public System.Nullable<int> realHourSpan
+		{
+			get
+			{
+				return this._realHourSpan;
+			}
+			set
+			{
+				if ((this._realHourSpan != value))
+				{
+					this.OnrealHourSpanChanging(value);
+					this.SendPropertyChanging();
+					this._realHourSpan = value;
+					this.SendPropertyChanged("realHourSpan");
+					this.OnrealHourSpanChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance_Statistic")]
+	public partial class KQ_Attendance_Statistic : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _username;
+		
+		private System.Nullable<int> _userid;
+		
+		private System.Nullable<int> _typeid;
+		
+		private string _dept;
+		
+		private System.Nullable<int> _count;
+		
+		private System.Nullable<decimal> _daySpan;
+		
+		private System.Nullable<int> _hourSpan;
+		
+		private System.Nullable<System.DateTime> _statisticStart;
+		
+		private System.Nullable<System.DateTime> _statisticEnd;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnuseridChanging(System.Nullable<int> value);
+    partial void OnuseridChanged();
+    partial void OntypeidChanging(System.Nullable<int> value);
+    partial void OntypeidChanged();
+    partial void OndeptChanging(string value);
+    partial void OndeptChanged();
+    partial void OncountChanging(System.Nullable<int> value);
+    partial void OncountChanged();
+    partial void OndaySpanChanging(System.Nullable<decimal> value);
+    partial void OndaySpanChanged();
+    partial void OnhourSpanChanging(System.Nullable<int> value);
+    partial void OnhourSpanChanged();
+    partial void OnstatisticStartChanging(System.Nullable<System.DateTime> value);
+    partial void OnstatisticStartChanged();
+    partial void OnstatisticEndChanging(System.Nullable<System.DateTime> value);
+    partial void OnstatisticEndChanged();
+    #endregion
+		
+		public KQ_Attendance_Statistic()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		public System.Nullable<int> typeid
+		{
+			get
+			{
+				return this._typeid;
+			}
+			set
+			{
+				if ((this._typeid != value))
+				{
+					this.OntypeidChanging(value);
+					this.SendPropertyChanging();
+					this._typeid = value;
+					this.SendPropertyChanged("typeid");
+					this.OntypeidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		public string dept
+		{
+			get
+			{
+				return this._dept;
+			}
+			set
+			{
+				if ((this._dept != value))
+				{
+					this.OndeptChanging(value);
+					this.SendPropertyChanging();
+					this._dept = value;
+					this.SendPropertyChanged("dept");
+					this.OndeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_count", DbType="Int")]
+		public System.Nullable<int> count
+		{
+			get
+			{
+				return this._count;
+			}
+			set
+			{
+				if ((this._count != value))
+				{
+					this.OncountChanging(value);
+					this.SendPropertyChanging();
+					this._count = value;
+					this.SendPropertyChanged("count");
+					this.OncountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(5,1)")]
+		public System.Nullable<decimal> daySpan
+		{
+			get
+			{
+				return this._daySpan;
+			}
+			set
+			{
+				if ((this._daySpan != value))
+				{
+					this.OndaySpanChanging(value);
+					this.SendPropertyChanging();
+					this._daySpan = value;
+					this.SendPropertyChanged("daySpan");
+					this.OndaySpanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hourSpan", DbType="Int")]
+		public System.Nullable<int> hourSpan
+		{
+			get
+			{
+				return this._hourSpan;
+			}
+			set
+			{
+				if ((this._hourSpan != value))
+				{
+					this.OnhourSpanChanging(value);
+					this.SendPropertyChanging();
+					this._hourSpan = value;
+					this.SendPropertyChanged("hourSpan");
+					this.OnhourSpanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_statisticStart", DbType="DateTime")]
+		public System.Nullable<System.DateTime> statisticStart
+		{
+			get
+			{
+				return this._statisticStart;
+			}
+			set
+			{
+				if ((this._statisticStart != value))
+				{
+					this.OnstatisticStartChanging(value);
+					this.SendPropertyChanging();
+					this._statisticStart = value;
+					this.SendPropertyChanged("statisticStart");
+					this.OnstatisticStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_statisticEnd", DbType="DateTime")]
+		public System.Nullable<System.DateTime> statisticEnd
+		{
+			get
+			{
+				return this._statisticEnd;
+			}
+			set
+			{
+				if ((this._statisticEnd != value))
+				{
+					this.OnstatisticEndChanging(value);
+					this.SendPropertyChanging();
+					this._statisticEnd = value;
+					this.SendPropertyChanged("statisticEnd");
+					this.OnstatisticEndChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance_Statistic")]
+	public partial class v_KQ_Attendance_Statistic
+	{
+		
+		private System.Nullable<int> _userid;
+		
+		private string _TrueName;
+		
+		private System.Nullable<int> _count;
+		
+		private System.Nullable<decimal> _daySpan;
+		
+		private System.Nullable<int> _hourSpan;
+		
+		public v_KQ_Attendance_Statistic()
+		{
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
@@ -7898,167 +8950,39 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> starttime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string TrueName
 		{
 			get
 			{
-				return this._starttime;
+				return this._TrueName;
 			}
 			set
 			{
-				if ((this._starttime != value))
+				if ((this._TrueName != value))
 				{
-					this._starttime = value;
+					this._TrueName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> endtime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_count", DbType="Int")]
+		public System.Nullable<int> count
 		{
 			get
 			{
-				return this._endtime;
+				return this._count;
 			}
 			set
 			{
-				if ((this._endtime != value))
+				if ((this._count != value))
 				{
-					this._endtime = value;
+					this._count = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
-		public string status
-		{
-			get
-			{
-				return this._status;
-			}
-			set
-			{
-				if ((this._status != value))
-				{
-					this._status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
-		public System.Nullable<int> typeid
-		{
-			get
-			{
-				return this._typeid;
-			}
-			set
-			{
-				if ((this._typeid != value))
-				{
-					this._typeid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
-		public string reason
-		{
-			get
-			{
-				return this._reason;
-			}
-			set
-			{
-				if ((this._reason != value))
-				{
-					this._reason = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
-		public string dept
-		{
-			get
-			{
-				return this._dept;
-			}
-			set
-			{
-				if ((this._dept != value))
-				{
-					this._dept = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
-		public System.Nullable<int> ApprovalId
-		{
-			get
-			{
-				return this._ApprovalId;
-			}
-			set
-			{
-				if ((this._ApprovalId != value))
-				{
-					this._ApprovalId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
-		public string ApprovalName
-		{
-			get
-			{
-				return this._ApprovalName;
-			}
-			set
-			{
-				if ((this._ApprovalName != value))
-				{
-					this._ApprovalName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
-		public string fileurl
-		{
-			get
-			{
-				return this._fileurl;
-			}
-			set
-			{
-				if ((this._fileurl != value))
-				{
-					this._fileurl = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applytype", DbType="NVarChar(50)")]
-		public string applytype
-		{
-			get
-			{
-				return this._applytype;
-			}
-			set
-			{
-				if ((this._applytype != value))
-				{
-					this._applytype = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(5,1)")]
 		public System.Nullable<decimal> daySpan
 		{
 			get
@@ -8086,22 +9010,6 @@ namespace BLL
 				if ((this._hourSpan != value))
 				{
 					this._hourSpan = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> applyTime
-		{
-			get
-			{
-				return this._applyTime;
-			}
-			set
-			{
-				if ((this._applyTime != value))
-				{
-					this._applyTime = value;
 				}
 			}
 		}

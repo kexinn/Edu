@@ -171,6 +171,21 @@ namespace web.Application.KQ.Attendance
 
 
         }
+
+        protected void tbStartTime_TextChanged(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(tbEndTime.Text))
+            {
+
+                DateTime datestart = Convert.ToDateTime(tbStartTime.Text);
+                DateTime dateend = Convert.ToDateTime(tbEndTime.Text);
+                Decimal daySpan = 0;
+                int timeSpan = 0;
+                BLL.Application.KQ.Attendance.AttendanceStatistic.getSpanDateTime(datestart, dateend, ref daySpan, ref timeSpan);
+                lbDaySpan.Text = daySpan.ToString();
+                lbTimeSpan.Text = timeSpan.ToString();
+            }
+        }
            
 
     }

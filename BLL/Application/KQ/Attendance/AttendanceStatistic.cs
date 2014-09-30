@@ -8,7 +8,7 @@ namespace BLL.Application.KQ.Attendance
 {
     public class AttendanceStatistic
     {
-        public static List<v_KQ_Attendance> getAttendanceRecords(String time,String username,String dept,String status,ref int tot, int index=0, int num=0)
+        public static List<v_KQ_Attendance> getAttendanceRecords(String time,String username,String dept,String status,String typeid,ref int tot, int index=0, int num=0)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
@@ -32,6 +32,11 @@ namespace BLL.Application.KQ.Attendance
                 if (!String.IsNullOrEmpty(status))
                 {
                     attend = attend.Where(u => u.status.Contains(status));
+                }
+
+                if (!String.IsNullOrEmpty(typeid))
+                {
+                    attend = attend.Where(u => u.typeid == Convert.ToInt32(typeid));
                 }
 
                 tot = attend.Count();
@@ -86,9 +91,9 @@ namespace BLL.Application.KQ.Attendance
                     if (dateend.TimeOfDay <= dayNoonStartTime)
                         timeSpan = 0;
                     else if (dateend.TimeOfDay <= dayNoonEndTime)
-                        timeSpan = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - datestart.TimeOfDay)).Hours;
+                        timeSpan = (dateend.TimeOfDay  - dayNoonStartTime).Hours;
                     else
-                        timeSpan = (dateend.TimeOfDay - datestart.TimeOfDay - (dayNoonStartTime - datestart.TimeOfDay) - (dateend.TimeOfDay - dayNoonEndTime)).Hours;
+                        timeSpan = (dayNoonEndTime - dayNoonStartTime ).Hours;
 
                 }
                 else if (datestart.TimeOfDay >= dayNoonStartTime && datestart.TimeOfDay < dayNoonEndTime)
@@ -112,7 +117,7 @@ namespace BLL.Application.KQ.Attendance
 
 
             }
-            else if (dateend.DayOfYear - datestart.DayOfYear > 1) //请假一天以上的
+            else if (dateend.DayOfYear - datestart.DayOfYear >= 1) //请假一天以上的
             {
                 daySpan = (dateend.DayOfYear - datestart.DayOfYear - 1); //中间天数
                 TimeSpan ts1;
@@ -138,13 +143,16 @@ namespace BLL.Application.KQ.Attendance
                 else
                     ts1 = new TimeSpan(0);
 
-                if (ts1.Hours / 5 == 1)
+                if (ts1.Hours / 5 == 1) //第一天计算小时数折合天数，零头忽略，如果不到一天或半天零头时间累积
                 {
                     daySpan += 1; timeSpan = 0;
                 }
                 else if (ts1.Hours / 3 == 1)
                 {
                     daySpan += 0.5M; timeSpan = 0;
+                }else
+                {
+                    timeSpan = ts1.Hours;
                 }
 
 
@@ -170,11 +178,23 @@ namespace BLL.Application.KQ.Attendance
                     ts2 = dayMorEndTime - dayMorStartTime + dayNoonEndTime - dayNoonStartTime;
 
 
-                if (ts2.Hours / 5 == 1)
+                if (ts2.Hours / 5 == 1)//最后一天的时间相加计算天数，零头忽略，不满半天或一天的零头和第一天的累积时间保存
+                {
+                    daySpan += 1; 
+                }
+                else if (ts2.Hours / 3 == 1)
+                {
+                    daySpan += 0.5M;
+                }else
+                {
+                    timeSpan += ts2.Hours;
+                }
+
+                if (timeSpan / 5 == 1) //第一天和最后一天的时间相加计算天数，零头忽略，不满半天或一天的零头时间保存
                 {
                     daySpan += 1; timeSpan = 0;
                 }
-                else if (ts2.Hours / 3 == 1)
+                else if (timeSpan / 3 == 1)
                 {
                     daySpan += 0.5M; timeSpan = 0;
                 }

@@ -32,12 +32,24 @@ namespace web.Application.KQ.Attendance
                 DropDownListDept.Items.Add(item);
             }
             */
+            DropDownListType.Items.Clear();
+            ListItem lin = new ListItem("");
+            DropDownListType.Items.Add(lin);
+
+            List<KQ_AttendanceType> t = BLL.Application.KQ.Attendance.MyAttendance.getAttendanceType();
+            foreach (KQ_AttendanceType li in t)
+            {
+                ListItem l = new ListItem();
+                l.Text = li.name;
+                l.Value = li.Id.ToString();
+                DropDownListType.Items.Add(l);
+            }
             AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
         }
         protected void databind()
         {
             int recordNum = 0;
-            gvAttendance.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue, ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize);
+            gvAttendance.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue,DropDownListType.SelectedValue, ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize);
             gvAttendance.DataBind();
             gvAttendance.Columns[0].Visible = false;
             AspNetPager1.RecordCount = recordNum;
@@ -77,7 +89,7 @@ namespace web.Application.KQ.Attendance
         protected void databindExcel()
         {
             int recordNum = 0;
-            GridView1.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue, ref recordNum,AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize);
+            GridView1.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue, DropDownListType.SelectedValue, ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize); 
             
         }
         protected void lbOutExcel_Click(object sender, EventArgs e)

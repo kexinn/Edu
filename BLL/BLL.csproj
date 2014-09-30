@@ -60,6 +60,7 @@
     <Compile Include="Application\KQ\Attendance\AttendanceDetailView.cs" />
     <Compile Include="Application\KQ\Attendance\AttendanceStatistic.cs" />
     <Compile Include="Application\KQ\Attendance\MyApproval.cs" />
+    <Compile Include="Application\KQ\Attendance\statistic.cs" />
     <Compile Include="Application\KQ\DayStatisticKQ.cs" />
     <Compile Include="Application\KQ\Attendance\MyAttendance.cs" />
     <Compile Include="Application\KQ\KQManagement.cs" />

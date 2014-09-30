@@ -32,10 +32,10 @@
         <elementListCompartment Id="ce6e8414-cd31-4d3b-84ed-ef10105af358" absoluteBounds="5.14, 0.96, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2146993b-3e3f-4c37-86dd-9a5143cf41e4" absoluteBounds="7.25, 6, 2, 1.7625655110677077">
+    <classShape Id="2146993b-3e3f-4c37-86dd-9a5143cf41e4" absoluteBounds="7.375, 4.875, 2, 1.7625655110677077">
       <DataClassMoniker Name="/DataClassesEduDataContext/v_Deparment_Leader" />
       <nestedChildShapes>
-        <elementListCompartment Id="7c523f97-51b9-49a0-9da9-bb50ff7910a3" absoluteBounds="7.265, 6.46, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7c523f97-51b9-49a0-9da9-bb50ff7910a3" absoluteBounds="7.39, 5.335, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="bc345d76-1730-4fe1-96b0-79611b604d31" absoluteBounds="4.875, 4, 2, 1.9535852050781246">
@@ -80,16 +80,16 @@
         <elementListCompartment Id="41cfb622-96c6-4d2e-a2b7-6332d1e59ab4" absoluteBounds="7.6400000000000006, 11.46, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2e9bb5f0-9299-4657-912a-fc786516af14" absoluteBounds="7.625, 8, 2, 2.9086836751302076">
+    <classShape Id="2e9bb5f0-9299-4657-912a-fc786516af14" absoluteBounds="7.375, 7, 2, 2.9086836751302076">
       <DataClassMoniker Name="/DataClassesEduDataContext/v_GZL_MyApplyItem" />
       <nestedChildShapes>
-        <elementListCompartment Id="6ce9fe19-c47b-4ab0-a141-57fe0dd4695d" absoluteBounds="7.64, 8.46, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6ce9fe19-c47b-4ab0-a141-57fe0dd4695d" absoluteBounds="7.39, 7.4600000000000009, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8a5d2972-330f-40e0-ac6f-244341ff4e6b" absoluteBounds="5.125, 7.75, 2, 2.5266442871093755">
+    <classShape Id="8a5d2972-330f-40e0-ac6f-244341ff4e6b" absoluteBounds="4.875, 8.125, 2, 2.5266442871093755">
       <DataClassMoniker Name="/DataClassesEduDataContext/t_GZL_TaskHistory" />
       <nestedChildShapes>
-        <elementListCompartment Id="ec4c48f8-8683-41a6-b99f-c7bc78ece52f" absoluteBounds="5.14, 8.21, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ec4c48f8-8683-41a6-b99f-c7bc78ece52f" absoluteBounds="4.89, 8.585, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c91bd7dd-c560-4786-9ac8-60b0ef6245ad" absoluteBounds="5.5, 12.375, 2, 2.3356245930989594">
@@ -194,16 +194,34 @@
         <elementListCompartment Id="1990f5cc-d9b4-4add-bbbc-6a7443462851" absoluteBounds="0.51500000000000012, 4.21, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7eb46685-3ad5-4f72-86df-c2142bae1369" isExpanded="false" absoluteBounds="0.5, 4.375, 2, 0.45">
-      <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Attendance" />
-      <nestedChildShapes>
-        <elementListCompartment Id="243fa39c-196a-422d-8329-916ddd3a820d" absoluteBounds="0.515, 4.835, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="3fd6467e-ef2b-44bd-816b-a5f7f13d225f" isExpanded="false" absoluteBounds="5.125, 3.25, 2, 0.45">
       <DataClassMoniker Name="/DataClassesEduDataContext/v_KQ_Attendance" />
       <nestedChildShapes>
         <elementListCompartment Id="f46cbdca-c4a8-4d02-9fa2-ecf36d283ab5" absoluteBounds="5.14, 3.71, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c548766b-ce3c-408d-9400-e4fb2bd56ed8" isExpanded="false" absoluteBounds="0.5, 4.375, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Attendance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c92c3475-94f1-4315-a903-f471a95752de" absoluteBounds="0.51500000000000012, 4.835, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3261784-0389-47a8-b252-216f7067ee4f" isExpanded="false" absoluteBounds="0.5, 3.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Attendance_Tmp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20f1b85d-9890-4905-b6f1-026ed4f5366b" absoluteBounds="0.51500000000000012, 3.585, 1.9700000000000002, 3.876841227213542" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46351ae2-bdf0-4a94-b078-1f9635a72f2b" isExpanded="false" absoluteBounds="0.5, 2.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Attendance_Statistic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1354e304-6332-4597-9a9f-ac95b09c0b00" absoluteBounds="0.515, 2.96, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9f95c366-0904-4d31-817b-f2290904a4b4" isExpanded="false" absoluteBounds="0.5, 1.875, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/v_KQ_Attendance_Statistic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aca15e1f-af72-474c-add6-48f05245af3e" absoluteBounds="0.515, 2.335, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
