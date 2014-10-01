@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="statistic.aspx.cs" Inherits="web.Application.KQ.Attendance.statistic" %>
+﻿<%@ Page Language="C#"  EnableEventValidation="false"  AutoEventWireup="true" CodeBehind="statistic.aspx.cs" Inherits="web.Application.KQ.Attendance.statistic" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -21,7 +23,7 @@
                 <li><a href="#">请假统计</a></li>
             </ul>
         </div>
-
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
         <div class="rightinfo">
 
 
@@ -52,19 +54,40 @@
                        
                     </asp:DropDownList>
                  </div>
-                                 
+                     
+                <div class="pullright">
+                    <asp:LinkButton ID="lbOutExcel" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出统计结果</i></asp:LinkButton>
+
+                </div>
+    <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Conditional"  runat="server">
+    <ContentTemplate>             
                  <div class="pullleft">
-                        <asp:LinkButton ID="lbCompute" runat="server" OnClick="lbCompute_Click"
-                             ><i class="mbtn" ><img src="/media/images/t02.png" />计算生成</i></asp:LinkButton>
-                        <asp:LinkButton ID="lbSearch" runat="server"
-                            onclick="lbSearch_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />查看结果</i></asp:LinkButton>
+                      
+                        <asp:LinkButton ID="lbCompute" runat="server" OnClick="lbCompute_Click"><i class="mbtn" ><img src="/media/images/t02.png" />开始统计</i></asp:LinkButton>
+                      
                      </div>
-                <div class="clear"></div>
+        
+                <div class="clear">
+                    
+      <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel2" >
+        <ProgressTemplate>
+           
+            <font color="blue" >正在计算<asp:Image ID="Image1" runat="server" ImageUrl="/media/images/jindu.gif" /></font>
+            
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+
+                </div>
             </div>
             <div>
                 &nbsp;<asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
 
-
+                
+                <asp:GridView ID="GridView1" runat="server" CssClass="tablelist">
+                </asp:GridView>
+ </ContentTemplate></asp:UpdatePanel> 
+                <asp:GridView ID="GridView2" runat="server">
+                </asp:GridView>
             </div>
             
                                

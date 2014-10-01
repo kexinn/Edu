@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using BLL;
 
 namespace web.Application.KQ.Attendance
@@ -35,18 +36,53 @@ namespace web.Application.KQ.Attendance
             }
         }
 
-        protected void lbSearch_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void lbCompute_Click(object sender, EventArgs e)
         {
-            int typeid = -1;
-            if(!String.IsNullOrEmpty( DropDownListType.SelectedValue))
-                typeid = Convert.ToInt32(DropDownListType.SelectedValue);
 
-            BLL.Application.KQ.Attendance.statistic.calculateResult(Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text),DropDownListDept.SelectedValue,DropDownListStatus.SelectedValue,typeid);
+            System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
+            getdata();
         }
+
+        protected void  getdata()
+        {
+            int typeid = -1;
+            if (!String.IsNullOrEmpty(DropDownListType.SelectedValue))
+                typeid = Convert.ToInt32(DropDownListType.SelectedValue);
+            BLL.Application.KQ.Attendance.statistic.Attendance_Statistic statistic = new BLL.Application.KQ.Attendance.statistic.Attendance_Statistic();
+
+            if (!String.IsNullOrEmpty(DropDownListDept.SelectedValue))
+                statistic.dept = DropDownListDept.SelectedValue;
+            else
+                statistic.dept = "";
+            if (!String.IsNullOrEmpty(DropDownListStatus.SelectedValue))
+                statistic.status = DropDownListStatus.SelectedValue;
+            else
+                statistic.status = "";
+            if (!String.IsNullOrEmpty(DropDownListType.SelectedValue))
+                statistic.type = DropDownListType.SelectedItem.Text;
+
+            DataTable dt = BLL.Application.KQ.Attendance.statistic.calculateResult(statistic, Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue, typeid);
+
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
+
+        protected void lbOutExcel_Click(object sender, EventArgs e)
+        {
+            GridView1.AllowPaging = false;
+            GridView1.AllowSorting = false;
+            BLL.pub.PubClass.ToExcel(GridView1, "record1.xls", "UTF-8");
+            GridView1.AllowPaging = true;
+            GridView1.AllowSorting = true;
+        }
+
+        #region 导出为Excel
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            // Confirms that an HtmlForm control is rendered for
+        }
+
+        #endregion
     }
 }
