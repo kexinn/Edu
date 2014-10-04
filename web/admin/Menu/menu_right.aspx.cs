@@ -32,14 +32,15 @@ namespace web.admin.Menu
                 tbName.Text = menu.name;
                 tbUrl.Text = menu.url;
                 CheckBoxStatus.Checked = (bool)menu.status;
+                bindDropdownListNode(DropDownListParentNode,(int)menu.parentId);
             }
             else
             {
                 ViewState["mode"] = "add";
                 lbMode.Text = "添加模式";
                 tbMenuId.Enabled = true;
+                bindDropdownListNode(DropDownListParentNode,0);
             }
-            bindDropdownListNode(DropDownListParentNode);
         }
 
         protected void clearData()
@@ -48,18 +49,18 @@ namespace web.admin.Menu
             tbName.Text = "";
             tbUrl.Text = "";
             DropDownListParentNode.Items.Clear();
-            bindDropdownListNode(DropDownListParentNode);
+            bindDropdownListNode(DropDownListParentNode,0);
 
             ViewState["mode"] = "add";
             lbMode.Text = "添加模式";
             tbMenuId.Enabled = true;
         }
 
-        protected void bindDropdownListNode( DropDownList ddl)
+        protected void bindDropdownListNode( DropDownList ddl,int parentId)
         {
             ListItem li = new ListItem("");
             ddl.Items.Add(li);
-            BLL.admin.menu.MenuManagement.bindDropdownListNode(ref ddl);
+            BLL.admin.menu.MenuManagement.bindDropdownListNode(ref ddl,parentId);
 
         }
 
@@ -136,7 +137,10 @@ namespace web.admin.Menu
                     menu.name = tbName.Text;
                     menu.url = tbUrl.Text;
                     menu.status = CheckBoxStatus.Checked;
-                    menu.parentId = Convert.ToInt32(DropDownListParentNode.SelectedValue);
+                    if (!String.IsNullOrEmpty(DropDownListParentNode.SelectedValue))
+                        menu.parentId = Convert.ToInt32(DropDownListParentNode.SelectedValue);
+                    else
+                        menu.parentId = 0;
                     BLL.admin.menu.MenuManagement.updateMenu(menu);
 
                     Response.Write("<script language=javascript>");

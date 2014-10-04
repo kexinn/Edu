@@ -79,13 +79,12 @@
                             <ItemTemplate>
                                 <asp:Label ID="lbRoleName" runat="server"><%# Eval("XMPY") %></asp:Label>
                             </ItemTemplate>
-                            <ItemStyle Width="120px" />
+                            <ItemStyle Width="220px" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="用户名称">
+                        <asp:TemplateField HeaderText="用户名称" ItemStyle-CssClass="textleft">
                             <ItemTemplate>
                                 <asp:Label ID="lbUsername" runat="server"><%# Eval("TrueName") %></asp:Label>
                             </ItemTemplate>
-                            <ItemStyle Width="120px" />
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="操作">
@@ -115,13 +114,12 @@
                         <ItemTemplate>
                             <asp:Label ID="lbRoleName" runat="server"><%# Eval("rolename") %></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="120px" />
+                        <ItemStyle Width="220px" />
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="用户名称">
+                    <asp:TemplateField HeaderText="用户名称" ItemStyle-CssClass="textleft">
                         <ItemTemplate>
                             <asp:Label ID="lbUsername" runat="server"><%# Eval("username") %></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="120px" />
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="操作">

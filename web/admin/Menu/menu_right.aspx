@@ -51,7 +51,6 @@
 
             </div>
             <div style="margin-bottom: 10px;">
-                <asp:Label ID="lbParentNodeName" runat="server" Font-Bold="False" Font-Size="Large" ForeColor="Blue"></asp:Label>
             </div>
     
     

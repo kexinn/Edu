@@ -88,7 +88,7 @@
                 <Columns>
                     <asp:TemplateField HeaderText="ID">
                         <EditItemTemplate>
-                            <asp:TextBox ID="tbKey" runat="server" Text='<%# Eval("Key") %>'></asp:TextBox>
+                            <asp:TextBox ID="tbKey" runat="server" Enabled="false" Text='<%# Eval("Key") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="lbKey" runat="server"><%# Eval("Key") %></asp:Label>
@@ -102,7 +102,7 @@
                         <ItemTemplate>
                             <asp:LinkButton ID="lbRoleName" runat="server" OnDataBinding="lbRoleName_DataBinding"><%# Eval("Name") %></asp:LinkButton>
                         </ItemTemplate>
-                        <ItemStyle Width="120px" />
+                        <ItemStyle Width="220px" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="备注">
                         <EditItemTemplate>
@@ -111,7 +111,6 @@
                         <ItemTemplate>
                             <asp:Label ID="tbRemark" runat="server"><%# Eval("Remark")%></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="100px" />
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="操作">
@@ -121,11 +120,12 @@
                                                 <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel">取消</asp:LinkButton>
                         </EditItemTemplate>
                         <ItemTemplate>
+                            <asp:LinkButton ID="lbAuth" runat="server" OnDataBinding="lbAuth_DataBinding" CommandName="auth">菜单权限</asp:LinkButton> &nbsp;&nbsp;
                             <asp:LinkButton ID="lbEdit" runat="server" CommandName="Edit">修改</asp:LinkButton>
                             &nbsp;&nbsp;
                                                 <asp:LinkButton ID="lbDel" runat="server" CommandName="Delete">删除</asp:LinkButton>
                         </ItemTemplate>
-                        <ItemStyle Width="80px" />
+                        <ItemStyle Width="220px" />
                     </asp:TemplateField>
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />

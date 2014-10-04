@@ -96,6 +96,18 @@ namespace BLL.admin.role
             }
         }
 
+        public static bool ifRoleHasUsers(int roleid)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                var u = dc.User_Role.Where(r => r.RoleKey == roleid);
+                if (u.Count() > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         public static bool deleteRoleUserById(String id)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())

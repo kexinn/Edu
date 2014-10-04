@@ -88,6 +88,7 @@
     <Content Include="admin\Menu\MenuManagement.aspx" />
     <Content Include="admin\Menu\menu_left.aspx" />
     <Content Include="admin\Menu\menu_right.aspx" />
+    <Content Include="admin\Menu\RoleMenus.aspx" />
     <Content Include="admin\TeacherGroup\member_left.aspx" />
     <Content Include="admin\TeacherGroup\member_right.aspx" />
     <Content Include="admin\TeacherGroup\TeacherGroupManagement.aspx" />
@@ -437,6 +438,13 @@
     </Compile>
     <Compile Include="admin\Menu\menu_right.aspx.designer.cs">
       <DependentUpon>menu_right.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Menu\RoleMenus.aspx.cs">
+      <DependentUpon>RoleMenus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Menu\RoleMenus.aspx.designer.cs">
+      <DependentUpon>RoleMenus.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\TeacherGroup\member_left.aspx.cs">
       <DependentUpon>member_left.aspx</DependentUpon>

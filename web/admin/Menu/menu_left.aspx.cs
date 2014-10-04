@@ -38,7 +38,7 @@ namespace web.admin.Menu
                 NodeId = m.Id;
                 //获取当前分类ID 
                 //设置节点的显示文本，即分类名称 
-                menuNodes[NodeId].Text = m.name;
+                menuNodes[NodeId].Text ="("+m.Id+")"+ m.name+((bool)m.status?"":"(禁用)");
                 //设置节点的链接地址 
                 menuNodes[NodeId].NavigateUrl = "menu_right.aspx?id=" + NodeId;
                 menuNodes[NodeId].Target = "rframe";

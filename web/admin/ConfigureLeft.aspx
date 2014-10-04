@@ -43,7 +43,6 @@ $(function(){
     	<ul class="menuson">
         <li ><cite></cite><a href="/admin/user/UserManagement.aspx" target="rightFrame">账号管理</a><i></i></li>
         <li ><cite></cite><a href="/admin/user/DepartmentManagement.aspx" target="rightFrame">机构管理</a><i></i></li>
-        <li><cite></cite><a href="/admin/user/RoleManagement.aspx" target="rightFrame">角色管理</a><i></i></li>
         </ul>    
     </dd>
         
@@ -59,9 +58,10 @@ $(function(){
     </dd> 
     
     
-    <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>菜单管理</div>
+    <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>菜单角色</div>
     <ul class="menuson">
         <li><cite></cite><a href="/admin/Menu/MenuManagement.aspx" target="rightFrame">菜单管理</a><i></i></li>
+        <li><cite></cite><a href="/admin/user/RoleManagement.aspx" target="rightFrame">角色管理</a><i></i></li>
     </ul>    
     </dd>  
     

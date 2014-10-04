@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="admin\department\DepartmentManagement.cs" />
     <Compile Include="admin\menu\MenuManagement.cs" />
+    <Compile Include="admin\menu\RoleMenus.cs" />
     <Compile Include="admin\role\RoleManagement.cs" />
     <Compile Include="admin\TeacherGroup\TeacherGroupManagement.cs" />
     <Compile Include="admin\user\UserManagement.cs" />

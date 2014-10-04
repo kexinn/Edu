@@ -82,7 +82,7 @@ namespace BLL.admin.menu
             }
         }
 
-        public static void bindDropdownListNode(ref DropDownList ddl)
+        public static void bindDropdownListNode(ref DropDownList ddl,int parentId)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
@@ -93,6 +93,8 @@ namespace BLL.admin.menu
                 ListItem theItem = new ListItem();
                 theItem.Text = m.name;
                 theItem.Value = m.Id.ToString();
+                if (m.Id == parentId)
+                    theItem.Selected = true;
                 ddl.Items.Add(theItem);
                 AddItem(dc,ref ddl,m.Id, 1);
                 }

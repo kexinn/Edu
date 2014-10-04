@@ -79,9 +79,18 @@ namespace web.admin.user
         {
             String id = gvRoles.DataKeys[e.RowIndex].Value.ToString();
 
+            if( BLL.admin.role.RoleManagement.ifRoleHasUsers(Convert.ToInt32(id)))
+            {
+
+                lbMessage.Text = "该角色还有关联用户，不能删除，请先删除该角色中的用户！";
+                BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "该角色还有关联用户，不能删除!");
+                return;
+            }
+
             if (BLL.admin.role.RoleManagement.deleteRoleById(id))
             {
                 lbMessage.Text = "删除角色成功！";
+                BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "删除角色成功!");
             }
             databind();
         }
@@ -114,6 +123,14 @@ namespace web.admin.user
                 lbMessage.Text = "创建角色成功!";
             }
             databind();
+        }
+
+        protected void lbAuth_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            Roles role = GetDataItem() as Roles;
+
+            lb.PostBackUrl = "/admin/Menu/RoleMenus.aspx?parentid=0&roleid=" + role.Key;
         }
     }
 }
