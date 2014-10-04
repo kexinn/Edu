@@ -62,6 +62,7 @@ $(function(){
         <li><cite></cite><a href="/Application/KQ/Attendance/MyApprovalHistory.aspx" target="rightFrame">审批历史</a><i></i></li>
             <asp:Panel ID="PanelAttendance" runat="server">
         <li><cite></cite><a href="/Application/KQ/Attendance/AttendanceStatistic.aspx" target="rightFrame">请假查询</a><i></i></li>
+        <li><cite></cite><a href="/Application/KQ/Attendance/statistic.aspx" target="rightFrame">请假统计</a><i></i></li>
                 </asp:Panel>
         </ul>     
     </dd> 

@@ -25,7 +25,7 @@
     
     <div class="welinfo">
     <span><img src="/media/images/sun.png" alt="天气" /></span>
-    <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
+    <b>Admin早上好，欢迎使用鄞州职教中心日常管理系统</b>
     <a href="#">帐号设置</a>
     </div>
     
@@ -53,8 +53,7 @@
     <div class="box"></div>
     
     <div class="welinfo">
-    <span><img src="/media/images/dp.png" alt="提醒" /></span>
-    <b>Uimaker信息管理系统使用指南</b>
+    <span><img src="/media/images/dp.png" alt="提醒" /></span> <b>管理系统使用指南</b>
     </div>
     
     <ul class="infolist">

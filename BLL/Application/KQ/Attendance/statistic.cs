@@ -143,14 +143,14 @@ namespace BLL.Application.KQ.Attendance
                 string ty = sta.type;
 
                 var statistic = from attend in dtSelect.AsEnumerable() //统计指定类型的请假
-                                group attend by new { id = attend["userid"], name = attend["username"] } into g
-
+                                group attend by new { id = attend["userid"], name = attend["username"],dept1 = attend["dept"] } into g
+                                orderby g.Key.dept1
                                 select new Attendance_Statistic
                                 {
                                     statisticStart = starttime,
                                     statisticEnd = endtime,
                                     status = st,
-                                    dept = de,
+                                    dept = (string)g.Key.dept1,
                                     type = ty,
                                     userid = (int)g.Key.id,
                                     username = (string)g.Key.name,
@@ -162,14 +162,14 @@ namespace BLL.Application.KQ.Attendance
                 {
                     statistic = from attend in dtSelect.AsEnumerable()
                                 join t in dc.KQ_AttendanceType on attend["typeid"] equals t.Id
-                                group attend by new { id = attend["userid"], name = attend["username"],type = t.name } into g
+                                group attend by new { id = attend["userid"], name = attend["username"],type = t.name,dept1=attend["dept"] } into g
                                 orderby g.Key.type
                                 select new Attendance_Statistic
                                 {
                                     statisticStart = starttime,
                                     statisticEnd = endtime,
                                     status = st,
-                                    dept = de,
+                                    dept = (string)g.Key.dept1,
                                     type = g.Key.type,
                                     userid = (int)g.Key.id,
                                     username = (string)g.Key.name,

@@ -21,6 +21,11 @@ namespace BLL.pub
         {
             return System.Configuration.ConfigurationManager.AppSettings["EduConnectionString"];
         }
+
+        public static void showAlertMessage(Page p, ClientScriptManager ClientScript, string message)
+        {
+           ClientScript.RegisterStartupScript(p.GetType(),"", "<script>alert('"+message+"');<" + "/script>");
+        }
         public static string MD5(string str)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
