@@ -6,6 +6,7 @@
     <title>无标题文档</title>
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript" src="/media/js/myjs.js"></script>
 
     <script type="text/javascript">
        
@@ -38,7 +39,7 @@
                     <li><span>
                         <img src="/media/images/t01.png" /></span>
                         <asp:LinkButton ID="lbAdd" runat="server"
-                            OnClick="lbAdd_Click">添加账号 </asp:LinkButton></li>
+                            OnClick="lbAdd_Click">添加角色 </asp:LinkButton></li>
                 </ul>
 
 
@@ -120,10 +121,10 @@
                                                 <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel">取消</asp:LinkButton>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbAuth" runat="server" OnDataBinding="lbAuth_DataBinding" CommandName="auth">菜单权限</asp:LinkButton> &nbsp;&nbsp;
-                            <asp:LinkButton ID="lbEdit" runat="server" CommandName="Edit">修改</asp:LinkButton>
+                            <asp:LinkButton ID="lbAuth" runat="server" OnDataBinding="lbAuth_DataBinding" CommandName="auth" ForeColor="Blue">菜单权限</asp:LinkButton> &nbsp;&nbsp;
+                            <asp:LinkButton ID="lbEdit" runat="server" CommandName="Edit" ForeColor="Blue">修改</asp:LinkButton>
                             &nbsp;&nbsp;
-                                                <asp:LinkButton ID="lbDel" runat="server" CommandName="Delete">删除</asp:LinkButton>
+                                                <asp:LinkButton ID="lbDel" runat="server" OnClientClick="javascript:showConfirm('确定删除?')" CommandName="Delete" ForeColor="Blue">删除</asp:LinkButton>
                         </ItemTemplate>
                         <ItemStyle Width="220px" />
                     </asp:TemplateField>

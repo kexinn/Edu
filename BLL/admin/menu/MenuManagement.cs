@@ -16,6 +16,15 @@ namespace BLL.admin.menu
                 return dc.t_Menu.OrderBy(o=>o.Id).ToList();
             }
         }
+
+        public static List<sp_Menu_getUserMenusResult> getUserMenus(int userid, int parentMenuId)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                System.Data.Linq.ISingleResult<sp_Menu_getUserMenusResult> result = dc.sp_Menu_getUserMenus(parentMenuId, userid);
+                return result.ToList();
+            }
+        }
         public static t_Menu getMenuById(int id)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())

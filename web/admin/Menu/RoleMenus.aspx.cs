@@ -15,6 +15,7 @@ namespace web.admin.Menu
             if(!IsPostBack)
             {
                 databind();
+                ViewState["retu"] = Request.UrlReferrer.ToString();   
             }
         }
 
@@ -24,6 +25,8 @@ namespace web.admin.Menu
             string parentid = Request.QueryString["parentid"];
             gvMenu.DataSource =  BLL.admin.menu.RoleMenus.getRoleMenuByRoleid(Convert.ToInt32(roleid), Convert.ToInt32(parentid));
             gvMenu.DataBind();
+
+           lbJuese.Text = "当前角色：" + BLL.admin.role.RoleManagement.getRolesById(Convert.ToInt32(roleid)).Name;
         }
 
 
@@ -39,10 +42,10 @@ namespace web.admin.Menu
 
         protected void cbAuth_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox ck = (CheckBox)sender;
-           Label lbKey = ck.NamingContainer.FindControl("lbKey") as Label;
-            BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), Convert.ToInt32(lbKey.Text), ck.Checked);
-            
+          //  CheckBox ck = (CheckBox)sender;
+         //  Label lbKey = ck.NamingContainer.FindControl("lbKey") as Label;
+           // BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), Convert.ToInt32(lbKey.Text), ck.Checked);
+          //  databind();
         }
 
         protected void hlMenuName_DataBinding(object sender, EventArgs e)
@@ -52,6 +55,59 @@ namespace web.admin.Menu
 
             lb.NavigateUrl = "/admin/Menu/RoleMenus.aspx?parentid=" + menurole.menuId + "&roleid=" + Request.QueryString["roleid"];
             
+        }
+
+        protected void gvMenu_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            
+            GridViewRow drv = ((GridViewRow)(((LinkButton)(e.CommandSource)).Parent.Parent)); //此得出的值是表示那行被选中的索引值 
+            int menuid = Convert.ToInt32(gvMenu.DataKeys[drv.RowIndex].Value); //此获取的值为GridView中绑定数据库中的主键值 
+
+
+            if (e.CommandName == "Auth")
+            {
+                BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, true);
+          
+                databind();
+            }else
+            if (e.CommandName == "Del")
+            {
+                BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, false);
+                databind();
+            }
+        }
+
+        protected void lbAuth_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            BLL.admin.menu.RoleMenus.MenuRole menurole = GetDataItem() as BLL.admin.menu.RoleMenus.MenuRole;
+
+            CheckBox cb = lb.NamingContainer.FindControl("cbAuth") as CheckBox;
+            if (cb.Checked)
+                lb.Enabled = false;
+            else
+                lb.Enabled = true;
+            
+          
+        }
+
+        protected void lbDel_DataBinding(object sender, EventArgs e)
+        {
+
+            LinkButton lb = (LinkButton)sender;
+            BLL.admin.menu.RoleMenus.MenuRole menurole = GetDataItem() as BLL.admin.menu.RoleMenus.MenuRole;
+
+            CheckBox cb = lb.NamingContainer.FindControl("cbAuth") as CheckBox;
+            if (cb.Checked)
+                lb.Enabled = true;
+            else
+                lb.Enabled = false;
+        }
+
+        protected void LinkButtonPreview_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(ViewState["retu"].ToString());   
+
         }
 
     }

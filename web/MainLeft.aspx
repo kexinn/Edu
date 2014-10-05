@@ -57,13 +57,13 @@ $(function(){
     <span><img src="/media/images/leftico02.png" /></span>请假管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="/Application/KQ/Attendance/MyAttendance.aspx" target="rightFrame">我的请假</a><i></i></li>
-        <li><cite></cite><a href="/Application/KQ/Attendance/MyApproval.aspx" target="rightFrame">我的审批</a><i></i></li>
-        <li><cite></cite><a href="/Application/KQ/Attendance/MyApprovalHistory.aspx" target="rightFrame">审批历史</a><i></i></li>
-            <asp:Panel ID="PanelAttendance" runat="server">
-        <li><cite></cite><a href="/Application/KQ/Attendance/AttendanceStatistic.aspx" target="rightFrame">请假查询</a><i></i></li>
-        <li><cite></cite><a href="/Application/KQ/Attendance/statistic.aspx" target="rightFrame">请假统计</a><i></i></li>
-                </asp:Panel>
+        
+        <asp:Repeater ID="RepeaterAttendance" runat="server">
+           <ItemTemplate>
+           <li><cite></cite><a href='<%# Eval("url")%>' target="rightFrame"><%# Eval("name")%></a><i></i></li>
+                                
+            </ItemTemplate>
+          </asp:Repeater>
         </ul>     
     </dd> 
     

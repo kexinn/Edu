@@ -32,6 +32,7 @@ namespace web
 
             RepeaterPlan.DataSource = BLL.Application.WorkPlan.LookByMonth.getWorkPlanByDate(date.Year, date.Month,18,'1');
             RepeaterPlan.DataBind();
+
         }
         protected void getTask()
         {

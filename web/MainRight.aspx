@@ -173,6 +173,7 @@
                         <li><i><%# formatContentLen( Eval("content").ToString())%></i><%# Eval("deptName")%></li>
                                 </ItemTemplate>
                         </asp:Repeater>
+
                     </ul>
                 </div>
 

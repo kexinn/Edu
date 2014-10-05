@@ -32,13 +32,17 @@
         <div class="rightinfo">
 
             <div>
-                &nbsp;<asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
+                <asp:LinkButton ID="LinkButtonPreview" runat="server" OnClick="LinkButtonPreview_Click">返回上一页</asp:LinkButton>
+                &nbsp;<br />
+                <div class="textcenter"><asp:Label ID="lbJuese" runat="server" Font-Size="Large" Font-Bold="True"></asp:Label></div>
+                
+                <asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
 
 
             </div>
             <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="menuId"  Width="100%"
-                CssClass="tablelist" >
+                CssClass="tablelist" OnRowCommand="gvMenu_RowCommand" >
                 <Columns>
                     <asp:TemplateField HeaderText="ID">
                         <ItemTemplate>
@@ -64,12 +68,17 @@
                         </ItemTemplate>
                         <ItemStyle Width="120px" />
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="授权">
+                    <asp:TemplateField HeaderText="操作">
                         
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbAuth" runat="server" OnCheckedChanged="cbAuth_CheckedChanged"  Checked='<%# Eval("auth")%>' AutoPostBack="True" />
+                            <asp:CheckBox ID="cbAuth" runat="server" Enabled="false" CssClass="inline"  Checked='<%# Eval("auth")%>' AutoPostBack="True" />
+                            &nbsp;&nbsp;
+                            <asp:LinkButton ID="lbAuth" runat="server" OnDataBinding="lbAuth_DataBinding" CommandName="Auth" ForeColor="Blue">授权</asp:LinkButton>
+                            &nbsp;&nbsp;
+                                                <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding" CommandName="Del" ForeColor="Blue">取消</asp:LinkButton>
+
                         </ItemTemplate>
-                        <ItemStyle Width="120px" />
+                        <ItemStyle Width="180px" />
                     </asp:TemplateField>
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />
