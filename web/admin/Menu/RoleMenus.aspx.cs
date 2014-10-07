@@ -63,17 +63,23 @@ namespace web.admin.Menu
             GridViewRow drv = ((GridViewRow)(((LinkButton)(e.CommandSource)).Parent.Parent)); //此得出的值是表示那行被选中的索引值 
             int menuid = Convert.ToInt32(gvMenu.DataKeys[drv.RowIndex].Value); //此获取的值为GridView中绑定数据库中的主键值 
 
+            try
+            {
+                if (e.CommandName == "Auth")
+                {
+                    BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, true);
 
-            if (e.CommandName == "Auth")
+                    databind();
+                }
+                else
+                    if (e.CommandName == "Del")
+                    {
+                        BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, false);
+                        databind();
+                    }
+            }catch (Exception ex)
             {
-                BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, true);
-          
-                databind();
-            }else
-            if (e.CommandName == "Del")
-            {
-                BLL.admin.menu.RoleMenus.roleMenuAuthorize(Convert.ToInt32(Request.QueryString["roleid"]), menuid, false);
-                databind();
+                lbMessage.Text = "错误：" + ex.Message;
             }
         }
 

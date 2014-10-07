@@ -99,12 +99,12 @@ namespace BLL
     partial void InsertKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
     partial void UpdateKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
     partial void DeleteKQ_Attendance_Statistic(KQ_Attendance_Statistic instance);
-    partial void Insertt_Menu_Role(t_Menu_Role instance);
-    partial void Updatet_Menu_Role(t_Menu_Role instance);
-    partial void Deletet_Menu_Role(t_Menu_Role instance);
     partial void Insertt_Menu(t_Menu instance);
     partial void Updatet_Menu(t_Menu instance);
     partial void Deletet_Menu(t_Menu instance);
+    partial void Insertt_Menu_Role(t_Menu_Role instance);
+    partial void Updatet_Menu_Role(t_Menu_Role instance);
+    partial void Deletet_Menu_Role(t_Menu_Role instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -433,19 +433,19 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<t_Menu_Role> t_Menu_Role
-		{
-			get
-			{
-				return this.GetTable<t_Menu_Role>();
-			}
-		}
-		
 		public System.Data.Linq.Table<t_Menu> t_Menu
 		{
 			get
 			{
 				return this.GetTable<t_Menu>();
+			}
+		}
+		
+		public System.Data.Linq.Table<t_Menu_Role> t_Menu_Role
+		{
+			get
+			{
+				return this.GetTable<t_Menu_Role>();
 			}
 		}
 		
@@ -9044,116 +9044,6 @@ namespace BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Menu_Role")]
-	public partial class t_Menu_Role : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _RoleKey;
-		
-		private System.Nullable<int> _MenuKey;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnRoleKeyChanging(System.Nullable<int> value);
-    partial void OnRoleKeyChanged();
-    partial void OnMenuKeyChanging(System.Nullable<int> value);
-    partial void OnMenuKeyChanged();
-    #endregion
-		
-		public t_Menu_Role()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleKey", DbType="Int")]
-		public System.Nullable<int> RoleKey
-		{
-			get
-			{
-				return this._RoleKey;
-			}
-			set
-			{
-				if ((this._RoleKey != value))
-				{
-					this.OnRoleKeyChanging(value);
-					this.SendPropertyChanging();
-					this._RoleKey = value;
-					this.SendPropertyChanged("RoleKey");
-					this.OnRoleKeyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuKey", DbType="Int")]
-		public System.Nullable<int> MenuKey
-		{
-			get
-			{
-				return this._MenuKey;
-			}
-			set
-			{
-				if ((this._MenuKey != value))
-				{
-					this.OnMenuKeyChanging(value);
-					this.SendPropertyChanging();
-					this._MenuKey = value;
-					this.SendPropertyChanged("MenuKey");
-					this.OnMenuKeyChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Menu")]
 	public partial class t_Menu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9287,6 +9177,92 @@ namespace BLL
 					this._status = value;
 					this.SendPropertyChanged("status");
 					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Menu_Role")]
+	public partial class t_Menu_Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RoleKey;
+		
+		private int _MenuKey;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoleKeyChanging(int value);
+    partial void OnRoleKeyChanged();
+    partial void OnMenuKeyChanging(int value);
+    partial void OnMenuKeyChanged();
+    #endregion
+		
+		public t_Menu_Role()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleKey", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RoleKey
+		{
+			get
+			{
+				return this._RoleKey;
+			}
+			set
+			{
+				if ((this._RoleKey != value))
+				{
+					this.OnRoleKeyChanging(value);
+					this.SendPropertyChanging();
+					this._RoleKey = value;
+					this.SendPropertyChanged("RoleKey");
+					this.OnRoleKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuKey", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MenuKey
+		{
+			get
+			{
+				return this._MenuKey;
+			}
+			set
+			{
+				if ((this._MenuKey != value))
+				{
+					this.OnMenuKeyChanging(value);
+					this.SendPropertyChanging();
+					this._MenuKey = value;
+					this.SendPropertyChanged("MenuKey");
+					this.OnMenuKeyChanged();
 				}
 			}
 		}

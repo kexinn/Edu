@@ -41,13 +41,13 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>考勤管理
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/KQ/MyKQList.aspx" target="rightFrame">我的打卡</a><i></i></li>
-            <asp:Panel ID="PanelKQ" runat="server">
-        <li ><cite></cite><a href="/Application/KQ/QueryKQList.aspx" target="rightFrame">打卡查询</a><i></i></li>
-        <li ><cite></cite><a href="/Application/KQ/HandPunch.aspx" target="rightFrame">手工打卡</a><i></i></li>
-        <li ><cite></cite><a href="/Application/KQ/DayStatisticKQ.aspx" target="rightFrame">考勤统计</a><i></i></li>
-<%--        <li><cite></cite><a href="/Application/KQ/StatisticKQList.aspx" target="rightFrame">考勤统计</a><i></i></li>--%>
-                </asp:Panel>
+            
+        <asp:Repeater ID="RepeaterKQ" runat="server">
+           <ItemTemplate>
+           <li><cite></cite><a href='<%# Eval("url")%>' target="rightFrame"><%# Eval("name")%></a><i></i></li>
+                                
+            </ItemTemplate>
+          </asp:Repeater>
         </ul>    
     </dd>
         

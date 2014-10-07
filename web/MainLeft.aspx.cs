@@ -29,6 +29,8 @@ namespace web
 
             RepeaterAttendance.DataSource = BLL.admin.menu.MenuManagement.getUserMenus(Convert.ToInt32(Session["userid"]), 111);
             RepeaterAttendance.DataBind();
+            RepeaterKQ.DataSource = BLL.admin.menu.MenuManagement.getUserMenus(Convert.ToInt32(Session["userid"]), 101);
+            RepeaterKQ.DataBind();
         }
     }
 }
