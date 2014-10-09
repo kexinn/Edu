@@ -319,6 +319,32 @@ namespace web
             }
         }
 
+        protected void tbName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Users user = BLL.admin.user.UserManagement.getUserByName(tbName.Text);
+                if (user != null)
+                {
+                    lbChanghao.Text = user.changhao;
+                    lbDuanhao.Text = user.duanhao;
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        protected void lbSMS_Click(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrEmpty(lbChanghao.Text)&&!String.IsNullOrEmpty(taMessageInfo.InnerText))
+            {
+                String sms =  taMessageInfo.InnerText + "  发送人：" +Session["username"];
+                BLL.pub.PubClass.sendSMS(lbChanghao.Text,sms);
+                BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "发送短信成功！");
+                
+            }
+        }
+
         //protected void Unnamed_Tick(object sender, EventArgs e)
         //{
         //    getTask();

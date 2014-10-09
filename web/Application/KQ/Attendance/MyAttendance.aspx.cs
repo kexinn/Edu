@@ -168,7 +168,24 @@ namespace web.Application.KQ.Attendance
             BLL.Application.KQ.Attendance.AttendanceStatistic.getSpanDateTime(datestart, dateend, ref daySpan, ref timeSpan);
             lbDaySpan.Text = daySpan.ToString();
             lbTimeSpan.Text = timeSpan.ToString();
-
+            if (dateend.ToShortDateString() == datestart.ToShortDateString())
+            {
+                if (datestart.Hour == dateend.Hour)
+                {
+                    lbMinute.Text = (dateend.Minute - datestart.Minute).ToString();
+                    lbMtip.Visible = true;
+                }
+                else
+                {
+                    lbMinute.Text = "";
+                    lbMtip.Visible = false;
+                }
+            }
+            else
+            {
+                lbMinute.Text = "";
+                lbMtip.Visible = false;
+            }
 
         }
 
@@ -184,6 +201,24 @@ namespace web.Application.KQ.Attendance
                 BLL.Application.KQ.Attendance.AttendanceStatistic.getSpanDateTime(datestart, dateend, ref daySpan, ref timeSpan);
                 lbDaySpan.Text = daySpan.ToString();
                 lbTimeSpan.Text = timeSpan.ToString();
+                if (dateend.ToShortDateString() == datestart.ToShortDateString())
+                {
+                    if (datestart.Hour == dateend.Hour)
+                    {
+                        lbMinute.Text = (dateend.Minute - datestart.Minute).ToString();
+                        lbMtip.Visible = true;
+                    }
+                    else
+                    {
+                        lbMinute.Text = "";
+                        lbMtip.Visible = false;
+                    }
+                }
+                else
+                {
+                    lbMinute.Text = "";
+                    lbMtip.Visible = false;
+                }
             }
         }
            

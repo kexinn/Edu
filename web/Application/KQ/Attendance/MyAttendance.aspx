@@ -114,7 +114,10 @@
                         <td class="seachform" colspan="3">共请假:<asp:Label ID="lbDaySpan" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="Larger"></asp:Label>
                             &nbsp;天 
                             <asp:Label ID="lbTimeSpan" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="Larger"></asp:Label>
-                            &nbsp;小时</td>
+                            &nbsp;小时 
+                            <asp:Label ID="lbMinute" runat="server" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lbMtip" runat="server" Text="分钟" Visible="False"></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td class="auto-style2">请假事由</td>

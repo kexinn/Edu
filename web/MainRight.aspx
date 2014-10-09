@@ -12,6 +12,17 @@
     <script type="text/javascript" src="media/js/format+zh_CN,default,corechart.I.js"></script>
     <script type="text/javascript" src="media/js/jquery.ba-resize.min.js"></script>
 
+    <style type="text/css">
+        #TextArea1 {
+            height: 53px;
+            width: 279px;
+        }
+        #taMessageInfo {
+            height: 33px;
+            width: 224px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -161,7 +172,48 @@
 
             <div class="mainright">
 
+                
+                <div class="dflist2">
+                    <div class="listtitle">电话查询</div>
+                   
+                       
 
+                        <table class="tablecard" style="width:100%;text-align:left;">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width:100px;">姓名：</td>
+                                <td style="text-align:left;">
+                                    <asp:TextBox CssClass="dfinput" Width="200px" ID="tbName" runat="server" AutoPostBack="True" OnTextChanged="tbName_TextChanged"></asp:TextBox>
+                                 <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="tbName" ServicePath="/webservice/user/UserWebService.asmx"  ServiceMethod="GetUsers" CompletionSetCount="10" MinimumPrefixLength="1"></asp:AutoCompleteExtender>
+                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>长号：</td>
+                                <td style="text-align:left;">
+                                    <asp:Label ID="lbChanghao" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>短号：</td>
+                                <td style="text-align:left;">
+                                    <asp:Label ID="lbDuanhao" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>内容：</td>
+                                <td style="text-align:left;">
+                                    <textarea id="taMessageInfo" name="S1" runat="server" cols="20"></textarea></td>
+                            </tr>
+                        </table>
+                       <div style="text-align:center;">  &nbsp;<asp:LinkButton ID="lbSMS" runat="server" OnClick="lbSMS_Click" ValidationGroup="sms"><i class="mbtn" style="margin-left:10px;"><img src="media/images/leftico03.png" />发送短信</i></asp:LinkButton>
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="taMessageInfo" ErrorMessage="*内容必填" ForeColor="Red" ValidationGroup="sms">*内容必填</asp:RequiredFieldValidator>
+                       </div>
+
+                </div>
 
 
 
