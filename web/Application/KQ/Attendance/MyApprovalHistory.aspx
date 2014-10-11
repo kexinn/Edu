@@ -85,6 +85,8 @@
                         <ItemTemplate>
                              <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
                             
+                            &nbsp;
+                             <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>

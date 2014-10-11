@@ -57,5 +57,17 @@ namespace web.Application.KQ.Attendance
 
             lb.Attributes.Add("onclick", click);
         }
+
+        protected void lbHistory_DataBinding(object sender, EventArgs e)
+        {
+
+            LinkButton lb = (LinkButton)sender;
+            v_KQ_Attendance_History item = GetDataItem() as v_KQ_Attendance_History;
+
+            String url = "/Application/KQ/Attendance/ApprovalHistory.aspx?id=" + item.Id;
+            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100')";
+            lb.Attributes.Add("onclick", "return false;");
+            lb.OnClientClick = click;
+        }
     }
 }

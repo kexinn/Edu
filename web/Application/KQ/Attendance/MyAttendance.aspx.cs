@@ -79,7 +79,7 @@ namespace web.Application.KQ.Attendance
                 string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
                 string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + "类型：" + ddlType.SelectedItem.ToString() +"请假时间从：" +tbStartTime.Text+" 到"+tbEndTime.Text +" 事由:" + tbReason.InnerText + ",请您审批，同意点：" + approvalyes + "。不同意点：" + approvalno; ;
                // tel = "13486689106";
-                BLL.pub.PubClass.sendSMS(tel, message);
+               // BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
             {
                 lbMessage.Text = "申请错误：" + ex.Message;
@@ -134,6 +134,17 @@ namespace web.Application.KQ.Attendance
                 lb.Visible = false;
         }
 
+        protected void lbHistory_DataBinding(object sender, EventArgs e)
+        {
+
+            LinkButton lb = (LinkButton)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            String url = "/Application/KQ/Attendance/ApprovalHistory.aspx?id=" + item.Id;
+            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100')";
+            lb.Attributes.Add("onclick", "return false;");
+            lb.OnClientClick = click;
+        }
         protected void gvAttendance_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();

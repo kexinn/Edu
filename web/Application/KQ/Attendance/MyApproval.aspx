@@ -100,8 +100,10 @@
                             
                              <asp:LinkButton ID="lbYes" runat="server" CommandName="yes">同意</asp:LinkButton>
                              <asp:LinkButton ID="lbNo" runat="server"   CommandName="no">拒绝</asp:LinkButton>
+                            &nbsp;
+                             <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
                         </ItemTemplate>
-                        <ItemStyle Width="100px" />
+                        <ItemStyle Width="130px" />
                     </asp:TemplateField>
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />

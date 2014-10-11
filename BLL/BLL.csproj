@@ -59,6 +59,7 @@
     <Compile Include="Application\GZL\GzlManagement.cs" />
     <Compile Include="Application\GZL\Setting\ActorManagement.cs" />
     <Compile Include="Application\GZL\Setting\RoutManagement.cs" />
+    <Compile Include="Application\KQ\Attendance\ApplyApprove.cs" />
     <Compile Include="Application\KQ\Attendance\AttendanceDetailView.cs" />
     <Compile Include="Application\KQ\Attendance\AttendanceStatistic.cs" />
     <Compile Include="Application\KQ\Attendance\MyApproval.cs" />

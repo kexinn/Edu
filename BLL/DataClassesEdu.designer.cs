@@ -476,6 +476,13 @@ namespace BLL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), parentid, userid);
 			return ((ISingleResult<sp_Menu_getUserMenusResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_Attend_getHistory")]
+		public ISingleResult<sp_Attend_getHistoryResult> sp_Attend_getHistory([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> attendId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), attendId);
+			return ((ISingleResult<sp_Attend_getHistoryResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User_Role")]
@@ -8532,6 +8539,104 @@ namespace BLL
 				if ((this._status != value))
 				{
 					this._status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_Attend_getHistoryResult
+	{
+		
+		private System.Nullable<int> _attendanceId;
+		
+		private System.Nullable<int> _userid;
+		
+		private string _TrueName;
+		
+		private System.Nullable<System.DateTime> _time;
+		
+		private string _action;
+		
+		public sp_Attend_getHistoryResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attendanceId", DbType="Int")]
+		public System.Nullable<int> attendanceId
+		{
+			get
+			{
+				return this._attendanceId;
+			}
+			set
+			{
+				if ((this._attendanceId != value))
+				{
+					this._attendanceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this._userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string TrueName
+		{
+			get
+			{
+				return this._TrueName;
+			}
+			set
+			{
+				if ((this._TrueName != value))
+				{
+					this._TrueName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time
+		{
+			get
+			{
+				return this._time;
+			}
+			set
+			{
+				if ((this._time != value))
+				{
+					this._time = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NVarChar(50)")]
+		public string action
+		{
+			get
+			{
+				return this._action;
+			}
+			set
+			{
+				if ((this._action != value))
+				{
+					this._action = value;
 				}
 			}
 		}
