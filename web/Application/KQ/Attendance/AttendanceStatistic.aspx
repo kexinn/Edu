@@ -61,7 +61,7 @@
                         OnClick="lbStatisc_Click"> <i class="mbtn"><img src="/media/images/ico06.png" />查询</i></asp:LinkButton>
                 </div>
                 <div class="pullright">
-                    <asp:LinkButton ID="lbOutExcel" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出查询结果</i></asp:LinkButton>
+                    <asp:LinkButton ID="lbOutExcel" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出查询</i></asp:LinkButton>
 
                 </div>
                 <div class="clear"></div>
@@ -77,9 +77,6 @@
                 DataKeyNames="Id" Width="100%" 
                 CssClass="tablelist" >
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" FooterStyle-CssClass="hidden" ControlStyle-CssClass="hidden">
-                    <HeaderStyle Width="60px" />
-                    </asp:BoundField>
                    
                     <asp:BoundField DataField="applyTime" HeaderText="申请时间">
                     <HeaderStyle Width="130px" />

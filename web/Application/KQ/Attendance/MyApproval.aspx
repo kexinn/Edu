@@ -47,9 +47,6 @@
                 DataKeyNames="Id" Width="100%" 
                 CssClass="tablelist" OnRowCommand="gvAttendance_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" FooterStyle-CssClass="hidden" ControlStyle-CssClass="hidden">
-                    <HeaderStyle Width="60px" />
-                    </asp:BoundField>
                    
                     <asp:BoundField DataField="applyTime" HeaderText="申请时间">
                     <HeaderStyle Width="150px" />
@@ -63,7 +60,6 @@
                         <ItemTemplate>
                             <asp:Label ID="lbSpanDate" runat="server" OnDataBinding="lbSpanDate_DataBinding"></asp:Label>
                         </ItemTemplate>
-                    <HeaderStyle Width="320px" />
                     </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="请假时长">
@@ -100,10 +96,10 @@
                             
                              <asp:LinkButton ID="lbYes" runat="server" CommandName="yes">同意</asp:LinkButton>
                              <asp:LinkButton ID="lbNo" runat="server"   CommandName="no">拒绝</asp:LinkButton>
-                            &nbsp;
+                           
                              <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
                         </ItemTemplate>
-                        <ItemStyle Width="130px" />
+                        <ItemStyle Width="150px" />
                     </asp:TemplateField>
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />
