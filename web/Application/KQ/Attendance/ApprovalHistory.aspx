@@ -25,6 +25,7 @@
                 <Columns>
                     <asp:TemplateField HeaderText="步骤序号">
                         <ItemTemplate>
+                            <asp:Label runat="server" ID="id" Text="<%# this.gvHistory.PageIndex  * this.gvHistory.PageSize + this.gvHistory.Rows.Count + 1 %>"></asp:Label>
                             <asp:Label ID="lbActorId" runat="server"></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="50px" />
