@@ -47,7 +47,7 @@ namespace BLL.Application.KQ.Attendance
 
                     string message = "您有一条待审批的请假申请，请假人：" + kq.username + " ，请假类型：" + kq.applytype +"，请假时间从："+kq.starttime.ToString()+"到："+kq.endtime.ToString()+",事由：" + kq.reason + ",请您审批，同意点：" + approvalyes + "。不同意点：" + approvalno;
                     //tel = "13486689106";
-                  //  BLL.pub.PubClass.sendSMS(tel, message);
+                    BLL.pub.PubClass.sendSMS(tel, message);
                 }
                 return true;
                 /*
