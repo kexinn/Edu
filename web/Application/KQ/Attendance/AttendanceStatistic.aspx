@@ -71,7 +71,7 @@
 
 
             </div>
-            <asp:Panel ID="PanelDaka" runat="server">
+            <asp:Panel ID="PanelDaka" runat="server" Direction="LeftToRight">
             <div class="formtitle"><span>请假名单</span></div>
             <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="Id" Width="100%" 
@@ -149,7 +149,7 @@
                       ShowBoxThreshold="11" 
                       InputBoxClass="pagetext" 
                       SubmitButtonClass="pagebtn" 
-                      SubmitButtonText="Go">
+                      SubmitButtonText="Go" BackColor="White" BorderColor="Gray" CustomInfoClass="" Height="25px" Wrap="False">
                     </webdiyer:AspNetPager>
 
             

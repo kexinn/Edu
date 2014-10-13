@@ -15,7 +15,7 @@ namespace BLL.pub
 {
     public class PubClass
     {
-        public const int PAGE_SIZE = 20;
+        public const int PAGE_SIZE = 15;
 
         public static String getConnectionString()
         {

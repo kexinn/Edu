@@ -44,7 +44,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="意见">
                         <ItemTemplate>
-                            <asp:Label ID="lbActorName" runat="server"></asp:Label>
+                            <asp:Label ID="lbActorName" runat="server"  Text='<%# Eval("reason")%>'></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>

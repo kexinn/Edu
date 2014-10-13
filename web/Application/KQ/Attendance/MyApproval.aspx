@@ -44,14 +44,12 @@
             </div>
             
             <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
-                DataKeyNames="Id" Width="100%" 
+                DataKeyNames="Id" Width="100%"  OnRowCancelingEdit="gvAttendance_RowCancelingEdit"
+                OnRowEditing="gvAttendance_RowEditing"
+                OnRowUpdating="gvAttendance_RowUpdating"
                 CssClass="tablelist" OnRowCommand="gvAttendance_RowCommand">
                 <Columns>
                    
-                    <asp:BoundField DataField="applyTime" HeaderText="申请时间">
-                    <HeaderStyle Width="150px" />
-                    </asp:BoundField>
-
                     <asp:BoundField DataField="username" HeaderText="请假人">
                     <HeaderStyle Width="80px" />
                     </asp:BoundField>
@@ -88,14 +86,24 @@
                     <asp:BoundField DataField="ApprovalName" HeaderText="当前审批人">
                     <HeaderStyle Width="80px" />
                     </asp:BoundField>
-
+                    
+                    <asp:TemplateField HeaderText="拒绝理由">
+                         <EditItemTemplate>
+                            <asp:TextBox ID="tbReason" runat="server" Width="130px" CssClass="dfinput"></asp:TextBox>
+                            <asp:LinkButton ID="lbRe" runat="server"   CommandName="Update"><i class="ibtn">保存</i></asp:LinkButton>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lbReason" runat="server" ></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="130px" />
+                    </asp:TemplateField>
                    
                     <asp:TemplateField HeaderText="操作">
                         <ItemTemplate>
                              <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
                             
                              <asp:LinkButton ID="lbYes" runat="server" CommandName="yes">同意</asp:LinkButton>
-                             <asp:LinkButton ID="lbNo" runat="server"   CommandName="no">拒绝</asp:LinkButton>
+                             <asp:LinkButton ID="lbNo" runat="server"   CommandName="Edit">拒绝</asp:LinkButton>
                            
                              <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
                         </ItemTemplate>

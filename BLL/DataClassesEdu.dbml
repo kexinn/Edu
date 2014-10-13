@@ -385,25 +385,6 @@
       <Column Name="TeacherGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.v_KQ_Attendance_History" Member="v_KQ_Attendance_History">
-    <Type Name="v_KQ_Attendance_History">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="approvalHistoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.v_KQ_Attendance" Member="v_KQ_Attendance">
     <Type Name="v_KQ_Attendance">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -458,6 +439,35 @@
     <Type Name="t_Menu_Role">
       <Column Name="RoleKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MenuKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_AttendanceApprovalHistory" Member="KQ_AttendanceApprovalHistory">
+    <Type Name="KQ_AttendanceApprovalHistory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="attendanceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="action" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_KQ_Attendance_History" Member="v_KQ_Attendance_History">
+    <Type Name="v_KQ_Attendance_History">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="typeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="dept" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ApprovalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApprovalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="applyTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="approvalHistoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
@@ -531,6 +541,7 @@
       <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Column Name="time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="action" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

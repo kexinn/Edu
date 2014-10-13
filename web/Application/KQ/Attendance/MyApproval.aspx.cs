@@ -28,7 +28,7 @@ namespace web.Application.KQ.Attendance
             int recordNum = 0;
             gvAttendance.DataSource = BLL.Application.KQ.Attendance.MyApproval.getMyApprovalRecord(Convert.ToInt32(Session["userid"]), AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize, ref recordNum);
             gvAttendance.DataBind();
-            gvAttendance.Columns[0].Visible = false;
+           // gvAttendance.Columns[0].Visible = false;
             AspNetPager1.RecordCount = recordNum;
         }
         protected void lbStatus_DataBinding(object sender, EventArgs e)
@@ -64,12 +64,7 @@ namespace web.Application.KQ.Attendance
 
             if (e.CommandName == "yes")
             {
-                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id,1);
-                databind();
-            }
-            if (e.CommandName == "no")
-            {
-                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id, 0);
+                BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(id, 1, Convert.ToInt32(Session["userid"]),"");
                 databind();
             }
         }
@@ -101,6 +96,30 @@ namespace web.Application.KQ.Attendance
             String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100')";
             lb.Attributes.Add("onclick", "return false;");
             lb.OnClientClick = click;
+        }
+
+        protected void gvAttendance_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+            gvAttendance.EditIndex = -1;
+            databind();
+        }
+
+        protected void gvAttendance_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+            gvAttendance.EditIndex = e.NewEditIndex;
+            databind();
+        }
+
+        protected void gvAttendance_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+            String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();
+            String reason = ((TextBox)gvAttendance.Rows[e.RowIndex].Cells[8].FindControl("tbReason")).Text.ToString().Trim();
+            BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(Convert.ToInt32( id), 0,Convert.ToInt32(Session["userid"]) ,reason);
+            
+            databind();
         }
     }
 }

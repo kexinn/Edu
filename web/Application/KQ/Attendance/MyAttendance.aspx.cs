@@ -77,8 +77,9 @@ namespace web.Application.KQ.Attendance
                 KQ_Attendance att = BLL.Application.KQ.Attendance.MyAttendance.getTopAttendRecordByUserid(userid);
                 string approvalyes = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=1";
                 string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
-                string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + "类型：" + ddlType.SelectedItem.ToString() +"请假时间从：" +tbStartTime.Text+" 到"+tbEndTime.Text +" 事由:" + tbReason.InnerText + ",请您审批，同意点：" + approvalyes + "。不同意点：" + approvalno; ;
-               // tel = "13486689106";
+                string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + ",类型：" + ddlType.SelectedItem.ToString() + ",请假时间从：" + tbStartTime.Text + " 到" + tbEndTime.Text + " ,事由:" + tbReason.InnerText + ",请您审批，(不同意需在电脑审批)同意点以下链接：" + approvalyes;
+                    //+ "。不同意点：" + approvalno; 
+                //tel = "13967883645";
                 BLL.pub.PubClass.sendSMS(tel, message);
             }catch(Exception ex)
             {
