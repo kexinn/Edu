@@ -116,6 +116,12 @@ namespace web.Application.KQ.Attendance
         {
 
             String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();
+            TextBox tbReason = (TextBox)gvAttendance.Rows[e.RowIndex].Cells[8].FindControl("tbReason");
+            if (String.IsNullOrEmpty(tbReason.Text))
+            {
+                lbMessage.Text = "拒绝理由不能为空";
+                return;
+            }
             String reason = ((TextBox)gvAttendance.Rows[e.RowIndex].Cells[8].FindControl("tbReason")).Text.ToString().Trim();
             BLL.Application.KQ.Attendance.MyApproval.setAttendanceApplyStatus(Convert.ToInt32( id), 0,Convert.ToInt32(Session["userid"]) ,reason);
             
