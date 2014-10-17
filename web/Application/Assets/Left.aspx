@@ -32,7 +32,7 @@ $(function(){
 </head>
 <body style="background:#f0f9fd;">
     <form id="form1" runat="server">
-    <div class="lefttop"><span></span>资产管理</div>
+    <div class="lefttop"><span></span>资产管理1</div>
     
     <dl class="leftmenu">
         
