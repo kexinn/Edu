@@ -99,6 +99,9 @@
     <Content Include="admin\user\UserManagement.aspx" />
     <Content Include="admin\user\UserRoleManagement.aspx" />
     <Content Include="admin\WebForm1.aspx" />
+    <Content Include="Application\Assets\Default.aspx" />
+    <Content Include="Application\Assets\Left.aspx" />
+    <Content Include="Application\Assets\MainRight.aspx" />
     <Content Include="Application\GZL\CG\ApplyApprove.aspx" />
     <Content Include="Application\GZL\CG\ApplyProceed.aspx" />
     <Content Include="Application\GZL\CG\PurchaseApply.aspx" />
@@ -517,6 +520,27 @@
     </Compile>
     <Compile Include="admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Left.aspx.cs">
+      <DependentUpon>Left.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Left.aspx.designer.cs">
+      <DependentUpon>Left.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\MainRight.aspx.cs">
+      <DependentUpon>MainRight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\MainRight.aspx.designer.cs">
+      <DependentUpon>MainRight.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\GZL\CG\ApplyApprove.aspx.cs">
       <DependentUpon>ApplyApprove.aspx</DependentUpon>

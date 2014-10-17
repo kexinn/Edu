@@ -29,8 +29,8 @@ $(function(){
     <li><a href="main.aspx" target="mainFrame" class="selected"><img src="media/images/icon01.png" title="工作台" /><h2>工作台</h2></a></li>
     <li><a href="/Application/GZL/GZLApply.aspx" target="mainFrame"><img src="media/images/icon02.png" title="工作申请" /><h2>工作申请</h2></a></li>
     <li><a href="/Application/WorkPlan/WorkPlan.aspx"  target="mainFrame"><img src="media/images/icon03.png" title="工作任务" /><h2>工作任务</h2></a></li>
-   <!-- <li><a href="#"  target="mainFrame"><img src="media/images/icon04.png" title="资产管理" /><h2>资产管理</h2></a></li>
-    <li><a href="main.aspx" target="mainFrame"><img src="media/images/icon05.png" title="文件管理" /><h2>文件管理</h2></a></li> -->
+    <li><a href="/Application/Assets/Default.aspx"  target="mainFrame"><img src="media/images/icon04.png" title="资产管理" /><h2>资产管理</h2></a></li>
+  <%--  <li><a href="main.aspx" target="mainFrame"><img src="media/images/icon05.png" title="文件管理" /><h2>文件管理</h2></a></li> --%>
         <asp:Panel ID="PanelConfigure" runat="server">
     <li><a href="admin/Configure.aspx"  target="mainFrame"><img src="media/images/icon06.png" title="系统设置" /><h2>系统设置</h2></a></li>
 
