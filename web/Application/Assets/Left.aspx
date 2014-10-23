@@ -32,7 +32,7 @@ $(function(){
 </head>
 <body style="background:#f0f9fd;">
     <form id="form1" runat="server">
-    <div class="lefttop"><span></span>资产管理2</div>
+    <div class="lefttop"><span></span>资产管理</div>
     
     <dl class="leftmenu">
         
@@ -41,9 +41,8 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>基础数据
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">仓库地点</a><i></i></li>
-        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">我的审批</a><i></i></li>
-        <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">查询统计</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/Position.aspx" target="rightFrame">地点管理</a><i></i></li>
+        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">资产分类</a><i></i></li>
         </ul>    
     </dd>
 
