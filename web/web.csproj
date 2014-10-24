@@ -99,6 +99,10 @@
     <Content Include="admin\user\UserManagement.aspx" />
     <Content Include="admin\user\UserRoleManagement.aspx" />
     <Content Include="admin\WebForm1.aspx" />
+    <Content Include="Application\Assets\Base\Position.aspx" />
+    <Content Include="Application\Assets\Base\PositionLeft.aspx" />
+    <Content Include="Application\Assets\Base\PositionRight.aspx" />
+    <Content Include="Application\Assets\CK.aspx" />
     <Content Include="Application\Assets\Default.aspx" />
     <Content Include="Application\Assets\Left.aspx" />
     <Content Include="Application\Assets\MainRight.aspx" />
@@ -520,6 +524,34 @@
     </Compile>
     <Compile Include="admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\Position.aspx.cs">
+      <DependentUpon>Position.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\Position.aspx.designer.cs">
+      <DependentUpon>Position.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\PositionLeft.aspx.cs">
+      <DependentUpon>PositionLeft.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\PositionLeft.aspx.designer.cs">
+      <DependentUpon>PositionLeft.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\PositionRight.aspx.cs">
+      <DependentUpon>PositionRight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\PositionRight.aspx.designer.cs">
+      <DependentUpon>PositionRight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\CK.aspx.cs">
+      <DependentUpon>CK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\CK.aspx.designer.cs">
+      <DependentUpon>CK.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\Assets\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

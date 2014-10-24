@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=10.63.150.103;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=60.12.214.181;Initial Catalog=Edu;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.User_Role" Member="User_Role">
     <Type Name="User_Role">
       <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -468,6 +468,33 @@
       <Column Name="fileurl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="applytype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="approvalHistoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position1" Member="AS_Position1">
+    <Type Name="AS_Position1">
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position1Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position1Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position1_AS_Position2" Member="AS_Position2" ThisKey="Position1ID" OtherKey="Position1ID" Type="AS_Position2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position2" Member="AS_Position2">
+    <Type Name="AS_Position2">
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position2Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position2Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position2_AS_Position3" Member="AS_Position3" ThisKey="Position2ID" OtherKey="Position2ID" Type="AS_Position3" />
+      <Association Name="AS_Position1_AS_Position2" Member="AS_Position1" ThisKey="Position1ID" OtherKey="Position1ID" Type="AS_Position1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position3" Member="AS_Position3">
+    <Type Name="AS_Position3">
+      <Column Name="Position3ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position3Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position3Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position2_AS_Position3" Member="AS_Position2" ThisKey="Position2ID" OtherKey="Position2ID" Type="AS_Position2" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
