@@ -15,7 +15,7 @@
 
 <noframes>
   <body>
-  <p><font color="red">抱歉！本系统使用了框架技术， 但您的浏览器不支持框架。  </font></p>
+  <p><font color="red">抱歉！本系统使用了框架技术， 但您的浏览器不支持框架。 </font></p>
   </body>
 </noframes>
 </html>
