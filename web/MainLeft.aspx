@@ -25,8 +25,8 @@ $(function(){
 		}else{
 			$(this).next('ul').slideDown();
 		}
-	});
-})	
+	}); 
+})	 
 </script>
 
 </head>
