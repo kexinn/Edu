@@ -32,7 +32,7 @@ $(function(){
 </head>
 <body style="background:#f0f9fd;">
     <form id="form1" runat="server">
-    <div class="lefttop"><span></span>资产管理2</div>
+    <div class="lefttop"><span></span>资产管理</div>
     
     <dl class="leftmenu">
         
@@ -42,7 +42,7 @@ $(function(){
     </div>
     	<ul class="menuson">
         <li ><cite></cite><a href="/Application/Assets/Base/Position.aspx" target="rightFrame">地点管理</a><i></i></li>
-       <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">分类管理</a><i></i></li>
+        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">资产分类</a><i></i></li>
         </ul>    
     </dd>
 
