@@ -52,8 +52,6 @@
     <Compile Include="admin\role\RoleManagement.cs" />
     <Compile Include="admin\TeacherGroup\TeacherGroupManagement.cs" />
     <Compile Include="admin\user\UserManagement.cs" />
-    <Compile Include="Application\Assets\Base\Position.cs" />
-    <Compile Include="Application\Assets\CK.cs" />
     <Compile Include="Application\GZL\CG\ApplyApprove.cs" />
     <Compile Include="Application\GZL\CG\ApplyProceed.cs" />
     <Compile Include="Application\GZL\CG\PurchaseFormEdit.cs" />
