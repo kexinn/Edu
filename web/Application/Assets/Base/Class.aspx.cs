@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace web.Application.Assets
+namespace web.Application.Assets.Base
 {
-    public partial class CK : System.Web.UI.Page
+    public partial class Class : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

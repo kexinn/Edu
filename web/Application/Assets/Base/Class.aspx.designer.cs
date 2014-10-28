@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace web.Application.Assets
+namespace web.Application.Assets.Base
 {
 
 
-    public partial class CK
+    public partial class Class
     {
 
         /// <summary>

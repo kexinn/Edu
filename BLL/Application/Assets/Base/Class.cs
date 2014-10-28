@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Application.Assets
+namespace BLL.Application.Assets.Base
 {
-    class CK
+    class Class
     {
     }
 }
