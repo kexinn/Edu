@@ -135,6 +135,7 @@
                     <tr>
                         <td class="auto-style10">审批人签字</td>
                         <td colspan="3" class="auto-style11">
+                            <asp:Label ID="lbQianZi" runat="server"></asp:Label>
                             </td>
                     </tr>
                 </table>

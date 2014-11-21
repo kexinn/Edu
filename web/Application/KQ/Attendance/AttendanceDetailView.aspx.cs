@@ -29,7 +29,12 @@ namespace web.Application.KQ.Attendance
             lbStartTime.Text = attendance.starttime.ToString();
             lbEndtime.Text = attendance.endtime.ToString();
             lbReason.Text = attendance.reason;
-            
+            List<sp_Attend_getHistoryResult> his = BLL.Application.KQ.Attendance.ApplyApprove.getAttendHistory(id);
+            foreach(sp_Attend_getHistoryResult h in his)
+            {
+                if(h.action=="审批通过")
+                    lbQianZi.Text += h.TrueName +" "+ h.time +"；";
+            }
         }
     }
 }
