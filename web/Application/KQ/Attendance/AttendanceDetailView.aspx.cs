@@ -30,11 +30,13 @@ namespace web.Application.KQ.Attendance
             lbEndtime.Text = attendance.endtime.ToString();
             lbReason.Text = attendance.reason;
             List<sp_Attend_getHistoryResult> his = BLL.Application.KQ.Attendance.ApplyApprove.getAttendHistory(id);
-            foreach(sp_Attend_getHistoryResult h in his)
-            {
-                if(h.action=="审批通过")
-                    lbQianZi.Text += h.TrueName +" "+ h.time +"；";
-            }
+            Repeater1.DataSource = his;
+            Repeater1.DataBind();
+            //foreach(sp_Attend_getHistoryResult h in his)
+            //{
+            //    if(h.action=="审批通过")
+            //        lbQianZi.Text += h.TrueName +" "+ h.time +"；";
+            //}
         }
     }
 }

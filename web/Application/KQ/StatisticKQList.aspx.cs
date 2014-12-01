@@ -22,66 +22,28 @@ namespace web.Application.KQ
             tbStartTime.Text = System.DateTime.Now.ToShortDateString();
             tbEndTime.Text = System.DateTime.Now.ToShortDateString();
         }
-        
-        protected void databind1()
-        {
-            DateTime startdate = Convert.ToDateTime(tbStartTime.Text + " 00:00:00");
-            DateTime enddate = Convert.ToDateTime(tbEndTime.Text + " 23:59:59");
-            gvKQList.DataSource = BLL.Application.KQ.KQManagement.getStatiscByBetweenTime(startdate, enddate);
-            gvKQList.DataBind();
 
-            GridView1.DataSource = gvKQList.DataSource;
-            
-        }
 
-        protected void databind2()
-        {
-            DateTime startdate = Convert.ToDateTime(tbStartTime.Text + " 00:00:00");
-            DateTime enddate = Convert.ToDateTime(tbEndTime.Text + " 23:59:59");
-            
-            gvRecordNull.DataSource = BLL.Application.KQ.KQManagement.getStatiscNullByBetweenTime(startdate, enddate);
-            gvRecordNull.DataBind();
-
-            GridView2.DataSource = gvRecordNull.DataSource;
-        }
         protected void lbStatisc_Click(object sender, EventArgs e)
         {
-            databind1();
-            databind2();
+            System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
+            DateTime startdate = Convert.ToDateTime(tbStartTime.Text + " 00:00:00");
+            DateTime enddate = Convert.ToDateTime(tbEndTime.Text + " 23:59:59");
+            String[] strShangban = tbShangbanTime.Text.Split(':');
+            TimeSpan tsShangban = new TimeSpan(Convert.ToInt16(strShangban[0]), Convert.ToInt16(strShangban[1]), Convert.ToInt16(strShangban[2]));
+            String[] strXiaban = tbXiabanTime.Text.Split(':');
+            TimeSpan tsXiaban = new TimeSpan(Convert.ToInt16(strXiaban[0]), Convert.ToInt16(strXiaban[1]), Convert.ToInt16(strXiaban[2]));
+
+            GridView1.DataSource = BLL.Application.KQ.StatisticKQList.getStatisticResult(startdate, enddate, tsShangban, tsXiaban);
+           
+            GridView1.DataBind();
 
         }
 
-        protected void gvKQList_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
 
-            gvKQList.PageIndex = e.NewPageIndex;
-            databind1();
-        }
-
-        protected void gvRecordNull_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gvRecordNull.PageIndex = e.NewPageIndex;
-            databind2();
-        }
-
-        protected void lbOutExcel2_Click(object sender, EventArgs e)
-        {
-            databind2();
-            GridView2.DataBind();
-            GridView2.AllowPaging = false;
-            GridView2.AllowSorting = false;
-            //ToExcel(GridView2, "record2.xls");
-            BLL.pub.PubClass.ToExcel(GridView2, "record2.xls", "UTF-8");
-            GridView2.AllowPaging = true;
-            GridView2.AllowSorting = true;
-
-        }
 
         protected void lbOutExcel1_Click(object sender, EventArgs e)
         {
-
-            databind1();
-            GridView1.DataBind();
             GridView1.AllowPaging = false;
             GridView1.AllowSorting = false;
             BLL.pub.PubClass.ToExcel(GridView1, "record1.xls","UTF-8");

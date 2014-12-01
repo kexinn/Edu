@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="StatisticKQList.aspx.cs" Inherits="web.Application.KQ.StatisticKQList" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,29 +30,44 @@
                 <li><a href="#">考勤统计</a></li>
             </ul>
         </div>
-
+        
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
         <div class="rightinfo">
 
 
             <div class="toolsearch">
                 <div class="pullleft">
-                    开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                    上班时间：<asp:TextBox ID="tbShangbanTime" CssClass="dfinput" Width="120px" runat="server" >8:00:00</asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="inline" runat="server" ControlToValidate="tbShangbanTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    下班时间：<asp:TextBox ID="tbXiabanTime" CssClass="dfinput" Width="120px" runat="server" >16:25:00</asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" CssClass="inline" runat="server" ControlToValidate="tbXiabanTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    统计开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="inline" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                    结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                    统计结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                   <%-- <asp:TextBox ID="TextBox1" CssClass="dfinput" runat="server" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"></asp:TextBox>
+                    <%-- <asp:TextBox ID="TextBox1" CssClass="dfinput" runat="server" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"></asp:TextBox>
                --%> </div>
 
+                <div class="pullright">
+                    <asp:LinkButton ID="lbOutExcel1" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel1_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出统计结果</i></asp:LinkButton>
+
+                </div>
+                <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Conditional"  runat="server">
+    <ContentTemplate> 
                 <div class="pullleft">
                     <asp:LinkButton ID="lbStatisc" runat="server"
                         OnClick="lbStatisc_Click"> <i class="mbtn"><img src="/media/images/ico06.png" />统计</i></asp:LinkButton>
+                </div>  
+                <div class="clear">
+                    <br />
+                    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel2" >
+        <ProgressTemplate>
+           
+            <font color="blue" >正在计算<asp:Image ID="Image1" runat="server" ImageUrl="/media/images/jindu.gif" /></font>
+            
+        </ProgressTemplate>
+    </asp:UpdateProgress>
                 </div>
-                <div class="pullright">
-                    <asp:LinkButton ID="lbOutExcel1" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel1_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出统计结果</i></asp:LinkButton>
-                    <asp:LinkButton ID="lbOutExcel2" runat="server" OnClick="lbOutExcel2_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出未刷卡名单</i></asp:LinkButton>
-
-                </div>
-                <div class="clear"></div>
             </div>
             <div>
                 &nbsp;<asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
@@ -60,129 +76,18 @@
             </div>
             
             <div class="formtitle"><span>考勤统计</span></div>
-            <asp:GridView ID="gvKQList" runat="server" AutoGenerateColumns="False"
-                DataKeyNames="jobnumber" Width="100%"
-                CssClass="tablelist" style="margin-bottom:10px;" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20">
-                <Columns>
-                    <asp:BoundField DataField="order" HeaderText="排序号">
-                    <HeaderStyle Width="60px" />
-                    </asp:BoundField>
-                    <asp:TemplateField HeaderText="工号">
-                        <ItemTemplate>
-                            <asp:Label ID="lbJobnumber" runat="server"><%# Eval("jobnumber") %></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-                    
-                    <asp:TemplateField HeaderText="打卡人">
-                        <ItemTemplate>
-                            <asp:Label ID="lbUsername" runat="server"><%# Eval("username")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="总打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbTime" runat="server"><%# Eval("clockTotle")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="上班打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbClockon" runat="server"><%# Eval("clockOnNum")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="下班打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbClockoff" runat="server"><%# Eval("clockOffNum")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="迟到次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbChidao" runat="server"><%# Eval("lateTimes")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="早退次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbZaotui" runat="server"><%# Eval("earlyTimes")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-                </Columns>
-                <RowStyle HorizontalAlign="Center" />
+            <asp:GridView ID="GridView1" runat="server" CssClass="tablenoborder">
+                 <Columns>
+                <asp:TemplateField HeaderText="序号" InsertVisible="False">
+               <ItemStyle HorizontalAlign="Center" />
+               <HeaderStyle HorizontalAlign="Center" />
+              <ItemTemplate>
+               <%#Container.DataItemIndex+1%>
+             </ItemTemplate>
+             </asp:TemplateField>
+                     </Columns>
             </asp:GridView>
-            
-            <div class="formtitle"><span>未刷卡名单</span></div>
-
-            <asp:GridView ID="gvRecordNull" runat="server" AutoGenerateColumns="False"
-                DataKeyNames="jobnumber" Width="100%"
-                CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvRecordNull_PageIndexChanging" PageSize="20">
-
-                <Columns>
-                    
-                    <asp:BoundField DataField="order" HeaderText="排序号">
-                    <HeaderStyle Width="60px" />
-                    </asp:BoundField>
-                    <asp:TemplateField HeaderText="工号">
-                        <ItemTemplate>
-                            <asp:Label ID="lbJobnumber" runat="server"><%# Eval("jobnumber") %></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="打卡人">
-                        <ItemTemplate>
-                            <asp:Label ID="lbUsername" runat="server"><%# Eval("username")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    
-                    <asp:TemplateField HeaderText="电话长号">
-                        <ItemTemplate>
-                            <asp:Label ID="lbtel1" runat="server"><%# Eval("tel1")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    
-                    <asp:TemplateField HeaderText="电话短号">
-                        <ItemTemplate>
-                            <asp:Label ID="lbtel2" runat="server"><%# Eval("tel2")%></asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="总打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbTime" runat="server">0</asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="上班打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbShangban" runat="server">0</asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="100px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="下班打卡次数">
-                        <ItemTemplate>
-                            <asp:Label ID="lbXiaban" runat="server">0</asp:Label>
-                        </ItemTemplate>
-                        <ItemStyle Width="80px" />
-                    </asp:TemplateField>
-
-                </Columns>
-                <RowStyle HorizontalAlign="Center" />
-            </asp:GridView>
-            <asp:GridView ID="GridView1" runat="server">
-            </asp:GridView>
-            <asp:GridView ID="GridView2" runat="server">
-            </asp:GridView>
-
+ </ContentTemplate></asp:UpdatePanel> 
         </div>
 
         <script type="text/javascript">

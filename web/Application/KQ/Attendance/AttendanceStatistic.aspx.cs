@@ -64,7 +64,7 @@ namespace web.Application.KQ.Attendance
             v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
 
             String url = "/Application/KQ/Attendance/AttendanceDetailView.aspx?id=" + item.Id;
-            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=900,height=500,left=100,top=100');return false;";
+            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100');return false;";
 
             lb.Attributes.Add("onclick", click);
         }

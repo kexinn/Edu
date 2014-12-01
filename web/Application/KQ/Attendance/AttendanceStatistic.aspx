@@ -90,7 +90,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lbSpanDate" runat="server" OnDataBinding="lbSpanDate_DataBinding"></asp:Label>
                         </ItemTemplate>
-                    <HeaderStyle Width="320px" />
+                    <HeaderStyle  />
                     </asp:TemplateField>
                     
                     <asp:TemplateField HeaderText="请假时长">
@@ -117,7 +117,7 @@
                     </asp:TemplateField>
 
                     <asp:BoundField DataField="ApprovalName" HeaderText="审批人">
-                    <HeaderStyle Width="80px" />
+                    <HeaderStyle Width="120px" />
                     </asp:BoundField>
 
                    
@@ -127,7 +127,7 @@
                             &nbsp;&nbsp;
                              <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
                          </ItemTemplate>
-                        <ItemStyle Width="130px" />
+                        <ItemStyle Width="150px" />
                     </asp:TemplateField>
                 </Columns>
                 <RowStyle HorizontalAlign="Center" />

@@ -29,6 +29,7 @@ h2{font-weight:normal;}
 
 
 .tablenoborder{border:none;}
+.tablenoborder th{border:solid 1px #000000;}
 .tablenoborder tr td{border:solid 1px #000000;}
 
 /*cloud*/

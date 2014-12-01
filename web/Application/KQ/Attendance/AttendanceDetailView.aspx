@@ -3,44 +3,6 @@
 <!DOCTYPE html>
 
 
-<style type="text/css">
-    .auto-style1 {
-        height: 79px;
-    }
-    .auto-style3 {
-        height: 26px;
-    }
-    .auto-style4 {
-        height: 31px;
-    }
-    .auto-style5 {
-        height: 39px;
-    }
-    .auto-style6 {
-        height: 26px;
-        width: 118px;
-    }
-    .auto-style7 {
-        height: 31px;
-        width: 118px;
-    }
-    .auto-style8 {
-        height: 39px;
-        width: 118px;
-    }
-    .auto-style9 {
-        height: 79px;
-        width: 118px;
-    }
-    .auto-style10 {
-        height: 51px;
-        width: 118px;
-    }
-    .auto-style11 {
-        height: 51px;
-    }
-</style>
-
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -95,11 +57,59 @@
         <!-- END HEADER -->
         <!--startprint-->
         <div id="print">
+            
+<style type="text/css">
+    .auto-style1 {
+        height: 79px;
+    }
+    .auto-style3 {
+        height: 26px;
+    }
+    .auto-style4 {
+        height: 31px;
+    }
+    .auto-style5 {
+        height: 39px;
+    }
+    .auto-style6 {
+        height: 26px;
+        width: 90px;
+    }
+    .auto-style7 {
+        height: 31px;
+        width: 90px;
+    }
+    .auto-style8 {
+        height: 39px;
+        width: 90px;
+    }
+    .auto-style9 {
+        height: 79px;
+        width: 90px;
+    }
+    .auto-style10 {
+        height: 100px;
+        width: 90px;
+    }
+    .auto-style11 {
+        height: 51px;
+    }
+
+    .auto-style12 {
+        height: 34px;
+    }
+    #print td,span {
+        padding:10px 0px;
+        font-size:large;
+    }
+
+</style>
+
             <div>
 
                 <div style="margin: 0 auto; width: 800px;">
-                                  <h1 align="center"><b><font size="24">请假单</font></b></h1><br />
-                <table class="tableborder" style="width:90%;">
+                                  <h1 align="center"><b><span style="font-size:x-large;">请假单</span></b></h1><br />
+                <table class="tableborder" style="width:100%;">
                     <tr>
                         <td class="auto-style6">姓名</td>
                         <td class="auto-style3"><span >
@@ -133,10 +143,37 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style10">审批人签字</td>
-                        <td colspan="3" class="auto-style11">
-                            <asp:Label ID="lbQianZi" runat="server"></asp:Label>
-                            </td>
+                        <td class="auto-style10">审批</td>
+                        <td colspan="3" class="auto-style11" style="padding:0px;">
+                            <table style="width:80px; height:100%; border:none; float:left;">
+                                <tr>
+                                    <td style="width:60px;border-top:none; border-left:none;">审批人</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td style="border-top:none; border-left:none;">审批时间</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top:none; border-left:none; border-bottom:none;">签字</td>
+                                </tr>
+                            </table>
+    <asp:Repeater ID="Repeater1" runat="server">
+        <ItemTemplate>
+            <table style="width:150px; height:100%; border:none; float:left;">
+                                <tr >
+                                    <td style="width:200px; border-top:none; border-left:none;"><%# Eval("TrueName")%></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td style="font-size:small; padding:12px 0px; border-top:none; border-left:none;">&nbsp;<%# Eval("time")%></td>
+                                </tr>
+                                <tr>
+                                    <td style=" border-top:none; border-left:none; border-bottom:none;">&nbsp;</td>
+                                </tr>
+                            </table>
+        </ItemTemplate>
+    </asp:Repeater>
+                         </td>
                     </tr>
                 </table>
                 </div>

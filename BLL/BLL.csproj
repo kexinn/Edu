@@ -67,6 +67,7 @@
     <Compile Include="Application\KQ\DayStatisticKQ.cs" />
     <Compile Include="Application\KQ\Attendance\MyAttendance.cs" />
     <Compile Include="Application\KQ\KQManagement.cs" />
+    <Compile Include="Application\KQ\StatisticKQList.cs" />
     <Compile Include="Application\RoutTask.cs" />
     <Compile Include="Application\WorkPlan\AssignTask.cs" />
     <Compile Include="Application\WorkPlan\LookByMonth.cs" />
