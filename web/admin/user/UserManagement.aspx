@@ -156,7 +156,7 @@
                             <asp:TextBox ID="tbUserName" runat="server" Text='<%# Eval("TrueName") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lbUsername" runat="server"><%# Eval("TrueName")%></asp:Label>
+                            <asp:LinkButton ID="lbUserInfo" OnDataBinding="lbUserInfo_DataBinding" runat="server"><%# Eval("TrueName") %></asp:LinkButton>
                         </ItemTemplate>
                         <ItemStyle Width="100px" />
                     </asp:TemplateField>

@@ -265,12 +265,14 @@ namespace BLL.pub
                 System.IO.Directory.CreateDirectory(dir);
             return dir;
         }
+        //SaveFileName网站存放绝对路径，fileurl输出网站文件相对路径
         public static bool UpFileFun(FileUpload Controlfile, string[] FileType, int FileSize, string SaveFileName, ref string fileurl)
         {
             string FileDir = Controlfile.PostedFile.FileName;
             string FileName = FileDir.Substring(FileDir.LastIndexOf("\\") + 1);                  //获取上传文件名称
             string FileNameType = FileDir.Substring(FileDir.LastIndexOf(".") + 1).ToString();    //获取上传文件类型
             int FileNameSize = Controlfile.PostedFile.ContentLength;                             //获取上传文件大小
+            string saveFileDir = "";
             //  定义上传文件类型，并初始化
             string Types = "";
 
@@ -281,7 +283,8 @@ namespace BLL.pub
             //string strNewFileName = Guid.NewGuid().ToString();   
 
             //HttpContext.Current.Response.Write("<hr><br>" + strNewFileName + "<br><br><br><hr");
-
+            string date = System.DateTime.Now.Year.ToString() + System.DateTime.Now.Month.ToString();
+            fileurl = "\\file\\upload\\" + date;
             try
             {
                 if (FileNameSize < FileSize)
@@ -295,8 +298,9 @@ namespace BLL.pub
                     }
                     if (FileNameType == Types)
                     {
-                        fileurl = SaveFileName + "\\" + EditFileName + FileName;
-                        Controlfile.PostedFile.SaveAs(fileurl);
+                        saveFileDir = SaveFileName + "\\" + EditFileName + FileName;
+                        fileurl += "\\" + EditFileName + FileName;
+                        Controlfile.PostedFile.SaveAs(saveFileDir);
                         return true;
                     }
                     else

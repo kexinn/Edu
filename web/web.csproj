@@ -96,6 +96,7 @@
     <Content Include="admin\user\DepartmentLeaderManagement.aspx" />
     <Content Include="admin\user\DepartmentManagement.aspx" />
     <Content Include="admin\user\RoleManagement.aspx" />
+    <Content Include="admin\user\UserInfo.aspx" />
     <Content Include="admin\user\UserManagement.aspx" />
     <Content Include="admin\user\UserRoleManagement.aspx" />
     <Content Include="Application\GZL\CG\ApplyApprove.aspx" />
@@ -122,6 +123,7 @@
     <Content Include="Application\KQ\HandPunch.aspx" />
     <Content Include="Application\KQ\MyKQList.aspx" />
     <Content Include="Application\KQ\QueryKQList.aspx" />
+    <Content Include="Application\KQ\SpecialRemark.aspx" />
     <Content Include="Application\KQ\StatisticKQList.aspx" />
     <Content Include="Application\RoutTask.aspx" />
     <Content Include="Application\WorkPlan\AssignTask.aspx" />
@@ -496,6 +498,13 @@
     <Compile Include="admin\user\RoleManagement.aspx.designer.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\user\UserInfo.aspx.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\UserInfo.aspx.designer.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\user\UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -677,6 +686,13 @@
     </Compile>
     <Compile Include="Application\KQ\QueryKQList.aspx.designer.cs">
       <DependentUpon>QueryKQList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\SpecialRemark.aspx.cs">
+      <DependentUpon>SpecialRemark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\SpecialRemark.aspx.designer.cs">
+      <DependentUpon>SpecialRemark.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\StatisticKQList.aspx.cs">
       <DependentUpon>StatisticKQList.aspx</DependentUpon>

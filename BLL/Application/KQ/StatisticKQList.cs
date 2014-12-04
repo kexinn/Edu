@@ -21,6 +21,8 @@ namespace BLL.Application.KQ
         public int 迟到次数 { get; set; }
         public int 早退次数 { get; set; }
         public string 请假次数 { get; set; }
+        public string 合计时长 { get; set; }
+        public string 备注说明 { get; set; }
 
 
     }
@@ -46,9 +48,9 @@ namespace BLL.Application.KQ
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                //所有用户导入临时表
+                //所有在编用户导入临时表
                 var users = from u in dc.Users
-                            where u.UserType == '1'
+                            where u.UserType == '1' && u.disabled == false && u.JobNumber !=null
                             select new KQStaticResult
                             {
                                 序号 = (int)u.orderNo,
@@ -102,11 +104,21 @@ namespace BLL.Application.KQ
                 statistic.type = "";//请假类型
 
                 DataTable dtAttend = BLL.Application.KQ.Attendance.statistic.calculateResult(statistic, starttime, endtime.AddHours(-23), "", "", -1);
+                var remarks = from r in dc.KQ_SpecialRemark
+                              select new KQStaticResult
+                              { 
+                               id = (int)r.userid,
+                               备注说明 = (String)r.remark
+                              };
+                DataTable dtRemark = remarks.CopyToDataTable();
                 
                 var result2 = from u in result1.AsEnumerable()
                               join a in dtAttend.AsEnumerable() on u.Field<int>("id").ToString() equals a["用户ID"].ToString()
                               into g
                               from n in g.DefaultIfEmpty()
+                              join r in dtRemark.AsEnumerable() on u.Field<int>("id").ToString() equals r["id"].ToString()
+                              into r1
+                              from n1 in r1.DefaultIfEmpty()
                               orderby u.Field<int>("序号")
                               select new KQStaticResult
                               {
@@ -120,8 +132,11 @@ namespace BLL.Application.KQ
                                   迟到次数 =  u.Field<int>("迟到次数"),
                                   早退次数 =  u.Field<int>("早退次数"),
                                   请假次数 = n == null ? "0": n["请假次数"].ToString(),
+                                  合计时长 = n == null ? "0": n["合计天数"].ToString() +"天"+n["剩余小时"].ToString() + "小时",
+                                  备注说明 = n1==null?"":n1["备注说明"].ToString()
                               };
                 DataTable re = result2.CopyToDataTable();
+
                 return re;
             }
         }

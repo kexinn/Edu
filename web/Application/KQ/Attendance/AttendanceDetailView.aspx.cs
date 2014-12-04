@@ -22,6 +22,13 @@ namespace web.Application.KQ.Attendance
         {
             int id = Convert.ToInt32( Request["id"].ToString());
             v_KQ_Attendance attendance = BLL.Application.KQ.Attendance.AttendanceDetailView.getAttendanceDetail(id);
+            if (!String.IsNullOrEmpty(attendance.fileurl))
+            {
+                PanelFile.Visible = true;
+                HyperLinkFile.NavigateUrl = attendance.fileurl;
+            }
+            else
+                PanelFile.Visible = false;
             lbUsername.Text = attendance.username;
             lbDept.Text = attendance.dept;
             lbApplyTime.Text = attendance.applyTime.ToString();

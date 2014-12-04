@@ -95,9 +95,6 @@
         height: 51px;
     }
 
-    .auto-style12 {
-        height: 34px;
-    }
     #print td,span {
         padding:10px 0px;
         font-size:large;
@@ -142,6 +139,13 @@
                             <asp:Label ID="lbReason" runat="server"></asp:Label>
                         </td>
                     </tr>
+                    <asp:Panel ID="PanelFile" runat="server">
+                    <tr>
+                        <td class="auto-style9">附件：</td>
+                        <td colspan="3" class="auto-style1">
+    <asp:HyperLink ID="HyperLinkFile" runat="server" ForeColor="#0033CC">通知文件</asp:HyperLink>
+                            &nbsp;</td>
+                    </tr></asp:Panel>
                     <tr>
                         <td class="auto-style10">审批</td>
                         <td colspan="3" class="auto-style11" style="padding:0px;">
