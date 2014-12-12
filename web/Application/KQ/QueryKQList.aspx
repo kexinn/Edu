@@ -9,6 +9,7 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
+    <script type="text/javascript" src="/media/js/myjs.js"></script>
 
 </head>
 
@@ -55,7 +56,7 @@
             </div>
             <asp:GridView ID="gvKQList" runat="server" AutoGenerateColumns="False" 
                                     DataKeyNames="ID" Width="100%" 
-                                    CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20">
+                                    CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20" OnRowDeleting="gvKQList_RowDeleting">
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID">
                                             <ItemTemplate>
@@ -77,7 +78,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="IP地址">
                                            <ItemTemplate>
-                                                <asp:Label ID="lbTime" runat="server"><%# Eval("IpAddress")%></asp:Label>
+                                                <asp:Label ID="lbAddress" runat="server"><%# Eval("IpAddress")%></asp:Label>
                                             </ItemTemplate>
                                             <ItemStyle Width="80px" />
                                         </asp:TemplateField>
@@ -98,6 +99,14 @@
                                             </ItemTemplate>
                                             <ItemStyle Width="80px" />
                                         </asp:TemplateField>
+                                         <asp:TemplateField HeaderText="操作">
+                       
+                                            <ItemTemplate>
+                            
+                                                <asp:LinkButton ID="lbDel" runat="server" OnClientClick="javascript:showConfirm('确定删除?')" CommandName="Delete" ForeColor="Blue">删除</asp:LinkButton>
+                                            </ItemTemplate>
+                                            <ItemStyle Width="80px" />
+                                         </asp:TemplateField>
                                     </Columns>
                                     <RowStyle HorizontalAlign="Center" />
                                 </asp:GridView>

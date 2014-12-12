@@ -134,6 +134,16 @@ namespace BLL.Application.KQ
                 throw ex;
             }
         }
+        public static bool deletePunchCardRecord(int id)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                KQ_PunchCardRecords k = dc.KQ_PunchCardRecords.Where(u => u.ID == id).Single();
+                dc.KQ_PunchCardRecords.DeleteOnSubmit(k);
+                dc.SubmitChanges();
+                return true;
+            }
+        }
         public static bool insertPunchCardRecord(int userid,String ip,char type)
         {
 

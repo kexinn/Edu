@@ -375,6 +375,8 @@
     <Content Include="media\images\weather\undefined.png" />
     <Content Include="media\js\cloud.js" />
     <Content Include="media\js\format+zh_CN,default,corechart.I.js" />
+    <Content Include="media\js\jquery-1.11.1.js" />
+    <Content Include="media\js\jquery-1.11.1.min.js" />
     <Content Include="media\js\jquery.ba-resize.min.js" />
     <Content Include="media\js\jquery.gvChart-1.0.1.min.js" />
     <Content Include="media\js\jquery.idTabs.min.js" />
@@ -385,6 +387,7 @@
     <Content Include="media\js\PIE.htc" />
     <Content Include="media\js\select-ui.min.js" />
     <Content Include="media\src\jquery.gvChart-1.0.1.js" />
+    <Content Include="test.aspx" />
     <Content Include="top.aspx" />
     <Content Include="uc\PaginationWebControl.ascx" />
     <Content Include="Web.config">
@@ -397,6 +400,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="webservice\LoginPageHandler.aspx" />
+    <Content Include="webservice\user\test.asmx" />
     <Content Include="webservice\user\UserWebService.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -807,6 +811,13 @@
       <DependentUpon>MainRight.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="top.aspx.cs">
       <DependentUpon>top.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -830,6 +841,10 @@
     </Compile>
     <Compile Include="webservice\LoginPageHandler.aspx.designer.cs">
       <DependentUpon>LoginPageHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webservice\user\test.asmx.cs">
+      <DependentUpon>test.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="webservice\user\UserWebService.asmx.cs">
       <DependentUpon>UserWebService.asmx</DependentUpon>

@@ -62,5 +62,17 @@ namespace web.Application.KQ
                     break;
             }
         }
+
+        protected void gvKQList_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String id = gvKQList.DataKeys[e.RowIndex].Value.ToString();
+
+            if (BLL.Application.KQ.KQManagement.deletePunchCardRecord(Convert.ToInt32(id)))
+            {
+                lbMessage.Text = "删除成功！";
+                BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "删除成功!");
+            }
+            databind();
+        }
     }
 }

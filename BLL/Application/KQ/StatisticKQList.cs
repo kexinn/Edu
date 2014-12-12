@@ -72,8 +72,8 @@ namespace BLL.Application.KQ
                                              打卡次数 = group_kq.Count(),
                                              上班次数 = group_kq.Count(kq => kq.PunchCardType == '1'),
                                              下班次数 = group_kq.Count(kq => kq.PunchCardType == '2'),
-                                             迟到次数 = group_kq.Count(kq => kq.PunchCardType == '1' && (Convert.ToDateTime(kq.Time).TimeOfDay - timeShangban).Seconds>0),
-                                             早退次数 = group_kq.Count(kq =>  kq.PunchCardType == '2' && (Convert.ToDateTime(kq.Time).TimeOfDay - timeXiaban).Seconds <=0)
+                                             迟到次数 = group_kq.Count(kq => kq.PunchCardType == '1' && (Convert.ToDateTime(kq.Time).TimeOfDay - timeShangban).TotalSeconds>0),
+                                             早退次数 = group_kq.Count(kq => kq.PunchCardType == '2' && (Convert.ToDateTime(kq.Time).TimeOfDay - timeXiaban).TotalSeconds <= 0 && Convert.ToDateTime(kq.Time).DayOfWeek != System.DayOfWeek.Friday)
                                          };
                 DataTable punchCardStatisticDatatable = punchCardStatistic.CopyToDataTable();
                
