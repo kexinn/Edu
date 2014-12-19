@@ -135,6 +135,7 @@
     <Content Include="Application\WorkPlan\WorkPlanLeft.aspx" />
     <Content Include="Application\WorkPlan\WorkPlanRight.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="lib\SetupPrintActive.cab" />
     <Content Include="Login.aspx" />
     <Content Include="LoginBackup.aspx" />
     <Content Include="main.aspx" />

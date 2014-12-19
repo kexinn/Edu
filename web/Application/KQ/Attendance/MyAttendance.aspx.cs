@@ -73,16 +73,21 @@ namespace web.Application.KQ.Attendance
                 
                 if(PanelFile.Visible == false )
                 {
-                    BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text, "", daySpan, hourSpan, ref tel);
+                    int state = BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text, "", daySpan, hourSpan, ref tel);
+                    if(state == 2)
+                    {
+                        BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "您已有该时段请假，请勿重复请假，请先取消之前请假或重新请假！");
+                        return;
+                    }
                     lbMessage.Text = "添加申请成功！等待审批";
                     PanelApply.Visible = false;
                     databind();
                     KQ_Attendance att = BLL.Application.KQ.Attendance.MyAttendance.getTopAttendRecordByUserid(userid);
-                    // string approvalyes = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=1%26approvalId=" + att.ApprovalId;
-                    //  string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
-                    //  string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + ",类型：" + ddlType.SelectedItem.ToString() + ",请假时间从：" + tbStartTime.Text + " 到" + tbEndTime.Text + " ,事由:" + tbReason.InnerText + ",请您审批，(不同意需在电脑审批)同意点以下链接：" + approvalyes;
+                     string approvalyes = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=1%26approvalId=" + att.ApprovalId;
+                     // string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
+                      string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + ",类型：" + ddlType.SelectedItem.ToString() + ",请假时间从：" + tbStartTime.Text + " 到" + tbEndTime.Text + " ,事由:" + tbReason.InnerText + ",请您审批，(不同意需在电脑审批)同意点以下链接：" + approvalyes;
 
-                    //   BLL.pub.PubClass.sendSMS(tel, message);
+                       BLL.pub.PubClass.sendSMS(tel, message);
                 }else if(PanelFile.Visible == true )
                 {
                     string filedir = BLL.pub.PubClass.getFileDir();
@@ -90,16 +95,21 @@ namespace web.Application.KQ.Attendance
                     string[] fileType = { "doc", "docx", "rar", "jpg" };
                     if (BLL.pub.PubClass.UpFileFun(FileUpload1, fileType, 2048000, filedir, ref saveFileUrl))
                     {
-                        BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text, saveFileUrl, daySpan, hourSpan, ref tel);
+                        int state = BLL.Application.KQ.Attendance.MyAttendance.createApply(userid, Session["username"].ToString(), Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text), Convert.ToInt32(ddlType.SelectedValue), tbReason.InnerText, ddlDept.Text, saveFileUrl, daySpan, hourSpan, ref tel);
+                        if (state == 2)
+                        {
+                            BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "您已有该时段请假，请勿重复请假，请先取消之前请假或重新请假！");
+                            return;
+                        }
                         lbMessage.Text = "添加申请成功！等待审批";
                         PanelApply.Visible = false;
                         databind();
                         KQ_Attendance att = BLL.Application.KQ.Attendance.MyAttendance.getTopAttendRecordByUserid(userid);
-                        // string approvalyes = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=1%26approvalId=" + att.ApprovalId;
-                        //  string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
-                        //  string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + ",类型：" + ddlType.SelectedItem.ToString() + ",请假时间从：" + tbStartTime.Text + " 到" + tbEndTime.Text + " ,事由:" + tbReason.InnerText + ",请您审批，(不同意需在电脑审批)同意点以下链接：" + approvalyes;
+                         string approvalyes = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=1%26approvalId=" + att.ApprovalId;
+                          //string approvalno = "http://wx.nbyzzj.cn/approval.php?attendId=" + att.Id + "%26result=0";
+                          string message = "您有一条待审批的请假申请，申请人：" + Session["username"].ToString() + ",类型：" + ddlType.SelectedItem.ToString() + ",请假时间从：" + tbStartTime.Text + " 到" + tbEndTime.Text + " ,事由:" + tbReason.InnerText + ",请您审批，(不同意需在电脑审批)同意点以下链接：" + approvalyes;
 
-                        //   BLL.pub.PubClass.sendSMS(tel, message);
+                           BLL.pub.PubClass.sendSMS(tel, message);
                     }
                     else
                     {

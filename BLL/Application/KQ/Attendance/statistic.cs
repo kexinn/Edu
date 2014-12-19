@@ -76,7 +76,7 @@ namespace BLL.Application.KQ.Attendance
                 return t;
             }
         }
-
+        //typeid为-1，按请假类型分类统计，为-2，按全部统计，否则按请假类型统计
         public static DataTable calculateResult(Attendance_Statistic sta,DateTime starttime, DateTime endtime, String dept, String status, int typeid)
         {
             endtime = endtime.AddHours(23);
@@ -97,7 +97,7 @@ namespace BLL.Application.KQ.Attendance
                 if (!String.IsNullOrEmpty(status))
                     kqSelect = kqSelect.Where(r => r.status.Contains(status));
 
-                if (typeid != -1)
+                if (typeid != -1 && typeid != -2)
                     kqSelect = kqSelect.Where(r => r.typeid == typeid);
                 
                 DataTable dtSelect = kqSelect.ToList().ConvertToDataTable();
@@ -158,7 +158,7 @@ namespace BLL.Application.KQ.Attendance
                                     daySpan = (Decimal)g.Sum(x => Convert.ToDecimal(x["daySpan"])),
                                     hourSpan = (int)g.Sum(x => Convert.ToDecimal(x["hourSpan"]))
                                 };
-                if(typeid == -1)//统计所有类型的
+                if(typeid == -1)//统计所有类型的,按类型分类
                 {
                     statistic = from attend in dtSelect.AsEnumerable()
                                 join t in dc.KQ_AttendanceType on attend["typeid"] equals t.Id
@@ -171,6 +171,25 @@ namespace BLL.Application.KQ.Attendance
                                     status = st,
                                     dept = (string)g.Key.dept1,
                                     type = g.Key.type,
+                                    userid = (int)g.Key.id,
+                                    username = (string)g.Key.name,
+                                    count = g.Count(),
+                                    daySpan = (Decimal)g.Sum(x => Convert.ToDecimal(x["daySpan"])),
+                                    hourSpan = (int)g.Sum(x => Convert.ToDecimal(x["hourSpan"]))
+                                };
+                }
+                if (typeid == -2)//统计所有类型的，不按类型分类,此函数用于考勤统计合计
+                {
+                    statistic = from attend in dtSelect.AsEnumerable()
+                                group attend by new { id = attend["userid"], name = attend["username"] } into g
+                                
+                                select new Attendance_Statistic
+                                {
+                                    statisticStart = starttime,
+                                    statisticEnd = endtime,
+                                    status = st,
+                                    dept = "",
+                                    type = "",
                                     userid = (int)g.Key.id,
                                     username = (string)g.Key.name,
                                     count = g.Count(),
