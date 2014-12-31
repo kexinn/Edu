@@ -51,7 +51,7 @@ namespace web.Application.KQ.Attendance
             int recordNum = 0;
             gvAttendance.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue,DropDownListType.SelectedValue, ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize);
             gvAttendance.DataBind();
-            gvAttendance.Columns[0].Visible = false;
+           // gvAttendance.Columns[0].Visible = false;
             AspNetPager1.RecordCount = recordNum;
         }
         protected void AspNetPager1_PageChanged(object sender, EventArgs e)

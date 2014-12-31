@@ -17,16 +17,17 @@ namespace web.Application.KQ
 
         protected void lbSearch_Click(object sender, EventArgs e)
         {
-            databind();
+            ViewState["type"] = 1;
+            databind(1);
         }
 
-        protected void databind()
+        protected void databind(int type =1)//1正常打卡的，2补卡的
         {
 
             String username = tbUsername.Text;
             DateTime startDate = Convert.ToDateTime(tbStartTime.Text + " 00:00:00");
             DateTime endDate = Convert.ToDateTime(tbEndTime.Text + " 23:59:59");
-            gvKQList.DataSource = BLL.Application.KQ.KQManagement.getAppointRecordsByUsername(username, startDate, endDate);
+            gvKQList.DataSource = BLL.Application.KQ.KQManagement.getAppointRecordsByUsername(username, startDate, endDate,type);
             gvKQList.DataBind();
 
         }
@@ -34,7 +35,7 @@ namespace web.Application.KQ
         {
 
             gvKQList.PageIndex = e.NewPageIndex;
-            databind();
+            databind( Convert.ToInt32( ViewState["type"]));
         }
 
 
@@ -72,7 +73,13 @@ namespace web.Application.KQ
                 lbMessage.Text = "删除成功！";
                 BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "删除成功!");
             }
-            databind();
+            databind(Convert.ToInt32(ViewState["type"]));
+        }
+
+        protected void lbBuka_Click(object sender, EventArgs e)
+        {
+            ViewState["type"] = 2;
+            databind(2);
         }
     }
 }

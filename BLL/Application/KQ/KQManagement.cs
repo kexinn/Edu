@@ -22,11 +22,19 @@ namespace BLL.Application.KQ
             }
         }
         
-        public static List<v_KQ_punchcard_record> getAppointRecordsByUsername(String username, DateTime start, DateTime end)
+        public static List<v_KQ_punchcard_record> getAppointRecordsByUsername(String username, DateTime start, DateTime end,int type)//1正常打卡的，2补卡的
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                return dc.v_KQ_punchcard_record.Where(k => k.username == username && k.Time >= start && k.Time <= end).ToList();
+                var result = dc.v_KQ_punchcard_record.Where(k=>k.Time >= start && k.Time <= end);
+                if (!String.IsNullOrEmpty(username))
+                    result = result.Where(k => k.username.Contains( username) );
+                else if (String.IsNullOrEmpty(username) && type ==1)
+                    result = result.Where(k => k.username == null);
+
+                if (type == 2)
+                    result = result.Where(k => k.fillCard != null);
+                return result.ToList();
             }
         }
         public static List<KQ_PunchCardRecords> getAppointTimePunchCardRecords(int userid,DateTime start,DateTime end)
@@ -98,7 +106,7 @@ namespace BLL.Application.KQ
             }
         }
 
-        public static bool insertPunchCardRecordByType(String username,String date ,char type)
+        public static bool insertPunchCardRecordByType(String username,String date ,char type,String fillcard="",String fillcarduser="" )
         {
             try
             {
@@ -123,6 +131,12 @@ namespace BLL.Application.KQ
                         kq.Time = Convert.ToDateTime(date + " 16:50:00");
                     kq.IpAddress = "9.9.9.9";
                     kq.status = 0;
+                    if (!String.IsNullOrEmpty(fillcard) && fillcarduser!="赵琦琼")
+                    {
+                        kq.fillCard = fillcard;
+                        kq.fillcardUser = fillcarduser;
+                        kq.fillCardTime = DateTime.Now;
+                    }
                     dc.KQ_PunchCardRecords.InsertOnSubmit(kq);
                     dc.SubmitChanges();
 

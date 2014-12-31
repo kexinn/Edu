@@ -26,7 +26,7 @@ namespace web.Application.KQ
         {
             try
             {
-                if (BLL.Application.KQ.KQManagement.insertPunchCardRecordByType(tbUsername.Text, tbStartTime.Text, '1'))
+                if (BLL.Application.KQ.KQManagement.insertPunchCardRecordByType(tbUsername.Text, tbStartTime.Text, '1',"补卡",Session["username"].ToString()))
                     lbMessage.Text = "上班补卡成功！";
                 else
                     lbMessage.Text = "该用户已打过卡";
@@ -41,7 +41,7 @@ namespace web.Application.KQ
         {
             try
             {
-                if (BLL.Application.KQ.KQManagement.insertPunchCardRecordByType(tbUsername.Text, tbStartTime.Text, '2'))
+                if (BLL.Application.KQ.KQManagement.insertPunchCardRecordByType(tbUsername.Text, tbStartTime.Text, '2', "补卡", Session["username"].ToString()))
                     lbMessage.Text = "下班补卡成功！";
                 else
                     lbMessage.Text = "该用户已打过卡";
