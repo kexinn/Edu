@@ -38,6 +38,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,8 +53,15 @@
     <Compile Include="admin\role\RoleManagement.cs" />
     <Compile Include="admin\TeacherGroup\TeacherGroupManagement.cs" />
     <Compile Include="admin\user\UserManagement.cs" />
+    <Compile Include="Application\Assets\Base\CK.cs" />
     <Compile Include="Application\Assets\Base\Class.cs" />
+    <Compile Include="Application\Assets\Base\DW.cs" />
     <Compile Include="Application\Assets\Base\Position.cs" />
+    <Compile Include="Application\Assets\Base\UseQk.cs" />
+    <Compile Include="Application\Assets\Base\ZT.cs" />
+    <Compile Include="Application\Assets\lkgl\Zcdj.cs" />
+    <Compile Include="Application\Assets\Zclt\ZcHuan.cs" />
+    <Compile Include="Application\Assets\Zclt\ZcJie.cs" />
     <Compile Include="Application\GZL\CG\ApplyApprove.cs" />
     <Compile Include="Application\GZL\CG\ApplyProceed.cs" />
     <Compile Include="Application\GZL\CG\PurchaseFormEdit.cs" />
@@ -89,6 +97,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="pub\BarCode.cs" />
     <Compile Include="pub\PagerTClass.cs" />
     <Compile Include="pub\PubClass.cs" />
   </ItemGroup>
@@ -134,6 +143,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

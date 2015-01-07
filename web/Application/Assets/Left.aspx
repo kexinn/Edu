@@ -42,7 +42,11 @@ $(function(){
     </div>
     	<ul class="menuson">
         <li ><cite></cite><a href="/Application/Assets/Base/Position.aspx" target="rightFrame">地点管理</a><i></i></li>
-        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">资产分类</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/CK.aspx" target="rightFrame">仓库管理</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/Class.aspx" target="rightFrame">资产分类</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/DW.aspx" target="rightFrame">度量单位</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/ZT.aspx" target="rightFrame">资产状态</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Base/UseQK.aspx" target="rightFrame">使用情况</a><i></i></li>
         </ul>    
     </dd>
 
@@ -51,9 +55,9 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>入库管理
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">仓库地点</a><i></i></li>
-        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">我的审批</a><i></i></li>
-        <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">查询统计</a><i></i></li>
+        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">资产来源</a><i></i></li>
+        <li><cite></cite><a href="/Application/Assets/Lkgl/Zcdj.aspx" target="rightFrame">资产登记</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Lkgl/Zcdj.aspx" target="rightFrame">资产清单</a><i></i></li>
         </ul>    
     </dd>        
 
@@ -62,9 +66,8 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>流通管理
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">仓库地点</a><i></i></li>
-        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">我的审批</a><i></i></li>
-        <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">查询统计</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Zclt/ZcJie.aspx" target="rightFrame">资产出借</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Zclt/ZcHuan.aspx" target="rightFrame">资产归还</a><i></i></li>
         </ul>    
     </dd>        
   
@@ -74,8 +77,6 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>查询统计
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">仓库地点</a><i></i></li>
-        <li ><cite></cite><a href="/Application/GZL/CG/ApplyApprove.aspx" target="rightFrame">我的审批</a><i></i></li>
         <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">查询统计</a><i></i></li>
         </ul>    
     </dd>        

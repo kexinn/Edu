@@ -13,8 +13,8 @@ namespace web
         {
             if(!IsPostBack)
             {
-                if (Session["username"] == null)
-                    Response.Redirect("http://sso.nbyzzj.cn:8888/route/index1.jsp");
+               // if (Session["username"] == null)
+              //      Response.Redirect("http://sso.nbyzzj.cn:8888/route/index1.jsp");
                 //Response.Redirect("Login.aspx");
             }
         }

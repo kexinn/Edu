@@ -98,13 +98,25 @@
     <Content Include="admin\user\UserManagement.aspx" />
     <Content Include="admin\user\UserRoleManagement.aspx" />
     <Content Include="admin\WebForm1.aspx" />
+    <Content Include="Application\Assets\Base\CK.aspx" />
     <Content Include="Application\Assets\Base\Class.aspx" />
+    <Content Include="Application\Assets\Base\ClassLeft.aspx" />
+    <Content Include="Application\Assets\Base\ClassRight.aspx" />
+    <Content Include="Application\Assets\Base\DW.aspx" />
     <Content Include="Application\Assets\Base\Position.aspx" />
     <Content Include="Application\Assets\Base\PositionLeft.aspx" />
     <Content Include="Application\Assets\Base\PositionRight.aspx" />
+    <Content Include="Application\Assets\Base\UseQK.aspx" />
+    <Content Include="Application\Assets\Base\ZT.aspx" />
     <Content Include="Application\Assets\Default.aspx" />
     <Content Include="Application\Assets\Left.aspx" />
+    <Content Include="Application\Assets\Lkgl\Zcdj.aspx" />
     <Content Include="Application\Assets\MainRight.aspx" />
+    <Content Include="Application\Assets\Test\test_DDL.aspx" />
+    <Content Include="Application\Assets\Test\test_printer.aspx" />
+    <Content Include="Application\Assets\Test\WebForm1.aspx" />
+    <Content Include="Application\Assets\Zclt\ZcHuan.aspx" />
+    <Content Include="Application\Assets\Zclt\ZcJie.aspx" />
     <Content Include="Application\GZL\CG\ApplyApprove.aspx" />
     <Content Include="Application\GZL\CG\ApplyProceed.aspx" />
     <Content Include="Application\GZL\CG\PurchaseApply.aspx" />
@@ -524,12 +536,40 @@
     <Compile Include="admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application\Assets\Base\CK.aspx.cs">
+      <DependentUpon>CK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\CK.aspx.designer.cs">
+      <DependentUpon>CK.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Application\Assets\Base\Class.aspx.cs">
       <DependentUpon>Class.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Application\Assets\Base\Class.aspx.designer.cs">
       <DependentUpon>Class.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ClassLeft.aspx.cs">
+      <DependentUpon>ClassLeft.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ClassLeft.aspx.designer.cs">
+      <DependentUpon>ClassLeft.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ClassRight.aspx.cs">
+      <DependentUpon>ClassRight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ClassRight.aspx.designer.cs">
+      <DependentUpon>ClassRight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\DW.aspx.cs">
+      <DependentUpon>DW.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\DW.aspx.designer.cs">
+      <DependentUpon>DW.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\Assets\Base\Position.aspx.cs">
       <DependentUpon>Position.aspx</DependentUpon>
@@ -552,6 +592,20 @@
     <Compile Include="Application\Assets\Base\PositionRight.aspx.designer.cs">
       <DependentUpon>PositionRight.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application\Assets\Base\UseQK.aspx.cs">
+      <DependentUpon>UseQK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\UseQK.aspx.designer.cs">
+      <DependentUpon>UseQK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ZT.aspx.cs">
+      <DependentUpon>ZT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Base\ZT.aspx.designer.cs">
+      <DependentUpon>ZT.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Application\Assets\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -566,12 +620,54 @@
     <Compile Include="Application\Assets\Left.aspx.designer.cs">
       <DependentUpon>Left.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application\Assets\Lkgl\Zcdj.aspx.cs">
+      <DependentUpon>Zcdj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Lkgl\Zcdj.aspx.designer.cs">
+      <DependentUpon>Zcdj.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Application\Assets\MainRight.aspx.cs">
       <DependentUpon>MainRight.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Application\Assets\MainRight.aspx.designer.cs">
       <DependentUpon>MainRight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test_DDL.aspx.cs">
+      <DependentUpon>test_DDL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test_DDL.aspx.designer.cs">
+      <DependentUpon>test_DDL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test_printer.aspx.cs">
+      <DependentUpon>test_printer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test_printer.aspx.designer.cs">
+      <DependentUpon>test_printer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Zclt\ZcHuan.aspx.cs">
+      <DependentUpon>ZcHuan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Zclt\ZcHuan.aspx.designer.cs">
+      <DependentUpon>ZcHuan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Zclt\ZcJie.aspx.cs">
+      <DependentUpon>ZcJie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Zclt\ZcJie.aspx.designer.cs">
+      <DependentUpon>ZcJie.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\GZL\CG\ApplyApprove.aspx.cs">
       <DependentUpon>ApplyApprove.aspx</DependentUpon>

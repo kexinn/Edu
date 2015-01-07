@@ -27,7 +27,7 @@ namespace web
                 Session["userid"] = user.Key;
                 Session["netid"] = user.XMPY;
                 Session["username"] = user.TrueName;
-                Response.Redirect("/Default.aspx");
+                Response.Redirect("Default.aspx");
             }
             else
             {
