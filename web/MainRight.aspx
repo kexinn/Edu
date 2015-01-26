@@ -210,6 +210,7 @@
                             </tr>
                         </table>
                        <div style="text-align:center;">  &nbsp;<asp:LinkButton ID="lbSMS" runat="server" OnClick="lbSMS_Click" ValidationGroup="sms"><i class="mbtn" style="margin-left:10px;"><img src="media/images/leftico03.png" />发送短信</i></asp:LinkButton>
+                            &nbsp;<asp:LinkButton ID="lbSendAll" runat="server"  ValidationGroup="sms" OnClick="lbSendAll_Click"><i class="mbtn" style="margin-left:10px;"><img src="media/images/leftico03.png" />全部发送</i></asp:LinkButton>
                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="taMessageInfo" ErrorMessage="*内容必填" ForeColor="Red" ValidationGroup="sms">*内容必填</asp:RequiredFieldValidator>
                        </div>
 

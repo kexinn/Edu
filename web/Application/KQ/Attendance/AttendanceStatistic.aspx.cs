@@ -139,5 +139,24 @@ namespace web.Application.KQ.Attendance
             lb.Attributes.Add("onclick", "return false;");
             lb.OnClientClick = click;
         }
+
+        protected void lbDel_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            if (BLL.admin.role.RoleManagement.ifUserInRole(Convert.ToInt32(Session["userid"]), 1))
+                lb.Visible = true;
+            else
+                lb.Visible = false;
+        }
+
+        protected void gvAttendance_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();
+
+            BLL.Application.KQ.Attendance.MyAttendance.deleteAttendanceRecord(Convert.ToInt32(id));
+            databind();
+        }
     }
 }

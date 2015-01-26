@@ -14,7 +14,12 @@
     <style type="text/css">
 
         span{display:inline;}
-    </style>
+    </style>   
+     <script type="text/javascript">
+                    function check() {
+                        return confirm("确定撤销？");
+                    }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -75,7 +80,7 @@
             <div class="formtitle"><span>请假名单</span></div>
             <asp:GridView ID="gvAttendance" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="Id" Width="100%" 
-                CssClass="tablelist" >
+                CssClass="tablelist" OnRowDeleting="gvAttendance_RowDeleting" >
                 <Columns>
                    
                     <asp:BoundField DataField="applyTime" HeaderText="申请时间">
@@ -125,7 +130,8 @@
                         <ItemTemplate>
                              <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
                             &nbsp;&nbsp;
-                             <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton>
+                             <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton> &nbsp;
+                             <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding"  OnClientClick="javascript:return check();" CommandName="Delete">撤销</asp:LinkButton>
                          </ItemTemplate>
                         <ItemStyle Width="150px" />
                     </asp:TemplateField>
@@ -149,8 +155,7 @@
                       ShowBoxThreshold="11" 
                       InputBoxClass="pagetext" 
                       SubmitButtonClass="pagebtn" 
-                      SubmitButtonText="Go" BackColor="White" BorderColor="Gray" CustomInfoClass="" Height="25px" Wrap="False">
-                    </webdiyer:AspNetPager>
+                      SubmitButtonText="Go" BackColor="White" BorderColor="Gray" CustomInfoClass="" Height="25px" Wrap="False"></webdiyer:AspNetPager>
 
             
                 

@@ -21,8 +21,23 @@ namespace web
                 initData();
                 getweateher2();
                 getTask();
-                databind();  
+                databind();
+                init();
             }
+        }
+
+        protected void init()
+        {
+            if (BLL.admin.role.RoleManagement.ifUserInRole(Convert.ToInt32(Session["userid"]), 1))
+            {
+                lbSendAll.Enabled = true;
+                lbSendAll.Visible = true;
+            }else
+            {
+                lbSendAll.Enabled = false;
+                lbSendAll.Visible = false;
+            }
+
         }
 
         protected void databind()
@@ -292,9 +307,15 @@ namespace web
             lbPunchCardMessage.Text = "";
             String ip = Request.UserHostAddress;
             String[] ips = ip.Split('.');
+            if (ips[0] != "10" && ips[0] != "172" && ips[0] != "192")
+            {
+                lbPunchCardMessage.Text = "您没有使用校内网络，不能打卡！" + ips[0];
+                return;
+            }
             try
             {
                 BLL.Application.KQ.KQManagement.insertPunchCardRecord(Convert.ToInt32(Session["userid"]), ip, '2');
+                
                 initData();
             }
             catch (Exception ex)
@@ -308,6 +329,11 @@ namespace web
             lbPunchCardMessage.Text = "";
             String ip = Request.UserHostAddress;
             String[] ips = ip.Split('.');
+            if (ips[0] != "10" && ips[0] != "172" && ips[0] != "192")
+            {
+                lbPunchCardMessage.Text = "您没有使用校内网络，不能打卡！";
+                return;
+            }
             try
             {
                 BLL.Application.KQ.KQManagement.insertPunchCardRecord(Convert.ToInt32(Session["userid"]), ip, '1');
@@ -345,9 +371,18 @@ namespace web
             }
         }
 
-        //protected void Unnamed_Tick(object sender, EventArgs e)
+        protected void lbSendAll_Click(object sender, EventArgs e)
+        {
+            String sms = taMessageInfo.InnerText;// +"  发送人：" + Session["username"];
+            BLL.pub.PubClass.sendAll(sms);
+            BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "发送短信成功！");
+        }
+
+        //protected void sendAll_Click(object sender, EventArgs e)
         //{
-        //    getTask();
+        //    String sms = taMessageInfo.InnerText;// +"  发送人：" + Session["username"];
+        //    BLL.pub.PubClass.sendAll(sms);
         //}
+
     }
 }

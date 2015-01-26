@@ -144,6 +144,16 @@ namespace BLL.admin.user
             }
         }
 
+        public static bool updateUserBianhao(Users user)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                Users u = dc.Users.Where(us => us.Key == user.Key).Single();
+                u.bianhao = user.bianhao;
+                dc.SubmitChanges();
+                return true;
+            }
+        }
         public static bool UpdateUser( Users user)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
@@ -151,7 +161,7 @@ namespace BLL.admin.user
                 Users u = dc.Users.Where(us => us.Key == user.Key).Single();
                
                 u.TrueName = user.TrueName;
-                u.JobNumber = user.JobNumber;
+                u.bianhao = user.bianhao;
                 u.XMPY = user.XMPY;
                 u.EMail = user.EMail;
                 u.openUserId = user.openUserId;

@@ -38,6 +38,21 @@ namespace BLL.pub
             return sBuilder.ToString();
         }
 
+        public static void sendAll(string message)
+        {
+            using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                var users = dc.Users.Where(u => u.disabled == false && u.UserType == '1');
+                foreach(Users u in users)
+                {
+                    if( !String.IsNullOrEmpty( u.changhao))
+                    {
+                        sendSMS(u.changhao, message);
+                    }
+                }
+            }
+        }
+
         public static void sendSMS(string tel,string message)
         {
             HttpWebRequest req;

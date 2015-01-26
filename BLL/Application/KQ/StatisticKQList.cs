@@ -129,8 +129,8 @@ namespace BLL.Application.KQ
                                   打卡次数 =  u.Field<int>("打卡次数"),
                                   上班次数 = u.Field<int>("上班次数"),
                                   下班次数 =  u.Field<int>("下班次数"),
-                                  迟到次数 =  u.Field<int>("迟到次数"),
-                                  早退次数 =  u.Field<int>("早退次数"),
+                                  迟到次数 =  n1==null? u.Field<int>("迟到次数"):0,
+                                  早退次数 =  n1==null? u.Field<int>("早退次数"):0,
                                   请假次数 = n == null ? "0": n["请假次数"].ToString(),
                                   合计时长 = n == null ? "0": n["合计天数"].ToString() +"天"+n["剩余小时"].ToString() + "小时",
                                   备注说明 = n1==null?"":n1["备注说明"].ToString()

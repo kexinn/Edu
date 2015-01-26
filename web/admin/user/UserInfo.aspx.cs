@@ -24,7 +24,7 @@ namespace web.admin.user
             {
                 Users user = BLL.admin.user.UserManagement.getUserById( Convert.ToInt32( Request["id"]));
                 tbUsername.Text = user.TrueName;
-                tbJobNumber.Text = user.JobNumber;
+                tbJobNumber.Text = user.bianhao;
                 tbNetId.Text = user.XMPY;
                 tbEmail.Text = user.EMail;
                 openid.Text = user.openUserId;
@@ -75,7 +75,7 @@ namespace web.admin.user
                 Users user;
                 user = BLL.admin.user.UserManagement.getUserById(Convert.ToInt32(Request["id"]));
                 user.TrueName = tbUsername.Text;
-                user.JobNumber = tbJobNumber.Text;
+                user.bianhao = tbJobNumber.Text;
                 user.XMPY = tbNetId.Text;
                 user.EMail = tbEmail.Text;
                 user.openUserId = (openid.Text == "") ? null : openid.Text;
