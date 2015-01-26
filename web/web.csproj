@@ -127,7 +127,6 @@
     <Content Include="Application\KQ\SpecialRemark.aspx" />
     <Content Include="Application\KQ\StatisticKQList.aspx" />
     <Content Include="Application\RoutTask.aspx" />
-    <Content Include="Application\SMS\SendShortMessage.aspx" />
     <Content Include="Application\WorkPlan\AssignTask.aspx" />
     <Content Include="Application\WorkPlan\LookByMonth.aspx" />
     <Content Include="Application\WorkPlan\PreWeekPlanEvalution.aspx" />
@@ -721,13 +720,6 @@
     </Compile>
     <Compile Include="Application\RoutTask.aspx.designer.cs">
       <DependentUpon>RoutTask.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Application\SMS\SendShortMessage.aspx.cs">
-      <DependentUpon>SendShortMessage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Application\SMS\SendShortMessage.aspx.designer.cs">
-      <DependentUpon>SendShortMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\WorkPlan\AssignTask.aspx.cs">
       <DependentUpon>AssignTask.aspx</DependentUpon>
