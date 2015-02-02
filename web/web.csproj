@@ -115,6 +115,7 @@
     <Content Include="Application\Infomation.aspx" />
     <Content Include="Application\KQ\Attendance\ApprovalHistory.aspx" />
     <Content Include="Application\KQ\Attendance\AttendanceDetailView.aspx" />
+    <Content Include="Application\KQ\Attendance\AttendanceManagement.aspx" />
     <Content Include="Application\KQ\Attendance\AttendanceStatistic.aspx" />
     <Content Include="Application\KQ\Attendance\MyApproval.aspx" />
     <Content Include="Application\KQ\Attendance\MyApprovalHistory.aspx" />
@@ -636,6 +637,13 @@
     </Compile>
     <Compile Include="Application\KQ\Attendance\AttendanceDetailView.aspx.designer.cs">
       <DependentUpon>AttendanceDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceManagement.aspx.cs">
+      <DependentUpon>AttendanceManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\Attendance\AttendanceManagement.aspx.designer.cs">
+      <DependentUpon>AttendanceManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\Attendance\AttendanceStatistic.aspx.cs">
       <DependentUpon>AttendanceStatistic.aspx</DependentUpon>

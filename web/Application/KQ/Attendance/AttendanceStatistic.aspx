@@ -131,7 +131,7 @@
                              <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
                             &nbsp;&nbsp;
                              <asp:LinkButton ID="lbHistory" runat="server" OnDataBinding="lbHistory_DataBinding">审批历史</asp:LinkButton> &nbsp;
-                             <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding"  OnClientClick="javascript:return check();" CommandName="Delete">撤销</asp:LinkButton>
+                             <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding" CommandName="Delete">管理</asp:LinkButton>
                          </ItemTemplate>
                         <ItemStyle Width="150px" />
                     </asp:TemplateField>

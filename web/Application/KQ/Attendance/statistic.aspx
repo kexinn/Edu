@@ -55,16 +55,13 @@
                     </asp:DropDownList>
                  </div>
                      
-                <div class="pullright">
-                    <asp:LinkButton ID="lbOutExcel" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出统计结果</i></asp:LinkButton>
-
-                </div>
+                
     <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Conditional"  runat="server">
     <ContentTemplate>             
                  <div class="pullleft">
                       
                         <asp:LinkButton ID="lbCompute" runat="server" OnClick="lbCompute_Click"><i class="mbtn" ><img src="/media/images/t02.png" />开始统计</i></asp:LinkButton>
-                      
+                      <asp:LinkButton ID="lbGuding" runat="server" OnClick="lbGuding_Click" ><i class="mbtn" ><img src="/media/images/t02.png" />固定格式</i></asp:LinkButton>
                      </div>
         
                 <div class="clear">
@@ -85,9 +82,16 @@
                 
                 <asp:GridView ID="GridView1" runat="server" CssClass="tablelist">
                 </asp:GridView>
+                <asp:GridView ID="GridView3" runat="server" CssClass="tablenoborder">
+                </asp:GridView>
  </ContentTemplate></asp:UpdatePanel> 
                 <asp:GridView ID="GridView2" runat="server">
                 </asp:GridView>
+                <div class="pullright">
+                    <asp:LinkButton ID="lbOutExcel" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcel_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出统计结果</i></asp:LinkButton>
+                     <asp:LinkButton ID="lbOutExcelGuding" runat="server" Style="margin-right: 10px;" OnClick="lbOutExcelGuding_Click"><i class="mbtn"><img src="/media/images/f05.png" />导出固定格式</i></asp:LinkButton>
+
+                </div>
             </div>
             
                                

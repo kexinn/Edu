@@ -42,6 +42,8 @@ namespace web.Application.KQ.Attendance
 
             System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
             getdata();
+            GridView1.Visible = true;
+            GridView3.Visible = false;
         }
 
         protected void  getdata()
@@ -84,5 +86,31 @@ namespace web.Application.KQ.Attendance
         }
 
         #endregion
+
+        protected void lbGuding_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
+            getdataGuding();
+        }
+
+        protected void getdataGuding()
+        {
+
+            DataTable dt = BLL.Application.KQ.Attendance.statistic.calculateResultGuding( Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text));
+
+            GridView3.DataSource = dt;
+            GridView3.DataBind();
+            GridView1.Visible = false;
+            GridView3.Visible = true;
+        }
+
+        protected void lbOutExcelGuding_Click(object sender, EventArgs e)
+        {
+            GridView3.AllowPaging = false;
+            GridView3.AllowSorting = false;
+            BLL.pub.PubClass.ToExcel(GridView3, "record1.xls", "UTF-8");
+            GridView3.AllowPaging = true;
+            GridView3.AllowSorting = true;
+        }
     }
 }
