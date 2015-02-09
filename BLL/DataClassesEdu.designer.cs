@@ -105,6 +105,12 @@ namespace BLL
     partial void InsertKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void UpdateKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void DeleteKQ_PunchCardRecords(KQ_PunchCardRecords instance);
+    partial void InsertKQ_Shift(KQ_Shift instance);
+    partial void UpdateKQ_Shift(KQ_Shift instance);
+    partial void DeleteKQ_Shift(KQ_Shift instance);
+    partial void InsertKQ_Scheduling(KQ_Scheduling instance);
+    partial void UpdateKQ_Scheduling(KQ_Scheduling instance);
+    partial void DeleteKQ_Scheduling(KQ_Scheduling instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -446,6 +452,22 @@ namespace BLL
 			get
 			{
 				return this.GetTable<v_KQ_punchcard_record>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Shift> KQ_Shift
+		{
+			get
+			{
+				return this.GetTable<KQ_Shift>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Scheduling> KQ_Scheduling
+		{
+			get
+			{
+				return this.GetTable<KQ_Scheduling>();
 			}
 		}
 		
@@ -8937,6 +8959,466 @@ namespace BLL
 				{
 					this._fillCardTime = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Shift")]
+	public partial class KQ_Shift : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private string _Remark;
+		
+		private string _ClockOnTime;
+		
+		private string _ClockOffTime;
+		
+		private System.Nullable<bool> _isClockOn;
+		
+		private System.Nullable<bool> _isClockOff;
+		
+		private System.Nullable<bool> _isDefault;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
+    partial void OnClockOnTimeChanging(string value);
+    partial void OnClockOnTimeChanged();
+    partial void OnClockOffTimeChanging(string value);
+    partial void OnClockOffTimeChanged();
+    partial void OnisClockOnChanging(System.Nullable<bool> value);
+    partial void OnisClockOnChanged();
+    partial void OnisClockOffChanging(System.Nullable<bool> value);
+    partial void OnisClockOffChanged();
+    partial void OnisDefaultChanging(System.Nullable<bool> value);
+    partial void OnisDefaultChanged();
+    #endregion
+		
+		public KQ_Shift()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="VarChar(MAX)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClockOnTime", DbType="NVarChar(10)")]
+		public string ClockOnTime
+		{
+			get
+			{
+				return this._ClockOnTime;
+			}
+			set
+			{
+				if ((this._ClockOnTime != value))
+				{
+					this.OnClockOnTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ClockOnTime = value;
+					this.SendPropertyChanged("ClockOnTime");
+					this.OnClockOnTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClockOffTime", DbType="NVarChar(10)")]
+		public string ClockOffTime
+		{
+			get
+			{
+				return this._ClockOffTime;
+			}
+			set
+			{
+				if ((this._ClockOffTime != value))
+				{
+					this.OnClockOffTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ClockOffTime = value;
+					this.SendPropertyChanged("ClockOffTime");
+					this.OnClockOffTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOn", DbType="Bit")]
+		public System.Nullable<bool> isClockOn
+		{
+			get
+			{
+				return this._isClockOn;
+			}
+			set
+			{
+				if ((this._isClockOn != value))
+				{
+					this.OnisClockOnChanging(value);
+					this.SendPropertyChanging();
+					this._isClockOn = value;
+					this.SendPropertyChanged("isClockOn");
+					this.OnisClockOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOff", DbType="Bit")]
+		public System.Nullable<bool> isClockOff
+		{
+			get
+			{
+				return this._isClockOff;
+			}
+			set
+			{
+				if ((this._isClockOff != value))
+				{
+					this.OnisClockOffChanging(value);
+					this.SendPropertyChanging();
+					this._isClockOff = value;
+					this.SendPropertyChanged("isClockOff");
+					this.OnisClockOffChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDefault", DbType="Bit")]
+		public System.Nullable<bool> isDefault
+		{
+			get
+			{
+				return this._isDefault;
+			}
+			set
+			{
+				if ((this._isDefault != value))
+				{
+					this.OnisDefaultChanging(value);
+					this.SendPropertyChanging();
+					this._isDefault = value;
+					this.SendPropertyChanged("isDefault");
+					this.OnisDefaultChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Scheduling")]
+	public partial class KQ_Scheduling : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _Year;
+		
+		private System.Nullable<int> _Month;
+		
+		private System.Nullable<int> _Day;
+		
+		private System.Nullable<int> _WeekDay;
+		
+		private System.Nullable<int> _ShiftId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnYearChanging(System.Nullable<int> value);
+    partial void OnYearChanged();
+    partial void OnMonthChanging(System.Nullable<int> value);
+    partial void OnMonthChanged();
+    partial void OnDayChanging(System.Nullable<int> value);
+    partial void OnDayChanged();
+    partial void OnWeekDayChanging(System.Nullable<int> value);
+    partial void OnWeekDayChanged();
+    partial void OnShiftIdChanging(System.Nullable<int> value);
+    partial void OnShiftIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    #endregion
+		
+		public KQ_Scheduling()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
+		public System.Nullable<int> Year
+		{
+			get
+			{
+				return this._Year;
+			}
+			set
+			{
+				if ((this._Year != value))
+				{
+					this.OnYearChanging(value);
+					this.SendPropertyChanging();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Month", DbType="Int")]
+		public System.Nullable<int> Month
+		{
+			get
+			{
+				return this._Month;
+			}
+			set
+			{
+				if ((this._Month != value))
+				{
+					this.OnMonthChanging(value);
+					this.SendPropertyChanging();
+					this._Month = value;
+					this.SendPropertyChanged("Month");
+					this.OnMonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Day", DbType="Int")]
+		public System.Nullable<int> Day
+		{
+			get
+			{
+				return this._Day;
+			}
+			set
+			{
+				if ((this._Day != value))
+				{
+					this.OnDayChanging(value);
+					this.SendPropertyChanging();
+					this._Day = value;
+					this.SendPropertyChanged("Day");
+					this.OnDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeekDay", DbType="Int")]
+		public System.Nullable<int> WeekDay
+		{
+			get
+			{
+				return this._WeekDay;
+			}
+			set
+			{
+				if ((this._WeekDay != value))
+				{
+					this.OnWeekDayChanging(value);
+					this.SendPropertyChanging();
+					this._WeekDay = value;
+					this.SendPropertyChanged("WeekDay");
+					this.OnWeekDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShiftId", DbType="Int")]
+		public System.Nullable<int> ShiftId
+		{
+			get
+			{
+				return this._ShiftId;
+			}
+			set
+			{
+				if ((this._ShiftId != value))
+				{
+					this.OnShiftIdChanging(value);
+					this.SendPropertyChanging();
+					this._ShiftId = value;
+					this.SendPropertyChanged("ShiftId");
+					this.OnShiftIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

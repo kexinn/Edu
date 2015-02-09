@@ -492,6 +492,30 @@
       <Column Name="fillCardTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.KQ_Shift" Member="KQ_Shift">
+    <Type Name="KQ_Shift">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ClockOnTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ClockOffTime" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="isClockOn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isClockOff" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDefault" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_Scheduling" Member="KQ_Scheduling">
+    <Type Name="KQ_Scheduling">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Day" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeekDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShiftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
