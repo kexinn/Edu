@@ -9446,9 +9446,9 @@ namespace BLL
 		
 		private System.Nullable<System.DateTime> _date;
 		
-		private System.DateTime _shangbanTime;
+		private string _shangbanTime;
 		
-		private System.Nullable<System.DateTime> _xiabanTime;
+		private string _xiabanTime;
 		
 		private System.Nullable<bool> _isChidao;
 		
@@ -9456,13 +9456,17 @@ namespace BLL
 		
 		private System.Nullable<bool> _isKuanggong;
 		
-		private System.Nullable<short> _weekDay;
+		private string _weekDay;
 		
 		private System.Nullable<bool> _isQingjia;
 		
 		private string _qingjiaTime;
 		
 		private string _remark;
+		
+		private System.Nullable<bool> _isClockOn;
+		
+		private System.Nullable<bool> _isClockOff;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -9474,9 +9478,9 @@ namespace BLL
     partial void OnuseridChanged();
     partial void OndateChanging(System.Nullable<System.DateTime> value);
     partial void OndateChanged();
-    partial void OnshangbanTimeChanging(System.DateTime value);
+    partial void OnshangbanTimeChanging(string value);
     partial void OnshangbanTimeChanged();
-    partial void OnxiabanTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnxiabanTimeChanging(string value);
     partial void OnxiabanTimeChanged();
     partial void OnisChidaoChanging(System.Nullable<bool> value);
     partial void OnisChidaoChanged();
@@ -9484,7 +9488,7 @@ namespace BLL
     partial void OnisZaotuiChanged();
     partial void OnisKuanggongChanging(System.Nullable<bool> value);
     partial void OnisKuanggongChanged();
-    partial void OnweekDayChanging(System.Nullable<short> value);
+    partial void OnweekDayChanging(string value);
     partial void OnweekDayChanged();
     partial void OnisQingjiaChanging(System.Nullable<bool> value);
     partial void OnisQingjiaChanged();
@@ -9492,6 +9496,10 @@ namespace BLL
     partial void OnqingjiaTimeChanged();
     partial void OnremarkChanging(string value);
     partial void OnremarkChanged();
+    partial void OnisClockOnChanging(System.Nullable<bool> value);
+    partial void OnisClockOnChanged();
+    partial void OnisClockOffChanging(System.Nullable<bool> value);
+    partial void OnisClockOffChanged();
     #endregion
 		
 		public KQ_Report()
@@ -9559,8 +9567,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shangbanTime", DbType="DateTime NOT NULL")]
-		public System.DateTime shangbanTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shangbanTime", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string shangbanTime
 		{
 			get
 			{
@@ -9579,8 +9587,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xiabanTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> xiabanTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xiabanTime", DbType="VarChar(20)")]
+		public string xiabanTime
 		{
 			get
 			{
@@ -9659,8 +9667,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weekDay", DbType="SmallInt")]
-		public System.Nullable<short> weekDay
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weekDay", DbType="VarChar(10)")]
+		public string weekDay
 		{
 			get
 			{
@@ -9735,6 +9743,46 @@ namespace BLL
 					this._remark = value;
 					this.SendPropertyChanged("remark");
 					this.OnremarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOn", DbType="Bit")]
+		public System.Nullable<bool> isClockOn
+		{
+			get
+			{
+				return this._isClockOn;
+			}
+			set
+			{
+				if ((this._isClockOn != value))
+				{
+					this.OnisClockOnChanging(value);
+					this.SendPropertyChanging();
+					this._isClockOn = value;
+					this.SendPropertyChanged("isClockOn");
+					this.OnisClockOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOff", DbType="Bit")]
+		public System.Nullable<bool> isClockOff
+		{
+			get
+			{
+				return this._isClockOff;
+			}
+			set
+			{
+				if ((this._isClockOff != value))
+				{
+					this.OnisClockOffChanging(value);
+					this.SendPropertyChanging();
+					this._isClockOff = value;
+					this.SendPropertyChanged("isClockOff");
+					this.OnisClockOffChanged();
 				}
 			}
 		}

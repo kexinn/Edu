@@ -248,10 +248,10 @@
         <elementListCompartment Id="65db02d8-89d5-4503-8b6b-4fcac4c1ec47" absoluteBounds="2.765, 5.96, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="aab0d524-5099-4c0f-93e6-154026d0c195" isExpanded="false" absoluteBounds="2.625, 6.125, 2, 0.45">
+    <classShape Id="05dd260c-36e3-42e1-a59d-3e2626287aae" isExpanded="false" absoluteBounds="2.625, 6.25, 2, 0.45">
       <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Report" />
       <nestedChildShapes>
-        <elementListCompartment Id="c255306f-dbf6-4f4c-b99b-188bbc960377" absoluteBounds="2.64, 6.585, 1.9700000000000002, 2.539703369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c7890032-fd2d-413b-9958-123644000818" absoluteBounds="2.64, 6.71, 1.9700000000000002, 2.921742757161458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
