@@ -61,9 +61,113 @@ namespace BLL.Application.KQ
             }
         }
 
-        public static void saveScheduling()
+        public static bool saveScheduling(List<KQ_Scheduling> list,int year,int month)
         {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                try
+                {
+                    var sh = dc.KQ_Scheduling.Where(k => k.Year == year && k.Month == month);
+                    if (sh.Count() > 0)
+                        dc.KQ_Scheduling.DeleteAllOnSubmit(sh);
+                    dc.KQ_Scheduling.InsertAllOnSubmit(list);
+                    dc.SubmitChanges();
+                    return true;
+                }catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
+        public class kq_para
+        {
+            public DateTime date { get; set; }
+            public TimeSpan clockOnTime { get; set; }
+            public TimeSpan clockOffTime { get; set; }
+            public bool isClockOn { get; set; }
+            public bool isClockOff { get; set; }
+
+            public string weekday { get; set; }
+
+
+        }
+        //public class kq_report
+        //{
+        //    public int userid { get; set; }
+        //    public DateTime date { get; set; }
+        //    public DateTime shangbanTime { get; set; }
+
+        //    public bool isChidao { get; set; }
+        //    public DateTime xiabanTime { get; set; }
+        //    public bool isZaotui { get; set; }
+        //    public bool isQingjia { get; set; }
+        //    public string qingjiaTime { get; set; }
+        //    public bool isKuanggong { get; set; }
+        //    public Int16 weekDay { get; set; }
+        //}
+
+        public static List<KQ_Report> genReportByDate(DateTime startdate,DateTime enddate)
+        {
+            using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+              //  var old = dc.KQ_Report.Where(k => k.date >= startdate && k.date <= enddate);
+              //  dc.KQ_Report.DeleteAllOnSubmit(old);
+                var kq_paras = from k in dc.KQ_Scheduling
+                               where k.Date >= startdate && k.Date <= enddate
+                               join s in dc.KQ_Shift on k.ShiftId equals s.Id
+                               select new kq_para
+                               {
+                                   date = (DateTime)k.Date,
+                                   isClockOn = (bool)s.isClockOn,
+                                   isClockOff = (bool)s.isClockOff,
+                                   clockOnTime = TimeSpan.Parse( s.ClockOnTime),
+                                   clockOffTime = TimeSpan.Parse(s.ClockOffTime),
+                                   weekday = k.WeekDay.ToString()
+                               };
+
+                foreach (kq_para p in kq_paras)
+                {
+                    var users = dc.Users.Where(u => u.UserType == '1' && u.disabled == false).ToList();
+
+                    var list = from u in users
+                               join c1 in dc.KQ_PunchCardRecords.Where(k => k.Time >= p.date && k.Time <= p.date.AddDays(1) && k.PunchCardType == '1')
+                               on u.Key equals c1.PunchCardUserId  
+                               into g1
+                               from card1 in g1.DefaultIfEmpty()
+
+                               join c2 in dc.KQ_PunchCardRecords.Where(k => k.Time >= p.date && k.Time <= p.date.AddDays(1) && k.PunchCardType == '2')
+                               on u.Key equals c2.PunchCardUserId
+                               into g2
+                               from card2 in g2.DefaultIfEmpty()
+                              
+                               //join q in dc.KQ_Attendance
+                               //on u.Key equals q.userid
+                               //into g3
+                               //from att in g3.DefaultIfEmpty()
+                               //where  Convert.ToDateTime(Convert.ToDateTime(att.endtime).ToShortDateString()) >= p.date
+
+                               select new KQ_Report
+                               {
+                                   userid = u.Key,
+                                   date = p.date,
+                                   shangbanTime = (card1 !=null)? (DateTime)card1.Time:new DateTime() ,
+                                //   isChidao = (card1 != null) ? (card1.Time - p.date) > p.clockOnTime : false,
+                                   xiabanTime = (card2 != null) ? (DateTime)card2.Time : new DateTime(),
+                               //    isZaotui = (card2 != null)?(card2.Time - p.date) < p.clockOffTime:false,
+                                 //  isQingjia = att != null,
+                                 //  qingjiaTime = (att != null)?att.daySpan+"天"+att.hourSpan+"小时":"",
+                                 //  isKuanggong = (card1 == null && att == null) || (card2 == null && att == null),
+                                   weekDay = Convert.ToInt16( p.weekday)
+                                    
+                               };
+                    
+                    //dc.KQ_Report.InsertAllOnSubmit(list);
+                    return list.ToList();
+                }
+                return null;
+               // dc.SubmitChanges();
+            }
         }
     }
 }

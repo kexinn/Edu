@@ -230,7 +230,7 @@
         <elementListCompartment Id="97721b1f-6e3e-4e5a-9454-7b8356714175" absoluteBounds="2.765, 4.71, 1.9700000000000002, 2.921742757161458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6530c31e-5413-4fa7-8a98-547942aaa48c" absoluteBounds="5.125, 3.875, 2, 2.5266442871093751">
+    <classShape Id="6530c31e-5413-4fa7-8a98-547942aaa48c" isExpanded="false" absoluteBounds="5.125, 3.875, 2, 0.45">
       <DataClassMoniker Name="/DataClassesEduDataContext/v_KQ_punchcard_record" />
       <nestedChildShapes>
         <elementListCompartment Id="54206e5a-d6d9-45c9-8ecb-74bc508e0f08" absoluteBounds="5.14, 4.335, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -246,6 +246,12 @@
       <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Scheduling" />
       <nestedChildShapes>
         <elementListCompartment Id="65db02d8-89d5-4503-8b6b-4fcac4c1ec47" absoluteBounds="2.765, 5.96, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aab0d524-5099-4c0f-93e6-154026d0c195" isExpanded="false" absoluteBounds="2.625, 6.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClassesEduDataContext/KQ_Report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c255306f-dbf6-4f4c-b99b-188bbc960377" absoluteBounds="2.64, 6.585, 1.9700000000000002, 2.539703369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

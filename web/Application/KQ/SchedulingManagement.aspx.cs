@@ -29,12 +29,30 @@ namespace web.Application.KQ
             listShift = BLL.Application.KQ.SchedulingManagement.getShift();
             listScheduling = BLL.Application.KQ.SchedulingManagement.getSchedulingList(Convert.ToInt32(lbYear.Text), Convert.ToInt32(ddlMonth.SelectedValue));
         }
+        protected void initDdlYear()
+        {
+            DateTime year = DateTime.Now;
+            ListItem li = new ListItem((year.Year-1).ToString(),(year.Year-1).ToString());
+            ddlYear.Items.Add(li);
+             li = new ListItem((year.Year).ToString(), (year.Year ).ToString());
+             li.Selected = true;
+             lbYear.Text = year.Year.ToString();
+            ddlYear.Items.Add(li);
+             li = new ListItem((year.Year + 1).ToString(), (year.Year + 1).ToString());
+            ddlYear.Items.Add(li);
+        }
 
+
+        protected void ddlYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbYear.Text = ddlYear.SelectedValue;
+            initTable();
+        }
+       
         protected void databind()
         {
-            lbYear.Text = DateTime.Now.Year.ToString();
+            initDdlYear();
             ddlMonth.Items.FindByValue(DateTime.Now.Month.ToString()).Selected = true;
-            
             PanelAdd.Visible = false;
             gvShift.DataSource = BLL.Application.KQ.SchedulingManagement.getShift();
             gvShift.DataBind();
@@ -42,7 +60,7 @@ namespace web.Application.KQ
             
         }
 
-        protected void getNewDDL(ref DropDownList ddl)
+        protected void getNewDDL(ref DropDownList ddl,string id = "")
         {
             ddl.Width = 100;
             ddl.Items.Clear();
@@ -51,7 +69,11 @@ namespace web.Application.KQ
                 ListItem li = new ListItem();
                 li.Value = l.Id.ToString();
                 li.Text = l.Name;
-                if (l.isDefault !=null && (bool)l.isDefault)
+                if(!string.IsNullOrEmpty(id))
+                {
+                    if (li.Value == id)
+                        li.Selected = true;
+                }else  if (l.isDefault !=null && (bool)l.isDefault)
                     li.Selected = true;
                 ddl.Items.Add(li);
             }
@@ -77,18 +99,27 @@ namespace web.Application.KQ
                     Label lb = cell.FindControl("lb" +j+ i) as Label;
                     CheckBox cb = cell.FindControl("cb" +j+ i) as CheckBox;
                     DropDownList ddl = cell.FindControl("ddl" +j+ i) as DropDownList;
-                    getNewDDL(ref ddl);
+                    
                     if ((DayOfWeek)i == date.DayOfWeek && date.Month == preMonth)
                     {
                         cb.Visible = true;
                         ddl.Visible = true;
 
                         if (listScheduling.Where(l => l.Day == date.Day).Count() == 1) //如果有记录说明已经排过班，则勾选
+                        {
+                            cell.BackColor = System.Drawing.Color.DeepSkyBlue;
                             cb.Checked = true;
+                            getNewDDL(ref ddl, listScheduling.Where(l => l.Day == date.Day).Single().ShiftId.ToString());
+                        }
                         else
+                        {
                             cb.Checked = false;
+                            getNewDDL(ref ddl);
+                            cell.BackColor = System.Drawing.Color.FromArgb(224, 235, 252);
+                        }
                         lb.Text = date.Day.ToString();
-                        cell.BackColor = System.Drawing.Color.FromArgb(224, 235, 252);
+                        
+                       
 
                         if (date.Month == preMonth)
                         {
@@ -100,6 +131,7 @@ namespace web.Application.KQ
                     {
                         lb.Text = "---- ";
                         cell.BackColor = System.Drawing.Color.White;
+                        cb.Checked = false;
                         cb.Visible = false;
                         ddl.Visible = false;
                     }
@@ -117,6 +149,12 @@ namespace web.Application.KQ
         {
 
             mv1.ActiveViewIndex = 1;
+        }
+
+
+        protected void lbGen_Click(object sender, EventArgs e)
+        {
+            mv1.ActiveViewIndex = 2;
         }
 
         protected void lbAdd_Click(object sender, EventArgs e)
@@ -216,9 +254,19 @@ namespace web.Application.KQ
         {
             putResultToList();
             lbMessage.Text = "";
-            foreach( KQ_Scheduling sh in listSchedulingResult)
+            //foreach( KQ_Scheduling sh in listSchedulingResult)
+            //{
+            //    lbMessage.Text += sh.Date.ToString() + "------";
+            //}
+            try
             {
-                lbMessage.Text += sh.Date.ToString() + "------";
+                if (BLL.Application.KQ.SchedulingManagement.saveScheduling(listSchedulingResult, Convert.ToInt32(lbYear.Text), Convert.ToInt32(ddlMonth.SelectedValue)))
+                    BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "保存成功！");
+                else
+                    lbMessage.Text = "保存失败";
+            }catch(Exception ex)
+            {
+                lbMessage.Text = "保存失败:"+ex.Message;
             }
         }
 
@@ -288,6 +336,15 @@ namespace web.Application.KQ
                 tableMonth.Controls.Add(tr);
             }
         }
-       
+
+        protected void lbStatisc_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
+           GridView1.DataSource =  BLL.Application.KQ.SchedulingManagement.genReportByDate(Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text));
+           GridView1.DataBind();
+           lbMsg.Text = "生成数据成功！";
+        }
+
+
     }
 }

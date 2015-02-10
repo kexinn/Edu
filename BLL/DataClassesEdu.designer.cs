@@ -111,6 +111,9 @@ namespace BLL
     partial void InsertKQ_Scheduling(KQ_Scheduling instance);
     partial void UpdateKQ_Scheduling(KQ_Scheduling instance);
     partial void DeleteKQ_Scheduling(KQ_Scheduling instance);
+    partial void InsertKQ_Report(KQ_Report instance);
+    partial void UpdateKQ_Report(KQ_Report instance);
+    partial void DeleteKQ_Report(KQ_Report instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -468,6 +471,14 @@ namespace BLL
 			get
 			{
 				return this.GetTable<KQ_Scheduling>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Report> KQ_Report
+		{
+			get
+			{
+				return this.GetTable<KQ_Report>();
 			}
 		}
 		
@@ -9398,6 +9409,332 @@ namespace BLL
 					this._Date = value;
 					this.SendPropertyChanged("Date");
 					this.OnDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Report")]
+	public partial class KQ_Report : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _userid;
+		
+		private System.Nullable<System.DateTime> _date;
+		
+		private System.DateTime _shangbanTime;
+		
+		private System.Nullable<System.DateTime> _xiabanTime;
+		
+		private System.Nullable<bool> _isChidao;
+		
+		private System.Nullable<bool> _isZaotui;
+		
+		private System.Nullable<bool> _isKuanggong;
+		
+		private System.Nullable<short> _weekDay;
+		
+		private System.Nullable<bool> _isQingjia;
+		
+		private string _qingjiaTime;
+		
+		private string _remark;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnuseridChanging(System.Nullable<int> value);
+    partial void OnuseridChanged();
+    partial void OndateChanging(System.Nullable<System.DateTime> value);
+    partial void OndateChanged();
+    partial void OnshangbanTimeChanging(System.DateTime value);
+    partial void OnshangbanTimeChanged();
+    partial void OnxiabanTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnxiabanTimeChanged();
+    partial void OnisChidaoChanging(System.Nullable<bool> value);
+    partial void OnisChidaoChanged();
+    partial void OnisZaotuiChanging(System.Nullable<bool> value);
+    partial void OnisZaotuiChanged();
+    partial void OnisKuanggongChanging(System.Nullable<bool> value);
+    partial void OnisKuanggongChanged();
+    partial void OnweekDayChanging(System.Nullable<short> value);
+    partial void OnweekDayChanged();
+    partial void OnisQingjiaChanging(System.Nullable<bool> value);
+    partial void OnisQingjiaChanged();
+    partial void OnqingjiaTimeChanging(string value);
+    partial void OnqingjiaTimeChanged();
+    partial void OnremarkChanging(string value);
+    partial void OnremarkChanged();
+    #endregion
+		
+		public KQ_Report()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this.OndateChanging(value);
+					this.SendPropertyChanging();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shangbanTime", DbType="DateTime NOT NULL")]
+		public System.DateTime shangbanTime
+		{
+			get
+			{
+				return this._shangbanTime;
+			}
+			set
+			{
+				if ((this._shangbanTime != value))
+				{
+					this.OnshangbanTimeChanging(value);
+					this.SendPropertyChanging();
+					this._shangbanTime = value;
+					this.SendPropertyChanged("shangbanTime");
+					this.OnshangbanTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xiabanTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> xiabanTime
+		{
+			get
+			{
+				return this._xiabanTime;
+			}
+			set
+			{
+				if ((this._xiabanTime != value))
+				{
+					this.OnxiabanTimeChanging(value);
+					this.SendPropertyChanging();
+					this._xiabanTime = value;
+					this.SendPropertyChanged("xiabanTime");
+					this.OnxiabanTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isChidao", DbType="Bit")]
+		public System.Nullable<bool> isChidao
+		{
+			get
+			{
+				return this._isChidao;
+			}
+			set
+			{
+				if ((this._isChidao != value))
+				{
+					this.OnisChidaoChanging(value);
+					this.SendPropertyChanging();
+					this._isChidao = value;
+					this.SendPropertyChanged("isChidao");
+					this.OnisChidaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isZaotui", DbType="Bit")]
+		public System.Nullable<bool> isZaotui
+		{
+			get
+			{
+				return this._isZaotui;
+			}
+			set
+			{
+				if ((this._isZaotui != value))
+				{
+					this.OnisZaotuiChanging(value);
+					this.SendPropertyChanging();
+					this._isZaotui = value;
+					this.SendPropertyChanged("isZaotui");
+					this.OnisZaotuiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isKuanggong", DbType="Bit")]
+		public System.Nullable<bool> isKuanggong
+		{
+			get
+			{
+				return this._isKuanggong;
+			}
+			set
+			{
+				if ((this._isKuanggong != value))
+				{
+					this.OnisKuanggongChanging(value);
+					this.SendPropertyChanging();
+					this._isKuanggong = value;
+					this.SendPropertyChanged("isKuanggong");
+					this.OnisKuanggongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weekDay", DbType="SmallInt")]
+		public System.Nullable<short> weekDay
+		{
+			get
+			{
+				return this._weekDay;
+			}
+			set
+			{
+				if ((this._weekDay != value))
+				{
+					this.OnweekDayChanging(value);
+					this.SendPropertyChanging();
+					this._weekDay = value;
+					this.SendPropertyChanged("weekDay");
+					this.OnweekDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isQingjia", DbType="Bit")]
+		public System.Nullable<bool> isQingjia
+		{
+			get
+			{
+				return this._isQingjia;
+			}
+			set
+			{
+				if ((this._isQingjia != value))
+				{
+					this.OnisQingjiaChanging(value);
+					this.SendPropertyChanging();
+					this._isQingjia = value;
+					this.SendPropertyChanged("isQingjia");
+					this.OnisQingjiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qingjiaTime", DbType="VarChar(50)")]
+		public string qingjiaTime
+		{
+			get
+			{
+				return this._qingjiaTime;
+			}
+			set
+			{
+				if ((this._qingjiaTime != value))
+				{
+					this.OnqingjiaTimeChanging(value);
+					this.SendPropertyChanging();
+					this._qingjiaTime = value;
+					this.SendPropertyChanged("qingjiaTime");
+					this.OnqingjiaTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="NVarChar(50)")]
+		public string remark
+		{
+			get
+			{
+				return this._remark;
+			}
+			set
+			{
+				if ((this._remark != value))
+				{
+					this.OnremarkChanging(value);
+					this.SendPropertyChanging();
+					this._remark = value;
+					this.SendPropertyChanged("remark");
+					this.OnremarkChanged();
 				}
 			}
 		}
