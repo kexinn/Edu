@@ -70,7 +70,7 @@
                         <asp:LinkButton ID="lbBanci" runat="server" OnClick="lbBanci_Click">班次管理 </asp:LinkButton></li>
                     <li><span>
                         <img src="/media/images/t05.png" /></span>
-                        <asp:LinkButton ID="lbGen" runat="server" OnClick="lbGen_Click">生成数据 </asp:LinkButton></li>
+                        <asp:LinkButton ID="lbGen" runat="server" OnClick="lbGen_Click">生成报表 </asp:LinkButton></li>
                 </ul>
 
                 </div>
@@ -274,15 +274,15 @@
                 </asp:View>
 
                 <asp:View ID="viewGen" runat="server">
-                <div class="formtitle"><span>生成数据</span>
+                <div class="formtitle"><span>生成报表</span>
                 </div> 
                     
             <div class="toolsearch">
                 <div class="pullleft">
                     开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})" ValidationGroup="gen"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="inline" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="inline" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*" ForeColor="Red" ValidationGroup="gen"></asp:RequiredFieldValidator>
                     结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"  onclick="WdatePicker({skin:'whyGreen'})" ValidationGroup="gen"></asp:TextBox>
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*" ForeColor="Red" ValidationGroup="gen"></asp:RequiredFieldValidator>
                     <%-- <asp:TextBox ID="TextBox1" CssClass="dfinput" runat="server" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"></asp:TextBox>
                --%> </div>
 
@@ -293,7 +293,7 @@
     <ContentTemplate> 
                 <div class="pullleft">
                     <asp:LinkButton ID="lbStatisc" runat="server"
-                        OnClick="lbStatisc_Click" ValidationGroup="gen"> <i class="mbtn"><img src="/media/images/ico06.png" />生成</i></asp:LinkButton>
+                        OnClick="lbStatisc_Click" ValidationGroup="gen"> <i class="mbtn"><img src="/media/images/ico06.png" />生成报表</i></asp:LinkButton>
                 </div>  
                 <div class="clear">
                     <br />

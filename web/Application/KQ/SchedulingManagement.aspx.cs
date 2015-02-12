@@ -340,9 +340,15 @@ namespace web.Application.KQ
         protected void lbStatisc_Click(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(2000);//延时2秒以显示进度条控件
-           GridView1.DataSource =  BLL.Application.KQ.SchedulingManagement.genReportByDate(Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text));
-           GridView1.DataBind();
-           lbMsg.Text = "生成数据成功！";
+            try
+            {
+                BLL.Application.KQ.SchedulingManagement.genReportByDate(Convert.ToDateTime(tbStartTime.Text), Convert.ToDateTime(tbEndTime.Text));
+
+                lbMsg.Text = "生成数据成功！";
+            }catch (Exception ex)
+            {
+                lbMsg.Text = "生成错误：" + ex.Message;
+            }
         }
 
 
