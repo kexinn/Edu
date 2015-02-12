@@ -140,25 +140,35 @@ namespace BLL.Application.KQ
                                on u.Key equals c2.PunchCardUserId
                                into g2
                                from card2 in g2.DefaultIfEmpty()
-                              
-                               //join q in dc.KQ_Attendance
-                               //on u.Key equals q.userid
-                               //into g3
-                               //from att in g3.DefaultIfEmpty()
-                               //where  Convert.ToDateTime(Convert.ToDateTime(att.endtime).ToShortDateString()) >= p.date
 
+
+                               join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime>=p.date && a.starttime<=p.date.AddHours(16).AddMinutes(20)))
+                               on u.Key equals q.userid
+                               into g
+                               from att in g.DefaultIfEmpty()
+
+                               join q1 in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) )
+                               on u.Key equals q1.userid
+                               into g3
+                               from att1 in g3.DefaultIfEmpty()
+
+
+                               join q2 in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(16).AddMinutes(20) && a.endtime >= p.date.AddHours(16).AddMinutes(20)))
+                               on u.Key equals q2.userid
+                               into g4
+                               from att2 in g3.DefaultIfEmpty()
                                select new KQ_Report
                                {
                                    userid = u.Key,
                                    date = p.date,
-                                   shangbanTime = (card1 !=null)? (DateTime)card1.Time:new DateTime() ,
-                                //   isChidao = (card1 != null) ? (card1.Time - p.date) > p.clockOnTime : false,
-                                   xiabanTime = (card2 != null) ? (DateTime)card2.Time : new DateTime(),
-                               //    isZaotui = (card2 != null)?(card2.Time - p.date) < p.clockOffTime:false,
-                                 //  isQingjia = att != null,
-                                 //  qingjiaTime = (att != null)?att.daySpan+"天"+att.hourSpan+"小时":"",
-                                 //  isKuanggong = (card1 == null && att == null) || (card2 == null && att == null),
-                                   weekDay = Convert.ToInt16( p.weekday)
+                                   shangbanTime = (card1 !=null)? card1.Time.ToString():"" ,
+                                   isChidao = (card1 != null) ? (card1.Time - p.date) > p.clockOnTime : false,
+                                   xiabanTime = (card2 != null) ? card2.Time.ToString(): "",
+                                   isZaotui = (card2 != null)?(card2.Time - p.date) < p.clockOffTime:false,
+                                   isQingjia = (att != null) ,
+                                   qingjiaTime = (att != null)?att.daySpan+"天"+att.hourSpan+"小时":"",
+                                   isKuanggong = (card1 == null && att1 == null) || (card2 == null && att2 == null),
+                                   weekDay = p.weekday
                                     
                                };
                     
