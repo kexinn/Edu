@@ -124,6 +124,7 @@
     <Content Include="Application\KQ\Attendance\MyAttendance.aspx" />
     <Content Include="Application\KQ\HandPunch.aspx" />
     <Content Include="Application\KQ\MyKQList.aspx" />
+    <Content Include="Application\KQ\MyKqQuery.aspx" />
     <Content Include="Application\KQ\QueryKQList.aspx" />
     <Content Include="Application\KQ\SchedulingManagement.aspx" />
     <Content Include="Application\KQ\SpecialRemark.aspx" />
@@ -701,6 +702,13 @@
     </Compile>
     <Compile Include="Application\KQ\MyKQList.aspx.designer.cs">
       <DependentUpon>MyKQList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\MyKqQuery.aspx.cs">
+      <DependentUpon>MyKqQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\MyKqQuery.aspx.designer.cs">
+      <DependentUpon>MyKqQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\QueryKQList.aspx.cs">
       <DependentUpon>QueryKQList.aspx</DependentUpon>

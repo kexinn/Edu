@@ -144,8 +144,8 @@ namespace BLL.Application.KQ
                                    from card2 in g2.DefaultIfEmpty()
 
 
-                                   join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime >= p.date && a.starttime <= p.date.AddHours(16).AddMinutes(20))).Take(1)
-                                   on u.Key equals q.userid
+                                   join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime >= p.date && a.starttime <= p.date.AddHours(16).AddMinutes(20))).GroupBy(g=>g.userid)
+                                   on u.Key equals q.Key
                                    into g
                                    from att in g.DefaultIfEmpty()
 
@@ -168,10 +168,10 @@ namespace BLL.Application.KQ
                                        xiabanTime = (card2 != null) ? card2.Time.ToString() : "",
                                        isZaotui = (card2 != null) ? (card2.Time - p.date) < p.clockOffTime : false,
                                        isQingjia = (att != null),
-                                       qingjiaTime = (att != null) ? att.daySpan + "天" + att.hourSpan + "小时" : "",
+                                       qingjiaTime = (att != null) ? att.Sum(a=>a.daySpan) + "天" + att.Sum(a=>a.hourSpan) + "小时" : "",
                                        isKuanggong = (p.isClockOn && card1 == null && att1 == null) || (p.isClockOff && card2 == null && att2 == null),
-                                       isClockOn = p.isClockOn,
-                                       isClockOff = p.isClockOff,
+                                       isClockOn = p.isClockOn && (att1 != null),
+                                       isClockOff = p.isClockOff && (att2 != null),
                                        weekDay = p.weekday
 
                                    };
