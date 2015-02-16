@@ -1,5 +1,6 @@
-﻿<%@ Page Language="C#"   EnableEventValidation="false"  AutoEventWireup="true" CodeBehind="MyKqQuery.aspx.cs" Inherits="web.Application.KQ.MyKqQuery" %>
+﻿<%@ Page Language="C#"  EnableEventValidation="false"  AutoEventWireup="true" CodeBehind="KqQuery.aspx.cs" Inherits="web.Application.KQ.KqQuery" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register assembly="AspNetPager" namespace="Wuqi.Webdiyer" tagprefix="webdiyer" %>
 <!DOCTYPE html>
 
@@ -28,7 +29,7 @@
             <ul class="placeul">
                 <li><a href="#">首页</a></li>
                 <li><a href="#">请假管理</a></li>
-                <li><a href="#">我的考勤</a></li>
+                <li><a href="#">考勤查询</a></li>
             </ul>
         </div>
 
@@ -36,7 +37,13 @@
 
 
             <div class="toolsearch">
+                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ToolkitScriptManager>
+                
                 <div class="pullleft">
+                     姓名：<asp:TextBox ID="tbUsername" runat="server" CssClass="dfinput " Width="120px"></asp:TextBox>
+                                        
+                     <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="tbUsername" ServicePath="/webservice/user/UserWebService.asmx"  ServiceMethod="GetUsers" CompletionSetCount="10" MinimumPrefixLength="1"></asp:AutoCompleteExtender>
+                                       
                     起始日期：<asp:TextBox ID="tbDate" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbDate" ErrorMessage="*必选" ForeColor="Red"></asp:RequiredFieldValidator>
                     结束日期：<asp:TextBox ID="tbEndDate" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
@@ -63,13 +70,13 @@
                 CssClass="tablelist" >
                 <Columns>
                    
-                    
-                    <asp:TemplateField HeaderText="姓名">
-                        <ItemTemplate>
-                            <asp:Label ID="lbName" runat="server" ><%# Session["username"] %></asp:Label>
-                        </ItemTemplate>
+                    <asp:BoundField DataField="order" HeaderText="序号">
+                    <HeaderStyle Width="60px" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="username" HeaderText="姓名">
                     <HeaderStyle Width="80px" />
-                    </asp:TemplateField>
+                    </asp:BoundField>
+                   
                     <asp:TemplateField HeaderText="考勤日期">
                         <ItemTemplate>
                             <asp:Label ID="lbDate" runat="server" OnDataBinding="lbDate_DataBinding"></asp:Label>

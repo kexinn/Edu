@@ -8,7 +8,7 @@ using BLL;
 
 namespace web.Application.KQ
 {
-    public partial class MyKqQuery : System.Web.UI.Page
+    public partial class KqQuery : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,13 +18,13 @@ namespace web.Application.KQ
             }
         }
 
-        protected void databind()
+          protected void databind()
         {
             int recordNum = 0;
             AspNetPager1.PageSize = BLL.pub.PubClass.PAGE_SIZE;
             
 
-            gvKQ.DataSource = BLL.Application.KQ.MyKqQuery.getMyKqQuery(Convert.ToInt32(Session["userid"]) ,ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize,tbDate.Text,tbEndDate.Text);
+            gvKQ.DataSource = BLL.Application.KQ.MyKqQuery.getAllKqQuery(ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize,tbDate.Text,tbEndDate.Text,tbUsername.Text);
             gvKQ.DataBind();
             // gvAttendance.Columns[0].Visible = false;
             AspNetPager1.RecordCount = recordNum;
@@ -38,7 +38,7 @@ namespace web.Application.KQ
         protected void lbEarly_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             if ((bool)item.isZaotui)
             {
                 lb.Text = "早退";
@@ -57,7 +57,7 @@ namespace web.Application.KQ
         protected void lbLate_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             if ((bool)item.isChidao)
             {
                 lb.Text = "迟到";
@@ -76,7 +76,7 @@ namespace web.Application.KQ
         protected void lbKuanggong_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             if ((bool)item.isKuanggong)
             {
                 lb.Text = "矿工";
@@ -93,14 +93,14 @@ namespace web.Application.KQ
         protected void lbWeek_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             lb.Text = "星期" + ((item.weekDay == "0") ? "天" : item.weekDay);
         }
 
         protected void lbQingjia_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             if ((bool)item.isQingjia)
             {
                 lb.Text = "是";
@@ -122,8 +122,9 @@ namespace web.Application.KQ
         protected void lbDate_DataBinding(object sender, EventArgs e)
         {
             Label lb = (Label)sender;
-            KQ_Report item = GetDataItem() as KQ_Report;
+            BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             lb.Text = Convert.ToDateTime(item.date).ToShortDateString();
         }
+    
     }
 }
