@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  EnableEventValidation="false"  AutoEventWireup="true" CodeBehind="statistic.aspx.cs" Inherits="web.Application.KQ.Attendance.statistic" %>
+﻿<%@ Page Language="C#"  EnableEventValidation="false" AutoEventWireup="true" CodeBehind="statistic.aspx.cs" Inherits="web.Application.KQ.Attendance.statistic" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 

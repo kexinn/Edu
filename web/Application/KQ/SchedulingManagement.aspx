@@ -305,7 +305,7 @@
         </ProgressTemplate>
     </asp:UpdateProgress>
                 </div>
-            </div>
+            
             <div>
                 &nbsp;<asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
 

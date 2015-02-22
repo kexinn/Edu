@@ -107,6 +107,64 @@ namespace BLL.Application.KQ
         //    public Int16 weekDay { get; set; }
         //}
 
+    /*    public static void genReport(DateTime startdate,DateTime enddate)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                var old = dc.KQ_Report.Where(k => k.date >= startdate && k.date <= enddate);
+                dc.KQ_Report.DeleteAllOnSubmit(old);
+
+                var users = dc.Users.Where(u => u.UserType == '1' && u.disabled == false).ToList();
+
+                var result = from u in users
+                             join dep in dc.Department on u.DepartmentId equals dep.ID
+                             join p in dc.KQ_Scheduling.Where(u => u.Date >= startdate && u.Date <= enddate)
+                             on dep.ParentId equals p.UserId
+
+                             join c1 in dc.KQ_PunchCardRecords.Where(k => k.PunchCardType == '1')
+                             on new { A= u.Key,B=p.Date.Value.ToShortDateString() } equals new {A= (int)(c1.PunchCardUserId),B=c1.Time.Value.ToShortDateString()}
+                             into g1
+                             from card1 in g1.DefaultIfEmpty()
+
+                             join c2 in dc.KQ_PunchCardRecords.Where(k => k.PunchCardType == '2')
+                             on new { A= u.Key,B=p.Date.Value.ToShortDateString() } equals new {A= (int)(c2.PunchCardUserId),B=c2.Time.Value.ToShortDateString()}
+                             into g2
+                             from card2 in g2.DefaultIfEmpty()
+                             
+                             join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime >= p.date && a.starttime <= p.date.AddHours(16).AddMinutes(20))).GroupBy(g => g.userid)
+                             on u.Key equals q.Key 
+                             into g
+                             from att in g.DefaultIfEmpty()
+
+                             join q1 in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)))
+                             on u.Key equals q1.userid
+                             into g3
+                             from att1 in g3.DefaultIfEmpty()
+
+
+                             join q2 in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(16).AddMinutes(20) && a.endtime >= p.date.AddHours(16).AddMinutes(20)))
+                             on u.Key equals q2.userid
+                             into g4
+                             from att2 in g3.DefaultIfEmpty()
+                             select new KQ_Report
+                             {
+                                 userid = u.Key,
+                                 date = p.date,
+                                 shangbanTime = (card1 != null) ? card1.Time.ToString() : "",
+                                 isChidao = (card1 != null) ? (card1.Time - p.date) > p.clockOnTime : false,
+                                 xiabanTime = (card2 != null) ? card2.Time.ToString() : "",
+                                 isZaotui = (card2 != null) ? (card2.Time - p.date) < p.clockOffTime : false,
+                                 isQingjia = (att != null),
+                                 qingjiaTime = (att != null) ? att.Sum(a => a.daySpan) + "天" + att.Sum(a => a.hourSpan) + "小时" : "",
+                                 isKuanggong = (p.isClockOn && card1 == null && att1 == null) || (p.isClockOff && card2 == null && att2 == null),
+                                 isClockOn = p.isClockOn && (att1 != null),
+                                 isClockOff = p.isClockOff && (att2 != null),
+                                 weekDay = p.weekday
+
+                             };
+            }
+        }*/
+
         public static void genReportByDate(DateTime startdate,DateTime enddate)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
@@ -144,7 +202,7 @@ namespace BLL.Application.KQ
                                    from card2 in g2.DefaultIfEmpty()
 
 
-                                   join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime >= p.date && a.starttime <= p.date.AddHours(16).AddMinutes(20))).GroupBy(g=>g.userid)
+                                   join q in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(7).AddMinutes(50) && a.endtime >= p.date.AddHours(7).AddMinutes(50)) || (a.starttime >= p.date.AddHours(7).AddMinutes(50) && a.starttime <= p.date.AddHours(16).AddMinutes(20))).GroupBy(g=>g.userid)
                                    on u.Key equals q.Key
                                    into g
                                    from att in g.DefaultIfEmpty()
@@ -170,8 +228,8 @@ namespace BLL.Application.KQ
                                        isQingjia = (att != null),
                                        qingjiaTime = (att != null) ? att.Sum(a=>a.daySpan) + "天" + att.Sum(a=>a.hourSpan) + "小时" : "",
                                        isKuanggong = (p.isClockOn && card1 == null && att1 == null) || (p.isClockOff && card2 == null && att2 == null),
-                                       isClockOn = p.isClockOn && (att1 != null),
-                                       isClockOff = p.isClockOff && (att2 != null),
+                                       isClockOn = p.isClockOn && (att1 == null),
+                                       isClockOff = p.isClockOff && (att2 == null),
                                        weekDay = p.weekday
 
                                    };

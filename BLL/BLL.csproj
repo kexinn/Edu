@@ -69,6 +69,7 @@
     <Compile Include="Application\KQ\DayStatisticKQ.cs" />
     <Compile Include="Application\KQ\Attendance\MyAttendance.cs" />
     <Compile Include="Application\KQ\KQManagement.cs" />
+    <Compile Include="Application\KQ\KqStatistic.cs" />
     <Compile Include="Application\KQ\MyKqQuery.cs" />
     <Compile Include="Application\KQ\SchedulingManagement.cs" />
     <Compile Include="Application\KQ\SpecialRemark.cs" />

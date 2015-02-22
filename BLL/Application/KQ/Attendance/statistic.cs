@@ -344,7 +344,7 @@ namespace BLL.Application.KQ.Attendance
                                     chanjiaHourSpan = (int)g.Where(s => Convert.ToInt32(s["typeid"]) == 4).Sum(x => Convert.ToDecimal(x["hourSpan"]))
                                 };
                 var users = from u in dc.Users
-                            where u.UserType == '1'
+                            where u.UserType == '1' && u.disabled == false
                             orderby u.orderNo
                             select u;
 

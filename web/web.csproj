@@ -124,6 +124,7 @@
     <Content Include="Application\KQ\Attendance\MyAttendance.aspx" />
     <Content Include="Application\KQ\HandPunch.aspx" />
     <Content Include="Application\KQ\KqQuery.aspx" />
+    <Content Include="Application\KQ\KqStatistic.aspx" />
     <Content Include="Application\KQ\MyKQList.aspx" />
     <Content Include="Application\KQ\MyKqQuery.aspx" />
     <Content Include="Application\KQ\QueryKQList.aspx" />
@@ -703,6 +704,13 @@
     </Compile>
     <Compile Include="Application\KQ\KqQuery.aspx.designer.cs">
       <DependentUpon>KqQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\KQ\KqStatistic.aspx.cs">
+      <DependentUpon>KqStatistic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\KQ\KqStatistic.aspx.designer.cs">
+      <DependentUpon>KqStatistic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\KQ\MyKQList.aspx.cs">
       <DependentUpon>MyKQList.aspx</DependentUpon>

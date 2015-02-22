@@ -291,6 +291,7 @@ namespace web.Application.KQ
                         sh.Date = new DateTime((int)sh.Year, (int)sh.Month, (int)sh.Day);
                         sh.ShiftId = Convert.ToInt32( ddl.SelectedValue);
                         sh.WeekDay = i;
+                        sh.UserId = 0;
 
                         listSchedulingResult.Add(sh);
                     }
