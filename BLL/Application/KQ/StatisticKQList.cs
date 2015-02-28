@@ -104,7 +104,7 @@ namespace BLL.Application.KQ
                 statistic.type = "";//请假类型
 
                 DataTable dtAttend = BLL.Application.KQ.Attendance.statistic.calculateResult(statistic, starttime, endtime.AddHours(-23), "", "", -2);
-                var remarks = from r in dc.KQ_SpecialRemark
+                var remarks = from r in dc.KQ_SpecialRemark.Where(k=>(k.starttime<=starttime && k.endtime>=starttime) || (k.starttime>=starttime && k.starttime<=endtime) )
                               select new KQStaticResult
                               { 
                                id = (int)r.userid,

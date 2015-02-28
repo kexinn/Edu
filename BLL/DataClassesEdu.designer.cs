@@ -99,9 +99,6 @@ namespace BLL
     partial void InsertKQ_AttendanceApprovalHistory(KQ_AttendanceApprovalHistory instance);
     partial void UpdateKQ_AttendanceApprovalHistory(KQ_AttendanceApprovalHistory instance);
     partial void DeleteKQ_AttendanceApprovalHistory(KQ_AttendanceApprovalHistory instance);
-    partial void InsertKQ_SpecialRemark(KQ_SpecialRemark instance);
-    partial void UpdateKQ_SpecialRemark(KQ_SpecialRemark instance);
-    partial void DeleteKQ_SpecialRemark(KQ_SpecialRemark instance);
     partial void InsertKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void UpdateKQ_PunchCardRecords(KQ_PunchCardRecords instance);
     partial void DeleteKQ_PunchCardRecords(KQ_PunchCardRecords instance);
@@ -114,6 +111,9 @@ namespace BLL
     partial void InsertKQ_Report(KQ_Report instance);
     partial void UpdateKQ_Report(KQ_Report instance);
     partial void DeleteKQ_Report(KQ_Report instance);
+    partial void InsertKQ_SpecialRemark(KQ_SpecialRemark instance);
+    partial void UpdateKQ_SpecialRemark(KQ_SpecialRemark instance);
+    partial void DeleteKQ_SpecialRemark(KQ_SpecialRemark instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -426,22 +426,6 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<KQ_SpecialRemark> KQ_SpecialRemark
-		{
-			get
-			{
-				return this.GetTable<KQ_SpecialRemark>();
-			}
-		}
-		
-		public System.Data.Linq.Table<v_KQ_SpecialRemark> v_KQ_SpecialRemark
-		{
-			get
-			{
-				return this.GetTable<v_KQ_SpecialRemark>();
-			}
-		}
-		
 		public System.Data.Linq.Table<KQ_PunchCardRecords> KQ_PunchCardRecords
 		{
 			get
@@ -479,6 +463,22 @@ namespace BLL
 			get
 			{
 				return this.GetTable<KQ_Report>();
+			}
+		}
+		
+		public System.Data.Linq.Table<v_KQ_SpecialRemark> v_KQ_SpecialRemark
+		{
+			get
+			{
+				return this.GetTable<v_KQ_SpecialRemark>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_SpecialRemark> KQ_SpecialRemark
+		{
+			get
+			{
+				return this.GetTable<KQ_SpecialRemark>();
 			}
 		}
 		
@@ -8220,215 +8220,6 @@ namespace BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_SpecialRemark")]
-	public partial class KQ_SpecialRemark : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _userid;
-		
-		private string _remark;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnuseridChanging(System.Nullable<int> value);
-    partial void OnuseridChanged();
-    partial void OnremarkChanging(string value);
-    partial void OnremarkChanged();
-    #endregion
-		
-		public KQ_SpecialRemark()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
-		public System.Nullable<int> userid
-		{
-			get
-			{
-				return this._userid;
-			}
-			set
-			{
-				if ((this._userid != value))
-				{
-					this.OnuseridChanging(value);
-					this.SendPropertyChanging();
-					this._userid = value;
-					this.SendPropertyChanged("userid");
-					this.OnuseridChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
-		public string remark
-		{
-			get
-			{
-				return this._remark;
-			}
-			set
-			{
-				if ((this._remark != value))
-				{
-					this.OnremarkChanging(value);
-					this.SendPropertyChanging();
-					this._remark = value;
-					this.SendPropertyChanged("remark");
-					this.OnremarkChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_SpecialRemark")]
-	public partial class v_KQ_SpecialRemark
-	{
-		
-		private int _Id;
-		
-		private System.Nullable<int> _userid;
-		
-		private string _TrueName;
-		
-		private string _remark;
-		
-		private string _JobNumber;
-		
-		public v_KQ_SpecialRemark()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
-		public System.Nullable<int> userid
-		{
-			get
-			{
-				return this._userid;
-			}
-			set
-			{
-				if ((this._userid != value))
-				{
-					this._userid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string TrueName
-		{
-			get
-			{
-				return this._TrueName;
-			}
-			set
-			{
-				if ((this._TrueName != value))
-				{
-					this._TrueName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
-		public string remark
-		{
-			get
-			{
-				return this._remark;
-			}
-			set
-			{
-				if ((this._remark != value))
-				{
-					this._remark = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
-		public string JobNumber
-		{
-			get
-			{
-				return this._JobNumber;
-			}
-			set
-			{
-				if ((this._JobNumber != value))
-				{
-					this._JobNumber = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_PunchCardRecords")]
 	public partial class KQ_PunchCardRecords : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9783,6 +9574,299 @@ namespace BLL
 					this._isClockOff = value;
 					this.SendPropertyChanged("isClockOff");
 					this.OnisClockOffChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_SpecialRemark")]
+	public partial class v_KQ_SpecialRemark
+	{
+		
+		private int _Id;
+		
+		private System.Nullable<int> _userid;
+		
+		private string _TrueName;
+		
+		private string _remark;
+		
+		private System.Nullable<System.DateTime> _starttime;
+		
+		private System.Nullable<System.DateTime> _endtime;
+		
+		private string _JobNumber;
+		
+		public v_KQ_SpecialRemark()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this._userid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string TrueName
+		{
+			get
+			{
+				return this._TrueName;
+			}
+			set
+			{
+				if ((this._TrueName != value))
+				{
+					this._TrueName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
+		public string remark
+		{
+			get
+			{
+				return this._remark;
+			}
+			set
+			{
+				if ((this._remark != value))
+				{
+					this._remark = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this._starttime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this._endtime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
+		public string JobNumber
+		{
+			get
+			{
+				return this._JobNumber;
+			}
+			set
+			{
+				if ((this._JobNumber != value))
+				{
+					this._JobNumber = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_SpecialRemark")]
+	public partial class KQ_SpecialRemark : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _userid;
+		
+		private string _remark;
+		
+		private System.Nullable<System.DateTime> _starttime;
+		
+		private System.Nullable<System.DateTime> _endtime;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnuseridChanging(System.Nullable<int> value);
+    partial void OnuseridChanged();
+    partial void OnremarkChanging(string value);
+    partial void OnremarkChanged();
+    partial void OnstarttimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnstarttimeChanged();
+    partial void OnendtimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnendtimeChanged();
+    #endregion
+		
+		public KQ_SpecialRemark()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		public System.Nullable<int> userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
+		public string remark
+		{
+			get
+			{
+				return this._remark;
+			}
+			set
+			{
+				if ((this._remark != value))
+				{
+					this.OnremarkChanging(value);
+					this.SendPropertyChanging();
+					this._remark = value;
+					this.SendPropertyChanged("remark");
+					this.OnremarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> starttime
+		{
+			get
+			{
+				return this._starttime;
+			}
+			set
+			{
+				if ((this._starttime != value))
+				{
+					this.OnstarttimeChanging(value);
+					this.SendPropertyChanging();
+					this._starttime = value;
+					this.SendPropertyChanged("starttime");
+					this.OnstarttimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> endtime
+		{
+			get
+			{
+				return this._endtime;
+			}
+			set
+			{
+				if ((this._endtime != value))
+				{
+					this.OnendtimeChanging(value);
+					this.SendPropertyChanging();
+					this._endtime = value;
+					this.SendPropertyChanged("endtime");
+					this.OnendtimeChanged();
 				}
 			}
 		}

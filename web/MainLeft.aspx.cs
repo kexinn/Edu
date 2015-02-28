@@ -31,6 +31,8 @@ namespace web
             RepeaterAttendance.DataBind();
             RepeaterKQ.DataSource = BLL.admin.menu.MenuManagement.getUserMenus(Convert.ToInt32(Session["userid"]), 101);
             RepeaterKQ.DataBind();
+            RepeaterSh.DataSource = BLL.admin.menu.MenuManagement.getUserMenus(Convert.ToInt32(Session["userid"]), 121);
+            RepeaterSh.DataBind();
         }
     }
 }

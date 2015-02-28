@@ -25,7 +25,7 @@ namespace BLL.Application.KQ
                 dc.SubmitChanges();
             }
         }
-        public static bool insertRecord(String username, String remark)
+        public static bool insertRecord(String username, String remark,DateTime starttime,DateTime endtime)
         {
              using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
@@ -36,6 +36,8 @@ namespace BLL.Application.KQ
                      KQ_SpecialRemark s = new KQ_SpecialRemark();
                      s.userid = users.Single().Key;
                      s.remark = remark;
+                     s.starttime = starttime;
+                     s.endtime = endtime;
 
                      var has = dc.KQ_SpecialRemark.Where(h => h.userid == s.userid);
                      if (has.Count() > 0)

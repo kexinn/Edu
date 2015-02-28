@@ -35,6 +35,11 @@
                                         
                                         <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="tbUsername" ServicePath="/webservice/user/UserWebService.asmx"  ServiceMethod="GetUsers" CompletionSetCount="10" MinimumPrefixLength="1"></asp:AutoCompleteExtender>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="inline" ControlToValidate="tbUsername" ErrorMessage="*必选" ForeColor="Red" ValidationGroup="add"></asp:RequiredFieldValidator>
+                                         开始时间：<asp:TextBox ID="tbStartTime" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="inline" runat="server" ControlToValidate="tbStartTime" ErrorMessage="*必选" ForeColor="Red" ValidationGroup="add"></asp:RequiredFieldValidator>
+                                        结束时间：<asp:TextBox ID="tbEndTime" CssClass="dfinput" Width="120px" runat="server"  onclick="WdatePicker({skin:'whyGreen'})" ValidationGroup="gen"></asp:TextBox>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="inline" runat="server" ControlToValidate="tbEndTime" ErrorMessage="*必选" ForeColor="Red" ValidationGroup="add"></asp:RequiredFieldValidator>
+                    
                                         说明：<asp:TextBox ID="tbRemark" runat="server" CssClass="dfinput " Width="320px" ValidationGroup="add"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="inline" ControlToValidate="tbRemark" ErrorMessage="*必选" ForeColor="Red" ValidationGroup="add"></asp:RequiredFieldValidator>
                  </div>
@@ -64,6 +69,18 @@
                                                 <asp:Label ID="lbUsername" runat="server"><%# Eval("TrueName")%></asp:Label>
                                             </ItemTemplate>
                                             <ItemStyle Width="100px" />
+                                        </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="起始时间">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbStarttime" runat="server"><%# Eval("starttime")%></asp:Label>
+                                            </ItemTemplate>
+                                            <ItemStyle Width="120px" />
+                                        </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="结束时间">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbEndtime" runat="server"><%# Eval("endtime")%></asp:Label>
+                                            </ItemTemplate>
+                                            <ItemStyle Width="120px" />
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="说明">
                                             <ItemTemplate>

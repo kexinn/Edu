@@ -38,7 +38,7 @@ $(function(){
         
     <dd>
     <div class="title">
-    <span><img src="/media/images/leftico01.png" /></span>考勤管理
+    <span><img src="/media/images/leftico01.png" /></span>打卡管理
     </div>
     	<ul class="menuson">
             
@@ -66,7 +66,20 @@ $(function(){
           </asp:Repeater>
         </ul>     
     </dd> 
-    
+        <dd>
+    <div class="title">
+    <span><img src="/media/images/leftico02.png" /></span>考勤管理
+    </div>
+    <ul class="menuson">
+        
+        <asp:Repeater ID="RepeaterSh" runat="server">
+           <ItemTemplate>
+           <li><cite></cite><a href='<%# Eval("url")%>' target="rightFrame"><%# Eval("name")%></a><i></i></li>
+                                
+            </ItemTemplate>
+          </asp:Repeater>
+        </ul>     
+    </dd> 
       <%--  
     <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>编辑器</div>
     <ul class="menuson">

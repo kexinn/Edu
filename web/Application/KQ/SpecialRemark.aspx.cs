@@ -39,7 +39,7 @@ namespace web.Application.KQ
 
         protected void lbAdd_Click(object sender, EventArgs e)
         {
-            if(BLL.Application.KQ.SpecialRemark.insertRecord(tbUsername.Text, tbRemark.Text))
+            if(BLL.Application.KQ.SpecialRemark.insertRecord(tbUsername.Text, tbRemark.Text,Convert.ToDateTime(tbStartTime.Text),Convert.ToDateTime(tbEndTime.Text)))
                 BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "添加成功！");
             else
                 BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "该用户已存在，请先删除！");
