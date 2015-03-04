@@ -89,6 +89,7 @@
     <Content Include="admin\Menu\menu_left.aspx" />
     <Content Include="admin\Menu\menu_right.aspx" />
     <Content Include="admin\Menu\RoleMenus.aspx" />
+    <Content Include="admin\Sys\SysManage.aspx" />
     <Content Include="admin\TeacherGroup\member_left.aspx" />
     <Content Include="admin\TeacherGroup\member_right.aspx" />
     <Content Include="admin\TeacherGroup\TeacherGroupManagement.aspx" />
@@ -396,6 +397,7 @@
     <Content Include="media\src\jquery.gvChart-1.0.1.js" />
     <Content Include="test.aspx" />
     <Content Include="top.aspx" />
+    <Content Include="uc\LeftMenu.ascx" />
     <Content Include="uc\PaginationWebControl.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -459,6 +461,13 @@
     </Compile>
     <Compile Include="admin\Menu\RoleMenus.aspx.designer.cs">
       <DependentUpon>RoleMenus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Sys\SysManage.aspx.cs">
+      <DependentUpon>SysManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Sys\SysManage.aspx.designer.cs">
+      <DependentUpon>SysManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\TeacherGroup\member_left.aspx.cs">
       <DependentUpon>member_left.aspx</DependentUpon>
@@ -873,6 +882,13 @@
     </Compile>
     <Compile Include="top.aspx.designer.cs">
       <DependentUpon>top.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uc\LeftMenu.ascx.cs">
+      <DependentUpon>LeftMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uc\LeftMenu.ascx.designer.cs">
+      <DependentUpon>LeftMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="uc\PaginationWebControl.ascx.cs">
       <DependentUpon>PaginationWebControl.ascx</DependentUpon>

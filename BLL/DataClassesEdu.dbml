@@ -12,6 +12,7 @@
       <Column Name="[Key]" Member="Key" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="Roles_t_Menu_Role" Member="t_Menu_Role" ThisKey="Key" OtherKey="RoleKey" Type="t_Menu_Role" />
     </Type>
   </Table>
   <Table Name="dbo.v_User_Role" Member="v_User_Role">
@@ -401,21 +402,6 @@
       <Column Name="hourSpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.t_Menu" Member="t_Menu">
-    <Type Name="t_Menu">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.t_Menu_Role" Member="t_Menu_Role">
-    <Type Name="t_Menu_Role">
-      <Column Name="RoleKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MenuKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.KQ_AttendanceApprovalHistory" Member="KQ_AttendanceApprovalHistory">
     <Type Name="KQ_AttendanceApprovalHistory">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -536,6 +522,34 @@
       <Column Name="remark" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Menu" Member="t_Menu">
+    <Type Name="t_Menu">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sysId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="t_Menu_t_Menu_Role" Member="t_Menu_Role" ThisKey="Id" OtherKey="MenuKey" Type="t_Menu_Role" />
+      <Association Name="t_Sys_t_Menu" Member="t_Sys" ThisKey="sysId" OtherKey="Id" Type="t_Sys" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Sys" Member="t_Sys">
+    <Type Name="t_Sys">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="t_Sys_t_Menu" Member="t_Menu" ThisKey="Id" OtherKey="sysId" Type="t_Menu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_Menu_Role" Member="t_Menu_Role">
+    <Type Name="t_Menu_Role">
+      <Column Name="RoleKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MenuKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Roles_t_Menu_Role" Member="Roles" ThisKey="RoleKey" OtherKey="Key" Type="Roles" IsForeignKey="true" />
+      <Association Name="t_Menu_t_Menu_Role" Member="t_Menu" ThisKey="MenuKey" OtherKey="Id" Type="t_Menu" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">

@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MainLeft.aspx.cs" Inherits="web.MainLeft" %>
 
+<%@ Register Src="~/uc/LeftMenu.ascx" TagPrefix="uc1" TagName="LeftMenu" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,9 +36,9 @@ $(function(){
 <body style="background:#f0f9fd;">
     <form id="form1" runat="server">
     <div class="lefttop"><span></span>系统主页</div>
-    
+<uc1:LeftMenu runat="server" ID="LeftMenu" sysid="1" />
+   <!--
     <dl class="leftmenu">
-        
     <dd>
     <div class="title">
     <span><img src="/media/images/leftico01.png" /></span>打卡管理
@@ -68,7 +71,7 @@ $(function(){
     </dd> 
         <dd>
     <div class="title">
-    <span><img src="/media/images/leftico02.png" /></span>考勤管理
+    <span><img src="/media/images/leftico03.png" /></span>考勤管理
     </div>
     <ul class="menuson">
         
@@ -80,6 +83,7 @@ $(function(){
           </asp:Repeater>
         </ul>     
     </dd> 
+        -->
       <%--  
     <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>编辑器</div>
     <ul class="menuson">
@@ -99,9 +103,8 @@ $(function(){
         <li><cite></cite><a href="#">其他</a><i></i></li>
     </ul>
     
-    </dd>   --%>
-    
-    </dl>
+    </dd>  
+    </dl> --%>
     </form>
 </body>
 </html>

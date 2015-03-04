@@ -25,6 +25,40 @@ namespace BLL.admin.menu
                 return result.ToList();
             }
         }
+
+        public static List<t_Menu>getMenuBySysid(int sysid,int userid)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                var menusParent = (from m in dc.t_Menu.Where(u => u.sysId == sysid && u.parentId == 0)
+                             join menuRole in dc.t_Menu_Role
+                             on m.Id equals menuRole.MenuKey
+                             join role in dc.Roles
+                             on menuRole.RoleKey equals role.Key
+                             join userRole in dc.User_Role
+                             on role.Key equals userRole.RoleKey
+                             join user in dc.Users.Where(u => u.Key == userid)
+                             on userRole.UserKey equals user.Key
+                             select m).Distinct();
+                var menuChild = (from m in dc.t_Menu
+                                join menuParent in dc.t_Menu.Where(u=>u.sysId == sysid && u.parentId == 0)
+                                on m.parentId equals menuParent.Id
+                                join menuRole in dc.t_Menu_Role
+                             on m.Id equals menuRole.MenuKey
+                             join role in dc.Roles
+                             on menuRole.RoleKey equals role.Key
+                             join userRole in dc.User_Role
+                             on role.Key equals userRole.RoleKey
+                             join user in dc.Users.Where(u => u.Key == userid)
+                             on userRole.UserKey equals user.Key
+                             select m).Distinct();
+                return menusParent.Union(menuChild).ToList();
+               // return menus.Distinct().ToList();
+                            
+                            
+               // return dc.t_Menu.Where(m => m.sysId == sysid && m.parentId == 0).OrderBy(o=>o.Id).ToList();
+            }
+        }
         public static t_Menu getMenuById(int id)
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
@@ -85,6 +119,7 @@ namespace BLL.admin.menu
                 m.parentId = menu.parentId;
                 m.url = menu.url;
                 m.status = menu.status;
+                m.sysId = menu.sysId;
                 dc.SubmitChanges();
                
                 return true;

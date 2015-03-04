@@ -14,6 +14,7 @@ namespace web.admin.Menu
         {
             if(!IsPostBack)
             {
+                bindDropdownListSys();
                 databind();
             }
         }
@@ -33,6 +34,11 @@ namespace web.admin.Menu
                 tbUrl.Text = menu.url;
                 CheckBoxStatus.Checked = (bool)menu.status;
                 bindDropdownListNode(DropDownListParentNode,(int)menu.parentId);
+                foreach (ListItem li in DropDownSys.Items)
+                {
+                    if (li.Value == menu.sysId.ToString())
+                    { li.Selected = true; break; }
+                }
             }
             else
             {
@@ -40,6 +46,7 @@ namespace web.admin.Menu
                 lbMode.Text = "添加模式";
                 tbMenuId.Enabled = true;
                 bindDropdownListNode(DropDownListParentNode,0);
+                DropDownSys.Items[0].Selected = true;
             }
         }
 
@@ -50,10 +57,27 @@ namespace web.admin.Menu
             tbUrl.Text = "";
             DropDownListParentNode.Items.Clear();
             bindDropdownListNode(DropDownListParentNode,0);
+            DropDownSys.Items.Clear();
+            bindDropdownListSys();
 
             ViewState["mode"] = "add";
             lbMode.Text = "添加模式";
             tbMenuId.Enabled = true;
+        }
+
+        protected void bindDropdownListSys( )
+        {
+            DropDownSys.Items.Clear();
+            ListItem l = new ListItem("");
+            DropDownSys.Items.Add(l);
+            List<t_Sys> list = BLL.admin.sys.SysManage.databind();
+            foreach(t_Sys s in list)
+            {
+                ListItem li = new ListItem();
+                li.Text = s.name;
+                li.Value = s.Id.ToString();
+                DropDownSys.Items.Add(li);
+            }
         }
 
         protected void bindDropdownListNode( DropDownList ddl,int parentId)
@@ -110,10 +134,15 @@ namespace web.admin.Menu
                     menu.name = tbName.Text;
                     menu.url = tbUrl.Text;
                     menu.status = CheckBoxStatus.Checked;
+                    
                     if (!String.IsNullOrEmpty(DropDownListParentNode.SelectedValue))
                         menu.parentId = Convert.ToInt32(DropDownListParentNode.SelectedValue);
                     else
                         menu.parentId = 0;
+                    if (!String.IsNullOrEmpty(DropDownSys.SelectedValue))
+                        menu.sysId = Convert.ToInt32(DropDownSys.SelectedValue);
+                    else
+                        menu.sysId = null;
                     BLL.admin.menu.MenuManagement.createMenu(menu);
                     Response.Write("<script language=javascript>");
                     Response.Write("window.parent.lframe.location='menu_left.aspx';<");
@@ -141,6 +170,10 @@ namespace web.admin.Menu
                         menu.parentId = Convert.ToInt32(DropDownListParentNode.SelectedValue);
                     else
                         menu.parentId = 0;
+                    if (!String.IsNullOrEmpty(DropDownSys.SelectedValue))
+                        menu.sysId = Convert.ToInt32(DropDownSys.SelectedValue);
+                    else
+                        menu.sysId = null;
                     BLL.admin.menu.MenuManagement.updateMenu(menu);
 
                     Response.Write("<script language=javascript>");

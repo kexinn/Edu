@@ -86,10 +86,10 @@
                     </asp:TemplateField>
                     
                      <asp:BoundField DataField="shangbanTime" HeaderText="上班时间">
-                    <HeaderStyle Width="120px" />
+                    <HeaderStyle Width="130px" />
                     </asp:BoundField>
                      <asp:BoundField DataField="xiabanTime" HeaderText="下班时间">
-                    <HeaderStyle Width="120px" />
+                    <HeaderStyle Width="130px" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="迟到">
                         <ItemTemplate>
