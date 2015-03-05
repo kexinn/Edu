@@ -57,13 +57,13 @@
                                             <ItemTemplate>
                                                 <asp:Label ID="lbTime" runat="server"><%# Eval("Time")%></asp:Label>
                                             </ItemTemplate>
-                                            <ItemStyle Width="100px" />
+                                            <ItemStyle Width="130px" />
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="IP地址">
                                            <ItemTemplate>
                                                 <asp:Label ID="lbAddress" runat="server"><%# Eval("IpAddress")%></asp:Label>
                                             </ItemTemplate>
-                                            <ItemStyle Width="80px" />
+                                            <ItemStyle Width="100px" />
                                         </asp:TemplateField>
                                         
                                         <asp:TemplateField HeaderText="打卡类型">
@@ -73,7 +73,12 @@
                                             </ItemTemplate>
                                             <ItemStyle Width="80px" />
                                         </asp:TemplateField>
-
+                                        <asp:TemplateField HeaderText="">
+                                           <ItemTemplate>
+                                               
+                                            </ItemTemplate>
+                                            <ItemStyle />
+                                        </asp:TemplateField>
                                        
                                     </Columns>
                                     <RowStyle HorizontalAlign="Center" />
