@@ -12,14 +12,14 @@ namespace BLL.Application.Assets.Base
     {
         public static List<AS_Position1> getPosition1()
         {
-            using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using(DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Position1.OrderBy(o=>o.Position1ID).ToList();
             }
         }
         public static AS_Position1 getPosition1ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Position1.Where(p => p.Position1ID == id).Single();
             }
@@ -27,7 +27,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deletePosition1ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                AS_Position1 p =  dc.AS_Position1.Where(pp => pp.Position1ID == id).Single();
                dc.AS_Position1.DeleteOnSubmit(p);
@@ -36,7 +36,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void createPosition1(AS_Position1 p1)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Position1.InsertOnSubmit(p1);
                 dc.SubmitChanges();
@@ -45,7 +45,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updatePosition1(AS_Position1 p1)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Position1 p = dc.AS_Position1.Where(o => o.Position1ID == p1.Position1ID).Single();
                 p.Position1Name = p1.Position1Name;
@@ -56,7 +56,7 @@ namespace BLL.Application.Assets.Base
 
         public static AS_Position2 getPosition2ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Position2.Where(p => p.Position2ID == id).Single();
             }
@@ -64,7 +64,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updatePosition2(AS_Position2 p2)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Position2 p = dc.AS_Position2.Where(o => o.Position2ID == p2.Position2ID).Single();
                 //p.Position1ID = p2.Position1ID;
@@ -75,7 +75,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void createPosition2(AS_Position2 p2)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Position2.InsertOnSubmit(p2);
                 dc.SubmitChanges();
@@ -84,7 +84,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deletePosition2ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Position2 p = dc.AS_Position2.Where(pp => pp.Position2ID == id).Single();
                 dc.AS_Position2.DeleteOnSubmit(p);
@@ -93,14 +93,14 @@ namespace BLL.Application.Assets.Base
         }
         public static AS_Position3 getPosition3ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Position3.Where(p => p.Position3ID == id).Single();
             }
         }
         public static void createPosition3(AS_Position3 p3)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Position3.InsertOnSubmit(p3);
                 dc.SubmitChanges();
@@ -109,7 +109,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updatePosition3(AS_Position3 p3)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Position3 p = dc.AS_Position3.Where(o => o.Position3ID == p3.Position3ID).Single();
                 p.Position3Name = p3.Position3Name;
@@ -120,7 +120,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deletePosition3ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Position3 p = dc.AS_Position3.Where(pp => pp.Position3ID == id).Single();
                 dc.AS_Position3.DeleteOnSubmit(p);
@@ -129,7 +129,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void getPositionTree(ref TreeView  tree)
         {
-            using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using(DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var ps = dc.AS_Position1.OrderBy(o => o.Position1ID).ToList();
                 TreeNode node0 = new TreeNode();

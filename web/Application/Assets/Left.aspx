@@ -52,12 +52,23 @@ $(function(){
 
     <dd>
     <div class="title">
-    <span><img src="/media/images/leftico01.png" /></span>入库管理
+    <span><img src="/media/images/leftico01.png" /></span>固产入库
     </div>
     	<ul class="menuson">
-        <li ><cite></cite><a href="/Application/GZL/CG/PurchaseApply.aspx" target="rightFrame">资产来源</a><i></i></li>
+        <li ><cite></cite><a href="#" target="rightFrame">资产来源</a><i></i></li>
         <li><cite></cite><a href="/Application/Assets/Lkgl/Zcdj.aspx" target="rightFrame">资产登记</a><i></i></li>
-        <li ><cite></cite><a href="/Application/Assets/Lkgl/Zcdj.aspx" target="rightFrame">资产清单</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Lkgl/Zcrk.aspx" target="rightFrame">资产入库</a><i></i></li>
+        </ul>    
+    </dd>        
+
+    <dd>
+    <div class="title">
+    <span><img src="/media/images/leftico01.png" /></span>耗材入库
+    </div>
+    	<ul class="menuson">
+        <li ><cite></cite><a href="#" target="rightFrame">耗材来源</a><i></i></li>
+        <li><cite></cite><a href="/Application/Assets/Lkgl/Zcdj.aspx" target="rightFrame">耗材登记</a><i></i></li>
+        <li ><cite></cite><a href="/Application/Assets/Lkgl/Zcrk.aspx" target="rightFrame">耗材入库</a><i></i></li>
         </ul>    
     </dd>        
 
@@ -68,6 +79,8 @@ $(function(){
     	<ul class="menuson">
         <li ><cite></cite><a href="/Application/Assets/Zclt/ZcJie.aspx" target="rightFrame">资产出借</a><i></i></li>
         <li ><cite></cite><a href="/Application/Assets/Zclt/ZcHuan.aspx" target="rightFrame">资产归还</a><i></i></li>
+        <li ><cite></cite><a href="#" target="rightFrame">资产配置</a><i></i></li>
+        <li ><cite></cite><a href="#" target="rightFrame">资产归库</a><i></i></li>
         </ul>    
     </dd>        
   
@@ -77,7 +90,7 @@ $(function(){
     <span><img src="/media/images/leftico01.png" /></span>查询统计
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="/Application/GZL/CG/PurchaseStatisc.aspx" target="rightFrame">查询统计</a><i></i></li>
+        <li><cite></cite><a href="/Application/Assets/Search/ZcSearch.aspx" target="rightFrame">资产查询</a><i></i></li>
         </ul>    
     </dd>        
 

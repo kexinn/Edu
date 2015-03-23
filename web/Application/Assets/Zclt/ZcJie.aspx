@@ -40,11 +40,10 @@
 
         <div class="tools">
             <ul class="toolbar">
-                <li>
-                    <span>
-                        <img src="/media/images/t01.png" /></span>
+                <li><span>
+                    <img src="/media/images/t01.png" /></span>
                     <asp:LinkButton ID="lbAdd" runat="server"
-                        OnClick="lbAdd_Click">增加资产</asp:LinkButton>
+                        OnClick="lbAdd_Click">新出借</asp:LinkButton>
                 </li>
             </ul>
         </div>
@@ -68,7 +67,7 @@
 
                         <div class="pullleft">
                             <asp:LinkButton ID="lbn_SearchUser" runat="server"  
-                                onclick="lbn_SearchUser_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />教师查询</i></asp:LinkButton>
+                                onclick="lbn_SearchUser_Click" ><i class="mbtn"><img src="/media/images/fd.gif" />教师查询</i></asp:LinkButton>
                         </div>
                         
                         <div class="pullleft">
@@ -79,7 +78,7 @@
 
                         <div class="pullleft">
                             <asp:LinkButton ID="lbn_SearchZc" runat="server" OnClick="lbn_SearchZc_Click"  
-                               ><i class="mbtn"><img src="/media/images/ico06.png" />资产查询</i></asp:LinkButton>
+                               ><i class="mbtn"><img src="/media/images/fd.gif" />资产查询</i></asp:LinkButton>
                         </div>
 
                         <div class="clear"></div>
@@ -94,71 +93,48 @@
                                         <asp:Label ID="lbl_ID" CssClass="dfinput" runat="server" Text="" Width="150px"></asp:Label></td>
                                     <td width="80">资产名称</td>
                                     <td width="100">
-                                        <asp:TextBox ID="txt_Name" CssClass="dfinput" runat="server" Width="150px"></asp:TextBox></td>
+                                        <asp:TextBox ID="txt_Name" CssClass="dfinput" runat="server" Width="150px" Enabled="false" ></asp:TextBox></td>
                                     <td width="80">资产型号</td>
                                     <td width="100">
-                                        <asp:TextBox ID="txt_Type" CssClass="dfinput" runat="server" Width="150px"></asp:TextBox></td>
-                                    <td width="80">资产编码</td>
-                                    <td width="100">
-                                        <asp:TextBox ID="txt_TXM" Width="120px" CssClass="dfinput" runat="server"></asp:TextBox></td>
+                                        <asp:TextBox ID="txt_Type" CssClass="dfinput" runat="server" Width="150px" Enabled="false" ></asp:TextBox></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td width="80">分类0</td>
                                     <td width="150">
-                                        <asp:DropDownList ID="ddl_Class0" runat="server" Width="150" AutoPostBack="True" ></asp:DropDownList></td>
+                                        <asp:DropDownList ID="ddl_Class0"  CssClass="dfinput" runat="server" Width="150"  Enabled="false" AutoPostBack="True" ></asp:DropDownList></td>
                                     <td>分类1</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_Class1" runat="server" Width="150" AutoPostBack="True" ></asp:DropDownList></td>
+                                        <asp:DropDownList ID="ddl_Class1" CssClass="dfinput"  runat="server" Width="150" Enabled="false" AutoPostBack="True" ></asp:DropDownList></td>
                                     <td>分类2</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_Class2" runat="server" Width="150" AutoPostBack="True" ></asp:DropDownList></td>
+                                        <asp:DropDownList ID="ddl_Class2"  CssClass="dfinput" runat="server" Width="150" Enabled="false" AutoPostBack="True" ></asp:DropDownList></td>
                                     <td>分类3</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_Class3" runat="server" Width="150"></asp:DropDownList></td>
-                                </tr>
-                                <tr>
-                                    <td>数量</td>
-                                    <td>
-                                        <asp:TextBox ID="txt_Sl" runat="server" CssClass="dfinput" Width="120px" Text="1"></asp:TextBox></td>
-                                    <td>单位</td>
-                                    <td>
-                                        <asp:DropDownList ID="ddl_DW" runat="server" Width="150"></asp:DropDownList></td>
-                                    <td>价格</td>
-                                    <td>
-                                        <asp:TextBox ID="txt_Jg" CssClass="dfinput" runat="server" Width="120px" Text="0.00"></asp:TextBox></td>
-                                    <td>购买单</td>
-                                    <td>
-                                        <asp:DropDownList ID="ddl_Buy" CssClass="dfinput" runat="server"></asp:DropDownList></td>
+                                        <asp:DropDownList ID="ddl_Class3"  CssClass="dfinput" runat="server" Width="150" Enabled="false"></asp:DropDownList></td>
                                 </tr>
                                 <tr>
                                     <td>仓库</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_CK" runat="server" Width="150"></asp:DropDownList></td>
+                                        <asp:DropDownList ID="ddl_CK" runat="server"  CssClass="dfinput" Width="150" Enabled="false"></asp:DropDownList></td>
                                     <td>状态</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_ZT" runat="server" Width="120px" OnDataBinding="ddl_ZT_DataBinding1"></asp:DropDownList></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>当前借用</td>
-                                    <td>&nbsp;</td>
-                                    <td>历史记录</td>
-                                    <td>&nbsp;</td>
+                                        <asp:DropDownList ID="ddl_ZT" runat="server"  CssClass="dfinput" Width="120px" Enabled="false" ></asp:DropDownList></td>
                                     <td>入库日期</td>
                                     <td>
-                                        <asp:TextBox ID="txt_LkDate" CssClass="dfinput" Width="120px" runat="server" onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
+                                        <asp:TextBox ID="txt_LkDate" CssClass="dfinput" Width="120px" runat="server" Enabled="false"></asp:TextBox>
                                     </td>
-                                    <td>入库操作员</td>
-                                    <td>
-                                        <asp:TextBox ID="txt_LkUser" runat="server"></asp:TextBox></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>资产备注</td>
-                                    <td colspan="7">
-                                        <asp:TextBox ID="txt_Remark" runat="server" CssClass="dfinput" Width="800px"></asp:TextBox></td>
+                                    <td colspan="5">
+                                        <asp:TextBox ID="txt_Remark" runat="server" CssClass="dfinput" Width="800px" Enabled="false"></asp:TextBox></td>
+                                    <td>入库员</td>
+                                    <td>
+                                        <asp:TextBox ID="txt_LkUser"  CssClass="dfinput" Width="120px" runat="server" Enabled="false"></asp:TextBox></td>
                                 </tr>
                             </table>
                         </asp:Panel>
@@ -166,22 +142,18 @@
                         <asp:Panel ID="PanelJie" runat="server">
                             <table class="tablelist" width="851" border="1" cellspacing="0" cellpadding="5">
                                 <tr>
-                                    <td>使用地点1-楼</td>
+                                    <td width="80">资产编码</td>
+                                    <td width="100">
+                                        <asp:TextBox ID="txt_TXM" Width="120px" CssClass="dfinput" runat="server" Enabled="false" ></asp:TextBox></td>
+                                    <td>使用地点1</td>
                                     <td width="150">
-                                        <asp:DropDownList ID="ddl_Position1" runat="server" Width="150" AutoPostBack="True"  OnSelectedIndexChanged="ddl_Position1_SelectedIndexChanged"></asp:DropDownList></td>
-                                    <td>使用地点2-层</td>
+                                        <asp:DropDownList ID="ddl_Position1" runat="server"  CssClass="dfinput" Width="150" AutoPostBack="True"  OnSelectedIndexChanged="ddl_Position1_SelectedIndexChanged"></asp:DropDownList></td>
+                                    <td>使用地点2</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_Position2" runat="server" Width="150" AutoPostBack="True" OnSelectedIndexChanged="ddl_Position2_SelectedIndexChanged"></asp:DropDownList></td>
-                                    <td>使用地点3-室</td>
+                                        <asp:DropDownList ID="ddl_Position2" runat="server"  CssClass="dfinput" Width="150" AutoPostBack="True" OnSelectedIndexChanged="ddl_Position2_SelectedIndexChanged"></asp:DropDownList></td>
+                                    <td>使用地点3</td>
                                     <td>
-                                        <asp:DropDownList ID="ddl_Position3" runat="server" Width="150" AutoPostBack="True" ></asp:DropDownList></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>借用用途</td>
-                                    <td colspan="7">
-                                        <asp:TextBox ID="txt_JieYongtu" runat="server" CssClass="dfinput" Width="800px"></asp:TextBox></td>
+                                        <asp:DropDownList ID="ddl_Position3" runat="server"  CssClass="dfinput" Width="150" AutoPostBack="True" ></asp:DropDownList></td>
                                 </tr>
                                 <tr>
                                     <td>借用日期</td>
@@ -200,9 +172,14 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>借用用途</td>
+                                    <td colspan="7">
+                                        <asp:TextBox ID="txt_JieYongtu" runat="server" CssClass="dfinput" Width="1000px"></asp:TextBox></td>
+                                </tr>
+                                <tr>
                                     <td>出借备注</td>
                                     <td colspan="7">
-                                        <asp:TextBox ID="txt_JieRemark" runat="server" CssClass="dfinput" Width="800px"></asp:TextBox></td>
+                                        <asp:TextBox ID="txt_JieRemark" runat="server" CssClass="dfinput" Width="1000px"></asp:TextBox></td>
                                 </tr>
                                 <tr>
                                     <td colspan="8">
@@ -244,7 +221,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="操作" ItemStyle-Width="200px">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbDetails" runat="server" CommandName="details" CommandArgument='<%# Eval("ZcTXM") %>   '>资产信息</asp:LinkButton>&nbsp;&nbsp;
+                                    <asp:LinkButton ID="lbDetails" runat="server" CommandName="details" CommandArgument='<%# Eval("JieID") %>   '>详情</asp:LinkButton>&nbsp;&nbsp;
                                     <asp:LinkButton ID="lbEdit" runat="server" CommandName="ed" CommandArgument='<%# Eval("JieID") %>   '>编辑</asp:LinkButton>&nbsp;&nbsp;
                                     <asp:LinkButton ID="lbDelete" runat="server" CommandName="del" CommandArgument='<%# Eval("JieID") %>   '>删除</asp:LinkButton>
                                 </ItemTemplate>

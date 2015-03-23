@@ -60,6 +60,8 @@
     <Compile Include="Application\Assets\Base\UseQk.cs" />
     <Compile Include="Application\Assets\Base\ZT.cs" />
     <Compile Include="Application\Assets\lkgl\Zcdj.cs" />
+    <Compile Include="Application\Assets\lkgl\Zcrk.cs" />
+    <Compile Include="Application\Assets\Search\ZcSearch.cs" />
     <Compile Include="Application\Assets\Zclt\ZcHuan.cs" />
     <Compile Include="Application\Assets\Zclt\ZcJie.cs" />
     <Compile Include="Application\GZL\CG\ApplyApprove.cs" />
@@ -85,10 +87,15 @@
     <Compile Include="Application\WorkPlan\WeekPlan.cs" />
     <Compile Include="Application\WorkPlan\WorkPlanHistory.cs" />
     <Compile Include="Application\WorkPlan\WorkPlanRight.cs" />
-    <Compile Include="DataClassesEdu.designer.cs">
+    <Compile Include="DataClassesAS.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesAS.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataClassesEdu.designer.cs">
       <DependentUpon>DataClassesEdu.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,10 +112,18 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataClassesAS.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesAS.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataClassesEdu.dbml">
+      <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClassesEdu.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataClassesEdu.dbml.layout">
+      <DependentUpon>DataClassesEdu.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,11 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DataClassesEdu.dbml.layout">
-      <DependentUpon>DataClassesEdu.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -143,7 +153,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="DataClassesAS.dbml.layout">
+      <DependentUpon>DataClassesAS.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

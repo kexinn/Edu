@@ -12,7 +12,7 @@ namespace BLL.Application.Assets.Base
     {
         public static AS_Class0 getClass0ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Class0.Where(p => p.Class0ID == id).Single();
             }
@@ -20,7 +20,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deleteClass0ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class0 p = dc.AS_Class0.Where(pp => pp.Class0ID == id).Single();
                 dc.AS_Class0.DeleteOnSubmit(p);
@@ -29,7 +29,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void createClass0(AS_Class0 p0)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Class0.InsertOnSubmit(p0);
                 dc.SubmitChanges();
@@ -38,7 +38,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updateClass0(AS_Class0 p0)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class0 p = dc.AS_Class0.Where(o => o.Class0ID == p0.Class0ID).Single();
                 p.Class0Name = p0.Class0Name;
@@ -50,7 +50,7 @@ namespace BLL.Application.Assets.Base
 
         public static AS_Class1 getClass1ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Class1.Where(p => p.Class1ID == id).Single();
             }
@@ -58,7 +58,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updateClass1(AS_Class1 p1)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class1 p = dc.AS_Class1.Where(o => o.Class1ID == p1.Class1ID).Single();
                 p.Class1Name = p1.Class1Name;
@@ -69,7 +69,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void createClass1(AS_Class1 p1)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Class1.InsertOnSubmit(p1);
                 dc.SubmitChanges();
@@ -78,7 +78,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deleteClass1ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class1 p = dc.AS_Class1.Where(pp => pp.Class1ID == id).Single();
                 dc.AS_Class1.DeleteOnSubmit(p);
@@ -87,14 +87,14 @@ namespace BLL.Application.Assets.Base
         }
         public static AS_Class2 getClass2ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Class2.Where(p => p.Class2ID == id).Single();
             }
         }
         public static void createClass2(AS_Class2 p2)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Class2.InsertOnSubmit(p2);
                 dc.SubmitChanges();
@@ -103,7 +103,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updateClass2(AS_Class2 p2)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class2 p = dc.AS_Class2.Where(o => o.Class2ID == p2.Class2ID).Single();
                 p.Class2Name = p2.Class2Name;
@@ -115,7 +115,7 @@ namespace BLL.Application.Assets.Base
 
         public static void deleteClass2ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class2 p = dc.AS_Class2.Where(pp => pp.Class2ID == id).Single();
                 dc.AS_Class2.DeleteOnSubmit(p);
@@ -125,14 +125,14 @@ namespace BLL.Application.Assets.Base
 
         public static AS_Class3 getClass3ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Class3.Where(p => p.Class3ID == id).Single();
             }
         }
         public static void createClass3(AS_Class3 p3)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Class3.InsertOnSubmit(p3);
                 dc.SubmitChanges();
@@ -140,7 +140,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void updateClass3(AS_Class3 p3)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class3 p = dc.AS_Class3.Where(o => o.Class3ID == p3.Class3ID).Single();
                 p.Class3Name = p3.Class3Name;
@@ -151,7 +151,7 @@ namespace BLL.Application.Assets.Base
         }
         public static void deleteClass3ById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Class3 p = dc.AS_Class3.Where(pp => pp.Class3ID == id).Single();
                 dc.AS_Class3.DeleteOnSubmit(p);
@@ -161,7 +161,7 @@ namespace BLL.Application.Assets.Base
         
         public static void getClassTree(ref TreeView tree)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var ps0 = dc.AS_Class0.OrderBy(o => o.Class0BH  ).ToList();
                 TreeNode node00 = new TreeNode();

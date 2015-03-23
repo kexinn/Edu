@@ -13,19 +13,19 @@ namespace BLL.Application.Assets.lkgl
         public static List<AS_Zc > GetAS_Zc()
         {
 
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Zc.ToList();
             }
         }
 
-        public static bool createAS_Zc(AS_Zc _Zc)
+        public static bool createAS_ZcDj(AS_ZcDj _ZcDj)
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
-                    dc.AS_Zc.InsertOnSubmit(_Zc);
+                    dc.AS_ZcDj.InsertOnSubmit(_ZcDj);
                     dc.SubmitChanges();
                     return true;
                 }
@@ -40,7 +40,7 @@ namespace BLL.Application.Assets.lkgl
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     AS_Zc _zc = dc.AS_Zc.Where(u => u.ZcID == Convert.ToInt32(ID)).Single();
 
@@ -64,7 +64,7 @@ namespace BLL.Application.Assets.lkgl
 
         public static void DDL_Zt_Databind(ref DropDownList ddl)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var _zt = dc.AS_ZT;
 
@@ -80,7 +80,7 @@ namespace BLL.Application.Assets.lkgl
 
         public static void dll_ZT_Databind(ref DropDownList ddl)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var class0 = dc.AS_Class0;
 
@@ -108,7 +108,7 @@ namespace BLL.Application.Assets.lkgl
         //{
         //    try
         //    {
-        //        using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+        //        using (DataClassesASDataContext dc = new DataClassesASDataContext())
         //        {
         //            return dc.AS_DW.Where(u => u.DW_ID == id).Single();
         //        }
@@ -123,7 +123,7 @@ namespace BLL.Application.Assets.lkgl
         //{
         //    try
         //    {
-        //        using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+        //        using (DataClassesASDataContext dc = new DataClassesASDataContext())
         //        {
         //            AS_DW d = dc.AS_DW.Where(u => u.DW_ID == dw.DW_ID).Single();
 

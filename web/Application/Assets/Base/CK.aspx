@@ -9,14 +9,6 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
 
-    <script type="text/javascript">
-
-        function check() {
-            return confirm("确定导入？");
-        }
-    </script>
-
-
 </head>
 
 
@@ -39,9 +31,6 @@
                     </li>
                 </ul>
             </div>
-            <div>
-                &nbsp;<asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
-            </div>
             <div style="margin-bottom: 10px;">
                 <asp:Panel ID="PanelAddCK" runat="server">
                     <table class="tablelist">
@@ -54,7 +43,8 @@
                         <tr>
 
                             <td>
-                                <asp:TextBox ID="tbName" CssClass="dfinput" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="tbName" CssClass="dfinput" runat="server" ValidationGroup="juese"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbName" ErrorMessage="*" ForeColor="Red" ValidationGroup="add"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                     <asp:DropDownList ID="DropDownListClass" Width="120px" CssClass="dfinput" runat="server">
@@ -66,7 +56,7 @@
                             </td>
                             <td>
                                 <asp:Button ID="Button1" runat="server" OnClick="btAdd_Click" Text="添加"
-                                    CssClass="btn green" ValidationGroup="juese" />
+                                    CssClass="btn green" ValidationGroup="add" />
                             </td>
                         </tr>
                     </table>
@@ -81,10 +71,10 @@
                 <Columns>
                     <asp:TemplateField HeaderText="仓库ID">
                         <EditItemTemplate>
-                            <asp:Label ID="lbID" runat="server"><%# Eval("CKID") %></asp:Label>
+                            <asp:Label ID="lbID" runat="server" Text ='<%# Eval("CKID") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lbID" runat="server"><%# Eval("CKID") %></asp:Label>
+                            <asp:Label ID="lbID" runat="server" Text ='<%# Eval("CKID") %>'></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Width="80px" />
                     </asp:TemplateField>
@@ -93,13 +83,13 @@
                             <asp:TextBox ID="tbName" runat="server" Text='<%# Eval("CKName") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lbName" runat="server"><%# Eval("CKName") %></asp:Label>
+                            <asp:Label ID="lbName" runat="server" Text ='<%# Eval("CKName") %>'></asp:Label>
                            </ItemTemplate>
                         <ItemStyle Width="120px" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="仓库分类">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownListClass" OnDataBinding="DropDownListClass_DataBinding"  runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownListClass"  OnDataBinding="DropDownListClass_DataBinding"  runat="server"></asp:DropDownList>
                        </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="lbClass" runat="server"><%# Eval("ClassName")%></asp:Label>

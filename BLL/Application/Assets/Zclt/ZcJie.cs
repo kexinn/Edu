@@ -27,7 +27,7 @@ namespace BLL.Application.Assets.Zclt
 
         public static Int32 GetZcIDbyZcTXM(string _ZcTXM)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var _rs = dc.v_AS_ZC.Where(u => u.ZcTXM == _ZcTXM );
                 if (_rs.Count() == 1)
@@ -43,7 +43,7 @@ namespace BLL.Application.Assets.Zclt
 
         public static Int32 GetZcZTIDbyZcID(Int32  _ZcID)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var _rs = dc.v_AS_ZC.Where(u => u.ZcID == _ZcID);
                 if (_rs.Count() == 1)
@@ -59,7 +59,7 @@ namespace BLL.Application.Assets.Zclt
 
         public static Int32 GetZcIDbyJieID(Int32 _JieID)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var _rs = dc.AS_Jie.Where(u => u.JieID == _JieID);
                 if (_rs.Count() == 1)
@@ -77,7 +77,7 @@ namespace BLL.Application.Assets.Zclt
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     dc.AS_Jie.InsertOnSubmit(_Jie);
                     dc.SubmitChanges();
@@ -93,7 +93,7 @@ namespace BLL.Application.Assets.Zclt
         public static List<AS_Zc> GetAS_Zc()
         {
 
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Zc.ToList();
             }
@@ -103,7 +103,7 @@ namespace BLL.Application.Assets.Zclt
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     dc.AS_Zc.InsertOnSubmit(_Zc);
                     dc.SubmitChanges();
@@ -120,7 +120,7 @@ namespace BLL.Application.Assets.Zclt
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     AS_Zc _zc = dc.AS_Zc.Where(u => u.ZcID == Convert.ToInt32(ID)).Single();
 
@@ -144,7 +144,7 @@ namespace BLL.Application.Assets.Zclt
 
         public static void DDL_Zt_Databind(ref DropDownList ddl)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var _zt = dc.AS_ZT;
 
@@ -160,7 +160,7 @@ namespace BLL.Application.Assets.Zclt
 
         public static void dll_ZT_Databind(ref DropDownList ddl)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var class0 = dc.AS_Class0;
 
@@ -189,7 +189,7 @@ namespace BLL.Application.Assets.Zclt
         //{
         //    try
         //    {
-        //        using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+        //        using (DataClassesASDataContext dc = new DataClassesASDataContext())
         //        {
         //            return dc.AS_DW.Where(u => u.DW_ID == id).Single();
         //        }
@@ -204,7 +204,7 @@ namespace BLL.Application.Assets.Zclt
         //{
         //    try
         //    {
-        //        using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+        //        using (DataClassesASDataContext dc = new DataClassesASDataContext())
         //        {
         //            AS_DW d = dc.AS_DW.Where(u => u.DW_ID == dw.DW_ID).Single();
 

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesASDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=60.12.214.181;Initial Catalog=Edu;Persist Security Info=True;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AS_Ck" Member="AS_Ck">
+    <Type Name="AS_Ck">
+      <Column Name="CkID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CkName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CkRemark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Class0ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Class0" Member="AS_Class0">
+    <Type Name="AS_Class0">
+      <Column Name="Class0ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Class0Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class0Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SortIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class0BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="AS_Class0_AS_Class1" Member="AS_Class1" ThisKey="Class0ID" OtherKey="Class0ID" Type="AS_Class1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Class1" Member="AS_Class1">
+    <Type Name="AS_Class1">
+      <Column Name="Class1ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Class0ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class1Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class1Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Class1BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="AS_Class1_AS_Class2" Member="AS_Class2" ThisKey="Class1ID" OtherKey="Class1ID" Type="AS_Class2" />
+      <Association Name="AS_Class0_AS_Class1" Member="AS_Class0" ThisKey="Class0ID" OtherKey="Class0ID" Type="AS_Class0" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Class2" Member="AS_Class2">
+    <Type Name="AS_Class2">
+      <Column Name="Class2ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Class1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class2Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class2Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Class2BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="AS_Class2_AS_Class3" Member="AS_Class3" ThisKey="Class2ID" OtherKey="Class2ID" Type="AS_Class3" />
+      <Association Name="AS_Class1_AS_Class2" Member="AS_Class1" ThisKey="Class1ID" OtherKey="Class1ID" Type="AS_Class1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Class3" Member="AS_Class3">
+    <Type Name="AS_Class3">
+      <Column Name="Class3ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Class2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class3Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class3Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Class3BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="AS_Class2_AS_Class3" Member="AS_Class2" ThisKey="Class2ID" OtherKey="Class2ID" Type="AS_Class2" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_DW" Member="AS_DW">
+    <Type Name="AS_DW">
+      <Column Name="DW_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DW_Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DW_Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Huan" Member="AS_Huan">
+    <Type Name="AS_Huan">
+      <Column Name="HuanID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ZcID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="YingHuanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JieYongtu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JieOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JieYongUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieJBRUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShiHuanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HuanUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HuanJBRUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseQkID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HuanRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HuanOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Jie" Member="AS_Jie">
+    <Type Name="AS_Jie">
+      <Column Name="JieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ZcID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="YingHuanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JieYongtu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JieYongUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieJBRUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JieOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position1" Member="AS_Position1">
+    <Type Name="AS_Position1">
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position1Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position1Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position1_AS_Position2" Member="AS_Position2" ThisKey="Position1ID" OtherKey="Position1ID" Type="AS_Position2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position2" Member="AS_Position2">
+    <Type Name="AS_Position2">
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position2Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position2Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position2_AS_Position3" Member="AS_Position3" ThisKey="Position2ID" OtherKey="Position2ID" Type="AS_Position3" />
+      <Association Name="AS_Position1_AS_Position2" Member="AS_Position1" ThisKey="Position1ID" OtherKey="Position1ID" Type="AS_Position1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Position3" Member="AS_Position3">
+    <Type Name="AS_Position3">
+      <Column Name="Position3ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position3Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position3Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AS_Position2_AS_Position3" Member="AS_Position2" ThisKey="Position2ID" OtherKey="Position2ID" Type="AS_Position2" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_UseQk" Member="AS_UseQk">
+    <Type Name="AS_UseQk">
+      <Column Name="UseQk_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UseQk_Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="UseQk_Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_Zc" Member="AS_Zc">
+    <Type Name="AS_Zc">
+      <Column Name="ZcID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ZcDjID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcTXM" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="CKID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcRkDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZcRkUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZcOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="AS_ZcDj_AS_Zc" Member="AS_ZcDj" ThisKey="ZcDjID" OtherKey="ZcDjID" Type="AS_ZcDj" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_ZcDj" Member="AS_ZcDj">
+    <Type Name="AS_ZcDj">
+      <Column Name="ZcDjID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Class0BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class1BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class2BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class3BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ZcName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZcType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DWID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcSl" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcJg" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BuyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcDjUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcDjRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZcDjDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZcDjOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="AS_ZcDj_AS_Zc" Member="AS_Zc" ThisKey="ZcDjID" OtherKey="ZcDjID" Type="AS_Zc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AS_ZT" Member="AS_ZT">
+    <Type Name="AS_ZT">
+      <Column Name="ZT_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ZT_Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ZT_Remark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AS_CK" Member="v_AS_CK">
+    <Type Name="v_AS_CK">
+      <Column Name="CkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CkName" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="CkRemark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class0ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AS_Jie" Member="v_AS_Jie">
+    <Type Name="v_AS_Jie">
+      <Column Name="JieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ZcID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="YingHuanDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JieYongtu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JieYongUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieJBRUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JieRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JieOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZcTXM" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="Class0BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class1BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class2BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class3BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ZcName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZcType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZcJg" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TrueName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ZcRkDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZcRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CKID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcRkUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AS_ZC" Member="v_AS_ZC">
+    <Type Name="v_AS_ZC">
+      <Column Name="ZcID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ZcDjID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcTXM" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="CKID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CkName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZT_Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ZcRkDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZcRkUserKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcRemark" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZcOperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Class0BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class1BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class2BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Class3BH" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ZcName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZcType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DWID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcSl" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZcJg" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BuyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

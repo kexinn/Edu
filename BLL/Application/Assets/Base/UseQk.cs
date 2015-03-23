@@ -10,7 +10,7 @@ namespace BLL.Application.Assets.Base
     {
         public static List<AS_UseQk> GetAS_UseQk()
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_UseQk.ToList();
             }
@@ -20,7 +20,7 @@ namespace BLL.Application.Assets.Base
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     dc.AS_UseQk.InsertOnSubmit(UseQk);
                     dc.SubmitChanges();
@@ -37,7 +37,7 @@ namespace BLL.Application.Assets.Base
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     AS_UseQk UseQk = dc.AS_UseQk.Where(u => u.UseQk_ID == Convert.ToInt32(ID)).Single();
                     dc.AS_UseQk.DeleteOnSubmit(UseQk);
@@ -55,7 +55,7 @@ namespace BLL.Application.Assets.Base
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     return dc.AS_UseQk.Where(u => u.UseQk_ID == id).Single();
                 }
@@ -70,7 +70,7 @@ namespace BLL.Application.Assets.Base
         {
             try
             {
-                using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+                using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
                     AS_UseQk d = dc.AS_UseQk.Where(u => u.UseQk_ID == UseQk.UseQk_ID).Single();
 

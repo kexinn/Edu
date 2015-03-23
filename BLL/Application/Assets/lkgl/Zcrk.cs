@@ -6,110 +6,10 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using BLL;
 
-namespace BLL.Application.Assets.Zclt
+namespace BLL.Application.Assets.lkgl
 {
-    public  class ZcHuan
+    public  class Zcrk
     {
-        public static Int32 GetUserIDbyUserName(string _UserName)
-        {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
-            {
-                var _rs = dc.Users.Where(u => u.TrueName == _UserName);
-                if (_rs.Count() == 1)
-                {
-                    return _rs.Single().Key;
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-        }
-
-        //public static v_AS_Jie  GetVJiebyZcTXM(string _ZcTXM)
-        //{
-        //    using (DataClassesASDataContext dc = new DataClassesASDataContext())
-        //    {
-        //        var _rs = dc.v_AS_Jie.Where(u => u.ZcTXM == _ZcTXM);
-                
-        //        if (_rs.Count() == 1)
-        //        {
-        //            return _rs.Single() ;
-        //        }
-        //        else
-        //        {
-        //            return null ;
-        //        }
-        //    }
-        //}
-
-
-        public static v_AS_Jie  GetVJiebyZcTXM(string _ZcTXM)
-        {
-            using (DataClassesASDataContext dc = new DataClassesASDataContext())
-            {
-                var _VJie = dc.v_AS_Jie.Where(u => u.ZcTXM == _ZcTXM);
-
-                if (_VJie.Count() == 1)
-                {
-                    return _VJie.Single() ;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
-        public static Int32 GetZcZTIDbyZcID(Int32 _ZcID)
-        {
-            using (DataClassesASDataContext dc = new DataClassesASDataContext())
-            {
-                var _rs = dc.v_AS_ZC.Where(u => u.ZcID == _ZcID);
-                if (_rs.Count() == 1)
-                {
-                    return Convert.ToInt32(_rs.Single().ZTID);
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-        }
-
-        public static Int32 GetZcIDbyJieID(Int32 _JieID)
-        {
-            using (DataClassesASDataContext dc = new DataClassesASDataContext())
-            {
-                var _rs = dc.AS_Jie.Where(u => u.JieID == _JieID);
-                if (_rs.Count() == 1)
-                {
-                    return Convert.ToInt32(_rs.Single().ZcID);
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-        }
-
-        public static bool createAS_Huan(AS_Huan _Huan)
-        {
-            try
-            {
-                using (DataClassesASDataContext dc = new DataClassesASDataContext())
-                {
-                    dc.AS_Huan.InsertOnSubmit(_Huan);
-                    dc.SubmitChanges();
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public static List<AS_Zc> GetAS_Zc()
         {
 
@@ -136,14 +36,15 @@ namespace BLL.Application.Assets.Zclt
             }
         }
 
-        public static bool deleteAS_JiebyID(Int32  ID)
+        public static bool deleteAS_ZCbyID(string ID)
         {
             try
             {
                 using (DataClassesASDataContext dc = new DataClassesASDataContext())
                 {
-                    AS_Jie _jie = dc.AS_Jie.Where(u => u.JieID == ID).Single();
-                    dc.AS_Jie.DeleteOnSubmit(_jie );
+                    AS_Zc _zc = dc.AS_Zc.Where(u => u.ZcID == Convert.ToInt32(ID)).Single();
+
+                    dc.AS_Zc.DeleteOnSubmit(_zc);
                     dc.SubmitChanges();
                     return true;
                 }

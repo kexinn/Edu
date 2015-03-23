@@ -110,11 +110,16 @@
     <Content Include="Application\Assets\Base\ZT.aspx" />
     <Content Include="Application\Assets\Default.aspx" />
     <Content Include="Application\Assets\Left.aspx" />
+    <Content Include="Application\Assets\Lkgl\WebForm1.aspx" />
     <Content Include="Application\Assets\Lkgl\Zcdj.aspx" />
+    <Content Include="Application\Assets\Lkgl\Zcrk.aspx" />
     <Content Include="Application\Assets\MainRight.aspx" />
+    <Content Include="Application\Assets\Search\ZcSearch.aspx" />
+    <Content Include="Application\Assets\Test\test-listview.aspx" />
     <Content Include="Application\Assets\Test\test_DDL.aspx" />
     <Content Include="Application\Assets\Test\test_printer.aspx" />
     <Content Include="Application\Assets\Test\WebForm1.aspx" />
+    <Content Include="Application\Assets\Test\WebForm_print.aspx" />
     <Content Include="Application\Assets\Zclt\ZcHuan.aspx" />
     <Content Include="Application\Assets\Zclt\ZcJie.aspx" />
     <Content Include="Application\GZL\CG\ApplyApprove.aspx" />
@@ -259,6 +264,7 @@
     <Content Include="media\images\f04.png" />
     <Content Include="media\images\f05.png" />
     <Content Include="media\images\f06.png" />
+    <Content Include="media\images\fd.gif" />
     <Content Include="media\images\help.png" />
     <Content Include="media\images\i01.png" />
     <Content Include="media\images\i02.png" />
@@ -331,6 +337,7 @@
     <Content Include="media\images\next.gif" />
     <Content Include="media\images\pre.gif" />
     <Content Include="media\images\px.gif" />
+    <Content Include="media\images\refresh.gif" />
     <Content Include="media\images\righttop.gif" />
     <Content Include="media\images\rlist.gif" />
     <Content Include="media\images\search.png" />
@@ -620,6 +627,13 @@
     <Compile Include="Application\Assets\Left.aspx.designer.cs">
       <DependentUpon>Left.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application\Assets\Lkgl\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Lkgl\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Application\Assets\Lkgl\Zcdj.aspx.cs">
       <DependentUpon>Zcdj.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -627,12 +641,33 @@
     <Compile Include="Application\Assets\Lkgl\Zcdj.aspx.designer.cs">
       <DependentUpon>Zcdj.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Application\Assets\Lkgl\Zcrk.aspx.cs">
+      <DependentUpon>Zcrk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Lkgl\Zcrk.aspx.designer.cs">
+      <DependentUpon>Zcrk.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Application\Assets\MainRight.aspx.cs">
       <DependentUpon>MainRight.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Application\Assets\MainRight.aspx.designer.cs">
       <DependentUpon>MainRight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Search\ZcSearch.aspx.cs">
+      <DependentUpon>ZcSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Search\ZcSearch.aspx.designer.cs">
+      <DependentUpon>ZcSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test-listview.aspx.cs">
+      <DependentUpon>test-listview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Test\test-listview.aspx.designer.cs">
+      <DependentUpon>test-listview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\Assets\Test\test_DDL.aspx.cs">
       <DependentUpon>test_DDL.aspx</DependentUpon>
@@ -654,6 +689,13 @@
     </Compile>
     <Compile Include="Application\Assets\Test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Assets\Test\WebForm_print.aspx.cs">
+      <DependentUpon>WebForm_print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\Assets\Test\WebForm_print.aspx.designer.cs">
+      <DependentUpon>WebForm_print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\Assets\Zclt\ZcHuan.aspx.cs">
       <DependentUpon>ZcHuan.aspx</DependentUpon>
@@ -914,6 +956,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EduDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -980,6 +1027,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EduDataSet.xsc">
+      <DependentUpon>EduDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="EduDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EduDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="EduDataSet.xss">
+      <DependentUpon>EduDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
     <Content Include="Web.config.release" />
     <Content Include="webservice\LoginPageHandler.ashx" />

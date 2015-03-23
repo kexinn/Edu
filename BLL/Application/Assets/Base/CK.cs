@@ -11,11 +11,14 @@ namespace BLL.Application.Assets.Base
     {
         public static void databind(ref GridView gv,ref DropDownList ddl)
         {
-            using(DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using(DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 gv.DataSource = dc.v_AS_CK.OrderBy(o => o.Class0ID).ToList();
+                gv.DataBind();
 
                 var class0 = dc.AS_Class0;
+
+                ddl.Items.Clear();
 
                 foreach(AS_Class0 c in class0)
                 {
@@ -28,7 +31,7 @@ namespace BLL.Application.Assets.Base
         }
         public static bool createCK(AS_Ck ck)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 dc.AS_Ck.InsertOnSubmit(ck);
                 dc.SubmitChanges();
@@ -37,7 +40,7 @@ namespace BLL.Application.Assets.Base
         }
         public static bool deleteCKById(String id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Ck  dl = dc.AS_Ck.Where(u =>u.CkID  == Convert.ToInt32(id)).Single();
                 dc.AS_Ck.DeleteOnSubmit(dl);
@@ -48,7 +51,7 @@ namespace BLL.Application.Assets.Base
 
         public static AS_Ck  getCKById(int id)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 return dc.AS_Ck.Where(u => u.CkID  == id).Single();
             }
@@ -56,7 +59,7 @@ namespace BLL.Application.Assets.Base
 
         public static void updateCK(AS_Ck  ck)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 AS_Ck  d = dc.AS_Ck.Where(u => u.CkID  == ck.CkID ).Single();
 
@@ -70,9 +73,11 @@ namespace BLL.Application.Assets.Base
 
         public static void dllClass0Databind(ref DropDownList ddl)
         {
-            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            using (DataClassesASDataContext dc = new DataClassesASDataContext())
             {
                 var class0 = dc.AS_Class0;
+
+                ddl.Items.Clear();
 
                 foreach (AS_Class0 c in class0)
                 {
