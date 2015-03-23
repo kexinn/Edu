@@ -307,7 +307,7 @@ namespace web
             lbPunchCardMessage.Text = "";
             String ip = Request.UserHostAddress;
             String[] ips = ip.Split('.');
-            if (ips[0] != "10" && ips[0] != "172" && ips[0] != "192")
+            if (ips[0] != "10" && ips[0] != "172" && ips[0] != "192" && ips[0] != "::1")
             {
                 lbPunchCardMessage.Text = "您没有使用校内网络，不能打卡！" + ips[0];
                 return;

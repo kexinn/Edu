@@ -39,9 +39,6 @@ namespace BLL
     partial void InsertDepartment_leader(Department_leader instance);
     partial void UpdateDepartment_leader(Department_leader instance);
     partial void DeleteDepartment_leader(Department_leader instance);
-    partial void InsertKQ_Set_time(KQ_Set_time instance);
-    partial void UpdateKQ_Set_time(KQ_Set_time instance);
-    partial void DeleteKQ_Set_time(KQ_Set_time instance);
     partial void Insertt_GZL_Actor(t_GZL_Actor instance);
     partial void Updatet_GZL_Actor(t_GZL_Actor instance);
     partial void Deletet_GZL_Actor(t_GZL_Actor instance);
@@ -194,14 +191,6 @@ namespace BLL
 			get
 			{
 				return this.GetTable<v_Deparment_Leader>();
-			}
-		}
-		
-		public System.Data.Linq.Table<KQ_Set_time> KQ_Set_time
-		{
-			get
-			{
-				return this.GetTable<KQ_Set_time>();
 			}
 		}
 		
@@ -1216,116 +1205,6 @@ namespace BLL
 				{
 					this._userid = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Set_time")]
-	public partial class KQ_Set_time : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.DateTime> _CheckOnTime;
-		
-		private System.Nullable<System.DateTime> _CheckOffTime;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnCheckOnTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckOnTimeChanged();
-    partial void OnCheckOffTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckOffTimeChanged();
-    #endregion
-		
-		public KQ_Set_time()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOnTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CheckOnTime
-		{
-			get
-			{
-				return this._CheckOnTime;
-			}
-			set
-			{
-				if ((this._CheckOnTime != value))
-				{
-					this.OnCheckOnTimeChanging(value);
-					this.SendPropertyChanging();
-					this._CheckOnTime = value;
-					this.SendPropertyChanged("CheckOnTime");
-					this.OnCheckOnTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOffTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CheckOffTime
-		{
-			get
-			{
-				return this._CheckOffTime;
-			}
-			set
-			{
-				if ((this._CheckOffTime != value))
-				{
-					this.OnCheckOffTimeChanging(value);
-					this.SendPropertyChanging();
-					this._CheckOffTime = value;
-					this.SendPropertyChanged("CheckOffTime");
-					this.OnCheckOffTimeChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

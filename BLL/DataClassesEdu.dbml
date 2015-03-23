@@ -49,13 +49,6 @@
       <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.KQ_Set_time" Member="KQ_Set_time">
-    <Type Name="KQ_Set_time">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CheckOnTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CheckOffTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.t_GZL_Actor" Member="t_GZL_Actor">
     <Type Name="t_GZL_Actor">
       <Column Name="actorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

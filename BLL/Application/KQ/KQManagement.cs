@@ -189,7 +189,7 @@ namespace BLL.Application.KQ
                     kq.PunchCardType = type;
                     kq.Time = DateTime.Now;
                     kq.IpAddress = ip;
-                    KQ_Set_time settime = dc.KQ_Set_time.First();
+                  /*  KQ_Set_time settime = dc.KQ_Set_time.First();
                     DateTime time = (DateTime)settime.CheckOnTime;
                     DateTime time_checkoff = (DateTime)settime.CheckOffTime;
                     int hour = time.Hour;
@@ -221,7 +221,7 @@ namespace BLL.Application.KQ
                    // kq.ip1 = ips[0];
                     //kq.ip2 = ips[1];
                     //kq.ip3 = ips[2];
-                    //kq.ip4 = ips[3];
+                    //kq.ip4 = ips[3];*/
                     dc.KQ_PunchCardRecords.InsertOnSubmit(kq);
                     dc.SubmitChanges();
 
