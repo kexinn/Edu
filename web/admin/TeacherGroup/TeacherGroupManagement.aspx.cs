@@ -22,7 +22,7 @@ namespace web.admin.TeacherGroup
 
         protected void databind()
         {
-            gvTeacherGroup.DataSource = BLL.admin.TeacherGroup.TeacherGroupManagement.getDepartments();
+            gvTeacherGroup.DataSource = BLL.admin.TeacherGroup.TeacherGroupManagement.getGroups();
             gvTeacherGroup.DataBind();
         }
 

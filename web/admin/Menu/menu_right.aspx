@@ -68,6 +68,9 @@
     
     </li>
         
+    <li><label>所属系统<b>：</b></label><asp:DropDownList ID="DropDownSys" CssClass="dfinput" runat="server" Width="518px"></asp:DropDownList>
+    
+        （只需根节点需要选择）</li>
     <li><label>启用状态<b>：</b></label><asp:CheckBox ID="CheckBoxStatus" runat="server" />
     
     </li>

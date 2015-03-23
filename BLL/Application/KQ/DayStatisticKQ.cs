@@ -57,14 +57,25 @@ namespace BLL.Application.KQ
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-
-                var bb = from user in dc.Users
-                         where user.UserType == '1' &&
-                         !(from kq in dc.KQ_PunchCardRecords where kq.PunchCardType == type && kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
-                         && !(from at in dc.KQ_Attendance where at.starttime<= start.AddHours(7) && at.endtime>= start select at.userid).Contains(user.Key)
-                         select new DayPunchCardUser { 工号 = user.JobNumber,  姓名 = user.TrueName,  电话长号 = user.changhao,  电话短号 = user.duanhao, 序号  = (user.orderNo == null) ? 0 : (int)user.orderNo };
-                return bb.OrderBy(a => a.序号).ToList<DayPunchCardUser>();
-
+                if (type == '1')
+                {
+                    var bb = from user in dc.Users
+                             where user.UserType == '1' &&
+                             !(from kq in dc.KQ_PunchCardRecords where kq.PunchCardType == type && kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
+                             && !(from at in dc.KQ_Attendance where at.starttime <= start.AddHours(8) && at.endtime >= start.AddHours(8) select at.userid).Contains(user.Key)
+                             select new DayPunchCardUser { 工号 = user.JobNumber, 姓名 = user.TrueName, 电话长号 = user.changhao, 电话短号 = user.duanhao, 序号 = (user.orderNo == null) ? 0 : (int)user.orderNo };
+                    return bb.OrderBy(a => a.序号).ToList<DayPunchCardUser>();
+                }
+                if (type == '2')
+                {
+                    var bb = from user in dc.Users
+                             where user.UserType == '1' &&
+                             !(from kq in dc.KQ_PunchCardRecords where kq.PunchCardType == type && kq.Time > start && kq.Time < end select kq.PunchCardUserId).Contains(user.Key)
+                             && !(from at in dc.KQ_Attendance where at.starttime <= start.AddHours(16) && at.endtime >= start.AddHours(16) select at.userid).Contains(user.Key)
+                             select new DayPunchCardUser { 工号 = user.JobNumber, 姓名 = user.TrueName, 电话长号 = user.changhao, 电话短号 = user.duanhao, 序号 = (user.orderNo == null) ? 0 : (int)user.orderNo };
+                    return bb.OrderBy(a => a.序号).ToList<DayPunchCardUser>();
+                }
+                return null;
             }
         }
     }

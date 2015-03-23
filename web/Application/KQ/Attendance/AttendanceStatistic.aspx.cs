@@ -51,7 +51,7 @@ namespace web.Application.KQ.Attendance
             int recordNum = 0;
             gvAttendance.DataSource = BLL.Application.KQ.Attendance.AttendanceStatistic.getAttendanceRecords(tbStartTime.Text, tbApplyUser.Text, DropDownListDept.SelectedValue, DropDownListStatus.SelectedValue,DropDownListType.SelectedValue, ref recordNum, AspNetPager1.PageSize * (AspNetPager1.CurrentPageIndex - 1), AspNetPager1.PageSize);
             gvAttendance.DataBind();
-            gvAttendance.Columns[0].Visible = false;
+           // gvAttendance.Columns[0].Visible = false;
             AspNetPager1.RecordCount = recordNum;
         }
         protected void AspNetPager1_PageChanged(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace web.Application.KQ.Attendance
             v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
 
             String url = "/Application/KQ/Attendance/AttendanceDetailView.aspx?id=" + item.Id;
-            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=900,height=500,left=100,top=100');return false;";
+            String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100');return false;";
 
             lb.Attributes.Add("onclick", click);
         }
@@ -138,6 +138,24 @@ namespace web.Application.KQ.Attendance
             String click = "window.open('" + url + "','Sample','toolbar=no,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=500,left=100,top=100')";
             lb.Attributes.Add("onclick", "return false;");
             lb.OnClientClick = click;
+        }
+
+        protected void lbDel_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            v_KQ_Attendance item = GetDataItem() as v_KQ_Attendance;
+
+            //if (BLL.admin.role.RoleManagement.ifUserInRole(Convert.ToInt32(Session["userid"]), 1))
+            //    lb.Visible = true;
+            //else
+            //    lb.Visible = false;
+        }
+
+        protected void gvAttendance_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String id = gvAttendance.DataKeys[e.RowIndex].Value.ToString();
+
+            Response.Redirect("AttendanceManagement.aspx?id=" + id);
         }
     }
 }

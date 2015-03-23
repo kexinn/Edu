@@ -154,3 +154,6 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/db/Edu20141231.bak
+/DotNetCasClient/DotNetCasClient.dll
+/web/lib/setup.exe

@@ -237,5 +237,13 @@ namespace web.admin.user
             PanelDaoru.Visible = true;
         }
 
+        protected void lbUserInfo_DataBinding(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            Users item = GetDataItem() as Users;
+
+            String url = "/admin/user/UserInfo.aspx?id=" + item.Key;
+            lb.PostBackUrl = url;
+        }
     }
 }

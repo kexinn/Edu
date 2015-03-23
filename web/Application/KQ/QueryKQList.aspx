@@ -9,6 +9,7 @@
     <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/calendar/WdatePicker.js"></script>
+    <script type="text/javascript" src="/media/js/myjs.js"></script>
 
 </head>
 
@@ -34,7 +35,6 @@
                                         姓名：<asp:TextBox ID="tbUsername" runat="server" CssClass="dfinput " Width="120px"></asp:TextBox>
                                         
                                         <asp:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="tbUsername" ServicePath="/webservice/user/UserWebService.asmx"  ServiceMethod="GetUsers" CompletionSetCount="10" MinimumPrefixLength="1"></asp:AutoCompleteExtender>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="inline" ControlToValidate="tbUsername" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                         开始时间：<asp:TextBox ID="tbStartTime" runat="server" CssClass="dfinput " Width="120px"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="inline" ControlToValidate="tbStartTime" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                         结束时间：<asp:TextBox ID="tbEndTime" runat="server" CssClass="dfinput " Width="120px"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
@@ -44,7 +44,8 @@
                                  
                  <div class="pullleft">
                         <asp:LinkButton ID="lbSearch" runat="server"
-                            onclick="lbSearch_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />查询</i></asp:LinkButton>
+                            onclick="lbSearch_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />查询</i></asp:LinkButton> 
+                     <asp:LinkButton ID="lbBuka" runat="server" OnClick="lbBuka_Click" ><i class="mbtn"><img src="/media/images/ico06.png" />所有补卡</i></asp:LinkButton>
                      </div>
                 <div class="clear"></div>
             </div>
@@ -55,19 +56,19 @@
             </div>
             <asp:GridView ID="gvKQList" runat="server" AutoGenerateColumns="False" 
                                     DataKeyNames="ID" Width="100%" 
-                                    CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20">
+                                    CssClass="tablelist" AllowPaging="True" OnPageIndexChanging="gvKQList_PageIndexChanging" PageSize="20" OnRowDeleting="gvKQList_RowDeleting">
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID">
                                             <ItemTemplate>
                                                 <asp:Label ID="lbID0" runat="server"><%# Eval("ID") %></asp:Label>
                                             </ItemTemplate>
-                                            <ItemStyle Width="80px" />
+                                            <ItemStyle Width="50px" />
                                         </asp:TemplateField>
                                           <asp:TemplateField HeaderText="打卡人">
                                             <ItemTemplate>
                                                 <asp:Label ID="lbUsername" runat="server"><%# Eval("username")%></asp:Label>
                                             </ItemTemplate>
-                                            <ItemStyle Width="100px" />
+                                            <ItemStyle Width="80px" />
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="打卡时间">
                                             <ItemTemplate>
@@ -77,7 +78,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="IP地址">
                                            <ItemTemplate>
-                                                <asp:Label ID="lbTime" runat="server"><%# Eval("IpAddress")%></asp:Label>
+                                                <asp:Label ID="lbAddress" runat="server"><%# Eval("IpAddress")%></asp:Label>
                                             </ItemTemplate>
                                             <ItemStyle Width="80px" />
                                         </asp:TemplateField>
@@ -98,6 +99,39 @@
                                             </ItemTemplate>
                                             <ItemStyle Width="80px" />
                                         </asp:TemplateField>
+                                        
+                                       
+                                        <asp:TemplateField HeaderText="是否补打">
+                                           <ItemTemplate>
+                                                <asp:Label ID="lbFill" runat="server" ><%# Eval("fillCard")%></asp:Label>
+                                                
+                                            </ItemTemplate>
+                                            <ItemStyle Width="80px" />
+                                        </asp:TemplateField>
+                                        
+                                        <asp:TemplateField HeaderText="补打人">
+                                           <ItemTemplate>
+                                                <asp:Label ID="lbFillPeople" runat="server" ><%# Eval("fillcardUser")%></asp:Label>
+                                                
+                                            </ItemTemplate>
+                                            <ItemStyle Width="80px" />
+                                        </asp:TemplateField>
+                                        
+                                        <asp:TemplateField HeaderText="补打时间">
+                                           <ItemTemplate>
+                                                <asp:Label ID="lbFillTime" runat="server" ><%# Eval("fillCardTime")%></asp:Label>
+                                                
+                                            </ItemTemplate>
+                                            <ItemStyle Width="80px" />
+                                        </asp:TemplateField>
+                                         <asp:TemplateField HeaderText="操作">
+                       
+                                            <ItemTemplate>
+                            
+                                                <asp:LinkButton ID="lbDel" runat="server" OnClientClick="javascript:showConfirm('确定删除?')" CommandName="Delete" ForeColor="Blue">删除</asp:LinkButton>
+                                            </ItemTemplate>
+                                            <ItemStyle Width="50px" />
+                                         </asp:TemplateField>
                                     </Columns>
                                     <RowStyle HorizontalAlign="Center" />
                                 </asp:GridView>

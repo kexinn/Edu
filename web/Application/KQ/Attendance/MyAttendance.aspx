@@ -96,7 +96,7 @@
                             </span></td>
                         <td>请假类型</td>
                         <td><span lang="EN-US">
-                            <asp:DropDownList ID="ddlType" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100">
+                            <asp:DropDownList ID="ddlType" runat="server" CssClass="dfinput" ValidationGroup="apply" Width="100" AutoPostBack="True" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlType" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             </span></td>
@@ -126,6 +126,12 @@
                         </td>
                     </tr>
                 </table>
+                <br />
+                <asp:Panel ID="PanelFile" runat="server">
+                    上传通知文件：<asp:FileUpload ID="FileUpload1" runat="server" CssClass="dfinput" />
+                    <span lang="EN-US">（文件小于2M，格式为doc、docx、rar、jpg）<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload1" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
+                    </span>
+                </asp:Panel>
                 <br />
                 <asp:Button ID="btApply" runat="server" Text="提交" CssClass="btn" ValidationGroup="apply"  OnClientClick="javascript:showConfirm('确定提交?')"  OnClick="btApply_Click" />
             </div>
@@ -185,7 +191,8 @@
                    
                     <asp:TemplateField HeaderText="操作">
                         <ItemTemplate>
-                             <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton>
+                             <asp:LinkButton ID="lbView" runat="server" OnDataBinding="lbView_DataBinding">详情</asp:LinkButton> &nbsp;
+                             <asp:LinkButton ID="lbPrint" runat="server" OnDataBinding="lbView_DataBinding">打印</asp:LinkButton>
 
                              <asp:LinkButton ID="lbDel" runat="server" OnDataBinding="lbDel_DataBinding" OnClientClick="javascript:return check();" CommandName="Delete">撤销申请</asp:LinkButton>
                        

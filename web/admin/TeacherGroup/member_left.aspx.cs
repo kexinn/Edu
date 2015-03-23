@@ -20,7 +20,7 @@ namespace web.admin.TeacherGroup
 
         protected void databind()
         {
-          List< v_TeacherGroup> groups =  BLL.admin.TeacherGroup.TeacherGroupManagement.getDepartments();
+          List< v_TeacherGroup> groups =  BLL.admin.TeacherGroup.TeacherGroupManagement.getGroups();
             foreach(v_TeacherGroup g in groups)
             {
                 TreeNode node = new TreeNode();

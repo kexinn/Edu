@@ -51,6 +51,7 @@
     <Compile Include="admin\menu\MenuManagement.cs" />
     <Compile Include="admin\menu\RoleMenus.cs" />
     <Compile Include="admin\role\RoleManagement.cs" />
+    <Compile Include="admin\sys\SysManage.cs" />
     <Compile Include="admin\TeacherGroup\TeacherGroupManagement.cs" />
     <Compile Include="admin\user\UserManagement.cs" />
     <Compile Include="Application\Assets\Base\CK.cs" />
@@ -73,12 +74,18 @@
     <Compile Include="Application\GZL\Setting\RoutManagement.cs" />
     <Compile Include="Application\KQ\Attendance\ApplyApprove.cs" />
     <Compile Include="Application\KQ\Attendance\AttendanceDetailView.cs" />
+    <Compile Include="Application\KQ\Attendance\AttendanceManagement.cs" />
     <Compile Include="Application\KQ\Attendance\AttendanceStatistic.cs" />
     <Compile Include="Application\KQ\Attendance\MyApproval.cs" />
     <Compile Include="Application\KQ\Attendance\statistic.cs" />
     <Compile Include="Application\KQ\DayStatisticKQ.cs" />
     <Compile Include="Application\KQ\Attendance\MyAttendance.cs" />
     <Compile Include="Application\KQ\KQManagement.cs" />
+    <Compile Include="Application\KQ\KqStatistic.cs" />
+    <Compile Include="Application\KQ\MyKqQuery.cs" />
+    <Compile Include="Application\KQ\SchedulingManagement.cs" />
+    <Compile Include="Application\KQ\SpecialRemark.cs" />
+    <Compile Include="Application\KQ\StatisticKQList.cs" />
     <Compile Include="Application\RoutTask.cs" />
     <Compile Include="Application\WorkPlan\AssignTask.cs" />
     <Compile Include="Application\WorkPlan\LookByMonth.cs" />

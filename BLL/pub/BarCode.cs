@@ -24,7 +24,7 @@ namespace BLL.pub
                 throw new Exception("条形码字符不合要求，不能是汉字或全角字符");
 
             string barstring = BuildBarString(text);
-            return KiCode128C(barstring, 60);
+            return KiCode128C(barstring, 30);
 
         }
 

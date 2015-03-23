@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConfigureLeft.aspx.cs" Inherits="web.admin.ConfigureLeft" %>
 
+<%@ Register Src="~/uc/LeftMenu.ascx" TagPrefix="uc1" TagName="LeftMenu" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +36,8 @@ $(function(){
 <body style="background:#f0f9fd;">
     <form id="form1" runat="server">
     <div class="lefttop"><span></span>通讯录</div>
-    
+
+
     <dl class="leftmenu">
         
     <dd>
@@ -57,6 +61,11 @@ $(function(){
         </ul>     
     </dd> 
     
+    <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>系统管理</div>
+    <ul class="menuson">
+        <li><cite></cite><a href="/admin/Sys/SysManage.aspx" target="rightFrame">子系统管理</a><i></i></li>
+    </ul>    
+    </dd>  
     
     <dd><div class="title"><span><img src="/media/images/leftico03.png" /></span>菜单角色</div>
     <ul class="menuson">

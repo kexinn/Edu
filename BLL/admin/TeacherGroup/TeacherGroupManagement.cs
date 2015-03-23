@@ -25,7 +25,7 @@ namespace BLL.admin.TeacherGroup
                 return dc.t_Teacher_Group.Where(u => u.Id == id).Single();
             }
         }
-        public static List<v_TeacherGroup> getDepartments()
+        public static List<v_TeacherGroup> getGroups()
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {

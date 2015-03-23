@@ -144,6 +144,39 @@ namespace BLL.admin.user
             }
         }
 
+        public static bool updateUserBianhao(Users user)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                Users u = dc.Users.Where(us => us.Key == user.Key).Single();
+                u.bianhao = user.bianhao;
+                dc.SubmitChanges();
+                return true;
+            }
+        }
+        public static bool UpdateUser( Users user)
+        {
+            using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
+            {
+                Users u = dc.Users.Where(us => us.Key == user.Key).Single();
+               
+                u.TrueName = user.TrueName;
+                u.bianhao = user.bianhao;
+                u.XMPY = user.XMPY;
+                u.EMail = user.EMail;
+                u.openUserId = user.openUserId;
+                u.duanhao = user.duanhao;
+                u.changhao = user.changhao;
+                u.orderNo = user.orderNo;
+                u.DepartmentId = user.DepartmentId;
+                u.UserType = user.UserType;
+                u.TeacherGroupId = user.TeacherGroupId;
+                u.disabled = user.disabled;
+                dc.SubmitChanges();
+                return true;
+            }
+        }
+
         /// <summary>
         /// 将Dataset的数据导入数据库
         /// </summary>

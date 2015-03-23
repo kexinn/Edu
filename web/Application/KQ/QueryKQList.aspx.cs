@@ -17,16 +17,17 @@ namespace web.Application.KQ
 
         protected void lbSearch_Click(object sender, EventArgs e)
         {
-            databind();
+            ViewState["type"] = 1;
+            databind(1);
         }
 
-        protected void databind()
+        protected void databind(int type =1)//1正常打卡的，2补卡的
         {
 
             String username = tbUsername.Text;
             DateTime startDate = Convert.ToDateTime(tbStartTime.Text + " 00:00:00");
             DateTime endDate = Convert.ToDateTime(tbEndTime.Text + " 23:59:59");
-            gvKQList.DataSource = BLL.Application.KQ.KQManagement.getAppointRecordsByUsername(username, startDate, endDate);
+            gvKQList.DataSource = BLL.Application.KQ.KQManagement.getAppointRecordsByUsername(username, startDate, endDate,type);
             gvKQList.DataBind();
 
         }
@@ -34,7 +35,7 @@ namespace web.Application.KQ
         {
 
             gvKQList.PageIndex = e.NewPageIndex;
-            databind();
+            databind( Convert.ToInt32( ViewState["type"]));
         }
 
 
@@ -61,6 +62,24 @@ namespace web.Application.KQ
                     lb.Text = "";
                     break;
             }
+        }
+
+        protected void gvKQList_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String id = gvKQList.DataKeys[e.RowIndex].Value.ToString();
+
+            if (BLL.Application.KQ.KQManagement.deletePunchCardRecord(Convert.ToInt32(id)))
+            {
+                lbMessage.Text = "删除成功！";
+                BLL.pub.PubClass.showAlertMessage(Page, ClientScript, "删除成功!");
+            }
+            databind(Convert.ToInt32(ViewState["type"]));
+        }
+
+        protected void lbBuka_Click(object sender, EventArgs e)
+        {
+            ViewState["type"] = 2;
+            databind(2);
         }
     }
 }

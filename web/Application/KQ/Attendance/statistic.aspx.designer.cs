@@ -94,15 +94,6 @@ namespace web.Application.KQ.Attendance {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListType;
         
         /// <summary>
-        /// lbOutExcel 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbOutExcel;
-        
-        /// <summary>
         /// UpdatePanel2 控件。
         /// </summary>
         /// <remarks>
@@ -119,6 +110,15 @@ namespace web.Application.KQ.Attendance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbCompute;
+        
+        /// <summary>
+        /// lbGuding 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbGuding;
         
         /// <summary>
         /// UpdateProgress1 控件。
@@ -148,6 +148,15 @@ namespace web.Application.KQ.Attendance {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
+        /// GridView3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView3;
+        
+        /// <summary>
         /// GridView2 控件。
         /// </summary>
         /// <remarks>
@@ -155,5 +164,23 @@ namespace web.Application.KQ.Attendance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
+        
+        /// <summary>
+        /// lbOutExcel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbOutExcel;
+        
+        /// <summary>
+        /// lbOutExcelGuding 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbOutExcelGuding;
     }
 }
