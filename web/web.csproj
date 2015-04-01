@@ -54,9 +54,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AspNetPager.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetCasClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DotNetCasClient\DotNetCasClient.dll</HintPath>
+    <Reference Include="DotNetCasClient">
+      <HintPath>..\DotnetCasClient\DotNetCasClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -100,6 +99,8 @@
     <Content Include="admin\user\UserInfo.aspx" />
     <Content Include="admin\user\UserManagement.aspx" />
     <Content Include="admin\user\UserRoleManagement.aspx" />
+    <Content Include="Application\BX\FormDetailView.aspx" />
+    <Content Include="Application\BX\MyBXForm.aspx" />
     <Content Include="Application\GZL\CG\ApplyApprove.aspx" />
     <Content Include="Application\GZL\CG\ApplyProceed.aspx" />
     <Content Include="Application\GZL\CG\PurchaseApply.aspx" />
@@ -538,6 +539,20 @@
     </Compile>
     <Compile Include="admin\user\UserRoleManagement.aspx.designer.cs">
       <DependentUpon>UserRoleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\BX\FormDetailView.aspx.cs">
+      <DependentUpon>FormDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\BX\FormDetailView.aspx.designer.cs">
+      <DependentUpon>FormDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application\BX\MyBXForm.aspx.cs">
+      <DependentUpon>MyBXForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application\BX\MyBXForm.aspx.designer.cs">
+      <DependentUpon>MyBXForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application\GZL\CG\ApplyApprove.aspx.cs">
       <DependentUpon>ApplyApprove.aspx</DependentUpon>

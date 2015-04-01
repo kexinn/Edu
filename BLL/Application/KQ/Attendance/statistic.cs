@@ -258,20 +258,24 @@ namespace BLL.Application.KQ.Attendance
         //固定格式
         public class Attendance_Statistic_Guding
         {
-            public string bianhao { get; set; }
-            public int ordernum { get; set; }
-            public int userid { get; set; }
-            public string username { get; set; }
-            public DateTime statisticStart { get; set; }
-            public DateTime statisticEnd { get; set; }
+            public string bianhao { get; set; } //编号
+            public int ordernum { get; set; } //序号
+            public int userid { get; set; } //用户id
+            public string username { get; set; } //用户姓名
+            public DateTime statisticStart { get; set; } //开始时间
+            public DateTime statisticEnd { get; set; }//结束时间
             
-            public int count { get; set; }
-            public int shijia_count { get; set; }
-            public int bingjia_count { get; set; }
-            public Decimal chanjiaSpan { get; set; }
-            public Decimal daySpan { get; set; }
-            public int hourSpan { get; set; }
-            public int chanjiaHourSpan { get; set; }
+            public int count { get; set; }//总次数
+            public int shijia_count { get; set; }//事假次数
+            public Decimal shijia_days { get; set; }//事假次数
+            public int shijia_hours { get; set; }//事假小时数
+            public int bingjia_count { get; set; }//病假次数
+            public Decimal bingjia_days { get; set; }//病假天数
+            public int bingjia_hours { get; set; }//病假小时数
+            public Decimal chanjiaSpan { get; set; }//产假天数
+           // public Decimal daySpan { get; set; }//合计天数
+           // public int hourSpan { get; set; }//小时数
+            public int chanjiaHourSpan { get; set; }//产假小时数
 
 
         }
@@ -337,10 +341,14 @@ namespace BLL.Application.KQ.Attendance
                                     username = (string)g.Key.name,
                                     count = g.Count(),
                                     shijia_count = g.Count(t => Convert.ToInt32(t["typeid"]) == 1),
+                                    shijia_days = (Decimal)g.Where(s => Convert.ToInt32(s["typeid"]) == 1).Sum(x => Convert.ToDecimal(x["daySpan"])),
+                                    shijia_hours = (int)g.Where(s => Convert.ToInt32(s["typeid"]) == 1).Sum(x => Convert.ToDecimal(x["hourSpan"])),
                                     bingjia_count = g.Count(b => Convert.ToInt32(b["typeid"]) == 2),
-                                    daySpan = (Decimal)g.Where(s => Convert.ToInt32(s["typeid"]) != 4).Sum(x => Convert.ToDecimal(x["daySpan"])),
+                                    bingjia_days = (Decimal)g.Where(s => Convert.ToInt32(s["typeid"]) == 2).Sum(x => Convert.ToDecimal(x["daySpan"])),
+                                    bingjia_hours = (int)g.Where(s => Convert.ToInt32(s["typeid"]) == 2).Sum(x => Convert.ToDecimal(x["hourSpan"])),
+                                  //  daySpan = (Decimal)g.Where(s => Convert.ToInt32(s["typeid"]) != 4).Sum(x => Convert.ToDecimal(x["daySpan"])),
                                     chanjiaSpan = (Decimal)g.Where(s => Convert.ToInt32(s["typeid"]) == 4).Sum(x => Convert.ToDecimal(x["daySpan"])),
-                                    hourSpan = (int)g.Where(s => Convert.ToInt32(s["typeid"]) != 4).Sum(x => Convert.ToDecimal(x["hourSpan"])),
+                                  //  hourSpan = (int)g.Where(s => Convert.ToInt32(s["typeid"]) != 4).Sum(x => Convert.ToDecimal(x["hourSpan"])),
                                     chanjiaHourSpan = (int)g.Where(s => Convert.ToInt32(s["typeid"]) == 4).Sum(x => Convert.ToDecimal(x["hourSpan"]))
                                 };
                 var users = from u in dc.Users
@@ -362,9 +370,13 @@ namespace BLL.Application.KQ.Attendance
                               username = u["TrueName"].ToString(),
                               count = (s==null)?0: s.count,
                               shijia_count = (s == null) ? 0 : s.shijia_count,
+                              shijia_days = (s == null) ? 0 : s.shijia_days,
+                              shijia_hours = (s == null) ? 0 : s.shijia_hours,
                               bingjia_count = (s == null) ? 0 : s.bingjia_count,
-                              daySpan = (s == null) ? 0 : s.daySpan,
-                              hourSpan = (s == null) ? 0 : s.hourSpan,
+                              bingjia_days = (s == null) ? 0 : s.bingjia_days,
+                              bingjia_hours = (s == null) ? 0 : s.bingjia_hours,
+                            //  daySpan = (s == null) ? 0 : s.daySpan,
+                            //  hourSpan = (s == null) ? 0 : s.hourSpan,
                               chanjiaSpan = (s == null) ? 0 : s.chanjiaSpan,
                               chanjiaHourSpan = (s == null) ? 0 : s.chanjiaHourSpan
 
@@ -379,8 +391,10 @@ namespace BLL.Application.KQ.Attendance
                     dt1.Columns.Add("教工工号");
                     dt1.Columns.Add("共请假次数");
                     dt1.Columns.Add("事假次数");
+                    dt1.Columns.Add("事假时长");
                     dt1.Columns.Add("病假次数");
-                    dt1.Columns.Add("合计天数");
+                    dt1.Columns.Add("病假时长");
+                   // dt1.Columns.Add("合计天数");
                     dt1.Columns.Add("产假天数");
                     foreach (Attendance_Statistic_Guding t in sta)
                     {
@@ -393,13 +407,22 @@ namespace BLL.Application.KQ.Attendance
                         tj["共请假次数"] = t.count;
                         tj["事假次数"] = t.shijia_count;
                         tj["病假次数"] = t.bingjia_count;
-                        day = t.daySpan;
-                        hour = t.hourSpan;
+                      
+                        day = t.shijia_days;
+                        hour = t.shijia_hours;
 
                         day += (int)(hour / 5);
                         day += ((hour % 5) / 3) == 1 ? 0.5M : 0;
                         hour = (hour % 5) % 3;
-                        tj["合计天数"] = day;
+                        tj["事假时长"] = day;
+
+                        day = t.bingjia_days;
+                        hour = t.bingjia_hours;
+
+                        day += (int)(hour / 5);
+                        day += ((hour % 5) / 3) == 1 ? 0.5M : 0;
+                        hour = (hour % 5) % 3;
+                        tj["病假时长"] = day;
 
                         chanjia_day = t.chanjiaSpan;
                         chanjia_hour = t.chanjiaHourSpan;

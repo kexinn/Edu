@@ -20,8 +20,11 @@ namespace BLL.Application.KQ
         public int 下班实打卡 { get; set; }
         public int 早退次数 { get; set; }
         public int 矿工次数 { get; set; }
-        public int 病事假次数 { get; set; }
-        public string 病事假时长 { get; set; }
+        public int 事假次数 { get; set; }
+        public string 事假时长 { get; set; }
+        public int 病假次数 { get; set; }
+        public string 病假时长 { get; set; }
+       // public string 病事假时长 { get; set; }
 
         public string 产假时长 { get; set; }
 
@@ -91,8 +94,10 @@ namespace BLL.Application.KQ
                              下班实打卡 = r.下班实打卡,
                              早退次数 = r.早退次数,
                              矿工次数 = r.矿工次数,
-                             病事假次数 = Convert.ToInt32(a["共请假次数"]),
-                             病事假时长 = (a["合计天数"].ToString() == "0") ? "0" : a["合计天数"].ToString() + "天",
+                             事假次数 = Convert.ToInt32(a["事假次数"]),
+                             事假时长 = (a["事假时长"].ToString() == "0") ? "0" : a["事假时长"].ToString() + "天",
+                             病假次数 = Convert.ToInt32(a["病假次数"]),
+                             病假时长 = (a["病假时长"].ToString() == "0") ? "0" : a["病假时长"].ToString() + "天",
                              产假时长 = (a["产假天数"].ToString()=="0")?"0":a["产假天数"].ToString()+"天"
 
                          };

@@ -40,6 +40,9 @@
     .auto-style2 {
         height: 121px;
     }
+    .auto-style3 {
+        height: 52px;
+    }
 </style>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->

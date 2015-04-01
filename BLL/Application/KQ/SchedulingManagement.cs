@@ -145,7 +145,7 @@ namespace BLL.Application.KQ
                                    join q2 in dc.KQ_Attendance.Where(a => (a.starttime <= p.date.AddHours(16).AddMinutes(20) && a.endtime >= p.date.AddHours(16).AddMinutes(20)))
                                    on u.Key equals q2.userid
                                    into g4
-                                   from att2 in g3.DefaultIfEmpty()
+                                   from att2 in g4.DefaultIfEmpty()
                                    //异动说明
                                    join y in dc.KQ_SpecialRemark.Where(k=>k.starttime<=p.date && k.endtime>=p.date)
                                    on u.Key equals y.userid

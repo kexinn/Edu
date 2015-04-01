@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Edu" Class="DataClassesEduDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=10.63.150.103;Initial Catalog=Edu;User ID=sa" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="EduConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.User_Role" Member="User_Role">
     <Type Name="User_Role">
@@ -344,6 +344,7 @@
       <Column Name="changhao" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="duanhao" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="TeacherGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Users_t_BX_Form" Member="t_BX_Form" ThisKey="Key" OtherKey="userid" Type="t_BX_Form" />
     </Type>
   </Table>
   <Table Name="dbo.v_TeacherGroupUsers" Member="v_TeacherGroupUsers">
@@ -393,6 +394,7 @@
       <Column Name="stepNow" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="daySpan" Type="System.Decimal" DbType="Decimal(5,1)" CanBeNull="true" />
       <Column Name="hourSpan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KQ_Attendance_t_BX_Form" Member="t_BX_Form" ThisKey="Id" OtherKey="AttendanceId" Type="t_BX_Form" />
     </Type>
   </Table>
   <Table Name="dbo.KQ_AttendanceApprovalHistory" Member="KQ_AttendanceApprovalHistory">
@@ -543,6 +545,65 @@
       <Column Name="MenuKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Roles_t_Menu_Role" Member="Roles" ThisKey="RoleKey" OtherKey="Key" Type="Roles" IsForeignKey="true" />
       <Association Name="t_Menu_t_Menu_Role" Member="t_Menu" ThisKey="MenuKey" OtherKey="Id" Type="t_Menu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_BX_Position" Member="t_BX_Position">
+    <Type Name="t_BX_Position">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PositionTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="t_BX_PositionType_t_BX_Position" Member="t_BX_PositionType" ThisKey="PositionTypeId" OtherKey="Id" Type="t_BX_PositionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_BX_PositionType" Member="t_BX_PositionType">
+    <Type Name="t_BX_PositionType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="t_BX_PositionType_t_BX_Position" Member="t_BX_Position" ThisKey="Id" OtherKey="PositionTypeId" Type="t_BX_Position" />
+      <Association Name="t_BX_PositionType_t_BX_Form" Member="t_BX_Form" ThisKey="Id" OtherKey="PositionTypeId" Type="t_BX_Form" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_BX_FormItem" Member="t_BX_FormItem">
+    <Type Name="t_BX_FormItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" IsVersion="true" />
+      <Column Name="FormId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TrafficFee" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CityTrafficFee" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsReception" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Allowance" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="AccommodationFee" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="PeoplesNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="t_BX_Form_t_BX_FormItem" Member="t_BX_Form" ThisKey="FormId" OtherKey="Id" Type="t_BX_Form" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.t_BX_Form" Member="t_BX_Form">
+    <Type Name="t_BX_Form">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" IsVersion="true" />
+      <Column Name="FormGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="PeopleNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PeoplesName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PositionTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttendanceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="t_BX_Form_t_BX_FormItem" Member="t_BX_FormItem" ThisKey="Id" OtherKey="FormId" Type="t_BX_FormItem" />
+      <Association Name="KQ_Attendance_t_BX_Form" Member="KQ_Attendance" ThisKey="AttendanceId" OtherKey="Id" Type="KQ_Attendance" IsForeignKey="true" />
+      <Association Name="t_BX_PositionType_t_BX_Form" Member="t_BX_PositionType" ThisKey="PositionTypeId" OtherKey="Id" Type="t_BX_PositionType" IsForeignKey="true" />
+      <Association Name="Users_t_BX_Form" Member="Users" ThisKey="userid" OtherKey="Key" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KQ_Set_time" Member="KQ_Set_time">
+    <Type Name="KQ_Set_time">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CheckOnTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CheckOffTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">

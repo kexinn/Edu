@@ -18,6 +18,7 @@ namespace BLL
 	using System.Reflection;
 	using System.Linq;
 	using System.Linq.Expressions;
+	using System.Runtime.Serialization;
 	using System.ComponentModel;
 	using System;
 	
@@ -114,6 +115,21 @@ namespace BLL
     partial void Insertt_Menu_Role(t_Menu_Role instance);
     partial void Updatet_Menu_Role(t_Menu_Role instance);
     partial void Deletet_Menu_Role(t_Menu_Role instance);
+    partial void Insertt_BX_Position(t_BX_Position instance);
+    partial void Updatet_BX_Position(t_BX_Position instance);
+    partial void Deletet_BX_Position(t_BX_Position instance);
+    partial void Insertt_BX_PositionType(t_BX_PositionType instance);
+    partial void Updatet_BX_PositionType(t_BX_PositionType instance);
+    partial void Deletet_BX_PositionType(t_BX_PositionType instance);
+    partial void Insertt_BX_FormItem(t_BX_FormItem instance);
+    partial void Updatet_BX_FormItem(t_BX_FormItem instance);
+    partial void Deletet_BX_FormItem(t_BX_FormItem instance);
+    partial void Insertt_BX_Form(t_BX_Form instance);
+    partial void Updatet_BX_Form(t_BX_Form instance);
+    partial void Deletet_BX_Form(t_BX_Form instance);
+    partial void InsertKQ_Set_time(KQ_Set_time instance);
+    partial void UpdateKQ_Set_time(KQ_Set_time instance);
+    partial void DeleteKQ_Set_time(KQ_Set_time instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -482,6 +498,46 @@ namespace BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<t_BX_Position> t_BX_Position
+		{
+			get
+			{
+				return this.GetTable<t_BX_Position>();
+			}
+		}
+		
+		public System.Data.Linq.Table<t_BX_PositionType> t_BX_PositionType
+		{
+			get
+			{
+				return this.GetTable<t_BX_PositionType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<t_BX_FormItem> t_BX_FormItem
+		{
+			get
+			{
+				return this.GetTable<t_BX_FormItem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<t_BX_Form> t_BX_Form
+		{
+			get
+			{
+				return this.GetTable<t_BX_Form>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_Set_time> KQ_Set_time
+		{
+			get
+			{
+				return this.GetTable<KQ_Set_time>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteUser")]
 		public int DeleteUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
 		{
@@ -549,6 +605,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User_Role")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class User_Role : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -574,10 +631,11 @@ namespace BLL
 		
 		public User_Role()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -598,6 +656,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserKey", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public int UserKey
 		{
 			get
@@ -618,6 +677,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleKey", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public int RoleKey
 		{
 			get
@@ -656,9 +716,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Roles : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -671,6 +744,8 @@ namespace BLL
 		private string _Remark;
 		
 		private EntitySet<t_Menu_Role> _t_Menu_Role;
+		
+		private bool serializing;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -686,11 +761,11 @@ namespace BLL
 		
 		public Roles()
 		{
-			this._t_Menu_Role = new EntitySet<t_Menu_Role>(new Action<t_Menu_Role>(this.attach_t_Menu_Role), new Action<t_Menu_Role>(this.detach_t_Menu_Role));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -711,6 +786,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -731,6 +807,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Remark
 		{
 			get
@@ -751,10 +828,16 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Roles_t_Menu_Role", Storage="_t_Menu_Role", ThisKey="Key", OtherKey="RoleKey")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
 		public EntitySet<t_Menu_Role> t_Menu_Role
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._t_Menu_Role.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._t_Menu_Role;
 			}
 			set
@@ -794,9 +877,37 @@ namespace BLL
 			this.SendPropertyChanging();
 			entity.Roles = null;
 		}
+		
+		private void Initialize()
+		{
+			this._t_Menu_Role = new EntitySet<t_Menu_Role>(new Action<t_Menu_Role>(this.attach_t_Menu_Role), new Action<t_Menu_Role>(this.detach_t_Menu_Role));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_User_Role")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_User_Role
 	{
 		
@@ -813,6 +924,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -829,6 +941,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XMPY", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string XMPY
 		{
 			get
@@ -845,6 +958,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string TrueName
 		{
 			get
@@ -861,6 +975,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rolename", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string rolename
 		{
 			get
@@ -878,6 +993,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_Role_Users")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_Role_Users
 	{
 		
@@ -896,6 +1012,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -912,6 +1029,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserKey", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public int UserKey
 		{
 			get
@@ -928,6 +1046,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string username
 		{
 			get
@@ -944,6 +1063,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rolename", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string rolename
 		{
 			get
@@ -960,6 +1080,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rolekey", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public int rolekey
 		{
 			get
@@ -977,6 +1098,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department_leader")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Department_leader : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1006,10 +1128,11 @@ namespace BLL
 		
 		public Department_leader()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -1030,6 +1153,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_department_id", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> department_id
 		{
 			get
@@ -1050,6 +1174,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_leader_id", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> leader_id
 		{
 			get
@@ -1070,6 +1195,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string description
 		{
 			get
@@ -1108,9 +1234,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_Deparment_Leader")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_Deparment_Leader
 	{
 		
@@ -1129,6 +1268,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -1145,6 +1285,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -1161,6 +1302,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string LeaderName
 		{
 			get
@@ -1177,6 +1319,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public int DepartmentId
 		{
 			get
@@ -1193,6 +1336,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public int userid
 		{
 			get
@@ -1210,6 +1354,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_Actor")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_Actor : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1239,10 +1384,11 @@ namespace BLL
 		
 		public t_GZL_Actor()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int actorId
 		{
 			get
@@ -1263,6 +1409,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortNo", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> sortNo
 		{
 			get
@@ -1283,6 +1430,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string actorName
 		{
 			get
@@ -1303,6 +1451,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_routId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> routId
 		{
 			get
@@ -1341,9 +1490,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_Rout")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_Rout : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1377,10 +1539,11 @@ namespace BLL
 		
 		public t_GZL_Rout()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_routId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int routId
 		{
 			get
@@ -1401,6 +1564,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_routName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string routName
 		{
 			get
@@ -1421,6 +1585,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_departmentId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> departmentId
 		{
 			get
@@ -1441,6 +1606,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> version
 		{
 			get
@@ -1461,6 +1627,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string State
 		{
 			get
@@ -1499,9 +1666,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_TaskList")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_TaskList : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1539,10 +1719,11 @@ namespace BLL
 		
 		public t_GZL_TaskList()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_taskId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int taskId
 		{
 			get
@@ -1563,6 +1744,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> itemId
 		{
 			get
@@ -1583,6 +1765,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> actorId
 		{
 			get
@@ -1603,6 +1786,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_state", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string state
 		{
 			get
@@ -1623,6 +1807,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> version
 		{
 			get
@@ -1643,6 +1828,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -1681,9 +1867,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_actorUser")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_actorUser : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1729,10 +1928,11 @@ namespace BLL
 		
 		public t_GZL_actorUser()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -1753,6 +1953,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> actorId
 		{
 			get
@@ -1773,6 +1974,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_operateUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> operateUserId
 		{
 			get
@@ -1793,6 +1995,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_taskId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> taskId
 		{
 			get
@@ -1813,6 +2016,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_opinion", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string opinion
 		{
 			get
@@ -1833,6 +2037,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NChar(4)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string action
 		{
 			get
@@ -1853,6 +2058,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> itemId
 		{
 			get
@@ -1873,6 +2079,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -1911,9 +2118,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_GZL_MyTaskList")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_GZL_MyTaskList
 	{
 		
@@ -1942,6 +2162,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public string ItemName
 		{
 			get
@@ -1958,6 +2179,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> ApplyDate
 		{
 			get
@@ -1974,6 +2196,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyUserName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string applyUserName
 		{
 			get
@@ -1990,6 +2213,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string actorName
 		{
 			get
@@ -2006,6 +2230,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string State
 		{
 			get
@@ -2022,6 +2247,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_taskId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public int taskId
 		{
 			get
@@ -2038,6 +2264,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public int ItemId
 		{
 			get
@@ -2054,6 +2281,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemType", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string ItemType
 		{
 			get
@@ -2070,6 +2298,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -2086,6 +2315,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_operateUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> operateUserId
 		{
 			get
@@ -2103,6 +2333,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_GZL_MyApplyItem")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_GZL_MyApplyItem
 	{
 		
@@ -2133,6 +2364,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ItemId
 		{
 			get
@@ -2149,6 +2381,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -2165,6 +2398,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deptId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> deptId
 		{
 			get
@@ -2181,6 +2415,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string ItemName
 		{
 			get
@@ -2197,6 +2432,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> ApplyDate
 		{
 			get
@@ -2213,6 +2449,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string State
 		{
 			get
@@ -2229,6 +2466,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> ApplyUserId
 		{
 			get
@@ -2245,6 +2483,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyUserName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string applyUserName
 		{
 			get
@@ -2261,6 +2500,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemType", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string ItemType
 		{
 			get
@@ -2277,6 +2517,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> actorId
 		{
 			get
@@ -2293,6 +2534,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string actorName
 		{
 			get
@@ -2310,6 +2552,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_TaskHistory")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_TaskHistory : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -2359,10 +2602,11 @@ namespace BLL
 		
 		public t_GZL_TaskHistory()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -2383,6 +2627,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> itemId
 		{
 			get
@@ -2403,6 +2648,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> actorId
 		{
 			get
@@ -2423,6 +2669,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memo", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string memo
 		{
 			get
@@ -2443,6 +2690,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_operatorUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> operatorUserId
 		{
 			get
@@ -2463,6 +2711,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.DateTime> createDate
 		{
 			get
@@ -2483,6 +2732,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_operatorName", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string operatorName
 		{
 			get
@@ -2503,6 +2753,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -2523,6 +2774,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NChar(4)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string action
 		{
 			get
@@ -2561,9 +2813,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_GZL_History")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_GZL_History
 	{
 		
@@ -2588,6 +2853,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Nullable<int> itemId
 		{
 			get
@@ -2604,6 +2870,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -2620,6 +2887,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<System.DateTime> createDate
 		{
 			get
@@ -2636,6 +2904,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortNo", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> sortNo
 		{
 			get
@@ -2652,6 +2921,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actorName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string actorName
 		{
 			get
@@ -2668,6 +2938,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_operatorName", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string operatorName
 		{
 			get
@@ -2684,6 +2955,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NChar(4)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string action
 		{
 			get
@@ -2700,6 +2972,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memo", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string memo
 		{
 			get
@@ -2717,6 +2990,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_User_Task")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_User_Task : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -2754,10 +3028,11 @@ namespace BLL
 		
 		public t_User_Task()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -2778,6 +3053,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string url
 		{
 			get
@@ -2798,6 +3074,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClick", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<bool> isClick
 		{
 			get
@@ -2818,6 +3095,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string description
 		{
 			get
@@ -2838,6 +3116,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> createtime
 		{
 			get
@@ -2858,6 +3137,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -2896,9 +3176,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Weather")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Weather : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -3044,10 +3337,11 @@ namespace BLL
 		
 		public t_Weather()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -3068,6 +3362,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> date
 		{
 			get
@@ -3088,6 +3383,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_city", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string city
 		{
 			get
@@ -3108,6 +3404,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp1", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string temp1
 		{
 			get
@@ -3128,6 +3425,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp2", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string temp2
 		{
 			get
@@ -3148,6 +3446,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp3", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string temp3
 		{
 			get
@@ -3168,6 +3467,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp4", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string temp4
 		{
 			get
@@ -3188,6 +3488,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp5", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string temp5
 		{
 			get
@@ -3208,6 +3509,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp6", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string temp6
 		{
 			get
@@ -3228,6 +3530,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description1", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public string description1
 		{
 			get
@@ -3248,6 +3551,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description2", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string description2
 		{
 			get
@@ -3268,6 +3572,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description3", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public string description3
 		{
 			get
@@ -3288,6 +3593,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description4", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public string description4
 		{
 			get
@@ -3308,6 +3614,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description5", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public string description5
 		{
 			get
@@ -3328,6 +3635,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description6", DbType="NVarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public string description6
 		{
 			get
@@ -3348,6 +3656,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind1", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public string wind1
 		{
 			get
@@ -3368,6 +3677,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind2", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
 		public string wind2
 		{
 			get
@@ -3388,6 +3698,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind3", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
 		public string wind3
 		{
 			get
@@ -3408,6 +3719,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind4", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
 		public string wind4
 		{
 			get
@@ -3428,6 +3740,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind5", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
 		public string wind5
 		{
 			get
@@ -3448,6 +3761,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind6", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
 		public string wind6
 		{
 			get
@@ -3468,6 +3782,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date2", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
 		public System.Nullable<System.DateTime> date2
 		{
 			get
@@ -3488,6 +3803,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date3", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
 		public System.Nullable<System.DateTime> date3
 		{
 			get
@@ -3508,6 +3824,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date4", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=24)]
 		public System.Nullable<System.DateTime> date4
 		{
 			get
@@ -3528,6 +3845,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date5", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=25)]
 		public System.Nullable<System.DateTime> date5
 		{
 			get
@@ -3548,6 +3866,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date6", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=26)]
 		public System.Nullable<System.DateTime> date6
 		{
 			get
@@ -3568,6 +3887,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img1", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=27)]
 		public string img1
 		{
 			get
@@ -3588,6 +3908,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img2", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=28)]
 		public string img2
 		{
 			get
@@ -3608,6 +3929,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img3", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29)]
 		public string img3
 		{
 			get
@@ -3628,6 +3950,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img4", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30)]
 		public string img4
 		{
 			get
@@ -3648,6 +3971,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img5", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31)]
 		public string img5
 		{
 			get
@@ -3668,6 +3992,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img6", DbType="Char(2)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32)]
 		public string img6
 		{
 			get
@@ -3688,6 +4013,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_week", DbType="NChar(8)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33)]
 		public string week
 		{
 			get
@@ -3726,9 +4052,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_GZL_Item")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_GZL_Item : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -3778,10 +4117,11 @@ namespace BLL
 		
 		public t_GZL_Item()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ItemId
 		{
 			get
@@ -3802,6 +4142,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string ItemName
 		{
 			get
@@ -3822,6 +4163,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoutId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> RoutId
 		{
 			get
@@ -3842,6 +4184,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> ApplyUserId
 		{
 			get
@@ -3862,6 +4205,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string State
 		{
 			get
@@ -3882,6 +4226,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemType", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string ItemType
 		{
 			get
@@ -3902,6 +4247,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deptId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> deptId
 		{
 			get
@@ -3922,6 +4268,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<System.DateTime> ApplyDate
 		{
 			get
@@ -3942,6 +4289,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -3980,9 +4328,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Form_Purchase")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Form_Purchase : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -4044,10 +4405,11 @@ namespace BLL
 		
 		public t_Form_Purchase()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_formId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int formId
 		{
 			get
@@ -4068,6 +4430,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> itemId
 		{
 			get
@@ -4088,6 +4451,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyDept", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> applyDept
 		{
 			get
@@ -4108,6 +4472,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> applyUserId
 		{
 			get
@@ -4128,6 +4493,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyDate", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> applyDate
 		{
 			get
@@ -4148,6 +4514,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyReason", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string applyReason
 		{
 			get
@@ -4168,6 +4535,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FenGuanYiJian", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string FenGuanYiJian
 		{
 			get
@@ -4188,6 +4556,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FenGuanTongYi", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<bool> FenGuanTongYi
 		{
 			get
@@ -4208,6 +4577,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XiaoZhangYiJian", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string XiaoZhangYiJian
 		{
 			get
@@ -4228,6 +4598,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XiaoZhangTongYi", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<bool> XiaoZhangTongYi
 		{
 			get
@@ -4248,6 +4619,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemGuid", DbType="UniqueIdentifier")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public System.Nullable<System.Guid> itemGuid
 		{
 			get
@@ -4268,6 +4640,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_totalPrice", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<double> totalPrice
 		{
 			get
@@ -4306,9 +4679,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Form_Purchase_Items")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Form_Purchase_Items : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -4362,10 +4748,11 @@ namespace BLL
 		
 		public t_Form_Purchase_Items()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -4386,6 +4773,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_formId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> formId
 		{
 			get
@@ -4406,6 +4794,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> sortId
 		{
 			get
@@ -4426,6 +4815,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string itemName
 		{
 			get
@@ -4446,6 +4836,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NVarChar(100)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string type
 		{
 			get
@@ -4466,6 +4857,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_number", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> number
 		{
 			get
@@ -4486,6 +4878,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<double> price
 		{
 			get
@@ -4506,6 +4899,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_memo", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string memo
 		{
 			get
@@ -4526,6 +4920,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_totalPrice", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public System.Nullable<double> totalPrice
 		{
 			get
@@ -4546,6 +4941,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_needNumber", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> needNumber
 		{
 			get
@@ -4584,9 +4980,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_WorkPlan")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_WorkPlan
 	{
 		
@@ -4627,6 +5036,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -4643,6 +5053,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> createTime
 		{
 			get
@@ -4659,6 +5070,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRelease", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<bool> isRelease
 		{
 			get
@@ -4675,6 +5087,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detpId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> detpId
 		{
 			get
@@ -4691,6 +5104,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Char(1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<char> type
 		{
 			get
@@ -4707,6 +5121,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_year", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> year
 		{
 			get
@@ -4723,6 +5138,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_month", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> month
 		{
 			get
@@ -4739,6 +5155,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isComplete", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<bool> isComplete
 		{
 			get
@@ -4755,6 +5172,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deptName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string deptName
 		{
 			get
@@ -4771,6 +5189,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public string username
 		{
 			get
@@ -4787,6 +5206,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_content", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string content
 		{
 			get
@@ -4803,6 +5223,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_releaseTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<System.DateTime> releaseTime
 		{
 			get
@@ -4819,6 +5240,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isEvaluation", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<bool> isEvaluation
 		{
 			get
@@ -4835,6 +5257,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_evalutionContent", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public string evalutionContent
 		{
 			get
@@ -4851,6 +5274,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortNo", DbType="SmallInt")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.Nullable<short> sortNo
 		{
 			get
@@ -4867,6 +5291,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_planPeriod", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public string planPeriod
 		{
 			get
@@ -4884,6 +5309,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Work_Plan")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Work_Plan : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -4957,10 +5383,11 @@ namespace BLL
 		
 		public t_Work_Plan()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -4981,6 +5408,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> createTime
 		{
 			get
@@ -5001,6 +5429,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRelease", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<bool> isRelease
 		{
 			get
@@ -5021,6 +5450,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detpId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> detpId
 		{
 			get
@@ -5041,6 +5471,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string username
 		{
 			get
@@ -5061,6 +5492,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_content", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string content
 		{
 			get
@@ -5081,6 +5513,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_releaseTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<System.DateTime> releaseTime
 		{
 			get
@@ -5101,6 +5534,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isEvaluation", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<bool> isEvaluation
 		{
 			get
@@ -5121,6 +5555,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_evalutionContent", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string evalutionContent
 		{
 			get
@@ -5141,6 +5576,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortNo", DbType="SmallInt")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<short> sortNo
 		{
 			get
@@ -5161,6 +5597,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_planPeriod", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string planPeriod
 		{
 			get
@@ -5181,6 +5618,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Char(1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<char> type
 		{
 			get
@@ -5201,6 +5639,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_year", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<int> year
 		{
 			get
@@ -5221,6 +5660,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_month", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.Nullable<int> month
 		{
 			get
@@ -5241,6 +5681,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isComplete", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.Nullable<bool> isComplete
 		{
 			get
@@ -5279,9 +5720,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -5303,10 +5757,11 @@ namespace BLL
 		
 		public KQ_AttendanceType()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -5327,6 +5782,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string name
 		{
 			get
@@ -5365,9 +5821,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Department : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -5405,10 +5874,11 @@ namespace BLL
 		
 		public Department()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -5429,6 +5899,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -5449,6 +5920,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Description
 		{
 			get
@@ -5469,6 +5941,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> ParentId
 		{
 			get
@@ -5489,6 +5962,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadmasterId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> HeadmasterId
 		{
 			get
@@ -5509,6 +5983,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagerId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> ManagerId
 		{
 			get
@@ -5547,9 +6022,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_Deparment_Headmaster")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_Deparment_Headmaster
 	{
 		
@@ -5572,6 +6060,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -5588,6 +6077,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -5604,6 +6094,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Description
 		{
 			get
@@ -5620,6 +6111,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_headmaster", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string headmaster
 		{
 			get
@@ -5636,6 +6128,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_headmasterID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> headmasterID
 		{
 			get
@@ -5652,6 +6145,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagerId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> ManagerId
 		{
 			get
@@ -5668,6 +6162,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagerName", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string ManagerName
 		{
 			get
@@ -5685,6 +6180,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Teacher_Group")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Teacher_Group : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -5710,10 +6206,11 @@ namespace BLL
 		
 		public t_Teacher_Group()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -5734,6 +6231,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -5754,6 +6252,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> LeaderId
 		{
 			get
@@ -5792,9 +6291,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_TeacherGroup")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_TeacherGroup
 	{
 		
@@ -5811,6 +6323,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -5827,6 +6340,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeacherGroupName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string TeacherGroupName
 		{
 			get
@@ -5843,6 +6357,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderName", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string LeaderName
 		{
 			get
@@ -5859,6 +6374,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LeaderId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> LeaderId
 		{
 			get
@@ -5876,6 +6392,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -5938,6 +6455,10 @@ namespace BLL
 		private string _duanhao;
 		
 		private System.Nullable<int> _TeacherGroupId;
+		
+		private EntitySet<t_BX_Form> _t_BX_Form;
+		
+		private bool serializing;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -6005,10 +6526,11 @@ namespace BLL
 		
 		public Users()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -6029,6 +6551,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XMPY", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string XMPY
 		{
 			get
@@ -6049,6 +6572,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string TrueName
 		{
 			get
@@ -6069,6 +6593,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public int Type
 		{
 			get
@@ -6089,6 +6614,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string Password
 		{
 			get
@@ -6109,6 +6635,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMail", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string EMail
 		{
 			get
@@ -6129,6 +6656,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InviteCode", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string InviteCode
 		{
 			get
@@ -6149,6 +6677,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpperName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string UpperName
 		{
 			get
@@ -6169,6 +6698,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgFileLimit", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public System.Nullable<int> MsgFileLimit
 		{
 			get
@@ -6189,6 +6719,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgImageLimit", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> MsgImageLimit
 		{
 			get
@@ -6209,6 +6740,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptStrangerIM", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public System.Nullable<int> AcceptStrangerIM
 		{
 			get
@@ -6229,6 +6761,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTemp", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<int> IsTemp
 		{
 			get
@@ -6249,6 +6782,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiskSize", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<int> DiskSize
 		{
 			get
@@ -6269,6 +6803,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegisterTime", DbType="DateTime NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.DateTime RegisterTime
 		{
 			get
@@ -6289,6 +6824,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePage", DbType="NVarChar(256)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public string HomePage
 		{
 			get
@@ -6309,6 +6845,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeadIMG", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public string HeadIMG
 		{
 			get
@@ -6329,6 +6866,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
 		public string Remark
 		{
 			get
@@ -6349,6 +6887,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangePwd", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
 		public System.Nullable<bool> ChangePwd
 		{
 			get
@@ -6369,6 +6908,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
 		public System.Nullable<int> DepartmentId
 		{
 			get
@@ -6389,6 +6929,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Char(1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
 		public System.Nullable<char> UserType
 		{
 			get
@@ -6409,6 +6950,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
 		public string JobNumber
 		{
 			get
@@ -6429,6 +6971,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_disabled", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
 		public System.Nullable<bool> disabled
 		{
 			get
@@ -6449,6 +6992,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_openUserId", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
 		public string openUserId
 		{
 			get
@@ -6469,6 +7013,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderNo", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=24)]
 		public System.Nullable<int> orderNo
 		{
 			get
@@ -6489,6 +7034,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bianhao", DbType="NVarChar(255)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=25)]
 		public string bianhao
 		{
 			get
@@ -6509,6 +7055,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xingming", DbType="NVarChar(255)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=26)]
 		public string xingming
 		{
 			get
@@ -6529,6 +7076,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_changhao", DbType="NVarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=27)]
 		public string changhao
 		{
 			get
@@ -6549,6 +7097,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_duanhao", DbType="NVarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=28)]
 		public string duanhao
 		{
 			get
@@ -6569,6 +7118,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeacherGroupId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29)]
 		public System.Nullable<int> TeacherGroupId
 		{
 			get
@@ -6585,6 +7135,25 @@ namespace BLL
 					this.SendPropertyChanged("TeacherGroupId");
 					this.OnTeacherGroupIdChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Users_t_BX_Form", Storage="_t_BX_Form", ThisKey="Key", OtherKey="userid")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30, EmitDefaultValue=false)]
+		public EntitySet<t_BX_Form> t_BX_Form
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._t_BX_Form.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._t_BX_Form;
+			}
+			set
+			{
+				this._t_BX_Form.Assign(value);
 			}
 		}
 		
@@ -6607,9 +7176,49 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.Users = this;
+		}
+		
+		private void detach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.Users = null;
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_Form = new EntitySet<t_BX_Form>(new Action<t_BX_Form>(this.attach_t_BX_Form), new Action<t_BX_Form>(this.detach_t_BX_Form));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_TeacherGroupUsers")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_TeacherGroupUsers
 	{
 		
@@ -6626,6 +7235,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int userid
 		{
 			get
@@ -6642,6 +7252,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string username
 		{
 			get
@@ -6658,6 +7269,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeacherGroupName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string TeacherGroupName
 		{
 			get
@@ -6674,6 +7286,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeacherGroupId", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public int TeacherGroupId
 		{
 			get
@@ -6691,6 +7304,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_KQ_Attendance
 	{
 		
@@ -6731,6 +7345,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -6747,6 +7362,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string username
 		{
 			get
@@ -6763,6 +7379,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -6779,6 +7396,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> starttime
 		{
 			get
@@ -6795,6 +7413,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> endtime
 		{
 			get
@@ -6811,6 +7430,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string status
 		{
 			get
@@ -6827,6 +7447,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> typeid
 		{
 			get
@@ -6843,6 +7464,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string reason
 		{
 			get
@@ -6859,6 +7481,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string dept
 		{
 			get
@@ -6875,6 +7498,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> ApprovalId
 		{
 			get
@@ -6891,6 +7515,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string ApprovalName
 		{
 			get
@@ -6907,6 +7532,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public string fileurl
 		{
 			get
@@ -6923,6 +7549,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applytype", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public string applytype
 		{
 			get
@@ -6939,6 +7566,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(4,1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.Nullable<decimal> daySpan
 		{
 			get
@@ -6955,6 +7583,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hourSpan", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.Nullable<int> hourSpan
 		{
 			get
@@ -6971,6 +7600,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public System.Nullable<System.DateTime> applyTime
 		{
 			get
@@ -6988,6 +7618,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Attendance")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -7026,6 +7657,10 @@ namespace BLL
 		private System.Nullable<decimal> _daySpan;
 		
 		private System.Nullable<int> _hourSpan;
+		
+		private EntitySet<t_BX_Form> _t_BX_Form;
+		
+		private bool serializing;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -7069,10 +7704,11 @@ namespace BLL
 		
 		public KQ_Attendance()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -7093,6 +7729,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string username
 		{
 			get
@@ -7113,6 +7750,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -7133,6 +7771,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> starttime
 		{
 			get
@@ -7153,6 +7792,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> endtime
 		{
 			get
@@ -7173,6 +7813,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string status
 		{
 			get
@@ -7193,6 +7834,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> typeid
 		{
 			get
@@ -7213,6 +7855,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string reason
 		{
 			get
@@ -7233,6 +7876,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string dept
 		{
 			get
@@ -7253,6 +7897,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> ApprovalId
 		{
 			get
@@ -7273,6 +7918,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string ApprovalName
 		{
 			get
@@ -7293,6 +7939,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<System.DateTime> applyTime
 		{
 			get
@@ -7313,6 +7960,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public string fileurl
 		{
 			get
@@ -7333,6 +7981,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stepCount", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.Nullable<int> stepCount
 		{
 			get
@@ -7353,6 +8002,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stepNow", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.Nullable<int> stepNow
 		{
 			get
@@ -7373,6 +8023,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_daySpan", DbType="Decimal(5,1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
 		public System.Nullable<decimal> daySpan
 		{
 			get
@@ -7393,6 +8044,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hourSpan", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
 		public System.Nullable<int> hourSpan
 		{
 			get
@@ -7409,6 +8061,25 @@ namespace BLL
 					this.SendPropertyChanged("hourSpan");
 					this.OnhourSpanChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KQ_Attendance_t_BX_Form", Storage="_t_BX_Form", ThisKey="Id", OtherKey="AttendanceId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18, EmitDefaultValue=false)]
+		public EntitySet<t_BX_Form> t_BX_Form
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._t_BX_Form.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._t_BX_Form;
+			}
+			set
+			{
+				this._t_BX_Form.Assign(value);
 			}
 		}
 		
@@ -7431,9 +8102,49 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.KQ_Attendance = this;
+		}
+		
+		private void detach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.KQ_Attendance = null;
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_Form = new EntitySet<t_BX_Form>(new Action<t_BX_Form>(this.attach_t_BX_Form), new Action<t_BX_Form>(this.detach_t_BX_Form));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceApprovalHistory")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_AttendanceApprovalHistory : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -7471,10 +8182,11 @@ namespace BLL
 		
 		public KQ_AttendanceApprovalHistory()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -7495,6 +8207,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -7515,6 +8228,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attendanceId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> attendanceId
 		{
 			get
@@ -7535,6 +8249,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> time
 		{
 			get
@@ -7555,6 +8270,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string action
 		{
 			get
@@ -7575,6 +8291,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(200)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string reason
 		{
 			get
@@ -7613,9 +8330,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_Attendance_History")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_KQ_Attendance_History
 	{
 		
@@ -7654,6 +8384,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -7670,6 +8401,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string username
 		{
 			get
@@ -7686,6 +8418,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -7702,6 +8435,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> starttime
 		{
 			get
@@ -7718,6 +8452,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> endtime
 		{
 			get
@@ -7734,6 +8469,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string status
 		{
 			get
@@ -7750,6 +8486,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> typeid
 		{
 			get
@@ -7766,6 +8503,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(200)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string reason
 		{
 			get
@@ -7782,6 +8520,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept", DbType="NChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string dept
 		{
 			get
@@ -7798,6 +8537,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<int> ApprovalId
 		{
 			get
@@ -7814,6 +8554,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalName", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string ApprovalName
 		{
 			get
@@ -7830,6 +8571,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public System.Nullable<System.DateTime> applyTime
 		{
 			get
@@ -7846,6 +8588,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fileurl", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public string fileurl
 		{
 			get
@@ -7862,6 +8605,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applytype", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public string applytype
 		{
 			get
@@ -7878,6 +8622,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_approvalHistoryId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
 		public System.Nullable<int> approvalHistoryId
 		{
 			get
@@ -7895,6 +8640,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_PunchCardRecords")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_PunchCardRecords : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -7964,10 +8710,11 @@ namespace BLL
 		
 		public KQ_PunchCardRecords()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -7988,6 +8735,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PunchCardUserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> PunchCardUserId
 		{
 			get
@@ -8008,6 +8756,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<System.DateTime> Time
 		{
 			get
@@ -8028,6 +8777,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PunchCardType", DbType="Char(1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<char> PunchCardType
 		{
 			get
@@ -8048,6 +8798,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IpAddress", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string IpAddress
 		{
 			get
@@ -8068,6 +8819,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ip1", DbType="Char(3)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string ip1
 		{
 			get
@@ -8088,6 +8840,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ip2", DbType="Char(3)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string ip2
 		{
 			get
@@ -8108,6 +8861,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ip3", DbType="Char(3)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string ip3
 		{
 			get
@@ -8128,6 +8882,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ip4", DbType="Char(3)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string ip4
 		{
 			get
@@ -8148,6 +8903,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="TinyInt")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<byte> status
 		{
 			get
@@ -8168,6 +8924,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_openUserId", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string openUserId
 		{
 			get
@@ -8188,6 +8945,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillCard", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public string fillCard
 		{
 			get
@@ -8208,6 +8966,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillCardTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<System.DateTime> fillCardTime
 		{
 			get
@@ -8228,6 +8987,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillcardUser", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public string fillcardUser
 		{
 			get
@@ -8266,9 +9026,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_punchcard_record")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_KQ_punchcard_record
 	{
 		
@@ -8295,6 +9068,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -8311,6 +9085,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> Time
 		{
 			get
@@ -8327,6 +9102,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IpAddress", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string IpAddress
 		{
 			get
@@ -8343,6 +9119,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string username
 		{
 			get
@@ -8359,6 +9136,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PunchCardType", DbType="Char(1)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<char> PunchCardType
 		{
 			get
@@ -8375,6 +9153,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="TinyInt")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<byte> status
 		{
 			get
@@ -8391,6 +9170,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillCard", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string fillCard
 		{
 			get
@@ -8407,6 +9187,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillcardUser", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public string fillcardUser
 		{
 			get
@@ -8423,6 +9204,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fillCardTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public System.Nullable<System.DateTime> fillCardTime
 		{
 			get
@@ -8440,6 +9222,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Shift")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_Shift : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -8485,10 +9268,11 @@ namespace BLL
 		
 		public KQ_Shift()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -8509,6 +9293,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string Name
 		{
 			get
@@ -8529,6 +9314,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string Remark
 		{
 			get
@@ -8549,6 +9335,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClockOnTime", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string ClockOnTime
 		{
 			get
@@ -8569,6 +9356,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClockOffTime", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string ClockOffTime
 		{
 			get
@@ -8589,6 +9377,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOn", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<bool> isClockOn
 		{
 			get
@@ -8609,6 +9398,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOff", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<bool> isClockOff
 		{
 			get
@@ -8629,6 +9419,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDefault", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<bool> isDefault
 		{
 			get
@@ -8667,9 +9458,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Scheduling")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_Scheduling : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -8715,10 +9519,11 @@ namespace BLL
 		
 		public KQ_Scheduling()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -8739,6 +9544,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> Year
 		{
 			get
@@ -8759,6 +9565,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Month", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> Month
 		{
 			get
@@ -8779,6 +9586,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Day", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> Day
 		{
 			get
@@ -8799,6 +9607,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeekDay", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> WeekDay
 		{
 			get
@@ -8819,6 +9628,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShiftId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> ShiftId
 		{
 			get
@@ -8839,6 +9649,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<int> UserId
 		{
 			get
@@ -8859,6 +9670,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<System.DateTime> Date
 		{
 			get
@@ -8897,9 +9709,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Report")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_Report : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -8969,10 +9794,11 @@ namespace BLL
 		
 		public KQ_Report()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -8993,6 +9819,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -9013,6 +9840,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<System.DateTime> date
 		{
 			get
@@ -9033,6 +9861,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shangbanTime", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string shangbanTime
 		{
 			get
@@ -9053,6 +9882,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_xiabanTime", DbType="VarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string xiabanTime
 		{
 			get
@@ -9073,6 +9903,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isChidao", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<bool> isChidao
 		{
 			get
@@ -9093,6 +9924,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isZaotui", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public System.Nullable<bool> isZaotui
 		{
 			get
@@ -9113,6 +9945,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isKuanggong", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
 		public System.Nullable<bool> isKuanggong
 		{
 			get
@@ -9133,6 +9966,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weekDay", DbType="VarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
 		public string weekDay
 		{
 			get
@@ -9153,6 +9987,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isQingjia", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
 		public System.Nullable<bool> isQingjia
 		{
 			get
@@ -9173,6 +10008,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qingjiaTime", DbType="VarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
 		public string qingjiaTime
 		{
 			get
@@ -9193,6 +10029,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
 		public string remark
 		{
 			get
@@ -9213,6 +10050,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOn", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
 		public System.Nullable<bool> isClockOn
 		{
 			get
@@ -9233,6 +10071,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isClockOff", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
 		public System.Nullable<bool> isClockOff
 		{
 			get
@@ -9271,9 +10110,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_KQ_SpecialRemark")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class v_KQ_SpecialRemark
 	{
 		
@@ -9296,6 +10148,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -9312,6 +10165,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -9328,6 +10182,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string TrueName
 		{
 			get
@@ -9344,6 +10199,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string remark
 		{
 			get
@@ -9360,6 +10216,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> starttime
 		{
 			get
@@ -9376,6 +10233,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<System.DateTime> endtime
 		{
 			get
@@ -9392,6 +10250,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
 		public string JobNumber
 		{
 			get
@@ -9409,6 +10268,7 @@ namespace BLL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_SpecialRemark")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class KQ_SpecialRemark : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -9442,10 +10302,11 @@ namespace BLL
 		
 		public KQ_SpecialRemark()
 		{
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -9466,6 +10327,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -9486,6 +10348,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string remark
 		{
 			get
@@ -9506,6 +10369,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_starttime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> starttime
 		{
 			get
@@ -9526,6 +10390,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endtime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<System.DateTime> endtime
 		{
 			get
@@ -9564,9 +10429,22 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Menu")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Menu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -9588,6 +10466,8 @@ namespace BLL
 		
 		private EntityRef<t_Sys> _t_Sys;
 		
+		private bool serializing;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -9608,12 +10488,11 @@ namespace BLL
 		
 		public t_Menu()
 		{
-			this._t_Menu_Role = new EntitySet<t_Menu_Role>(new Action<t_Menu_Role>(this.attach_t_Menu_Role), new Action<t_Menu_Role>(this.detach_t_Menu_Role));
-			this._t_Sys = default(EntityRef<t_Sys>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -9634,6 +10513,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parentId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> parentId
 		{
 			get
@@ -9654,6 +10534,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string name
 		{
 			get
@@ -9674,6 +10555,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string url
 		{
 			get
@@ -9694,6 +10576,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<bool> status
 		{
 			get
@@ -9714,6 +10597,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sysId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public System.Nullable<int> sysId
 		{
 			get
@@ -9738,10 +10622,16 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_Menu_t_Menu_Role", Storage="_t_Menu_Role", ThisKey="Id", OtherKey="MenuKey")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
 		public EntitySet<t_Menu_Role> t_Menu_Role
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._t_Menu_Role.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._t_Menu_Role;
 			}
 			set
@@ -9815,9 +10705,38 @@ namespace BLL
 			this.SendPropertyChanging();
 			entity.t_Menu = null;
 		}
+		
+		private void Initialize()
+		{
+			this._t_Menu_Role = new EntitySet<t_Menu_Role>(new Action<t_Menu_Role>(this.attach_t_Menu_Role), new Action<t_Menu_Role>(this.detach_t_Menu_Role));
+			this._t_Sys = default(EntityRef<t_Sys>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Sys")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Sys : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -9830,6 +10749,8 @@ namespace BLL
 		private string _remark;
 		
 		private EntitySet<t_Menu> _t_Menu;
+		
+		private bool serializing;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -9845,11 +10766,11 @@ namespace BLL
 		
 		public t_Sys()
 		{
-			this._t_Menu = new EntitySet<t_Menu>(new Action<t_Menu>(this.attach_t_Menu), new Action<t_Menu>(this.detach_t_Menu));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -9870,6 +10791,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string name
 		{
 			get
@@ -9890,6 +10812,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_remark", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string remark
 		{
 			get
@@ -9910,10 +10833,16 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_Sys_t_Menu", Storage="_t_Menu", ThisKey="Id", OtherKey="sysId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
 		public EntitySet<t_Menu> t_Menu
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._t_Menu.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._t_Menu;
 			}
 			set
@@ -9953,9 +10882,37 @@ namespace BLL
 			this.SendPropertyChanging();
 			entity.t_Sys = null;
 		}
+		
+		private void Initialize()
+		{
+			this._t_Menu = new EntitySet<t_Menu>(new Action<t_Menu>(this.attach_t_Menu), new Action<t_Menu>(this.detach_t_Menu));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Menu_Role")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class t_Menu_Role : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -9981,12 +10938,11 @@ namespace BLL
 		
 		public t_Menu_Role()
 		{
-			this._Roles = default(EntityRef<Roles>);
-			this._t_Menu = default(EntityRef<t_Menu>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleKey", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int RoleKey
 		{
 			get
@@ -10011,6 +10967,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuKey", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public int MenuKey
 		{
 			get
@@ -10121,8 +11078,1392 @@ namespace BLL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			this._Roles = default(EntityRef<Roles>);
+			this._t_Menu = default(EntityRef<t_Menu>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_BX_Position")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class t_BX_Position : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _PositionTypeId;
+		
+		private EntityRef<t_BX_PositionType> _t_BX_PositionType;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPositionTypeIdChanging(System.Nullable<int> value);
+    partial void OnPositionTypeIdChanged();
+    #endregion
+		
+		public t_BX_Position()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositionTypeId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> PositionTypeId
+		{
+			get
+			{
+				return this._PositionTypeId;
+			}
+			set
+			{
+				if ((this._PositionTypeId != value))
+				{
+					if (this._t_BX_PositionType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPositionTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PositionTypeId = value;
+					this.SendPropertyChanged("PositionTypeId");
+					this.OnPositionTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_PositionType_t_BX_Position", Storage="_t_BX_PositionType", ThisKey="PositionTypeId", OtherKey="Id", IsForeignKey=true)]
+		public t_BX_PositionType t_BX_PositionType
+		{
+			get
+			{
+				return this._t_BX_PositionType.Entity;
+			}
+			set
+			{
+				t_BX_PositionType previousValue = this._t_BX_PositionType.Entity;
+				if (((previousValue != value) 
+							|| (this._t_BX_PositionType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._t_BX_PositionType.Entity = null;
+						previousValue.t_BX_Position.Remove(this);
+					}
+					this._t_BX_PositionType.Entity = value;
+					if ((value != null))
+					{
+						value.t_BX_Position.Add(this);
+						this._PositionTypeId = value.Id;
+					}
+					else
+					{
+						this._PositionTypeId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("t_BX_PositionType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_PositionType = default(EntityRef<t_BX_PositionType>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_BX_PositionType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class t_BX_PositionType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private EntitySet<t_BX_Position> _t_BX_Position;
+		
+		private EntitySet<t_BX_Form> _t_BX_Form;
+		
+		private bool serializing;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public t_BX_PositionType()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_PositionType_t_BX_Position", Storage="_t_BX_Position", ThisKey="Id", OtherKey="PositionTypeId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3, EmitDefaultValue=false)]
+		public EntitySet<t_BX_Position> t_BX_Position
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._t_BX_Position.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._t_BX_Position;
+			}
+			set
+			{
+				this._t_BX_Position.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_PositionType_t_BX_Form", Storage="_t_BX_Form", ThisKey="Id", OtherKey="PositionTypeId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<t_BX_Form> t_BX_Form
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._t_BX_Form.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._t_BX_Form;
+			}
+			set
+			{
+				this._t_BX_Form.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_t_BX_Position(t_BX_Position entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_PositionType = this;
+		}
+		
+		private void detach_t_BX_Position(t_BX_Position entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_PositionType = null;
+		}
+		
+		private void attach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_PositionType = this;
+		}
+		
+		private void detach_t_BX_Form(t_BX_Form entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_PositionType = null;
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_Position = new EntitySet<t_BX_Position>(new Action<t_BX_Position>(this.attach_t_BX_Position), new Action<t_BX_Position>(this.detach_t_BX_Position));
+			this._t_BX_Form = new EntitySet<t_BX_Form>(new Action<t_BX_Form>(this.attach_t_BX_Form), new Action<t_BX_Form>(this.detach_t_BX_Form));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_BX_FormItem")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class t_BX_FormItem : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _FormId;
+		
+		private System.DateTime _Date;
+		
+		private System.Nullable<decimal> _TrafficFee;
+		
+		private System.Nullable<decimal> _CityTrafficFee;
+		
+		private System.Nullable<int> _Days;
+		
+		private bool _IsReception;
+		
+		private System.Nullable<decimal> _Allowance;
+		
+		private System.Nullable<decimal> _AccommodationFee;
+		
+		private System.Nullable<int> _PeoplesNum;
+		
+		private EntityRef<t_BX_Form> _t_BX_Form;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFormIdChanging(System.Nullable<int> value);
+    partial void OnFormIdChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnTrafficFeeChanging(System.Nullable<decimal> value);
+    partial void OnTrafficFeeChanged();
+    partial void OnCityTrafficFeeChanging(System.Nullable<decimal> value);
+    partial void OnCityTrafficFeeChanged();
+    partial void OnDaysChanging(System.Nullable<int> value);
+    partial void OnDaysChanged();
+    partial void OnIsReceptionChanging(bool value);
+    partial void OnIsReceptionChanged();
+    partial void OnAllowanceChanging(System.Nullable<decimal> value);
+    partial void OnAllowanceChanged();
+    partial void OnAccommodationFeeChanging(System.Nullable<decimal> value);
+    partial void OnAccommodationFeeChanged();
+    partial void OnPeoplesNumChanging(System.Nullable<int> value);
+    partial void OnPeoplesNumChanged();
+    #endregion
+		
+		public t_BX_FormItem()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FormId", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<int> FormId
+		{
+			get
+			{
+				return this._FormId;
+			}
+			set
+			{
+				if ((this._FormId != value))
+				{
+					if (this._t_BX_Form.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFormIdChanging(value);
+					this.SendPropertyChanging();
+					this._FormId = value;
+					this.SendPropertyChanged("FormId");
+					this.OnFormIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrafficFee", DbType="Decimal(10,2)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<decimal> TrafficFee
+		{
+			get
+			{
+				return this._TrafficFee;
+			}
+			set
+			{
+				if ((this._TrafficFee != value))
+				{
+					this.OnTrafficFeeChanging(value);
+					this.SendPropertyChanging();
+					this._TrafficFee = value;
+					this.SendPropertyChanged("TrafficFee");
+					this.OnTrafficFeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityTrafficFee", DbType="Decimal(10,2)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<decimal> CityTrafficFee
+		{
+			get
+			{
+				return this._CityTrafficFee;
+			}
+			set
+			{
+				if ((this._CityTrafficFee != value))
+				{
+					this.OnCityTrafficFeeChanging(value);
+					this.SendPropertyChanging();
+					this._CityTrafficFee = value;
+					this.SendPropertyChanged("CityTrafficFee");
+					this.OnCityTrafficFeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Days", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.Nullable<int> Days
+		{
+			get
+			{
+				return this._Days;
+			}
+			set
+			{
+				if ((this._Days != value))
+				{
+					this.OnDaysChanging(value);
+					this.SendPropertyChanging();
+					this._Days = value;
+					this.SendPropertyChanged("Days");
+					this.OnDaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsReception", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public bool IsReception
+		{
+			get
+			{
+				return this._IsReception;
+			}
+			set
+			{
+				if ((this._IsReception != value))
+				{
+					this.OnIsReceptionChanging(value);
+					this.SendPropertyChanging();
+					this._IsReception = value;
+					this.SendPropertyChanged("IsReception");
+					this.OnIsReceptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Allowance", DbType="Decimal(10,2)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public System.Nullable<decimal> Allowance
+		{
+			get
+			{
+				return this._Allowance;
+			}
+			set
+			{
+				if ((this._Allowance != value))
+				{
+					this.OnAllowanceChanging(value);
+					this.SendPropertyChanging();
+					this._Allowance = value;
+					this.SendPropertyChanged("Allowance");
+					this.OnAllowanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccommodationFee", DbType="Decimal(10,2)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public System.Nullable<decimal> AccommodationFee
+		{
+			get
+			{
+				return this._AccommodationFee;
+			}
+			set
+			{
+				if ((this._AccommodationFee != value))
+				{
+					this.OnAccommodationFeeChanging(value);
+					this.SendPropertyChanging();
+					this._AccommodationFee = value;
+					this.SendPropertyChanged("AccommodationFee");
+					this.OnAccommodationFeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeoplesNum", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public System.Nullable<int> PeoplesNum
+		{
+			get
+			{
+				return this._PeoplesNum;
+			}
+			set
+			{
+				if ((this._PeoplesNum != value))
+				{
+					this.OnPeoplesNumChanging(value);
+					this.SendPropertyChanging();
+					this._PeoplesNum = value;
+					this.SendPropertyChanged("PeoplesNum");
+					this.OnPeoplesNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_Form_t_BX_FormItem", Storage="_t_BX_Form", ThisKey="FormId", OtherKey="Id", IsForeignKey=true)]
+		public t_BX_Form t_BX_Form
+		{
+			get
+			{
+				return this._t_BX_Form.Entity;
+			}
+			set
+			{
+				t_BX_Form previousValue = this._t_BX_Form.Entity;
+				if (((previousValue != value) 
+							|| (this._t_BX_Form.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._t_BX_Form.Entity = null;
+						previousValue.t_BX_FormItem.Remove(this);
+					}
+					this._t_BX_Form.Entity = value;
+					if ((value != null))
+					{
+						value.t_BX_FormItem.Add(this);
+						this._FormId = value.Id;
+					}
+					else
+					{
+						this._FormId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("t_BX_Form");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_Form = default(EntityRef<t_BX_Form>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_BX_Form")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class t_BX_Form : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<System.Guid> _FormGuid;
+		
+		private int _userid;
+		
+		private string _username;
+		
+		private short _Type;
+		
+		private System.Nullable<int> _PeopleNumber;
+		
+		private string _PeoplesName;
+		
+		private string _Reason;
+		
+		private string _Position;
+		
+		private int _PositionTypeId;
+		
+		private System.Nullable<int> _AttendanceId;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private EntitySet<t_BX_FormItem> _t_BX_FormItem;
+		
+		private EntityRef<KQ_Attendance> _KQ_Attendance;
+		
+		private EntityRef<t_BX_PositionType> _t_BX_PositionType;
+		
+		private EntityRef<Users> _Users;
+		
+		private bool serializing;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFormGuidChanging(System.Nullable<System.Guid> value);
+    partial void OnFormGuidChanged();
+    partial void OnuseridChanging(int value);
+    partial void OnuseridChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnTypeChanging(short value);
+    partial void OnTypeChanged();
+    partial void OnPeopleNumberChanging(System.Nullable<int> value);
+    partial void OnPeopleNumberChanged();
+    partial void OnPeoplesNameChanging(string value);
+    partial void OnPeoplesNameChanged();
+    partial void OnReasonChanging(string value);
+    partial void OnReasonChanged();
+    partial void OnPositionChanging(string value);
+    partial void OnPositionChanged();
+    partial void OnPositionTypeIdChanging(int value);
+    partial void OnPositionTypeIdChanged();
+    partial void OnAttendanceIdChanging(System.Nullable<int> value);
+    partial void OnAttendanceIdChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    #endregion
+		
+		public t_BX_Form()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FormGuid", DbType="UniqueIdentifier", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<System.Guid> FormGuid
+		{
+			get
+			{
+				return this._FormGuid;
+			}
+			set
+			{
+				if ((this._FormGuid != value))
+				{
+					this.OnFormGuidChanging(value);
+					this.SendPropertyChanging();
+					this._FormGuid = value;
+					this.SendPropertyChanged("FormGuid");
+					this.OnFormGuidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public int userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					if (this._Users.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(20) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="SmallInt NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public short Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeopleNumber", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.Nullable<int> PeopleNumber
+		{
+			get
+			{
+				return this._PeopleNumber;
+			}
+			set
+			{
+				if ((this._PeopleNumber != value))
+				{
+					this.OnPeopleNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PeopleNumber = value;
+					this.SendPropertyChanged("PeopleNumber");
+					this.OnPeopleNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeoplesName", DbType="NChar(10)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public string PeoplesName
+		{
+			get
+			{
+				return this._PeoplesName;
+			}
+			set
+			{
+				if ((this._PeoplesName != value))
+				{
+					this.OnPeoplesNameChanging(value);
+					this.SendPropertyChanging();
+					this._PeoplesName = value;
+					this.SendPropertyChanged("PeoplesName");
+					this.OnPeoplesNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reason", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public string Reason
+		{
+			get
+			{
+				return this._Reason;
+			}
+			set
+			{
+				if ((this._Reason != value))
+				{
+					this.OnReasonChanging(value);
+					this.SendPropertyChanging();
+					this._Reason = value;
+					this.SendPropertyChanged("Reason");
+					this.OnReasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this.OnPositionChanging(value);
+					this.SendPropertyChanging();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositionTypeId", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+		public int PositionTypeId
+		{
+			get
+			{
+				return this._PositionTypeId;
+			}
+			set
+			{
+				if ((this._PositionTypeId != value))
+				{
+					if (this._t_BX_PositionType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPositionTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._PositionTypeId = value;
+					this.SendPropertyChanged("PositionTypeId");
+					this.OnPositionTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AttendanceId", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
+		public System.Nullable<int> AttendanceId
+		{
+			get
+			{
+				return this._AttendanceId;
+			}
+			set
+			{
+				if ((this._AttendanceId != value))
+				{
+					if (this._KQ_Attendance.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAttendanceIdChanging(value);
+					this.SendPropertyChanging();
+					this._AttendanceId = value;
+					this.SendPropertyChanged("AttendanceId");
+					this.OnAttendanceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_Form_t_BX_FormItem", Storage="_t_BX_FormItem", ThisKey="Id", OtherKey="FormId")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14, EmitDefaultValue=false)]
+		public EntitySet<t_BX_FormItem> t_BX_FormItem
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._t_BX_FormItem.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._t_BX_FormItem;
+			}
+			set
+			{
+				this._t_BX_FormItem.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KQ_Attendance_t_BX_Form", Storage="_KQ_Attendance", ThisKey="AttendanceId", OtherKey="Id", IsForeignKey=true)]
+		public KQ_Attendance KQ_Attendance
+		{
+			get
+			{
+				return this._KQ_Attendance.Entity;
+			}
+			set
+			{
+				KQ_Attendance previousValue = this._KQ_Attendance.Entity;
+				if (((previousValue != value) 
+							|| (this._KQ_Attendance.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KQ_Attendance.Entity = null;
+						previousValue.t_BX_Form.Remove(this);
+					}
+					this._KQ_Attendance.Entity = value;
+					if ((value != null))
+					{
+						value.t_BX_Form.Add(this);
+						this._AttendanceId = value.Id;
+					}
+					else
+					{
+						this._AttendanceId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("KQ_Attendance");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="t_BX_PositionType_t_BX_Form", Storage="_t_BX_PositionType", ThisKey="PositionTypeId", OtherKey="Id", IsForeignKey=true)]
+		public t_BX_PositionType t_BX_PositionType
+		{
+			get
+			{
+				return this._t_BX_PositionType.Entity;
+			}
+			set
+			{
+				t_BX_PositionType previousValue = this._t_BX_PositionType.Entity;
+				if (((previousValue != value) 
+							|| (this._t_BX_PositionType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._t_BX_PositionType.Entity = null;
+						previousValue.t_BX_Form.Remove(this);
+					}
+					this._t_BX_PositionType.Entity = value;
+					if ((value != null))
+					{
+						value.t_BX_Form.Add(this);
+						this._PositionTypeId = value.Id;
+					}
+					else
+					{
+						this._PositionTypeId = default(int);
+					}
+					this.SendPropertyChanged("t_BX_PositionType");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Users_t_BX_Form", Storage="_Users", ThisKey="userid", OtherKey="Key", IsForeignKey=true)]
+		public Users Users
+		{
+			get
+			{
+				return this._Users.Entity;
+			}
+			set
+			{
+				Users previousValue = this._Users.Entity;
+				if (((previousValue != value) 
+							|| (this._Users.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Users.Entity = null;
+						previousValue.t_BX_Form.Remove(this);
+					}
+					this._Users.Entity = value;
+					if ((value != null))
+					{
+						value.t_BX_Form.Add(this);
+						this._userid = value.Key;
+					}
+					else
+					{
+						this._userid = default(int);
+					}
+					this.SendPropertyChanged("Users");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_t_BX_FormItem(t_BX_FormItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_Form = this;
+		}
+		
+		private void detach_t_BX_FormItem(t_BX_FormItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.t_BX_Form = null;
+		}
+		
+		private void Initialize()
+		{
+			this._t_BX_FormItem = new EntitySet<t_BX_FormItem>(new Action<t_BX_FormItem>(this.attach_t_BX_FormItem), new Action<t_BX_FormItem>(this.detach_t_BX_FormItem));
+			this._KQ_Attendance = default(EntityRef<KQ_Attendance>);
+			this._t_BX_PositionType = default(EntityRef<t_BX_PositionType>);
+			this._Users = default(EntityRef<Users>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Set_time")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class KQ_Set_time : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<System.DateTime> _CheckOnTime;
+		
+		private System.Nullable<System.DateTime> _CheckOffTime;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCheckOnTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnCheckOnTimeChanged();
+    partial void OnCheckOffTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnCheckOffTimeChanged();
+    #endregion
+		
+		public KQ_Set_time()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOnTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<System.DateTime> CheckOnTime
+		{
+			get
+			{
+				return this._CheckOnTime;
+			}
+			set
+			{
+				if ((this._CheckOnTime != value))
+				{
+					this.OnCheckOnTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CheckOnTime = value;
+					this.SendPropertyChanged("CheckOnTime");
+					this.OnCheckOnTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOffTime", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<System.DateTime> CheckOffTime
+		{
+			get
+			{
+				return this._CheckOffTime;
+			}
+			set
+			{
+				if ((this._CheckOffTime != value))
+				{
+					this.OnCheckOffTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CheckOffTime = value;
+					this.SendPropertyChanged("CheckOffTime");
+					this.OnCheckOffTimeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class GetUserRolesResult
 	{
 		
@@ -10133,6 +12474,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public string RoleName
 		{
 			get
@@ -10149,6 +12491,7 @@ namespace BLL
 		}
 	}
 	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class CreateUserResult
 	{
 		
@@ -10159,6 +12502,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Key
 		{
 			get
@@ -10175,6 +12519,7 @@ namespace BLL
 		}
 	}
 	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class sp_Menu_getUserMenusResult
 	{
 		
@@ -10193,6 +12538,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int Id
 		{
 			get
@@ -10209,6 +12555,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parentId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> parentId
 		{
 			get
@@ -10225,6 +12572,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string name
 		{
 			get
@@ -10241,6 +12589,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="NVarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string url
 		{
 			get
@@ -10257,6 +12606,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Bit")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<bool> status
 		{
 			get
@@ -10273,6 +12623,7 @@ namespace BLL
 		}
 	}
 	
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class sp_Attend_getHistoryResult
 	{
 		
@@ -10293,6 +12644,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attendanceId", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public System.Nullable<int> attendanceId
 		{
 			get
@@ -10309,6 +12661,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> userid
 		{
 			get
@@ -10325,6 +12678,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string TrueName
 		{
 			get
@@ -10341,6 +12695,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<System.DateTime> time
 		{
 			get
@@ -10357,6 +12712,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_action", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string action
 		{
 			get
@@ -10373,6 +12729,7 @@ namespace BLL
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reason", DbType="NVarChar(200)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
 		public string reason
 		{
 			get

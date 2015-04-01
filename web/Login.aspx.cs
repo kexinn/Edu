@@ -15,7 +15,7 @@ namespace web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+        /*
             try
             {
                 HttpCookie ticketCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
@@ -60,6 +60,7 @@ namespace web
             {
                 lbMessage.Text = "系统错误：" + ex.Message;
             }
+         * */
         }
 
         protected void checkLogin(String name)
