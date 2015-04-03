@@ -152,43 +152,6 @@
       <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.t_Weather" Member="t_Weather">
-    <Type Name="t_Weather">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="city" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="temp1" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="temp2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="temp3" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="temp4" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="temp5" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="temp6" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="description1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="description2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="description3" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="description4" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="description5" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="description6" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="wind1" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="wind2" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="wind3" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="wind4" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="wind5" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="wind6" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="date2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="date3" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="date4" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="date5" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="date6" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="img1" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="img2" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="img3" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="img4" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="img5" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="img6" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="week" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.t_GZL_Item" Member="t_GZL_Item">
     <Type Name="t_GZL_Item">
       <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -580,7 +543,7 @@
   </Table>
   <Table Name="dbo.t_BX_Form" Member="t_BX_Form">
     <Type Name="t_BX_Form">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" IsVersion="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" CanBeNull="false" IsVersion="true" />
       <Column Name="FormGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="username" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
@@ -599,11 +562,16 @@
       <Association Name="Users_t_BX_Form" Member="Users" ThisKey="userid" OtherKey="Key" Type="Users" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.KQ_Set_time" Member="KQ_Set_time">
-    <Type Name="KQ_Set_time">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CheckOnTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CheckOffTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+  <Table Name="dbo.Region" Member="Region">
+    <Type Name="Region">
+      <Column Name="REGION_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="REGION_CODE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PARENT_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="REGION_LEVEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="REGION_ORDER" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="REGION_NAME_EN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_SHORTNAME_EN" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.DeleteUser" Method="DeleteUser">

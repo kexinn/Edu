@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Login.cs" />
     <Compile Include="Model\KQ_Attendance.cs" />
+    <Compile Include="Model\Region.cs" />
     <Compile Include="Model\t_BX_Form.cs" />
     <Compile Include="Model\t_BX_FormItem.cs" />
     <Compile Include="Model\t_BX_Position.cs" />

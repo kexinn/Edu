@@ -9,7 +9,15 @@
     <script type="text/javascript" src="/media/js/jquery.js"></script>
     <script type="text/javascript" src="/media/js/jquery.jqprint-0.3.js"></script>
         <script language="javascript" type="text/jscript">
-       
+            function preview() {
+                bdhtml = window.document.body.innerHTML;
+                sprnstr = "<!--startprint-->";
+                eprnstr = "<!--endprint-->";
+                prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);
+                prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));
+                window.document.body.innerHTML = prnhtml;
+                window.print();
+            }
         function print() {
             $("#print").jqprint();
         }
@@ -76,6 +84,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+<!--startprint-->
     <div>
         <div id="print">
        <style type="text/css" media="print">
@@ -179,11 +189,11 @@
                    
                     <table >
                     <tr>
-                        <td class="line4">包干人数:</td>
+                        <td class="line4">报销人数:</td>
                         <td class="underline"><span>
                             <asp:Label ID="lbPeopleNum" runat="server"></asp:Label>
                             人</span></td>
-                        <td  class="line4">包干人员:</td>
+                        <td  class="line4">报销人员:</td>
                         <td class="underline"><span>
                             <asp:Label ID="lbPeoples" runat="server"></asp:Label>
                             </span></td>
@@ -281,7 +291,7 @@
                
                 <br />
                
-                     <i class="mbtn noprint"><img src="/media/images/i01.png" width="20pt" /><a class="noprint" href="#" onclick="print()">打印</a></i>
+                     <i class="mbtn noprint"><img src="/media/images/i01.png" width="20pt" /><a class="noprint" href="#" onclick="preview()">打印</a></i>
                 <br />
                 <br />
                 <br />
@@ -293,6 +303,8 @@
 
     
     </div>
+        
+<!--endprint-->
     </form>
 </body>
 </html>

@@ -58,9 +58,6 @@ namespace BLL
     partial void Insertt_User_Task(t_User_Task instance);
     partial void Updatet_User_Task(t_User_Task instance);
     partial void Deletet_User_Task(t_User_Task instance);
-    partial void Insertt_Weather(t_Weather instance);
-    partial void Updatet_Weather(t_Weather instance);
-    partial void Deletet_Weather(t_Weather instance);
     partial void Insertt_GZL_Item(t_GZL_Item instance);
     partial void Updatet_GZL_Item(t_GZL_Item instance);
     partial void Deletet_GZL_Item(t_GZL_Item instance);
@@ -127,9 +124,9 @@ namespace BLL
     partial void Insertt_BX_Form(t_BX_Form instance);
     partial void Updatet_BX_Form(t_BX_Form instance);
     partial void Deletet_BX_Form(t_BX_Form instance);
-    partial void InsertKQ_Set_time(KQ_Set_time instance);
-    partial void UpdateKQ_Set_time(KQ_Set_time instance);
-    partial void DeleteKQ_Set_time(KQ_Set_time instance);
+    partial void InsertRegion(Region instance);
+    partial void UpdateRegion(Region instance);
+    partial void DeleteRegion(Region instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -279,14 +276,6 @@ namespace BLL
 			get
 			{
 				return this.GetTable<t_User_Task>();
-			}
-		}
-		
-		public System.Data.Linq.Table<t_Weather> t_Weather
-		{
-			get
-			{
-				return this.GetTable<t_Weather>();
 			}
 		}
 		
@@ -530,11 +519,11 @@ namespace BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<KQ_Set_time> KQ_Set_time
+		public System.Data.Linq.Table<Region> Region
 		{
 			get
 			{
-				return this.GetTable<KQ_Set_time>();
+				return this.GetTable<Region>();
 			}
 		}
 		
@@ -3153,882 +3142,6 @@ namespace BLL
 					this._userid = value;
 					this.SendPropertyChanged("userid");
 					this.OnuseridChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void Initialize()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.t_Weather")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class t_Weather : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.DateTime> _date;
-		
-		private string _city;
-		
-		private string _temp1;
-		
-		private string _temp2;
-		
-		private string _temp3;
-		
-		private string _temp4;
-		
-		private string _temp5;
-		
-		private string _temp6;
-		
-		private string _description1;
-		
-		private string _description2;
-		
-		private string _description3;
-		
-		private string _description4;
-		
-		private string _description5;
-		
-		private string _description6;
-		
-		private string _wind1;
-		
-		private string _wind2;
-		
-		private string _wind3;
-		
-		private string _wind4;
-		
-		private string _wind5;
-		
-		private string _wind6;
-		
-		private System.Nullable<System.DateTime> _date2;
-		
-		private System.Nullable<System.DateTime> _date3;
-		
-		private System.Nullable<System.DateTime> _date4;
-		
-		private System.Nullable<System.DateTime> _date5;
-		
-		private System.Nullable<System.DateTime> _date6;
-		
-		private string _img1;
-		
-		private string _img2;
-		
-		private string _img3;
-		
-		private string _img4;
-		
-		private string _img5;
-		
-		private string _img6;
-		
-		private string _week;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OndateChanging(System.Nullable<System.DateTime> value);
-    partial void OndateChanged();
-    partial void OncityChanging(string value);
-    partial void OncityChanged();
-    partial void Ontemp1Changing(string value);
-    partial void Ontemp1Changed();
-    partial void Ontemp2Changing(string value);
-    partial void Ontemp2Changed();
-    partial void Ontemp3Changing(string value);
-    partial void Ontemp3Changed();
-    partial void Ontemp4Changing(string value);
-    partial void Ontemp4Changed();
-    partial void Ontemp5Changing(string value);
-    partial void Ontemp5Changed();
-    partial void Ontemp6Changing(string value);
-    partial void Ontemp6Changed();
-    partial void Ondescription1Changing(string value);
-    partial void Ondescription1Changed();
-    partial void Ondescription2Changing(string value);
-    partial void Ondescription2Changed();
-    partial void Ondescription3Changing(string value);
-    partial void Ondescription3Changed();
-    partial void Ondescription4Changing(string value);
-    partial void Ondescription4Changed();
-    partial void Ondescription5Changing(string value);
-    partial void Ondescription5Changed();
-    partial void Ondescription6Changing(string value);
-    partial void Ondescription6Changed();
-    partial void Onwind1Changing(string value);
-    partial void Onwind1Changed();
-    partial void Onwind2Changing(string value);
-    partial void Onwind2Changed();
-    partial void Onwind3Changing(string value);
-    partial void Onwind3Changed();
-    partial void Onwind4Changing(string value);
-    partial void Onwind4Changed();
-    partial void Onwind5Changing(string value);
-    partial void Onwind5Changed();
-    partial void Onwind6Changing(string value);
-    partial void Onwind6Changed();
-    partial void Ondate2Changing(System.Nullable<System.DateTime> value);
-    partial void Ondate2Changed();
-    partial void Ondate3Changing(System.Nullable<System.DateTime> value);
-    partial void Ondate3Changed();
-    partial void Ondate4Changing(System.Nullable<System.DateTime> value);
-    partial void Ondate4Changed();
-    partial void Ondate5Changing(System.Nullable<System.DateTime> value);
-    partial void Ondate5Changed();
-    partial void Ondate6Changing(System.Nullable<System.DateTime> value);
-    partial void Ondate6Changed();
-    partial void Onimg1Changing(string value);
-    partial void Onimg1Changed();
-    partial void Onimg2Changing(string value);
-    partial void Onimg2Changed();
-    partial void Onimg3Changing(string value);
-    partial void Onimg3Changed();
-    partial void Onimg4Changing(string value);
-    partial void Onimg4Changed();
-    partial void Onimg5Changing(string value);
-    partial void Onimg5Changed();
-    partial void Onimg6Changing(string value);
-    partial void Onimg6Changed();
-    partial void OnweekChanging(string value);
-    partial void OnweekChanged();
-    #endregion
-		
-		public t_Weather()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<System.DateTime> date
-		{
-			get
-			{
-				return this._date;
-			}
-			set
-			{
-				if ((this._date != value))
-				{
-					this.OndateChanging(value);
-					this.SendPropertyChanging();
-					this._date = value;
-					this.SendPropertyChanged("date");
-					this.OndateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_city", DbType="NChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public string city
-		{
-			get
-			{
-				return this._city;
-			}
-			set
-			{
-				if ((this._city != value))
-				{
-					this.OncityChanging(value);
-					this.SendPropertyChanging();
-					this._city = value;
-					this.SendPropertyChanged("city");
-					this.OncityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp1", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public string temp1
-		{
-			get
-			{
-				return this._temp1;
-			}
-			set
-			{
-				if ((this._temp1 != value))
-				{
-					this.Ontemp1Changing(value);
-					this.SendPropertyChanging();
-					this._temp1 = value;
-					this.SendPropertyChanged("temp1");
-					this.Ontemp1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp2", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public string temp2
-		{
-			get
-			{
-				return this._temp2;
-			}
-			set
-			{
-				if ((this._temp2 != value))
-				{
-					this.Ontemp2Changing(value);
-					this.SendPropertyChanging();
-					this._temp2 = value;
-					this.SendPropertyChanged("temp2");
-					this.Ontemp2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp3", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
-		public string temp3
-		{
-			get
-			{
-				return this._temp3;
-			}
-			set
-			{
-				if ((this._temp3 != value))
-				{
-					this.Ontemp3Changing(value);
-					this.SendPropertyChanging();
-					this._temp3 = value;
-					this.SendPropertyChanged("temp3");
-					this.Ontemp3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp4", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
-		public string temp4
-		{
-			get
-			{
-				return this._temp4;
-			}
-			set
-			{
-				if ((this._temp4 != value))
-				{
-					this.Ontemp4Changing(value);
-					this.SendPropertyChanging();
-					this._temp4 = value;
-					this.SendPropertyChanged("temp4");
-					this.Ontemp4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp5", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
-		public string temp5
-		{
-			get
-			{
-				return this._temp5;
-			}
-			set
-			{
-				if ((this._temp5 != value))
-				{
-					this.Ontemp5Changing(value);
-					this.SendPropertyChanging();
-					this._temp5 = value;
-					this.SendPropertyChanged("temp5");
-					this.Ontemp5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp6", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=9)]
-		public string temp6
-		{
-			get
-			{
-				return this._temp6;
-			}
-			set
-			{
-				if ((this._temp6 != value))
-				{
-					this.Ontemp6Changing(value);
-					this.SendPropertyChanging();
-					this._temp6 = value;
-					this.SendPropertyChanged("temp6");
-					this.Ontemp6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description1", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=10)]
-		public string description1
-		{
-			get
-			{
-				return this._description1;
-			}
-			set
-			{
-				if ((this._description1 != value))
-				{
-					this.Ondescription1Changing(value);
-					this.SendPropertyChanging();
-					this._description1 = value;
-					this.SendPropertyChanged("description1");
-					this.Ondescription1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description2", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=11)]
-		public string description2
-		{
-			get
-			{
-				return this._description2;
-			}
-			set
-			{
-				if ((this._description2 != value))
-				{
-					this.Ondescription2Changing(value);
-					this.SendPropertyChanging();
-					this._description2 = value;
-					this.SendPropertyChanged("description2");
-					this.Ondescription2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description3", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=12)]
-		public string description3
-		{
-			get
-			{
-				return this._description3;
-			}
-			set
-			{
-				if ((this._description3 != value))
-				{
-					this.Ondescription3Changing(value);
-					this.SendPropertyChanging();
-					this._description3 = value;
-					this.SendPropertyChanged("description3");
-					this.Ondescription3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description4", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=13)]
-		public string description4
-		{
-			get
-			{
-				return this._description4;
-			}
-			set
-			{
-				if ((this._description4 != value))
-				{
-					this.Ondescription4Changing(value);
-					this.SendPropertyChanging();
-					this._description4 = value;
-					this.SendPropertyChanged("description4");
-					this.Ondescription4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description5", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=14)]
-		public string description5
-		{
-			get
-			{
-				return this._description5;
-			}
-			set
-			{
-				if ((this._description5 != value))
-				{
-					this.Ondescription5Changing(value);
-					this.SendPropertyChanging();
-					this._description5 = value;
-					this.SendPropertyChanged("description5");
-					this.Ondescription5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description6", DbType="NVarChar(20)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=15)]
-		public string description6
-		{
-			get
-			{
-				return this._description6;
-			}
-			set
-			{
-				if ((this._description6 != value))
-				{
-					this.Ondescription6Changing(value);
-					this.SendPropertyChanging();
-					this._description6 = value;
-					this.SendPropertyChanged("description6");
-					this.Ondescription6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind1", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=16)]
-		public string wind1
-		{
-			get
-			{
-				return this._wind1;
-			}
-			set
-			{
-				if ((this._wind1 != value))
-				{
-					this.Onwind1Changing(value);
-					this.SendPropertyChanging();
-					this._wind1 = value;
-					this.SendPropertyChanged("wind1");
-					this.Onwind1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind2", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=17)]
-		public string wind2
-		{
-			get
-			{
-				return this._wind2;
-			}
-			set
-			{
-				if ((this._wind2 != value))
-				{
-					this.Onwind2Changing(value);
-					this.SendPropertyChanging();
-					this._wind2 = value;
-					this.SendPropertyChanged("wind2");
-					this.Onwind2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind3", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=18)]
-		public string wind3
-		{
-			get
-			{
-				return this._wind3;
-			}
-			set
-			{
-				if ((this._wind3 != value))
-				{
-					this.Onwind3Changing(value);
-					this.SendPropertyChanging();
-					this._wind3 = value;
-					this.SendPropertyChanged("wind3");
-					this.Onwind3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind4", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=19)]
-		public string wind4
-		{
-			get
-			{
-				return this._wind4;
-			}
-			set
-			{
-				if ((this._wind4 != value))
-				{
-					this.Onwind4Changing(value);
-					this.SendPropertyChanging();
-					this._wind4 = value;
-					this.SendPropertyChanged("wind4");
-					this.Onwind4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind5", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=20)]
-		public string wind5
-		{
-			get
-			{
-				return this._wind5;
-			}
-			set
-			{
-				if ((this._wind5 != value))
-				{
-					this.Onwind5Changing(value);
-					this.SendPropertyChanging();
-					this._wind5 = value;
-					this.SendPropertyChanged("wind5");
-					this.Onwind5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wind6", DbType="NVarChar(10)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=21)]
-		public string wind6
-		{
-			get
-			{
-				return this._wind6;
-			}
-			set
-			{
-				if ((this._wind6 != value))
-				{
-					this.Onwind6Changing(value);
-					this.SendPropertyChanging();
-					this._wind6 = value;
-					this.SendPropertyChanged("wind6");
-					this.Onwind6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date2", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=22)]
-		public System.Nullable<System.DateTime> date2
-		{
-			get
-			{
-				return this._date2;
-			}
-			set
-			{
-				if ((this._date2 != value))
-				{
-					this.Ondate2Changing(value);
-					this.SendPropertyChanging();
-					this._date2 = value;
-					this.SendPropertyChanged("date2");
-					this.Ondate2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date3", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=23)]
-		public System.Nullable<System.DateTime> date3
-		{
-			get
-			{
-				return this._date3;
-			}
-			set
-			{
-				if ((this._date3 != value))
-				{
-					this.Ondate3Changing(value);
-					this.SendPropertyChanging();
-					this._date3 = value;
-					this.SendPropertyChanged("date3");
-					this.Ondate3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date4", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=24)]
-		public System.Nullable<System.DateTime> date4
-		{
-			get
-			{
-				return this._date4;
-			}
-			set
-			{
-				if ((this._date4 != value))
-				{
-					this.Ondate4Changing(value);
-					this.SendPropertyChanging();
-					this._date4 = value;
-					this.SendPropertyChanged("date4");
-					this.Ondate4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date5", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=25)]
-		public System.Nullable<System.DateTime> date5
-		{
-			get
-			{
-				return this._date5;
-			}
-			set
-			{
-				if ((this._date5 != value))
-				{
-					this.Ondate5Changing(value);
-					this.SendPropertyChanging();
-					this._date5 = value;
-					this.SendPropertyChanged("date5");
-					this.Ondate5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date6", DbType="DateTime")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=26)]
-		public System.Nullable<System.DateTime> date6
-		{
-			get
-			{
-				return this._date6;
-			}
-			set
-			{
-				if ((this._date6 != value))
-				{
-					this.Ondate6Changing(value);
-					this.SendPropertyChanging();
-					this._date6 = value;
-					this.SendPropertyChanged("date6");
-					this.Ondate6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img1", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=27)]
-		public string img1
-		{
-			get
-			{
-				return this._img1;
-			}
-			set
-			{
-				if ((this._img1 != value))
-				{
-					this.Onimg1Changing(value);
-					this.SendPropertyChanging();
-					this._img1 = value;
-					this.SendPropertyChanged("img1");
-					this.Onimg1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img2", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=28)]
-		public string img2
-		{
-			get
-			{
-				return this._img2;
-			}
-			set
-			{
-				if ((this._img2 != value))
-				{
-					this.Onimg2Changing(value);
-					this.SendPropertyChanging();
-					this._img2 = value;
-					this.SendPropertyChanged("img2");
-					this.Onimg2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img3", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=29)]
-		public string img3
-		{
-			get
-			{
-				return this._img3;
-			}
-			set
-			{
-				if ((this._img3 != value))
-				{
-					this.Onimg3Changing(value);
-					this.SendPropertyChanging();
-					this._img3 = value;
-					this.SendPropertyChanged("img3");
-					this.Onimg3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img4", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=30)]
-		public string img4
-		{
-			get
-			{
-				return this._img4;
-			}
-			set
-			{
-				if ((this._img4 != value))
-				{
-					this.Onimg4Changing(value);
-					this.SendPropertyChanging();
-					this._img4 = value;
-					this.SendPropertyChanged("img4");
-					this.Onimg4Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img5", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=31)]
-		public string img5
-		{
-			get
-			{
-				return this._img5;
-			}
-			set
-			{
-				if ((this._img5 != value))
-				{
-					this.Onimg5Changing(value);
-					this.SendPropertyChanging();
-					this._img5 = value;
-					this.SendPropertyChanged("img5");
-					this.Onimg5Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img6", DbType="Char(2)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=32)]
-		public string img6
-		{
-			get
-			{
-				return this._img6;
-			}
-			set
-			{
-				if ((this._img6 != value))
-				{
-					this.Onimg6Changing(value);
-					this.SendPropertyChanging();
-					this._img6 = value;
-					this.SendPropertyChanged("img6");
-					this.Onimg6Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_week", DbType="NChar(8)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=33)]
-		public string week
-		{
-			get
-			{
-				return this._week;
-			}
-			set
-			{
-				if ((this._week != value))
-				{
-					this.OnweekChanging(value);
-					this.SendPropertyChanging();
-					this._week = value;
-					this.SendPropertyChanged("week");
-					this.OnweekChanged();
 				}
 			}
 		}
@@ -12337,95 +11450,220 @@ namespace BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_Set_time")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Region")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class KQ_Set_time : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Region : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _Id;
+		private int _REGION_ID;
 		
-		private System.Nullable<System.DateTime> _CheckOnTime;
+		private string _REGION_CODE;
 		
-		private System.Nullable<System.DateTime> _CheckOffTime;
+		private string _REGION_NAME;
+		
+		private System.Nullable<int> _PARENT_ID;
+		
+		private System.Nullable<double> _REGION_LEVEL;
+		
+		private System.Nullable<double> _REGION_ORDER;
+		
+		private string _REGION_NAME_EN;
+		
+		private string _REGION_SHORTNAME_EN;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnCheckOnTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckOnTimeChanged();
-    partial void OnCheckOffTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckOffTimeChanged();
+    partial void OnREGION_IDChanging(int value);
+    partial void OnREGION_IDChanged();
+    partial void OnREGION_CODEChanging(string value);
+    partial void OnREGION_CODEChanged();
+    partial void OnREGION_NAMEChanging(string value);
+    partial void OnREGION_NAMEChanged();
+    partial void OnPARENT_IDChanging(System.Nullable<int> value);
+    partial void OnPARENT_IDChanged();
+    partial void OnREGION_LEVELChanging(System.Nullable<double> value);
+    partial void OnREGION_LEVELChanged();
+    partial void OnREGION_ORDERChanging(System.Nullable<double> value);
+    partial void OnREGION_ORDERChanged();
+    partial void OnREGION_NAME_ENChanging(string value);
+    partial void OnREGION_NAME_ENChanged();
+    partial void OnREGION_SHORTNAME_ENChanging(string value);
+    partial void OnREGION_SHORTNAME_ENChanged();
     #endregion
 		
-		public KQ_Set_time()
+		public Region()
 		{
 			this.Initialize();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int Id
+		public int REGION_ID
 		{
 			get
 			{
-				return this._Id;
+				return this._REGION_ID;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._REGION_ID != value))
 				{
-					this.OnIdChanging(value);
+					this.OnREGION_IDChanging(value);
 					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
+					this._REGION_ID = value;
+					this.SendPropertyChanged("REGION_ID");
+					this.OnREGION_IDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOnTime", DbType="DateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_CODE", DbType="NVarChar(100)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<System.DateTime> CheckOnTime
+		public string REGION_CODE
 		{
 			get
 			{
-				return this._CheckOnTime;
+				return this._REGION_CODE;
 			}
 			set
 			{
-				if ((this._CheckOnTime != value))
+				if ((this._REGION_CODE != value))
 				{
-					this.OnCheckOnTimeChanging(value);
+					this.OnREGION_CODEChanging(value);
 					this.SendPropertyChanging();
-					this._CheckOnTime = value;
-					this.SendPropertyChanged("CheckOnTime");
-					this.OnCheckOnTimeChanged();
+					this._REGION_CODE = value;
+					this.SendPropertyChanged("REGION_CODE");
+					this.OnREGION_CODEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOffTime", DbType="DateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME", DbType="NVarChar(100)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<System.DateTime> CheckOffTime
+		public string REGION_NAME
 		{
 			get
 			{
-				return this._CheckOffTime;
+				return this._REGION_NAME;
 			}
 			set
 			{
-				if ((this._CheckOffTime != value))
+				if ((this._REGION_NAME != value))
 				{
-					this.OnCheckOffTimeChanging(value);
+					this.OnREGION_NAMEChanging(value);
 					this.SendPropertyChanging();
-					this._CheckOffTime = value;
-					this.SendPropertyChanged("CheckOffTime");
-					this.OnCheckOffTimeChanged();
+					this._REGION_NAME = value;
+					this.SendPropertyChanged("REGION_NAME");
+					this.OnREGION_NAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PARENT_ID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<int> PARENT_ID
+		{
+			get
+			{
+				return this._PARENT_ID;
+			}
+			set
+			{
+				if ((this._PARENT_ID != value))
+				{
+					this.OnPARENT_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PARENT_ID = value;
+					this.SendPropertyChanged("PARENT_ID");
+					this.OnPARENT_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_LEVEL", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<double> REGION_LEVEL
+		{
+			get
+			{
+				return this._REGION_LEVEL;
+			}
+			set
+			{
+				if ((this._REGION_LEVEL != value))
+				{
+					this.OnREGION_LEVELChanging(value);
+					this.SendPropertyChanging();
+					this._REGION_LEVEL = value;
+					this.SendPropertyChanged("REGION_LEVEL");
+					this.OnREGION_LEVELChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_ORDER", DbType="Float")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+		public System.Nullable<double> REGION_ORDER
+		{
+			get
+			{
+				return this._REGION_ORDER;
+			}
+			set
+			{
+				if ((this._REGION_ORDER != value))
+				{
+					this.OnREGION_ORDERChanging(value);
+					this.SendPropertyChanging();
+					this._REGION_ORDER = value;
+					this.SendPropertyChanged("REGION_ORDER");
+					this.OnREGION_ORDERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME_EN", DbType="NVarChar(100)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+		public string REGION_NAME_EN
+		{
+			get
+			{
+				return this._REGION_NAME_EN;
+			}
+			set
+			{
+				if ((this._REGION_NAME_EN != value))
+				{
+					this.OnREGION_NAME_ENChanging(value);
+					this.SendPropertyChanging();
+					this._REGION_NAME_EN = value;
+					this.SendPropertyChanged("REGION_NAME_EN");
+					this.OnREGION_NAME_ENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_SHORTNAME_EN", DbType="NVarChar(10)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=8)]
+		public string REGION_SHORTNAME_EN
+		{
+			get
+			{
+				return this._REGION_SHORTNAME_EN;
+			}
+			set
+			{
+				if ((this._REGION_SHORTNAME_EN != value))
+				{
+					this.OnREGION_SHORTNAME_ENChanging(value);
+					this.SendPropertyChanging();
+					this._REGION_SHORTNAME_EN = value;
+					this.SendPropertyChanged("REGION_SHORTNAME_EN");
+					this.OnREGION_SHORTNAME_ENChanged();
 				}
 			}
 		}

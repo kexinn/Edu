@@ -27,12 +27,7 @@
         }
        
                
-        .auto-style1 {
-            height: 33px;
-        }
-       
-               
-    </style>
+        </style>
 
 </head>
 <body>
@@ -76,7 +71,8 @@
                 到 
                 <asp:TextBox  CssClass="inputunderborder" Width="80px" ID="tbEndDate" runat="server" Height="25px"  onclick="WdatePicker({skin:'whyGreen'})"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbEndDate" ErrorMessage="*必填" ForeColor="Red" ValidationGroup="bx"></asp:RequiredFieldValidator>
-                &nbsp;&nbsp;<asp:Label ID="lbFormId" runat="server" Text="formId" Visible="False"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbFormId" runat="server" Visible="False"></asp:Label>
+                &nbsp;<asp:Label ID="lbParentId" runat="server" Visible="False"></asp:Label>
                 <br />
                 出差事由：<asp:TextBox ID="tbReason" runat="server" CssClass="inputunderborder" Height="25px" Width="200px"></asp:TextBox>
                 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbReason" ErrorMessage="*必填" ForeColor="Red" ValidationGroup="bx" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -85,9 +81,19 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlPositionType" ErrorMessage="*必填" ForeColor="Red" ValidationGroup="bx"></asp:RequiredFieldValidator>
                 <asp:DropDownList ID="ddlPosition" runat="server" AutoPostBack="True" CssClass="inputunderborder" OnSelectedIndexChanged="ddlPosition_SelectedIndexChanged" Visible="False">
                 </asp:DropDownList>
-                地点：<asp:TextBox ID="tbPosition" runat="server" CssClass="inputunderborder" Height="25px" Width="100px"></asp:TextBox>
+                地点：<asp:TextBox ID="tbPosition" runat="server" CssClass="inputunderborder" Height="25px" Width="130px" Enabled="False"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbPosition" ErrorMessage="*必填" ForeColor="Red" ValidationGroup="bx"></asp:RequiredFieldValidator>
                 <br />
+                <asp:Panel ID="PanelRagion" runat="server" Visible="False">
+                    <br />
+                    省：<asp:DropDownList ID="ddlSheng" runat="server" AutoPostBack="True" CssClass="inputunderborder" OnSelectedIndexChanged="ddlSheng_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="ddlSheng" Display="Dynamic" ErrorMessage="*必填" ForeColor="Red" ValidationGroup="bx"></asp:RequiredFieldValidator>
+                    &nbsp;市：<asp:DropDownList ID="ddlShi" runat="server" AutoPostBack="True" CssClass="inputunderborder" OnSelectedIndexChanged="ddlShi_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    县：<asp:DropDownList ID="ddlXian" runat="server" AutoPostBack="True" CssClass="inputunderborder" OnSelectedIndexChanged="ddlXian_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </asp:Panel>
                 <br />
                 报销类型：<asp:DropDownList ID="ddlBXType" runat="server" AutoPostBack="True" CssClass="inputunderborder" OnSelectedIndexChanged="ddlBXType_SelectedIndexChanged">
                     <asp:ListItem></asp:ListItem>

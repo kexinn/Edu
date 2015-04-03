@@ -105,7 +105,7 @@
                     <HeaderStyle Width="60px" />
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="矿工">
+                    <asp:TemplateField HeaderText="旷工">
                         <ItemTemplate>
                             <asp:Label ID="lbKuanggong" runat="server" OnDataBinding="lbKuanggong_DataBinding"></asp:Label>
                         </ItemTemplate>

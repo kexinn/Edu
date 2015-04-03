@@ -240,7 +240,7 @@ namespace BLL.pub
             HttpContext.Current.Response.Write(tw.ToString());
             HttpContext.Current.Response.End();
         }
-
+        /*
         public static t_Weather getTodayWeather()
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
@@ -270,7 +270,7 @@ namespace BLL.pub
                 return true;
             }
         }
-
+        */
         public static string getFileDir()
         {
             string dir = System.Web.HttpContext.Current.Server.MapPath("/");

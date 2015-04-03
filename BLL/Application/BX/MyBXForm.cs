@@ -21,6 +21,13 @@ namespace BLL.Application.BX
             return list.ToList();
         }
 
+        public List<Region> getDDLRegion(int parentId)
+        {
+
+            var list = new Region_Repository().LoadWhere(t => t.PARENT_ID == parentId);
+            return list.ToList();
+        }
+
         public  bool saveForm(t_BX_Form form)
         {
             bool result = new t_BX_Form_Repository().Save(form);

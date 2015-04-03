@@ -242,24 +242,83 @@ namespace web.Application.BX
             {
                 if (ddlPositionType.SelectedItem.Text.Trim() == "大市外")
                 {
-                    tbPosition.Enabled = true;
                     tbPosition.Text = "";
                     ddlPosition.Items.Clear();
                     ddlPosition.Visible = false;
+                    PanelRagion.Visible = true;
+                    initDDlSheng();
 
                 }else
                 {
-
+                    PanelRagion.Visible = false;
                     initPositon();
                 }
 
             }
             else
             {
-                ddlPosition.Visible = false;
                 tbPosition.Text = "";
                 tbPosition.Visible = false;
                 ddlPosition.Items.Clear();
+            }
+        }
+
+        protected void initDDlSheng(int select=0)
+        {
+            List<Region> lists = new BLL.Application.BX.MyBXForm().getDDLRegion(1);
+            ddlSheng.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "";
+            li.Value = "";
+            ddlSheng.Items.Add(li);
+            foreach (Region l in lists)
+            {
+                ListItem ll = new ListItem();
+                ll.Text = l.REGION_NAME;
+                ll.Value = l.REGION_ID.ToString();
+                if (l.REGION_ID == select)
+                    ll.Selected = true;
+                ddlSheng.Items.Add(ll);
+
+            }
+        }
+
+        protected void initDDlShi(int select = 0)
+        {
+            List<Region> lists = new BLL.Application.BX.MyBXForm().getDDLRegion(Convert.ToInt32(ddlSheng.SelectedValue));
+            ddlShi.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "";
+            li.Value = "";
+            ddlShi.Items.Add(li);
+            foreach (Region l in lists)
+            {
+                ListItem ll = new ListItem();
+                ll.Text = l.REGION_NAME;
+                ll.Value = l.REGION_ID.ToString();
+                if (l.REGION_ID == select)
+                    ll.Selected = true;
+                ddlShi.Items.Add(ll);
+
+            }
+        }
+
+        protected void initDDlXian(int select = 0)
+        {
+            List<Region> lists = new BLL.Application.BX.MyBXForm().getDDLRegion(Convert.ToInt32(ddlShi.SelectedValue));
+            ddlXian.Items.Clear();
+            ListItem li = new ListItem();
+            li.Text = "";
+            li.Value = "";
+            ddlXian.Items.Add(li);
+            foreach (Region l in lists)
+            {
+                ListItem ll = new ListItem();
+                ll.Text = l.REGION_NAME;
+                ll.Value = l.REGION_ID.ToString();
+                if (l.REGION_ID == select)
+                    ll.Selected = true;
+                ddlXian.Items.Add(ll);
             }
         }
 
@@ -299,6 +358,25 @@ namespace web.Application.BX
             HyperLink li = sender as HyperLink;
             t_BX_Form form = GetDataItem() as t_BX_Form;
             li.NavigateUrl = "/Application/BX/FormDetailView.aspx?id=" + form.Id;
+        }
+
+        protected void ddlSheng_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            initDDlShi();
+            ddlXian.Items.Clear();
+            tbPosition.Text = ddlSheng.SelectedItem.Text;
+        }
+
+        protected void ddlShi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            initDDlXian();
+            tbPosition.Text = ddlSheng.SelectedItem.Text + " " + ddlShi.SelectedItem.Text;
+        }
+
+        protected void ddlXian_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            tbPosition.Text = ddlSheng.SelectedItem.Text + " " + ddlShi.SelectedItem.Text + " " + ddlXian.SelectedItem.Text;
         }
     }
 }

@@ -74,7 +74,7 @@ namespace web
                 HttpWebResponse res;
                 Stream s;
                 StreamReader r;
-                t_Weather w = new t_Weather();
+               // t_Weather w = new t_Weather();
                 String url = "http://api.map.baidu.com/telematics/v3/weather?location=宁波&output=json&ak=tyoIv9jx0Bhiz5T1Vu0kMXI3";
                 req = (HttpWebRequest)WebRequest.Create(url);
                 res = (HttpWebResponse)req.GetResponse();
