@@ -12,7 +12,7 @@ namespace BLL.Application.KQ.Attendance
         {
             using (DataClassesEduDataContext dc = new DataClassesEduDataContext())
             {
-                var t = dc.KQ_AttendanceType;
+                var t = dc.KQ_AttendanceType.OrderBy(o=>o.orderNum);
                 return t.ToList();
             }
         }

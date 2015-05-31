@@ -70,9 +70,6 @@ namespace BLL
     partial void Insertt_Work_Plan(t_Work_Plan instance);
     partial void Updatet_Work_Plan(t_Work_Plan instance);
     partial void Deletet_Work_Plan(t_Work_Plan instance);
-    partial void InsertKQ_AttendanceType(KQ_AttendanceType instance);
-    partial void UpdateKQ_AttendanceType(KQ_AttendanceType instance);
-    partial void DeleteKQ_AttendanceType(KQ_AttendanceType instance);
     partial void InsertDepartment(Department instance);
     partial void UpdateDepartment(Department instance);
     partial void DeleteDepartment(Department instance);
@@ -127,6 +124,9 @@ namespace BLL
     partial void InsertRegion(Region instance);
     partial void UpdateRegion(Region instance);
     partial void DeleteRegion(Region instance);
+    partial void InsertKQ_AttendanceType(KQ_AttendanceType instance);
+    partial void UpdateKQ_AttendanceType(KQ_AttendanceType instance);
+    partial void DeleteKQ_AttendanceType(KQ_AttendanceType instance);
     #endregion
 		
 		public DataClassesEduDataContext() : 
@@ -316,14 +316,6 @@ namespace BLL
 			get
 			{
 				return this.GetTable<t_Work_Plan>();
-			}
-		}
-		
-		public System.Data.Linq.Table<KQ_AttendanceType> KQ_AttendanceType
-		{
-			get
-			{
-				return this.GetTable<KQ_AttendanceType>();
 			}
 		}
 		
@@ -524,6 +516,14 @@ namespace BLL
 			get
 			{
 				return this.GetTable<Region>();
+			}
+		}
+		
+		public System.Data.Linq.Table<KQ_AttendanceType> KQ_AttendanceType
+		{
+			get
+			{
+				return this.GetTable<KQ_AttendanceType>();
 			}
 		}
 		
@@ -4810,107 +4810,6 @@ namespace BLL
 					this._isComplete = value;
 					this.SendPropertyChanged("isComplete");
 					this.OnisCompleteChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void Initialize()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _name;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    #endregion
-		
-		public KQ_AttendanceType()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
 				}
 			}
 		}
@@ -11664,6 +11563,132 @@ namespace BLL
 					this._REGION_SHORTNAME_EN = value;
 					this.SendPropertyChanged("REGION_SHORTNAME_EN");
 					this.OnREGION_SHORTNAME_ENChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KQ_AttendanceType")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class KQ_AttendanceType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private System.Nullable<int> _orderNum;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnorderNumChanging(System.Nullable<int> value);
+    partial void OnorderNumChanged();
+    #endregion
+		
+		public KQ_AttendanceType()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderNum", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> orderNum
+		{
+			get
+			{
+				return this._orderNum;
+			}
+			set
+			{
+				if ((this._orderNum != value))
+				{
+					this.OnorderNumChanging(value);
+					this.SendPropertyChanging();
+					this._orderNum = value;
+					this.SendPropertyChanged("orderNum");
+					this.OnorderNumChanged();
 				}
 			}
 		}

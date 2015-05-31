@@ -25,7 +25,8 @@ namespace web.Application.KQ
 
         protected void gvKQList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            gvKQList.PageIndex = e.NewPageIndex;
+            databind();
         }
 
         protected void gvKQList_RowDeleting(object sender, GridViewDeleteEventArgs e)
