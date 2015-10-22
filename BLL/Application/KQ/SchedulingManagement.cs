@@ -156,9 +156,9 @@ namespace BLL.Application.KQ
                                        userid = u.Key,
                                        date = p.date,
                                        shangbanTime = (card1 != null) ? card1.Time.ToString() : "",
-                                       isChidao = (p.isClockOn && card1 != null && yd == null) ? (card1.Time - p.date) > p.clockOnTime : false,//有打卡，且没有异动信息则判断是否迟到，否则不显示
+                                       isChidao = (p.isClockOn && card1 != null && yd == null) ? ((card1.Time - p.date) > p.clockOnTime) && (att1 == null) : false,//有打卡，且没有异动信息则判断是否迟到，否则不显示
                                        xiabanTime = (card2 != null) ? card2.Time.ToString() : "",
-                                       isZaotui = (p.isClockOff && card2 != null && yd == null) ? (card2.Time - p.date) < p.clockOffTime : false,//有打卡，且没有异动信息则判断是否早退，否则不显示
+                                       isZaotui = (p.isClockOff && card2 != null && yd == null) ? ((card2.Time - p.date) < p.clockOffTime) && (att2 ==null) : false,//有打卡，且没有异动信息则判断是否早退，否则不显示
                                        isQingjia = (att != null),
                                        qingjiaTime = (att != null) ? att.Sum(a=>a.daySpan) + "天" + att.Sum(a=>a.hourSpan) + "小时" : "",
                                        isKuanggong = (p.isClockOn && card1 == null && att1 == null) || (p.isClockOff && card2 == null && att2 == null),

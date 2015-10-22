@@ -79,7 +79,7 @@ namespace web.Application.KQ
             BLL.Application.KQ.MyKqQuery.KQ_all_report item = GetDataItem() as BLL.Application.KQ.MyKqQuery.KQ_all_report;
             if ((bool)item.isKuanggong)
             {
-                lb.Text = "矿工";
+                lb.Text = "旷工";
                 lb.ForeColor = System.Drawing.Color.Red;
             }
             else

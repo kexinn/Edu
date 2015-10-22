@@ -40,7 +40,7 @@ namespace BLL.Application.KQ.Attendance
                 }
 
                 tot = attend.Count();
-                attend = attend.OrderByDescending(o => o.Id).Skip(index);
+                attend = attend.OrderByDescending(o => o.endtime).Skip(index);
                 if (num != 0)
                     attend = attend.Take(num);
                 return attend.ToList();
