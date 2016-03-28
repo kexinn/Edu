@@ -15,6 +15,14 @@
     <style type="text/css">
 
         span{display:inline;}
+        .gg{
+            border:1px solid #000;
+        }
+        table.gg th ,td{
+
+            border:1px solid #000;
+        }
+
     </style>   
      <script type="text/javascript">
                     function check() {
@@ -71,9 +79,20 @@
              
 
         
-            <asp:GridView ID="gvResult" runat="server"
+            <asp:GridView ID="gvResult" runat="server" CssClass="gg"
                 Width="100%" 
-                CssClass="tablelist" >
+                 >
+                 <Columns>
+             <asp:TemplateField HeaderText="序号" >
+                   <ItemTemplate>
+
+                       <%#  Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+
+       </asp:TemplateField>
+
+      </Columns>
+
             </asp:GridView>
  </ContentTemplate></asp:UpdatePanel> 
                 

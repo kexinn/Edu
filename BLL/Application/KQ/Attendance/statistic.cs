@@ -353,7 +353,7 @@ namespace BLL.Application.KQ.Attendance
                                 };
                 var users = from u in dc.Users
                             where u.UserType == '1' && u.disabled == false
-                            orderby u.orderNo
+                            orderby u.bianhao
                             select u;
 
                 DataTable dtUsers = users.ToList().ConvertToDataTable();

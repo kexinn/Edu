@@ -46,6 +46,7 @@ namespace BLL.Application.KQ.Attendance
                 return attend.ToList();
             }
         }
+
         //计算两日期间隔天数和小时数
         public static void getSpanDateTime(DateTime datestart, DateTime dateend, ref Decimal daySpan, ref int timeSpan)
         {
@@ -55,6 +56,96 @@ namespace BLL.Application.KQ.Attendance
             TimeSpan dayNoonEndTime = new TimeSpan(16, 30, 0);
 
             TimeSpan datespan = dateend - datestart;
+            if(dateend.Year > datestart.Year) //跨年
+            {
+
+                //daySpan = datespan.Days;
+                DateTime dt1 = new DateTime(datestart.Year, 12, 31);
+                DateTime dt2 = new DateTime(dateend.Year, 1, 1);
+                daySpan = (dt1.DayOfYear - datestart.DayOfYear) + (dateend.DayOfYear-dt2.DayOfYear);//中间天数
+                TimeSpan ts1;
+                TimeSpan ts2;
+                if (datestart.TimeOfDay < dayMorStartTime) //第一天计算小时数
+                {
+                    ts1 = dayMorEndTime - dayMorStartTime + (dayNoonEndTime - dayNoonStartTime);
+
+                }
+                else if (datestart.TimeOfDay >= dayMorStartTime && datestart.TimeOfDay < dayMorEndTime)
+                {
+                    ts1 = dayNoonEndTime - datestart.TimeOfDay - (dayNoonStartTime - dayMorEndTime);
+                }
+                else if (datestart.TimeOfDay >= dayMorEndTime && datestart.TimeOfDay < dayNoonStartTime)
+                {
+
+                    ts1 = dayNoonEndTime - dayNoonStartTime;
+                }
+                else if (datestart.TimeOfDay >= dayNoonStartTime && datestart.TimeOfDay < dayNoonEndTime)
+                {
+                    ts1 = dayNoonEndTime - datestart.TimeOfDay;
+                }
+                else
+                    ts1 = new TimeSpan(0);
+
+                if (ts1.Hours / 5 == 1) //第一天计算小时数折合天数，零头忽略，如果不到一天或半天零头时间累积
+                {
+                    daySpan += 1; timeSpan = 0;
+                }
+                else if (ts1.Hours / 3 == 1)
+                {
+                    daySpan += 0.5M; timeSpan = 0;
+                }
+                else
+                {
+                    timeSpan = ts1.Hours;
+                }
+
+
+                if (dateend.TimeOfDay < dayMorStartTime)//最后一天计算小时数
+                {
+                    ts2 = new TimeSpan(0);
+
+                }
+                else if (dateend.TimeOfDay >= dayMorStartTime && dateend.TimeOfDay < dayMorEndTime)
+                {
+                    ts2 = dateend.TimeOfDay - dayMorStartTime;
+                }
+                else if (dateend.TimeOfDay >= dayMorEndTime && dateend.TimeOfDay < dayNoonStartTime)
+                {
+
+                    ts2 = dayMorEndTime - dayMorStartTime;
+                }
+                else if (dateend.TimeOfDay >= dayNoonStartTime && dateend.TimeOfDay < dayNoonEndTime)
+                {
+                    ts2 = dayMorEndTime - dayMorStartTime + dateend.TimeOfDay - dayNoonStartTime;
+                }
+                else
+                    ts2 = dayMorEndTime - dayMorStartTime + dayNoonEndTime - dayNoonStartTime;
+
+
+                if (ts2.Hours / 5 == 1)//最后一天的时间相加计算天数，零头忽略，不满半天或一天的零头和第一天的累积时间保存
+                {
+                    daySpan += 1;
+                }
+                else if (ts2.Hours / 3 == 1)
+                {
+                    daySpan += 0.5M;
+                }
+                else
+                {
+                    timeSpan += ts2.Hours;
+                }
+
+                if (timeSpan / 5 == 1) //第一天和最后一天的时间相加计算天数，零头忽略，不满半天或一天的零头时间保存
+                {
+                    daySpan += 1; timeSpan = 0;
+                }
+                else if (timeSpan / 3 == 1)
+                {
+                    daySpan += 0.5M; timeSpan = 0;
+                }
+                return;
+            }
+            
 
             if (datestart.DayOfYear == dateend.DayOfYear) //只请假一天以内的
             {

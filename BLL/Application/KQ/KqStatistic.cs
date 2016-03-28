@@ -9,7 +9,7 @@ namespace BLL.Application.KQ
 {
     public class kq_statistic
     {
-        public int 序号 { get; set; }
+       // public int 序号 { get; set; }
         public string 工号 { get; set; }
         public string 姓名 { get; set; }
         public string  考勤周期 { get; set; }
@@ -41,7 +41,7 @@ namespace BLL.Application.KQ
                 DataTable attTable = KQ.Attendance.statistic.calculateResultGuding(start, end);//统计请假情况
                 var result = from u in dc.Users    
                              where u.UserType == '1' && u.disabled == false
-                             orderby u.orderNo
+                             orderby u.bianhao 
                              join r in from rp in  dc.KQ_Report
                                 where rp.date >= start && rp.date <= end
                                 group rp by rp.userid
@@ -63,7 +63,8 @@ namespace BLL.Application.KQ
                              
                              select new kq_statistic
                              {
-                                 序号 = (int)u.orderNo,
+                                
+                                 //序号 = (int)u.orderNo,
                                  工号 = u.bianhao,
                                  姓名 = u.TrueName,
                                  考勤周期 = start.ToShortDateString() + "到" + end.ToShortDateString(),
@@ -83,7 +84,7 @@ namespace BLL.Application.KQ
                          on a["姓名"].ToString() equals r.姓名
                          select new kq_statistic
                          {
-                             序号 = r.序号,
+                             //序号 = r.序号,
                              工号 = r.工号,
                              姓名 = r.姓名,
                              考勤周期 = r.考勤周期,
