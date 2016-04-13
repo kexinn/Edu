@@ -39,6 +39,7 @@
                         <asp:ListItem Value="经贸部">经贸部</asp:ListItem>
                         <asp:ListItem Value="机电部">机电部</asp:ListItem>
                         <asp:ListItem Value="后勤">后勤</asp:ListItem>
+                        <asp:ListItem Value="社会服务中心">社会服务中心</asp:ListItem>
                        
                     </asp:DropDownList>
 

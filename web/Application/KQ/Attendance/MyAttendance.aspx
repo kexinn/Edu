@@ -85,6 +85,7 @@
                                 <asp:ListItem>经贸部</asp:ListItem>
                                 <asp:ListItem>机电部</asp:ListItem>
                                 <asp:ListItem>后勤</asp:ListItem>
+                                <asp:ListItem>社会服务中心</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlDept" ErrorMessage="*必选项" ForeColor="Red" ValidationGroup="apply"></asp:RequiredFieldValidator>
                             </span></td>
